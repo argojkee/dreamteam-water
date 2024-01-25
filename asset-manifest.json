@@ -1,19 +1,21 @@
 {
   "files": {
-    "main.css": "/dreamteam-water/static/css/main.7acaea2f.css",
-    "main.js": "/dreamteam-water/static/js/main.606b610a.js",
-    "static/js/983.9ac4bcc0.chunk.js": "/dreamteam-water/static/js/983.9ac4bcc0.chunk.js",
-    "static/js/932.d82ca6fe.chunk.js": "/dreamteam-water/static/js/932.d82ca6fe.chunk.js",
-    "static/js/637.697c6a49.chunk.js": "/dreamteam-water/static/js/637.697c6a49.chunk.js",
+    "main.css": "/dreamteam-water/static/css/main.b09bb6a4.css",
+    "main.js": "/dreamteam-water/static/js/main.d9ef9acd.js",
+    "static/js/983.fc815f1e.chunk.js": "/dreamteam-water/static/js/983.fc815f1e.chunk.js",
+    "static/js/932.a962ae5b.chunk.js": "/dreamteam-water/static/js/932.a962ae5b.chunk.js",
+    "static/js/637.a9856ceb.chunk.js": "/dreamteam-water/static/js/637.a9856ceb.chunk.js",
+    "static/js/727.77eebd22.chunk.js": "/dreamteam-water/static/js/727.77eebd22.chunk.js",
     "index.html": "/dreamteam-water/index.html",
-    "main.7acaea2f.css.map": "/dreamteam-water/static/css/main.7acaea2f.css.map",
-    "main.606b610a.js.map": "/dreamteam-water/static/js/main.606b610a.js.map",
-    "983.9ac4bcc0.chunk.js.map": "/dreamteam-water/static/js/983.9ac4bcc0.chunk.js.map",
-    "932.d82ca6fe.chunk.js.map": "/dreamteam-water/static/js/932.d82ca6fe.chunk.js.map",
-    "637.697c6a49.chunk.js.map": "/dreamteam-water/static/js/637.697c6a49.chunk.js.map"
+    "main.b09bb6a4.css.map": "/dreamteam-water/static/css/main.b09bb6a4.css.map",
+    "main.d9ef9acd.js.map": "/dreamteam-water/static/js/main.d9ef9acd.js.map",
+    "983.fc815f1e.chunk.js.map": "/dreamteam-water/static/js/983.fc815f1e.chunk.js.map",
+    "932.a962ae5b.chunk.js.map": "/dreamteam-water/static/js/932.a962ae5b.chunk.js.map",
+    "637.a9856ceb.chunk.js.map": "/dreamteam-water/static/js/637.a9856ceb.chunk.js.map",
+    "727.77eebd22.chunk.js.map": "/dreamteam-water/static/js/727.77eebd22.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.606b610a.js"
+    "static/css/main.b09bb6a4.css",
+    "static/js/main.d9ef9acd.js"
   ]
 }

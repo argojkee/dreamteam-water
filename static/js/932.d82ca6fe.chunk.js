@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkdreamteam_water=self.webpackChunkdreamteam_water||[]).push([[932],{932:function(e,a,t){t.r(a);t(791);var r=t(184);a.default=function(){return(0,r.jsx)("div",{children:"RegistrationPage"})}}}]);
+//# sourceMappingURL=932.d82ca6fe.chunk.js.map

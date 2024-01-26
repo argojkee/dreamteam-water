@@ -7,7 +7,11 @@ const LogoutBtn = () => {
   const onLogoutPress = () => {
     dispatch(operations.logOut());
   };
-  return <button onClick={onLogoutPress}>Log out</button>;
+  return (
+    <button onClick={onLogoutPress} style={{ fontFamily: 'Roboto' }}>
+      Log out
+    </button>
+  );
 };
 
 export default LogoutBtn;

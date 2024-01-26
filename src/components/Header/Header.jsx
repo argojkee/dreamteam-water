@@ -24,11 +24,9 @@ const Header = () => {
           {!token && (
             <div className="AuthContainer">
               <NavLink to="registration">Sign in</NavLink>
-              <NavLink to="login">
-                <div>
+              <div>
                   <img src={avatar} alt="iconHome" />
-                </div>
-              </NavLink>
+               </div>
             </div>
           )}
         

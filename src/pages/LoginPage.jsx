@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import operations from '../redux/auth/authOperations';
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
   const [user, setUser] = useState({});
@@ -34,6 +35,8 @@ const LoginPage = () => {
         />
         <button type="submit">Register</button>
       </form>
+
+      <Link to="/registration">Registration</Link>
     </>
   );
 };

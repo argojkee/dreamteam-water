@@ -18,7 +18,7 @@ const registration = createAsyncThunk(
     try {
       const { data } = await axios.post('/users/signup', user);
       token.set(data.token);
-      toastSuccess('Registration succesful. Welcome to phone book');
+      toastSuccess('Registration successful. Welcome');
       return data;
     } catch (error) {
       toastError('Something went wrong. Please try again or log in');
@@ -33,7 +33,7 @@ const logIn = createAsyncThunk(
     try {
       const { data } = await axios.post('/users/login', user);
       token.set(data.token);
-      toastSuccess('Log in successful. Welcome back to your phone book');
+      toastSuccess('Log in successful. Welcome back ');
       return data;
     } catch (error) {
       toastError(

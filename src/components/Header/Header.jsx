@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getToken } from '../../redux/auth/authSelectors';
-import LogoutBtn from 'components/LogoutBtn/LogoutBtn'; // xxxxxxxxxxxннннннннн
+import LogoutBtn from 'components/LogoutBtn/LogoutBtn'; // xxxxxxxxxxxннннн
 import Container from 'components/Container/Container';
 import TestPopover from '../TestPopover/TestPopover';
 import { HeaderStyles } from './HeaderStyled.styled';

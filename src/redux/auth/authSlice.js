@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import signInAPI from '../../components/API/Auth/signInAPI'
-import signUpAPI from '../../components/API/Auth/signUpAPI'
+import signInAPI from '../../API/Auth/signInAPI'
+import signUpAPI from '../../API/Auth/signUpAPI'
 
 const initialState = {
   user: { name: null, email: null },

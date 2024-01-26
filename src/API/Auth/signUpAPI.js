@@ -1,4 +1,8 @@
+import axios from 'axios';
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { toastError, toastSuccess } from 'services/toastNotification';
+
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const signUpAPI = createAsyncThunk(
   'signUp/signUpAPI', 
@@ -6,7 +10,10 @@ const signUpAPI = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/signup', user);
-      token.set(data.token);
+
+      // write token to axios parameter
+      axios.defaults.headers.common.Authorization = `Bearer ${data}`;
+
       toastSuccess('Registration successful. Welcome');
       return data;
     } catch (error) {
@@ -16,5 +23,4 @@ const signUpAPI = createAsyncThunk(
   }
 );
 
-export default signUpAPI
-
+export default signUpAPI;

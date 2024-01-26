@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/727.77eebd22.chunk.js","mappings":"0IAIA,UAJiB,WACf,OAAOA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,YACd,C","sources":["pages/MainPage.jsx"],"sourcesContent":["const MainPage = () => {\n  return <div>MainPage</div>;\n};\n\nexport default MainPage;\n"],"names":["_jsx","children"],"sourceRoot":""}

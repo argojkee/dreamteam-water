@@ -1,6 +1,7 @@
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 import { ModalStyles } from './ModalStyles.styled';
+import { IoClose } from 'react-icons/io5';
 
 const modalRoot = document.getElementById('modal-backdrop');
 
@@ -37,7 +38,7 @@ export const Modal = ({ children, closeModal }) => {
     <ModalStyles onClick={onBackdrop}>
       <div className="modal">
         <button type="button" className="close-btn" onClick={closeModal}>
-          X
+          <IoClose className="close-modal" color="red" size={24} />
         </button>
         {children}
       </div>

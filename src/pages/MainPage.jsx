@@ -1,32 +1,37 @@
-import FirstTestContent from 'components/Modal/FirstTestContent';
-import SecondTestContent from 'components/Modal/SecondTestContent';
 import { Modal } from 'components/Modal/Modal';
 import { useState } from 'react';
+import LogoutDeleteModalContent from 'components/LogoutDeleteModal/LogoutDeleteModalContent';
 
 const MainPage = () => {
-  const [isShowFirstModal, setIsShowFirstModal] = useState(false);
-  const [isShowSecondModal, setIsShowSecondModal] = useState(false);
+  const [isShowLogoutModal, setIsShowLogoutModal] = useState(false);
+  const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
 
   return (
     <>
       <div>MainPage</div>
-      <button onClick={() => setIsShowFirstModal(true)}>
-        Open first modal content
-      </button>
-      <button onClick={() => setIsShowSecondModal(true)}>
-        Open second modal content
-      </button>
 
-      {isShowFirstModal && (
+      <button onClick={() => setIsShowLogoutModal(true)}>Logout</button>
+      <button onClick={() => setIsShowDeleteModal(true)}>Delete</button>
+
+      {isShowLogoutModal && (
         <Modal
-          children={<FirstTestContent />}
-          closeModal={() => setIsShowFirstModal(false)}
+          children={
+            <LogoutDeleteModalContent
+              closeModal={() => setIsShowLogoutModal(false)}
+            />
+          }
+          closeModal={() => setIsShowLogoutModal(false)}
         />
       )}
-      {isShowSecondModal && (
+      {isShowDeleteModal && (
         <Modal
-          children={<SecondTestContent />}
-          closeModal={() => setIsShowSecondModal(false)}
+          children={
+            <LogoutDeleteModalContent
+              id={1}
+              closeModal={() => setIsShowDeleteModal(false)}
+            />
+          }
+          closeModal={() => setIsShowDeleteModal(false)}
         />
       )}
     </>

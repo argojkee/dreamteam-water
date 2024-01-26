@@ -16,7 +16,7 @@ export const ModalStyles = styled.div`
     width: 80%;
     max-height: 95%;
     position: absolute;
-    background-color: rgba(255, 248, 220, 1);
+    background-color: white;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

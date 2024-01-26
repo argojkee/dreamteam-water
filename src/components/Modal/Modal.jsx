@@ -1,18 +1,10 @@
 import { createPortal } from 'react-dom';
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { ModalStyles } from './ModalStyles.styled';
-import { useCustomContext } from 'context/Context';
 
 const modalRoot = document.getElementById('modal-backdrop');
 
-export const Modal = ({ children }) => {
-  const { setContent, setIsShowModal } = useCustomContext();
-
-  const closeModal = useCallback(() => {
-    setContent(null);
-    setIsShowModal(false);
-  }, [setContent, setIsShowModal]);
-
+export const Modal = ({ children, closeModal }) => {
   useEffect(() => {
     function onEsc({ code }) {
       if (code !== 'Escape') {
@@ -45,7 +37,7 @@ export const Modal = ({ children }) => {
     <ModalStyles onClick={onBackdrop}>
       <div className="modal">
         <button type="button" className="close-btn" onClick={closeModal}>
-          Close
+          X
         </button>
         {children}
       </div>

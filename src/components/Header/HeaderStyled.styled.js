@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const HeaderStyles = styled.header`
-  
-
   .containerHeader {
     display: flex;
     justify-content: space-between;
@@ -24,6 +22,8 @@ export const HeaderStyles = styled.header`
     gap: 8px;
     flex-direction: row;
     align-items: center;
+    text-decoration: none;
+    list-style: none;
   }
 
   .avatarContainer {

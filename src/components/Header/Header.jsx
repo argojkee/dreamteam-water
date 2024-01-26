@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { getToken } from '../../redux/auth/authSelectors';
 import LogoutBtn from 'components/LogoutBtn/LogoutBtn';
 import Container from 'components/Container/Container';
+import TestPopover from '../TestPopover/TestPopover';
 
 const Header = () => {
   const token = useSelector(getToken);
@@ -16,7 +17,12 @@ const Header = () => {
             <NavLink to="login">Login</NavLink>
           </>
         )}
-        {token && <LogoutBtn />}
+        {token && (
+          <>
+            <LogoutBtn />
+            <TestPopover />
+          </>
+        )}
       </Container>
     </header>
   );

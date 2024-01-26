@@ -1,29 +1,34 @@
 import FirstTestContent from 'components/Modal/FirstTestContent';
 import SecondTestContent from 'components/Modal/SecondTestContent';
-import { useCustomContext } from 'context/Context';
 import { Modal } from 'components/Modal/Modal';
+import { useState } from 'react';
 
 const MainPage = () => {
-  const { setContent, setIsShowModal, isShowModal, content } =
-    useCustomContext();
-  const onFirstClick = () => {
-    setIsShowModal(true);
-    setContent(<FirstTestContent />);
-  };
-
-  const onSecondClick = () => {
-    setIsShowModal(true);
-
-    setContent(<SecondTestContent />);
-  };
+  const [isShowFirstModal, setIsShowFirstModal] = useState(false);
+  const [isShowSecondModal, setIsShowSecondModal] = useState(false);
 
   return (
     <>
       <div>MainPage</div>
-      <button onClick={onFirstClick}>Open first modal content</button>
-      <button onClick={onSecondClick}>Open second modal content</button>
+      <button onClick={() => setIsShowFirstModal(true)}>
+        Open first modal content
+      </button>
+      <button onClick={() => setIsShowSecondModal(true)}>
+        Open second modal content
+      </button>
 
-      {isShowModal && <Modal children={content} />}
+      {isShowFirstModal && (
+        <Modal
+          children={<FirstTestContent />}
+          closeModal={() => setIsShowFirstModal(false)}
+        />
+      )}
+      {isShowSecondModal && (
+        <Modal
+          children={<SecondTestContent />}
+          closeModal={() => setIsShowSecondModal(false)}
+        />
+      )}
     </>
   );
 };

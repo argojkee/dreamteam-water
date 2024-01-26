@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
-export const PopoverStyles = styled.div`
+export const UserOwnPopoverStyles = styled.div`
+  border: none;
+
+  button {
+    background-color: transparent;
+    box-shadow: none;
+  }
   .iconSolid {
     margin: 0;
     padding: 0;
@@ -9,18 +15,5 @@ export const PopoverStyles = styled.div`
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
-  }
-
-  .settingsBox {
-    display: flex;
-  }
-
-  .logOutBox {
-    border: red 1px solid;
-    display: flex;
-  }
-
-  .textSettings {
-    color: red;
   }
 `;

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import { PopoverStyles } from './TestPopoverStyled';
 import vector from '../../icons/solid.png';
 import iconSettings from '../../icons/settings.png';

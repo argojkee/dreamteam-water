@@ -12,27 +12,25 @@ const Header = () => {
   return (
     <HeaderStyles>
       <Container>
-          <div className="containerHeader">
-          <NavLink to={token ? 'main' : '/' } className="logoBox">
-              <div>
-                <img src={iconHome} alt="iconHome" />
-              </div>
-              <div className="logoText">Tracker of water</div>
-            </NavLink>
+        <div className="containerHeader">
+          <NavLink to={token ? 'main' : '/'} className="logoBox">
+            <div>
+              <img src={iconHome} alt="iconHome" />
+            </div>
+            <div className="logoText">Tracker of water</div>
+          </NavLink>
 
           {!token && (
             <div className="AuthContainer">
-              <NavLink to="registration">Sign in</NavLink>
-              <NavLink to="login">
-                <div>
-                  <img src={avatar} alt="iconHome" />
-                </div>
-              </NavLink>
+              <NavLink to="login">Sign in</NavLink>
+              <div>
+                <img src={avatar} alt="iconHome" />
+              </div>
             </div>
           )}
-        
-        {token && (
-          <div className="avatarContainer">
+
+          {token && (
+            <div className="avatarContainer">
               <div className="avatarText">
                 <span>nameUser</span>
               </div>
@@ -41,8 +39,7 @@ const Header = () => {
               </div>
               <TestPopover />
             </div>
-          
-        )}
+          )}
         </div>
       </Container>
     </HeaderStyles>

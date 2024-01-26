@@ -4,27 +4,56 @@ import { getToken } from '../../redux/auth/authSelectors';
 import LogoutBtn from 'components/LogoutBtn/LogoutBtn';
 import Container from 'components/Container/Container';
 import TestPopover from '../TestPopover/TestPopover';
+import { HeaderStyles } from './HeaderStyled.styled';
+import iconHome from '../../icons/Logo.png';
+import avatar from '../../icons/outline.png';
 
 const Header = () => {
   const token = useSelector(getToken);
   return (
-    <header>
-      <Container>
-        {!token && (
-          <>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="registration">Registration</NavLink>
-            <NavLink to="login">Login</NavLink>
-          </>
-        )}
+    <Container>
+      <HeaderStyles>
         {token && (
-          <>
-            <LogoutBtn />
-            <TestPopover />
-          </>
+          <div className="containerHeader">
+            <NavLink to="/" className="logoBox">
+              <div>
+                <img src={iconHome} alt="iconHome" />
+              </div>
+              <div className="logoText">Tracker of water</div>
+            </NavLink>
+
+            <div className="AuthContainer">
+              <NavLink to="registration">Sign in</NavLink>
+              <NavLink to="login">
+                <div>
+                  <img src={avatar} alt="iconHome" />
+                </div>
+              </NavLink>
+            </div>
+          </div>
         )}
-      </Container>
-    </header>
+        {!token && (
+          <div className="containerHeader">
+            <NavLink to="/" className="logoBox">
+              <div>
+                <img src={iconHome} alt="iconHome" />
+              </div>
+              <div className="logoText">Tracker of water</div>
+            </NavLink>
+
+            <div className="avatarContainer">
+              <div className="avatarText">
+                <span>nameUser</span>
+              </div>
+              <div>
+                <img src={avatar} alt="iconHome" />
+              </div>
+              <TestPopover />
+            </div>
+          </div>
+        )}
+      </HeaderStyles>
+    </Container>
   );
 };
 

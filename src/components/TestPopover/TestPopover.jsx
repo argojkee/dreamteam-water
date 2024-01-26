@@ -1,7 +1,11 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { PopoverStyles } from './TestPopoverStyled';
+import avatar from '../../icons/outline.png';
+import vector from '../../icons/solid.png';
 
 export default function BasicPopover() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -18,10 +22,17 @@ export default function BasicPopover() {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <div>
-      <Button aria-describedby={id} variant="contained" onClick={handleClick}>
-        Open Popover
-      </Button>
+    <PopoverStyles>
+      <div className="iconSolid">
+        <img
+          src={vector}
+          alt="iconVector"
+          aria-describedby={id}
+          variant="contained"
+          onClick={handleClick}
+        />
+      </div>
+
       <Popover
         id={id}
         open={open}
@@ -29,11 +40,18 @@ export default function BasicPopover() {
         onClose={handleClose}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'left',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
         }}
       >
-        <Typography sx={{ p: 2 }}>Hello, my dream team</Typography>
+        <Typography sx={{ p: 2 }}>
+          <NavLink to="registration">Settings</NavLink>
+        </Typography>
+        <Typography sx={{ p: 2 }}>Log out</Typography>
       </Popover>
-    </div>
+    </PopoverStyles>
   );
 }

@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -49,6 +49,26 @@ const AuthForm = () => {
     }
   };
 
+  //*   const validationLoginForm = {
+  //*      email: Yup.string()
+  //*           .matches(
+  //*             /\w{0}[a-zA-Zа-яА-Я]+\@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/,
+  //*             { message: 'Invalid email' }
+  //*           )
+  //*           .required("'Email' field is required"),
+  //*         password: Yup.string()
+  //*           .min(8, 'Must be 8 characters or more')
+  //*           .required("'Password' field is required"),
+  //*       };
+
+  //* const validationRegisterForm = {
+  //*   ...validationLoginForm,
+  //*     repeatPassword: Yup.string()
+  //*           .min(8, 'Must be 8 characters or more')
+  //*           .required("'RepeatPassword' field is required")
+  //*           .oneOf([Yup.ref('password'), null], 'Passwords must match'),
+  //*       };
+
   // create 'formik' hook and configurate him
   const formik = useFormik({
     initialValues: {
@@ -59,6 +79,8 @@ const AuthForm = () => {
 
     //yup stored own validate functions (for email, password...etc)
     validationSchema: Yup.object(validationSchemaBody()),
+
+    //* validationSchema : Yup.object(isRegistrationPage ?  validationRegisterForm : validationLoginForm)
 
     //!'values' contains ended values all Form inputs. They will can get: 'values.<field name>'
     onSubmit: values => {
@@ -121,6 +143,9 @@ const AuthForm = () => {
 
         <button type="submit">Submit</button>
       </form>
+      <Link to={isRegistrationPage ? '/login' : '/registration'}>
+        To {isRegistrationPage ? 'login' : 'registration'} page{' '}
+      </Link>
     </div>
   );
 };

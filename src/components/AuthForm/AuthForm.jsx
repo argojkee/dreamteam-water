@@ -28,7 +28,7 @@ const AuthForm = () => {
   const validationLoginForm = {
     email: Yup.string()
       .matches(
-        /\w{0}[a-zA-Zа-яА-Я]+\@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/,
+        /\w{0}[a-zA-Zа-яА-Я]+@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/,
         { message: 'Invalid email' }
       )
       .required("'Email' field is required"),
@@ -65,7 +65,6 @@ const AuthForm = () => {
             signUpAPI({
               email: values.email,
               password: values.password,
-              name: 'New user',
             })
           )
         : dispatch(
@@ -75,7 +74,7 @@ const AuthForm = () => {
     //* onSubmit: {email, password} => {
     //*   isRegistrationPage
     //*     ? dispatch(
-    //*         signUpAPI({ email, password, name: 'New user' })
+    //*         signUpAPI({ email, password })
     //*       )
     //*     : dispatch(
     //*         signInAPI({ email, password })
@@ -91,7 +90,7 @@ const AuthForm = () => {
     <Styles $div $justify={'center'}>
       <Styles $div $divDiraction={'column'} height={'312px'} width={'384px'}>
         <Styles $p $fontSize={'26px'} $marginBott={'16px'}>
-          Sign In
+          {isRegistrationPage ? 'Sign up' : 'Sign in'}
         </Styles>
 
         <Styles onSubmit={formik.handleSubmit} $form $formDiraction={'column'}>

@@ -80,7 +80,7 @@ const AuthForm = () => {
     <Styles $div $justify={'center'}>
       <Styles $div $divDiraction={'column'} height={'312px'} width={'384px'}>
         <Styles $p $fontSize={'26px'} $marginBott={'16px'}>
-          Sign In
+          {isRegistrationPage ? 'Sign up' : 'Sign in'}
         </Styles>
 
         <Styles onSubmit={formik.handleSubmit} $form $formDiraction={'column'}>

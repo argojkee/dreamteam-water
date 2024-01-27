@@ -36,6 +36,7 @@ const authSlice = createSlice({
         state.user.name = action.payload.user.name;
         state.user.email = action.payload.user.email;
         state.token = action.payload.token;
+        console.log(action);
       })
       /*****************end********************/
 

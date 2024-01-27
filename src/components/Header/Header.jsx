@@ -21,7 +21,7 @@ const Header = () => {
             <div className="logoText">Tracker of water</div>
           </NavLink>
 
-          {token && (
+          {!token && (
             <div className="AuthContainer">
               <NavLink className="textSignIn" to="login">Sign in</NavLink>
               <div>
@@ -30,7 +30,7 @@ const Header = () => {
             </div>
           )}
 
-          {!token && <UserOwnPopover />}
+          {token && <UserOwnPopover />}
         </div>
       </Container>
     </HeaderStyles>

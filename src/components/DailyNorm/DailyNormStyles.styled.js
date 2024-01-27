@@ -1,16 +1,15 @@
 import styled from 'styled-components';
+import background from '../../images/main-bg/Bottle-Main-sm.png';
 
-export const StyledMainPage = styled.section`
-  max-width: 280px;
-  width: 300px;
-  height: 208px;
-  background-size: cover;
+export const DailyNormStyles = styled.div`
+  background-image: url(${background});
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 
   .dailyNormaSection {
     width: 164px;
-    height: 174px;
+    height: 76px;
 
     padding: 8px 20px 8px 20px;
 

@@ -12,7 +12,7 @@ const signUpAPI = createAsyncThunk(
       const { data } = await axios.post('/users/signup', user);
 
       // write token to axios parameter
-      axios.defaults.headers.common.Authorization = `Bearer ${data}`;
+      axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
 
       toastSuccess('Registration successful. Welcome');
       return data;

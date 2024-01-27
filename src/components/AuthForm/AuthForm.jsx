@@ -14,12 +14,14 @@ const AuthForm = () => {
   // get current location
   const location = useLocation();
 
+  const isRegistrationPage = location.pathname === '/registration';
+  
   // The 'formik' check all validation expression. 
   // But we have two variants form (logIn and register).
   // We must create own validate rules function, because 
   // validation expression must be different for each situation.
   const validationSchemaBody = () => {
-    if(location.pathname === '/login') {
+    if(!isRegistrationPage) {
       return {
         email: Yup.string().matches(
           /\w{0}[a-zA-Zа-яА-Я]+\@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/,
@@ -54,7 +56,7 @@ const AuthForm = () => {
     //!'values' contains ended values all Form inputs. They will can get: 'values.<field name>' 
     onSubmit: values => {
       
-      location.pathname === '/login' ?
+      isRegistrationPage ?
       dispatch(signUpAPI({email: values.email, password: values.password,}))
       : 
       dispatch(signInAPI({email: values.email, password: values.password,}));
@@ -66,42 +68,8 @@ const AuthForm = () => {
   return (
     <div>
         <form onSubmit={formik.handleSubmit}>
-            {location.pathname === '/registration' ? 
-            <>
-                <label htmlFor="email">Enter your email</label>
-                <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.email}
-                />
-            
-                <label htmlFor="password">Enter your password</label>
-                <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.password}
-                />
-            
-                <label htmlFor="repeatPassword">Repeat password</label>
-                <input
-                    id="repeatPassword"
-                    name="repeatPassword"
-                    type="password"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.repeatPassword}
-                /> 
 
-                
-            </>:
-            <>
-                <label htmlFor="email">Enter your email</label>
+            <label htmlFor="email">Enter your email</label>
                 <input
                     id="email"
                     name="email"
@@ -109,20 +77,33 @@ const AuthForm = () => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.email}
-                />
-            
-                <label htmlFor="password">Enter your password</label>
-                <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.password}
-                />
-            </>
+            />
+
+            <label htmlFor="password">Enter your password</label>
+              <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.password}
+            />
+
+            {isRegistrationPage  && 
+               <>
+                  <label htmlFor="repeatPassword">Repeat password</label>
+                  <input
+                      id="repeatPassword"
+                      name="repeatPassword"
+                      type="password"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.repeatPassword}>
+                    
+                  </input>
+                </>
             }
-           
+          
             <div style={{color: 'orange',}}>
                 {formik.touched.email && formik.errors.email ? formik.errors.email 
                 : formik.touched.password && formik.errors.password ? formik.errors.password

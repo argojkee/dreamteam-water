@@ -11,7 +11,7 @@ const signInAPI = createAsyncThunk(
       const { data } = await axios.post('/users/login', user);
 
       // write token to axios parameter
-      axios.defaults.headers.common.Authorization = `Bearer ${data}`;
+      axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
 
       toastSuccess('Log in successful. Welcome back ');
       return data;

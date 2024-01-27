@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { useFormik } from "formik";
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import signInAPI from '../../API/Auth/signInAPI';
@@ -12,7 +12,6 @@ import Styles from './Styles';
 /* end */
 
 const AuthForm = () => {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,10 +19,10 @@ const AuthForm = () => {
   const location = useLocation();
 
   const isRegistrationPage = location.pathname === '/registration';
-  
-  // The 'formik' check all validation expression. 
+
+  // The 'formik' check all validation expression.
   // But we have two variants form (logIn and register).
-  // We must create own validate rules function, because 
+  // We must create own validate rules function, because
   // validation expression must be different for each situation.
  
   const validationLoginForm = {
@@ -53,14 +52,14 @@ const AuthForm = () => {
     
     //!'values' contains ended values all Form inputs. They will can get: 'values.<field name>' 
     onSubmit: values => {
-      
-      isRegistrationPage ?
-      dispatch(signUpAPI({email: values.email, password: values.password,}))
-      : 
-      dispatch(signInAPI({email: values.email, password: values.password,}));
-
+      isRegistrationPage
+        ? dispatch(
+            signUpAPI({ email: values.email, password: values.password })
+          )
+        : dispatch(
+            signInAPI({ email: values.email, password: values.password })
+          );
     },
-
   });
 
   const navTo = () => {
@@ -130,4 +129,4 @@ const AuthForm = () => {
   )
 }
 
-export default AuthForm
+export default AuthForm;

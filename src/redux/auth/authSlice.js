@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import authOperations from './authOperations';
+import signInAPI from '../../API/Auth/signInAPI'
+import signUpAPI from '../../API/Auth/signUpAPI'
 
 const initialState = {
   user: { name: null, email: null },
   token: null,
+  authIsLoading: false,
 };
 
 const authSlice = createSlice({
@@ -11,33 +13,33 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(authOperations.registration.pending, state => {})
-      .addCase(authOperations.registration.fulfilled, (state, action) => {
+    /*****************signIn********************/
+      .addCase(signInAPI.pending, (state) => {
+        state.authIsLoading = true; 
+      })
+      .addCase(signInAPI.fulfilled, (state, action) => {
+
+        state.authIsLoading = false; 
         state.user.name = action.payload.user.name;
         state.user.email = action.payload.user.email;
         state.token = action.payload.token;
+
       })
-      .addCase(authOperations.registration.rejected, state => {})
-      .addCase(authOperations.logIn.pending, state => {})
-      .addCase(authOperations.logIn.fulfilled, (state, action) => {
+    /*****************end********************/  
+
+    /*****************signUp********************/
+      .addCase(signUpAPI.pending, state => {
+        state.authIsLoading = true; 
+      })
+      .addCase(signUpAPI.fulfilled, (state, action) => {
+
+        state.authIsLoading = false; 
         state.user.name = action.payload.user.name;
         state.user.email = action.payload.user.email;
         state.token = action.payload.token;
+
       })
-      .addCase(authOperations.logIn.rejected, state => {})
-      .addCase(authOperations.logOut.pending, state => {})
-      .addCase(authOperations.logOut.fulfilled, state => {
-        state.user = { name: null, email: null };
-        state.token = null;
-      })
-      .addCase(authOperations.logOut.rejected, state => {})
-      .addCase(authOperations.fetchCurrentUser.pending, state => {})
-      .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
-        state.user = action.payload;
-      })
-      .addCase(authOperations.fetchCurrentUser.rejected, state => {
-        state.token = null;
-      });
+    /*****************end********************/  
   },
 });
 export default authSlice.reducer;

@@ -28,7 +28,7 @@ const AuthForm = () => {
   const validationLoginForm = {
     email: Yup.string()
       .matches(
-        /\w{0}[a-zA-Zа-яА-Я]+@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/,
+        /\w{0}[0-9a-zA-Zа-яА-Я]+@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/,
         { message: 'Invalid email' }
       )
       .required("'Email' field is required"),
@@ -58,28 +58,13 @@ const AuthForm = () => {
       isRegistrationPage ? validationRegisterForm : validationLoginForm
     ),
 
-    //!'values' contains ended values all Form inputs. They will can get: 'values.<field name>'
-    onSubmit: values => {
+    //! 'values' contains ended values all Form inputs.
+    //! They will can get: 'values.<field name>' or change values on {email, password}
+    onSubmit: ({ email, password }) => {
       isRegistrationPage
-        ? dispatch(
-            signUpAPI({
-              email: values.email,
-              password: values.password,
-            })
-          )
-        : dispatch(
-            signInAPI({ email: values.email, password: values.password })
-          );
+        ? dispatch(signUpAPI({ email, password }))
+        : dispatch(signInAPI({ email, password }));
     },
-    //* onSubmit: {email, password} => {
-    //*   isRegistrationPage
-    //*     ? dispatch(
-    //*         signUpAPI({ email, password })
-    //*       )
-    //*     : dispatch(
-    //*         signInAPI({ email, password })
-    //*       );
-    //* },
   });
 
   const navTo = () => {
@@ -163,8 +148,7 @@ const AuthForm = () => {
         </Styles>
 
         <Styles $link onClick={navTo}>
-          {' '}
-          To {isRegistrationPage ? 'login' : 'registration'} page{' '}
+          To {isRegistrationPage ? 'login' : 'registration'} page
         </Styles>
       </Styles>
     </Styles>

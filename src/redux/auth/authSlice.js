@@ -25,6 +25,9 @@ const authSlice = createSlice({
         state.token = action.payload.token;
 
       })
+      .addCase(signInAPI.rejected, state => {
+        state.authIsLoading = false; 
+      })
     /*****************end********************/  
 
     /*****************signUp********************/
@@ -38,6 +41,9 @@ const authSlice = createSlice({
         state.user.email = action.payload.user.email;
         state.token = action.payload.token;
 
+      })
+      .addCase(signUpAPI.rejected, state => {
+        state.authIsLoading = false; 
       })
     /*****************end********************/  
   },

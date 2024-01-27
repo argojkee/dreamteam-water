@@ -40,16 +40,14 @@ const MonthSwitcher = ({ changeSelectedMonth }) => {
   };
 
   return (
-    <MonthSwitcherContainer>
-          {isButtonPrevDisabled() ? <div/> : (
-    <button onClick={handlePrevMonth}>
-      <SlArrowLeft />
-    </button>)}
-      <h2>{monthsArr[pickedDate.month]} {pickedDate.year}</h2>
-      {isButtonNextDisabled() ? <div/> : (
-              <button onClick={handleNextMonth}>
-                  <SlArrowRight />
-              </button>)}
+    <MonthSwitcherContainer>   
+        <button onClick={handlePrevMonth} disabled={isButtonPrevDisabled()}>
+            <SlArrowLeft />
+        </button>
+        <h2>{monthsArr[pickedDate.month]} {pickedDate.year}</h2>
+        <button onClick={handleNextMonth} disabled={isButtonNextDisabled()}>
+            <SlArrowRight />
+        </button>
     </MonthSwitcherContainer>
   );
 };

@@ -17,17 +17,21 @@ export const MonthSwitcherContainer = styled.div`
       display: block;
     }
 
-     button {
-    border: none;
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #407BFF;
-    width: 14px;
-    height: 14px;
-    padding: 0;
-    cursor: pointer;
+    button {
+      border: none;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #407BFF;
+      width: 14px;
+      height: 14px;
+      padding: 0;
+      cursor: pointer;
+
+      &:disabled {
+       opacity: 0;
+  }
   }
 
   div{

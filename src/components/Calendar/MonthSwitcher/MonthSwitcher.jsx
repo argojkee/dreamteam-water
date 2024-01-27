@@ -3,6 +3,8 @@ import { useDispatch} from 'react-redux';
 import { useInitialDate } from './useInitialDate';
 import { monthsArr } from './monthsArr';
 import { setSelectedMonth } from '../../../redux/calendar/calendarSlice';
+import { SlArrowLeft, SlArrowRight  } from "react-icons/sl";
+import { MonthSwitcherContainer } from './MonthSwitcher.styled';
 
 const MonthSwitcher = () => {
     
@@ -15,7 +17,7 @@ const MonthSwitcher = () => {
   useEffect(() => {
      const newCurrentMonth = {day: null, month: pickedDate.month, year: pickedDate.year };
      dispatch(setSelectedMonth(newCurrentMonth));
-  }, [pickedDate]);
+  }, [pickedDate, dispatch]);
   
     const handlePrevMonth = () => {
         pickedDate.month === 0 ?
@@ -42,11 +44,11 @@ const MonthSwitcher = () => {
     }
 
   return (
-    <div style={{ display: 'flex' }}>
-      <button onClick={handlePrevMonth} disabled={isButtonPrevDisabled()}>Previous</button>
+    <MonthSwitcherContainer>
+      <button onClick={handlePrevMonth} disabled={isButtonPrevDisabled()}><SlArrowLeft /></button>
       <h2>{monthsArr[pickedDate.month]} {pickedDate.year}</h2>
-      <button onClick={handleNextMonth} disabled={isButtonNextDisabled()}>Next</button>
-    </div>
+      <button onClick={handleNextMonth} disabled={isButtonNextDisabled()}><SlArrowRight /></button>
+    </MonthSwitcherContainer>
   );
 };
 

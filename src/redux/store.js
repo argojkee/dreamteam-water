@@ -1,4 +1,4 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -11,27 +11,22 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import authSliceReducer from './auth/authSlice'
-
-
-const rootReducer = combineReducers(
-  {
-      auth: authSliceReducer,
-     
-       //...or more redusers
-  }
-);
+import authSliceReducer from './auth/authSlice';
 
 const authPersistConfig = {
-  // 'key' is indeficate of one or more storage
+  // 'key' is identification of one or more storage
   key: 'auth',
   storage,
   whitelist: ['token'],
 };
 
-
 // basic reducer
-const persistedReducer = persistReducer(authPersistConfig, rootReducer)
+const persistedReducer = persistReducer(authPersistConfig, authSliceReducer);
+
+//...or more reducers
+const rootReducer = combineReducers({
+  auth: persistedReducer,
+});
 
 const middleware = getDefaultMiddleware =>
   getDefaultMiddleware({
@@ -41,8 +36,7 @@ const middleware = getDefaultMiddleware =>
   });
 
 export const store = configureStore({
-  reducer: 
-  persistedReducer,
+  reducer: rootReducer,
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });

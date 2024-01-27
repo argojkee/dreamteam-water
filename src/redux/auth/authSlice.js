@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import signInAPI from '../../API/Auth/signInAPI'
-import signUpAPI from '../../API/Auth/signUpAPI'
+import logOutAPI from 'API/Auth/logOutAPI';
+import signInAPI from '../../API/Auth/signInAPI';
+import signUpAPI from '../../API/Auth/signUpAPI';
+import fetchCurrentUserAPI from 'API/Auth/fetchCurrentUserAPI';
 
 const initialState = {
   user: { name: null, email: null },
@@ -13,39 +15,57 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-    /*****************signIn********************/
-      .addCase(signInAPI.pending, (state) => {
-        state.authIsLoading = true; 
+      /*****************signIn********************/
+      .addCase(signInAPI.pending, state => {
+        state.authIsLoading = true;
       })
       .addCase(signInAPI.fulfilled, (state, action) => {
-
-        state.authIsLoading = false; 
+        state.authIsLoading = false;
         state.user.name = action.payload.user.name;
         state.user.email = action.payload.user.email;
         state.token = action.payload.token;
-
       })
-      .addCase(signInAPI.rejected, state => {
-        state.authIsLoading = false; 
-      })
-    /*****************end********************/  
+      /*****************end********************/
 
-    /*****************signUp********************/
+      /*****************signUp********************/
       .addCase(signUpAPI.pending, state => {
-        state.authIsLoading = true; 
+        state.authIsLoading = true;
       })
       .addCase(signUpAPI.fulfilled, (state, action) => {
-
-        state.authIsLoading = false; 
+        state.authIsLoading = false;
         state.user.name = action.payload.user.name;
         state.user.email = action.payload.user.email;
         state.token = action.payload.token;
+      })
+      /*****************end********************/
 
+      /****************log out */
+      .addCase(logOutAPI.fulfilled, state => {
+        state.authIsLoading = false;
+        state.user = { name: null, email: null };
+        state.token = null;
       })
-      .addCase(signUpAPI.rejected, state => {
-        state.authIsLoading = false; 
+      .addCase(logOutAPI.pending, (state, action) => {
+        state.authIsLoading = true;
       })
-    /*****************end********************/  
+      .addCase(logOutAPI.rejected, (state, action) => {
+        state.authIsLoading = false;
+      })
+      /******************************fetch current user */
+
+      .addCase(fetchCurrentUserAPI.fulfilled, (state, { payload }) => {
+        state.authIsLoading = false;
+        state.user.name = payload.name;
+        state.user.email = payload.email;
+      })
+      .addCase(fetchCurrentUserAPI.pending, state => {
+        state.authIsLoading = true;
+      })
+      .addCase(fetchCurrentUserAPI.rejected, state => {
+        state.authIsLoading = false;
+        state.user = { name: null, email: null };
+        state.token = null;
+      });
   },
 });
 export default authSlice.reducer;

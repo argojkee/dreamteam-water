@@ -1,11 +1,12 @@
 import { useFormik } from 'formik';
-import { IoClose } from 'react-icons/io5';
-import { SettingModalStyled } from './SettingModal.styled';
+import { SettingModalStyled } from './SettingModalStyled.styled';
 import { useState } from 'react';
 import * as yup from 'yup';
-import { ReactComponent as UploadPhotoIcon } from '../../icons/upload_photo_icon.svg';
-import { ReactComponent as HidenPasswordIcon } from '../../icons/hidden_passsword_icon.svg';
-import { ReactComponent as ShowedPasswordIcon } from '../../icons/showed_password_icon.svg';
+import { BsUpload } from 'react-icons/bs';
+import { FiEyeOff } from 'react-icons/fi';
+import { FiEye } from 'react-icons/fi';
+
+const iconColor = '#407BFF';
 
 const schema = yup.object().shape({
   gender: yup.string().required(),
@@ -24,22 +25,29 @@ const schema = yup.object().shape({
     .string()
     .min(8, 'Password must be at least 8 characters.')
     .required(),
-  newPassword: yup.string().min(8, 'Password must be at least 8 characters.').when('repeatNewPassword', ([repeatNewPassword], schema) => {
-    return repeatNewPassword !== '' ? schema.required() : schema.notRequired()
-  }),
+  newPassword: yup
+    .string()
+    .min(8, 'Password must be at least 8 characters.')
+    .when('repeatNewPassword', ([repeatNewPassword], schema) => {
+      return repeatNewPassword !== ''
+        ? schema.required()
+        : schema.notRequired();
+    }),
   repeatNewPassword: yup
     .string()
-    .min(8, 'Password must be at least 8 characters.').oneOf([yup.ref("newPassword")], "Passwords do not match")
+    .min(8, 'Password must be at least 8 characters.')
+    .oneOf([yup.ref('newPassword')], 'Passwords do not match'),
 });
 
-export const SettingModal = () => {
-  const [showPassword, setShowPassoword] = useState(false);
-  const [showNewPassword, setShowNewPassoword] = useState(false);
-  const [showRepeatNewPassword, setShowRepeatNewPassoword] = useState(false);
+export const SettingModal = ({ closeModal }) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showRepeatNewPassword, setShowRepeatNewPassword] = useState(false);
 
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm();
+    closeModal();
   };
 
   const handleMouseDownPassword = event => {
@@ -62,15 +70,17 @@ export const SettingModal = () => {
   return (
     <SettingModalStyled>
       <h2>Setting</h2>
-      <button type="button">
-        <IoClose color="#407BFF" size={24} />
-      </button>
       <p>Your photo</p>
       <img src="" alt="avatar" />
-      <label className="uplad-photo-label">
-        <UploadPhotoIcon />
+      <label className="upload-photo-label">
+        <BsUpload color={iconColor} width={16} height={16} />
         <p>Upload a photo</p>
-        <input type="file" name="upload_photo" className="photo-input" />
+        <input
+          type="file"
+          name="upload_photo"
+          className="photo-input"
+          accept=".png, .jpg, .jpeg"
+        />
       </label>
       <form onSubmit={formik.handleSubmit}>
         <div>
@@ -140,18 +150,18 @@ export const SettingModal = () => {
               {showPassword ? (
                 <button
                   type="button"
-                  onClick={() => setShowPassoword(!showPassword)}
+                  onClick={() => setShowPassword(!showPassword)}
                   onMouseDown={handleMouseDownPassword}
                 >
-                  <ShowedPasswordIcon />
+                  <FiEye color={iconColor} width={16} height={16} />
                 </button>
               ) : (
                 <button
                   type="button"
-                  onClick={() => setShowPassoword(!showPassword)}
+                  onClick={() => setShowPassword(!showPassword)}
                   onMouseDown={handleMouseDownPassword}
                 >
-                  <HidenPasswordIcon />
+                  <FiEyeOff color={iconColor} width={16} height={16} />
                 </button>
               )}
               {formik.touched.repeatNewPassword && formik.errors.password && (
@@ -173,18 +183,18 @@ export const SettingModal = () => {
               {showNewPassword ? (
                 <button
                   type="button"
-                  onClick={() => setShowNewPassoword(!showNewPassword)}
+                  onClick={() => setShowNewPassword(!showNewPassword)}
                   onMouseDown={handleMouseDownPassword}
                 >
-                  <ShowedPasswordIcon />
+                  <FiEye color={iconColor} width={16} height={16} />
                 </button>
               ) : (
                 <button
                   type="button"
-                  onClick={() => setShowNewPassoword(!showNewPassword)}
+                  onClick={() => setShowNewPassword(!showNewPassword)}
                   onMouseDown={handleMouseDownPassword}
                 >
-                  <HidenPasswordIcon />
+                  <FiEyeOff color={iconColor} width={16} height={16} />
                 </button>
               )}
               {formik.touched.repeatNewPassword &&
@@ -206,21 +216,21 @@ export const SettingModal = () => {
                 <button
                   type="button"
                   onClick={() =>
-                    setShowRepeatNewPassoword(!showRepeatNewPassword)
+                    setShowRepeatNewPassword(!showRepeatNewPassword)
                   }
                   onMouseDown={handleMouseDownPassword}
                 >
-                  <ShowedPasswordIcon />
+                  <FiEye color={iconColor} width={16} height={16} />
                 </button>
               ) : (
                 <button
                   type="button"
                   onClick={() =>
-                    setShowRepeatNewPassoword(!showRepeatNewPassword)
+                    setShowRepeatNewPassword(!showRepeatNewPassword)
                   }
                   onMouseDown={handleMouseDownPassword}
                 >
-                  <HidenPasswordIcon />
+                  <FiEyeOff color={iconColor} width={16} height={16} />
                 </button>
               )}
               {formik.touched.repeatNewPassword &&

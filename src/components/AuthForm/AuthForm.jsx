@@ -23,10 +23,9 @@ const AuthForm = () => {
     if (!isRegistrationPage) {
       return {
         email: Yup.string()
-          .matches(
-            /\w{0}[a-zA-Zа-яА-Я]+\@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/,
-            { message: 'Invalid email' }
-          )
+          .matches(/\w+[a-zA-Zа-яА-Я]+@\w+[a-zA-Zа-яА-Я]+\.\w+[a-zA-Zа-яА-Я]/, {
+            message: 'Invalid email',
+          })
           .required("'Email' field is required"),
         password: Yup.string()
           .min(8, 'Must be 8 characters or more')
@@ -35,10 +34,9 @@ const AuthForm = () => {
     } else {
       return {
         email: Yup.string()
-          .matches(
-            /\w{0}[a-zA-Zа-яА-Я]+\@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/,
-            { message: 'Invalid email' }
-          )
+          .matches(/\w+[a-zA-Zа-яА-Я]+@\w+[a-zA-Zа-яА-Я]+\.\w+[a-zA-Zа-яА-Я]/, {
+            message: 'Invalid email',
+          })
           .required("'Email' field is required"),
         password: Yup.string()
           .min(8, 'Must be 8 characters or more')

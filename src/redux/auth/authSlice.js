@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import signInAPI from '../../API/Auth/signInAPI'
-import signUpAPI from '../../API/Auth/signUpAPI'
+import signInAPI from '../../API/Auth/signInAPI';
+import signUpAPI from '../../API/Auth/signUpAPI';
 
 const initialState = {
   user: { name: null, email: null },
@@ -13,33 +13,29 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-    /*****************signIn********************/
-      .addCase(signInAPI.pending, (state) => {
-        state.authIsLoading = true; 
+      /*****************signIn********************/
+      .addCase(signInAPI.pending, state => {
+        state.authIsLoading = true;
       })
       .addCase(signInAPI.fulfilled, (state, action) => {
-
-        state.authIsLoading = false; 
+        state.authIsLoading = false;
         state.user.name = action.payload.user.name;
         state.user.email = action.payload.user.email;
         state.token = action.payload.token;
-
       })
-    /*****************end********************/  
+      /*****************end********************/
 
-    /*****************signUp********************/
+      /*****************signUp********************/
       .addCase(signUpAPI.pending, state => {
-        state.authIsLoading = true; 
+        state.authIsLoading = true;
       })
       .addCase(signUpAPI.fulfilled, (state, action) => {
-
-        state.authIsLoading = false; 
+        state.authIsLoading = false;
         state.user.name = action.payload.user.name;
         state.user.email = action.payload.user.email;
         state.token = action.payload.token;
-
-      })
-    /*****************end********************/  
+      });
+    /*****************end********************/
   },
 });
 export default authSlice.reducer;

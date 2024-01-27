@@ -10,7 +10,7 @@ import { getToken } from '../redux/auth/authSelectors';
 const HomePage = lazy(() => import('../pages/HomePage'));
 const RegistrationPage = lazy(() => import('../pages/RegistrationPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
-const MainPage = lazy(() => import('../pages/MainPage'));
+const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 
 export const App = () => {
   const dispatch = useDispatch();

@@ -36,7 +36,7 @@ const LoginPage = () => {
         <button type="submit">Register</button>
       </form>
 
-      <Link to="/registration">Registration</Link>
+      <Link to="/registration">Go to registration page</Link>
     </>
   );
 };

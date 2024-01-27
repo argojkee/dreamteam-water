@@ -9,6 +9,7 @@ import avatar from '../../icons/outline.png';
 
 const Header = () => {
   const token = useSelector(getToken);
+
   return (
     <HeaderStyles>
       <Container>
@@ -20,26 +21,16 @@ const Header = () => {
             <div className="logoText">Tracker of water</div>
           </NavLink>
 
-          {!token && (
+          {token && (
             <div className="AuthContainer">
-              <NavLink to="login">Sign in</NavLink>
+              <NavLink className="textSignIn" to="login">Sign in</NavLink>
               <div>
                 <img src={avatar} alt="iconHome" />
               </div>
             </div>
           )}
 
-          {token && (
-            <div className="avatarContainer">
-              <div className="avatarText">
-                <span>nameUser</span>
-              </div>
-              <div>
-                <img src={avatar} alt="iconHome" />
-              </div>
-              <UserOwnPopover />
-            </div>
-          )}
+          {!token && <UserOwnPopover />}
         </div>
       </Container>
     </HeaderStyles>

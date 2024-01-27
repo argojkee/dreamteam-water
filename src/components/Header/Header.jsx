@@ -1,30 +1,48 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getToken } from '../../redux/auth/authSelectors';
-import LogoutBtn from 'components/LogoutBtn/LogoutBtn';
 import Container from 'components/Container/Container';
-import TestPopover from '../TestPopover/TestPopover';
+import UserOwnPopover from '../UserOwnPopover/UserOwnPopover';
+import { HeaderStyles } from './HeaderStyled.styled';
+import iconHome from '../../icons/Logo.png';
+import avatar from '../../icons/outline.png';
 
 const Header = () => {
   const token = useSelector(getToken);
   return (
-    <header>
+    <HeaderStyles>
       <Container>
-        {!token && (
-          <>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="registration">Registration</NavLink>
-            <NavLink to="login">Login</NavLink>
-          </>
-        )}
-        {token && (
-          <>
-            <LogoutBtn />
-            <TestPopover />
-          </>
-        )}
+        <div className="containerHeader">
+          <NavLink to={token ? '/main' : '/'} className="logoBox">
+            <div>
+              <img src={iconHome} alt="iconHome" />
+            </div>
+            <div className="logoText">Tracker of water</div>
+          </NavLink>
+
+          {!token && (
+            <div className="AuthContainer">
+              <NavLink to="login">Sign in</NavLink>
+              <div>
+                <img src={avatar} alt="iconHome" />
+              </div>
+            </div>
+          )}
+
+          {token && (
+            <div className="avatarContainer">
+              <div className="avatarText">
+                <span>nameUser</span>
+              </div>
+              <div>
+                <img src={avatar} alt="iconHome" />
+              </div>
+              <UserOwnPopover />
+            </div>
+          )}
+        </div>
       </Container>
-    </header>
+    </HeaderStyles>
   );
 };
 

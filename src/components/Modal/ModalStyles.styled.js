@@ -12,39 +12,35 @@ export const ModalStyles = styled.div`
 
   .modal {
     position: relative;
-    height: 500px;
-    width: 80%;
+    max-width: 90%;
     max-height: 95%;
     position: absolute;
     background-color: white;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 20px;
-    padding: 50px 20px;
-    text-align: center;
-  }
-
-  @media screen and (min-width: 768px) {
-    .modal {
-      width: 500px;
-    }
+    border-radius: 10px;
+    padding: 24px 32px;
   }
 
   .close-btn {
+    cursor: pointer;
     position: absolute;
-    right: 30px;
-    top: 18px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    right: 24px;
+    top: 36px;
     background-color: transparent;
-    color: tomato;
     transition: 250ms linear;
+    border: none;
   }
 
-  .close-btn:hover,
-  .close-btn:focus {
-    color: blue;
+  .close-modal {
+    width: 24px;
+    height: 24px;
+    fill: #407bff;
+  }
+  @media screen and (max-width: 767px) {
+    .modal {
+      width: 80%;
+    }
   }
 `;

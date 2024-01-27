@@ -11,10 +11,10 @@ const MainPage = () => {
           <div className="main-container">
             <div className="left-side">
               <DailyNorm />
-              <div className="statusBar"></div>
+              <div className="status-bar"> Status bar</div>
             </div>
-            <div className="leftSide">
-              <div className="today"></div>
+            <div className="right-side">
+              <div className="today">Today</div>
               <Calendar />
             </div>
           </div>

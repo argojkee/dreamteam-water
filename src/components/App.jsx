@@ -4,7 +4,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import PrivateRoute from './Routes/PrivateRoute/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute/PublicRoute';
-import operations from '../redux/auth/authOperations';
+import fetchCurrentUserAPI from 'API/Auth/fetchCurrentUserAPI';
 import { getToken } from '../redux/auth/authSelectors';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
@@ -18,7 +18,7 @@ export const App = () => {
 
   useEffect(() => {
     if (!token) return;
-    dispatch(operations.fetchCurrentUser());
+    dispatch(fetchCurrentUserAPI());
   }, [dispatch, token]);
 
   return (

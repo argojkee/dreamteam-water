@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/dreamteam-water/static/css/main.4ed59346.css",
-    "main.js": "/dreamteam-water/static/js/main.7f3a5ed0.js",
+    "main.js": "/dreamteam-water/static/js/main.9b12d68f.js",
     "static/js/983.0c2462c7.chunk.js": "/dreamteam-water/static/js/983.0c2462c7.chunk.js",
     "static/js/932.d045b149.chunk.js": "/dreamteam-water/static/js/932.d045b149.chunk.js",
     "static/js/637.28686966.chunk.js": "/dreamteam-water/static/js/637.28686966.chunk.js",
-    "static/js/295.89c2596d.chunk.js": "/dreamteam-water/static/js/295.89c2596d.chunk.js",
+    "static/js/364.6c080a70.chunk.js": "/dreamteam-water/static/js/364.6c080a70.chunk.js",
     "static/js/306.c25c3f8e.chunk.js": "/dreamteam-water/static/js/306.c25c3f8e.chunk.js",
     "static/js/74.b49fab99.chunk.js": "/dreamteam-water/static/js/74.b49fab99.chunk.js",
     "static/media/roboto-latin-500-normal.woff2": "/dreamteam-water/static/media/roboto-latin-500-normal.f25d774ecfe0996f8eb5.woff2",
@@ -17,6 +17,7 @@
     "static/media/roboto-latin-500-normal.woff": "/dreamteam-water/static/media/roboto-latin-500-normal.1f075502d0094a398e21.woff",
     "static/media/roboto-latin-700-normal.woff": "/dreamteam-water/static/media/roboto-latin-700-normal.666d7a2f9db53cf52e2d.woff",
     "static/media/roboto-latin-400-normal.woff": "/dreamteam-water/static/media/roboto-latin-400-normal.3f2b9a42f643e62a49b7.woff",
+    "static/media/Bottle-Main-sm.png": "/dreamteam-water/static/media/Bottle-Main-sm.397bdd51a9e0ac4aa81f.png",
     "static/media/roboto-cyrillic-ext-400-normal.woff": "/dreamteam-water/static/media/roboto-cyrillic-ext-400-normal.af4d91666ea345601bea.woff",
     "static/media/roboto-cyrillic-ext-500-normal.woff": "/dreamteam-water/static/media/roboto-cyrillic-ext-500-normal.268f264f58eba5c07c88.woff",
     "static/media/roboto-cyrillic-ext-700-normal.woff": "/dreamteam-water/static/media/roboto-cyrillic-ext-700-normal.198a421f279162d59143.woff",
@@ -52,16 +53,16 @@
     "static/media/roboto-greek-ext-700-normal.woff": "/dreamteam-water/static/media/roboto-greek-ext-700-normal.249853776d22a271b2b5.woff",
     "index.html": "/dreamteam-water/index.html",
     "main.4ed59346.css.map": "/dreamteam-water/static/css/main.4ed59346.css.map",
-    "main.7f3a5ed0.js.map": "/dreamteam-water/static/js/main.7f3a5ed0.js.map",
+    "main.9b12d68f.js.map": "/dreamteam-water/static/js/main.9b12d68f.js.map",
     "983.0c2462c7.chunk.js.map": "/dreamteam-water/static/js/983.0c2462c7.chunk.js.map",
     "932.d045b149.chunk.js.map": "/dreamteam-water/static/js/932.d045b149.chunk.js.map",
     "637.28686966.chunk.js.map": "/dreamteam-water/static/js/637.28686966.chunk.js.map",
-    "295.89c2596d.chunk.js.map": "/dreamteam-water/static/js/295.89c2596d.chunk.js.map",
+    "364.6c080a70.chunk.js.map": "/dreamteam-water/static/js/364.6c080a70.chunk.js.map",
     "306.c25c3f8e.chunk.js.map": "/dreamteam-water/static/js/306.c25c3f8e.chunk.js.map",
     "74.b49fab99.chunk.js.map": "/dreamteam-water/static/js/74.b49fab99.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4ed59346.css",
-    "static/js/main.7f3a5ed0.js"
+    "static/js/main.9b12d68f.js"
   ]
 }

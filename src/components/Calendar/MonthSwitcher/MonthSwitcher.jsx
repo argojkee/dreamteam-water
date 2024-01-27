@@ -1,23 +1,19 @@
 import { useEffect, useState } from 'react';
-import { useDispatch} from 'react-redux';
 import { useInitialDate } from './useInitialDate';
 import { monthsArr } from './monthsArr';
-import { setSelectedMonth } from '../../../redux/calendar/calendarSlice';
 import { SlArrowLeft, SlArrowRight  } from "react-icons/sl";
 import { MonthSwitcherContainer } from './MonthSwitcher.styled';
 
-const MonthSwitcher = () => {
+const MonthSwitcher = ({ changeSelectedMonth }) => {
     
   const [today, setToday] = useInitialDate();
   const [pickedDate, setPickedDate] = useState(today);
   const [registrationDate, setregistrationDate] = useState({ day: 1, month: 9, year: 2023 });
-  
-    const dispatch = useDispatch();
     
   useEffect(() => {
      const newCurrentMonth = {day: null, month: pickedDate.month, year: pickedDate.year };
-     dispatch(setSelectedMonth(newCurrentMonth));
-  }, [pickedDate, dispatch]);
+     changeSelectedMonth(newCurrentMonth)
+  }, [pickedDate, changeSelectedMonth]);
   
     const handlePrevMonth = () => {
         pickedDate.month === 0 ?
@@ -31,10 +27,6 @@ const MonthSwitcher = () => {
             setPickedDate((prev) => ({ ...prev, month: prev.month + 1 }))
     };
   
-
-  const isButtonNextDisabled = () => {
-  return pickedDate.year >= today.year + 5 && pickedDate.month === today.month;
-  };
   
     const isButtonPrevDisabled = () => {
       
@@ -43,11 +35,19 @@ const MonthSwitcher = () => {
             (registrationDate.day > 2 && registrationDate.month === pickedDate.month && registrationDate.year === pickedDate.year)? true: false
     }
 
+    const isButtonNextDisabled = () => {
+        return pickedDate.year >= today.year + 5 && pickedDate.month === today.month;
+  };
+
   return (
     <MonthSwitcherContainer>
-      <button onClick={handlePrevMonth} disabled={isButtonPrevDisabled()}><SlArrowLeft /></button>
+          {isButtonPrevDisabled() ? <div/> : (
+    <button onClick={handlePrevMonth} disabled={isButtonPrevDisabled()}>
+      <SlArrowLeft />
+    </button>
+  )}
       <h2>{monthsArr[pickedDate.month]} {pickedDate.year}</h2>
-      <button onClick={handleNextMonth} disabled={isButtonNextDisabled()}><SlArrowRight /></button>
+          {isButtonNextDisabled() ? <div/> : ( <button onClick={handleNextMonth} disabled={isButtonNextDisabled()}><SlArrowRight /></button>)}
     </MonthSwitcherContainer>
   );
 };

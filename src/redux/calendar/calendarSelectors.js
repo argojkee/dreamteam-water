@@ -1,1 +1,0 @@
-export const getSelectedMonth = state => state.calendar.selectedMonth;

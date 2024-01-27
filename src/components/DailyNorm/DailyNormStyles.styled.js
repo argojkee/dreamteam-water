@@ -57,4 +57,16 @@ export const DailyNormStyles = styled.div`
   }
 
   /* background-image: url('../../images/main-bg/Bottle-Main-sm.png'); */
+
+  @media screen and (max-width: 767px) {
+    height: 290px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    height: 418px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    height: 548px;
+  }
 `;

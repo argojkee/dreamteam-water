@@ -58,16 +58,12 @@ const AuthForm = () => {
       isRegistrationPage ? validationRegisterForm : validationLoginForm
     ),
 
-    //! 'values' contains ended values all Form inputs. 
+    //! 'values' contains ended values all Form inputs.
     //! They will can get: 'values.<field name>' or change values on {email, password}
-    onSubmit: ({email, password}) => {
+    onSubmit: ({ email, password }) => {
       isRegistrationPage
-           ? dispatch(
-               signUpAPI({ email, password,})
-             )
-           : dispatch(
-               signInAPI({ email, password })
-            );
+        ? dispatch(signUpAPI({ email, password }))
+        : dispatch(signInAPI({ email, password }));
     },
   });
 
@@ -152,8 +148,7 @@ const AuthForm = () => {
         </Styles>
 
         <Styles $link onClick={navTo}>
-          {' '}
-          To {isRegistrationPage ? 'login' : 'registration'} page{' '}
+          To {isRegistrationPage ? 'login' : 'registration'} page
         </Styles>
       </Styles>
     </Styles>

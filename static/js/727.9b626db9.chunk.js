@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkdreamteam_water=self.webpackChunkdreamteam_water||[]).push([[727],{727:function(e,a,r){r.r(a);var t=r(184);a.default=function(){return(0,t.jsx)("div",{children:"MainPage"})}}}]);
-//# sourceMappingURL=727.9b626db9.chunk.js.map

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 
@@ -9,12 +10,36 @@ import signUpAPI from '../../API/Auth/signUpAPI';
 
 const AuthForm = () => {
 
-  const [user, setUser] = useState({});
-
   const dispatch = useDispatch();
 
   // get current location
   const location = useLocation();
+
+  // The 'formik' check all validation expression. 
+  // But we have two variants form (logIn and register).
+  // We must create own validate rules function, because 
+  // validation expression must be different for each situation.
+  const validationSchemaBody = () => {
+    if(location.pathname === '/login') {
+      return {
+        email: Yup.string().matches(
+          /\w{0}[a-zA-Zа-яА-Я]+\@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/,
+          { message: 'Invalid email'}
+        ).required("'Email' field is required"),
+        password: Yup.string().min(8, 'Must be 8 characters or more').required("'Password' field is required"),
+      }
+    }else {
+      return {
+        email: Yup.string().matches(
+          /\w{0}[a-zA-Zа-яА-Я]+\@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/,
+          { message: 'Invalid email' }
+        ).required("'Email' field is required"),
+        password: Yup.string().min(8, 'Must be 8 characters or more').required("'Password' field is required"),
+        repeatPassword: Yup.string().min(8, 'Must be 8 characters or more').required("'RepeatPassword' field is required")
+        .oneOf([Yup.ref('password'), null], 'Passwords must match'), 
+      }
+    };
+  };
 
   // create 'formik' hook and configurate him
   const formik = useFormik({
@@ -23,29 +48,26 @@ const AuthForm = () => {
       password: '',
       repeatPassword: '',
     },
-    
-    validationSchema: Yup.object({
-      email: Yup.string().email('Invalid email address').required("'Email' field is required"),
-      password: Yup.string().min(8, 'Must be 8 characters or more').required("'Password' field is required"),
-    //   repeatPassword: Yup.string().min(8, 'Must be 8 characters or more').required("'RepeatPassword' field is required"),
-    }),
 
+    //yup stored own validate functions (for email, password...etc)
+    validationSchema: Yup.object(validationSchemaBody()),
+    
+    //!'values' contains ended values all Form inputs. They will can get: 'values.<field name>' 
     onSubmit: values => {
-    //   event.preventDefault();
-      console.log(values)
+      
       location.pathname === '/login' ?
       dispatch(signUpAPI({email: values.email, password: values.password,}))
-      :
+      : 
       dispatch(signInAPI({email: values.email, password: values.password,}));
+
     },
 
   });
-  
 
   return (
     <div>
         <form onSubmit={formik.handleSubmit}>
-            {location.pathname === '/register' ? 
+            {location.pathname === '/registration' ? 
             <>
                 <label htmlFor="email">Enter your email</label>
                 <input
@@ -104,7 +126,8 @@ const AuthForm = () => {
            
             <div style={{color: 'orange',}}>
                 {formik.touched.email && formik.errors.email ? formik.errors.email 
-                : formik.touched.password && formik.errors.password ? formik.errors.password : ''}
+                : formik.touched.password && formik.errors.password ? formik.errors.password
+                : formik.touched.repeatPassword && formik.errors.repeatPassword ? formik.errors.repeatPassword : ''}
             </div>
 
             <button type="submit">Submit</button>

@@ -4,8 +4,8 @@ export const HeaderStyles = styled.header`
   .containerHeader {
     display: flex;
     justify-content: space-between;
-    width: 1216px;
     height: 48px;
+    width: 100%;
   }
 
   @media screen and (max-width: 704px) {

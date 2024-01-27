@@ -8,6 +8,7 @@ import { Button } from '@mui/material';
 // import { useSelector } from 'react-redux';
 import { Modal } from 'components/Modal/Modal';
 import LogoutDeleteModalContent from 'components/LogoutDeleteModal/LogoutDeleteModalContent';
+import { SettingModal } from 'components/SettingModal/SettingModal';
 // import { getdataUser } from '../../redux/auth/authSelectors';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -153,7 +154,7 @@ export default function UserOwnPopover() {
       {isShowSettingsModal && (
         <Modal
           closeModal={() => setIsShowSettingsModal(false)}
-          children={<div>Settings</div>}
+          children={<SettingModal closeModal={() => setIsShowSettingsModal(false)} />}
         />
       )}
     </UserOwnPopoverStyles>

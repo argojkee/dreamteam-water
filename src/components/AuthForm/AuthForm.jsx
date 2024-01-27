@@ -62,9 +62,8 @@ const AuthForm = () => {
     //! They will can get: 'values.<field name>' or change values on {email, password}
     onSubmit: ({email, password}) => {
       isRegistrationPage
-      isRegistrationPage
            ? dispatch(
-               signUpAPI({ email, password, name: 'New user' })
+               signUpAPI({ email, password,})
              )
            : dispatch(
                signInAPI({ email, password })

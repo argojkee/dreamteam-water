@@ -8,6 +8,7 @@ import iconExit from '../../icons/exit.png';
 import { Button } from '@mui/material';
 import { Modal } from 'components/Modal/Modal';
 import LogoutDeleteModalContent from 'components/LogoutDeleteModal/LogoutDeleteModalContent';
+import { SettingModal } from 'components/SettingModal/SettingModal';
 
 export default function UserOwnPopover() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -84,7 +85,7 @@ export default function UserOwnPopover() {
       {isShowSettingsModal && (
         <Modal
           closeModal={() => setIsShowSettingsModal(false)}
-          children={<div>Settings</div>}
+          children={<SettingModal closeModal={() => setIsShowSettingsModal(false)} />}
         />
       )}
     </UserOwnPopoverStyles>

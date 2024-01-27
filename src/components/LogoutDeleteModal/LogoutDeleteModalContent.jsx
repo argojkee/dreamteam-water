@@ -1,5 +1,5 @@
 import { LogoutDeleteModalCotntentStyles } from './LogoutDeleteModalContentStyles';
-import operations from '../../redux/auth/authOperations';
+import logOutAPI from 'API/Auth/logOutAPI';
 import { useDispatch } from 'react-redux';
 
 const LogoutDeleteModalContent = ({ closeModal, id }) => {
@@ -11,7 +11,7 @@ const LogoutDeleteModalContent = ({ closeModal, id }) => {
     if (isDeleteModal) {
       //DELETE zapros dispatch(deleteStakan(id)).then(resp => closeModal())
     } else {
-      dispatch(operations.logOut());
+      dispatch(logOutAPI());
     }
   };
 

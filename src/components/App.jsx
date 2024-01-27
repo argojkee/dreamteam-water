@@ -20,7 +20,7 @@ export const App = () => {
     if (!token) return;
     dispatch(operations.fetchCurrentUser());
   }, [dispatch, token]);
-  
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

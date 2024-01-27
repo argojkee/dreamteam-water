@@ -1,14 +1,14 @@
 import axios from 'axios';
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { toastError, toastSuccess, } from 'services/toastNotification';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toastError, toastSuccess } from 'services/toastNotification';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://dreamteam-water-server.onrender.com/api/';
 
 const signInAPI = createAsyncThunk(
-  'signIn/signInAPI', 
+  'signIn/signInAPI',
   async (user, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/users/login', user);
+      const { data } = await axios.post('/user/login', user);
 
       // write token to axios parameter
       axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;

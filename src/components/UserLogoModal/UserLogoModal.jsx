@@ -7,51 +7,69 @@ import { Modal } from 'components/Modal/Modal';
 import LogoutDeleteModalContent from 'components/LogoutDeleteModal/LogoutDeleteModalContent';
 import { SettingModal } from 'components/SettingModal/SettingModal';
 import { useSelector } from 'react-redux';
-import { getUserName, getUserEmail, getUserAvatar } from '../../redux/auth/authSelectors';
+import {
+  getUserName,
+  getUserEmail,
+  getUserAvatar,
+  getdataUser,
+} from '../../redux/auth/authSelectors';
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
+
 
 export default function UserLogoModal() {
   const [isOpen, setOpen] = useState(false);
   const [isShowLogoutModal, setIsShowLogoutModal] = useState(false);
   const [isShowSettingsModal, setIsShowSettingsModal] = useState(false);
- 
 
+  
   const userName1 = useSelector(getUserName);
   const userEmail1 = useSelector(getUserEmail);
-  const userAvatar1 = useSelector(getUserAvatar);
+  const userAvatarUrl1 = useSelector(getUserAvatar);
+  const dataUser1 = useSelector(getdataUser);
 
   console.log('проверка');
   console.log(userName1);
   console.log(userEmail1);
-  console.log(userAvatar1);
-
-  let userName = 'x'.toUpperCase();
-  let userEmail = 'x';
-  let userAvatar = '';
+  console.log(userAvatarUrl1);
+  console.log(dataUser1);
 
   
 
+  // let userEmail = userEmail1;
+  // let userName = !'' ? userEmail : userName1;
+  // let userAvatarUrl = ! undefined ? userEmail[0] : userAvatarUrl1;
+
+  let userEmail = userEmail1;
+  let userName = !'' ? userEmail : userName1;
+  let userAvatarUrl = '';
+
   useEffect(() => {
-    if (userName && userAvatar) {
+    console.log('ефект');
+    console.log(userName);
+    if (userAvatarUrl !== undefined) {
       return;
+      
     }
     checkDataUser();
+      
   });
 
   function checkDataUser() {
-    if (!userName && !userAvatar) {
-      userName = userEmail[0].toUpperCase();
-      userAvatar = userEmail[0].toUpperCase();
-    }
-    if (userName && !userAvatar) {
-      userName = userEmail[0].toUpperCase();
-      userAvatar = userName[0].toUpperCase();
-    }
-    if (!userName && userAvatar) {
-      userName = userEmail[0].toUpperCase();
-    }
+    userAvatarUrl = userEmail[0].toUpperCase(); 
+    // if (!userName && !userAvatar) {
+    //   console.log('нету имени и аватарки');
+    //   userName = userEmail;
+    //   userAvatar = userEmail[0].toUpperCase();
+    // }
+    // if (userName && !userAvatar) {
+    //   console.log('нету аватарки');
+    //   userAvatar = userName[0].toUpperCase();
+    // }
+    // if (!userName && userAvatar) {
+    //   console.log('нету имени');
+    //   userName = userEmail;
+    // }
   }
-
 
   const onLogoutPress = () => {
     setIsShowLogoutModal(true);
@@ -81,10 +99,10 @@ export default function UserLogoModal() {
               <span className="textName">{userName}</span>
             </div>
             <div className="avatarBox">
-              {userAvatar && (
-                <img className="iconAvatar" src={userAvatar} alt="iconAvatar" />
+              {userAvatarUrl && (
+                <img className="iconAvatar" src={userAvatarUrl} alt="" />
               )}
-              {!userAvatar && <div className="avatarBox">{userAvatar}</div>}
+              {!userAvatarUrl && <div className="avatarBox">{userAvatarUrl}</div>}
             </div>
             <div>
               <img src={vector} alt="iconVector" className="iconSolid" />

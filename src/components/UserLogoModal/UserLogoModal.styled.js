@@ -13,7 +13,7 @@ export const UserLogoModalStyles = styled.div`
     height: 28px;
     border-radius: 100%;
     border: none;
-    background-color: #D3D3D3;
+    background-color: #d3d3d3;
     display: inline-block;
 
     background-repeat: no-repeat;
@@ -26,7 +26,7 @@ export const UserLogoModalStyles = styled.div`
     margin: 0px;
     padding: 0px;
     height: 100%;
-    min-width: 122px;
+
     cursor: pointer;
 
     margin-left: auto;
@@ -76,11 +76,12 @@ export const UserLogoModalStyles = styled.div`
     background-size: auto;
     background-position: center;
 
-    fill: #407BFF;
+    fill: #407bff;
   }
 
   .user-items {
     display: flex;
+    justify-content: space-between;
     gap: 8px;
     flex-direction: row;
     align-items: center;
@@ -121,7 +122,7 @@ export const UserLogoModalStyles = styled.div`
   }
 
   .menu.active {
-    top-right: 0;
+    top-left: 10;
     top: calc(100% - 48);
     transform: translateY(0);
     opacity: 1;

@@ -14,7 +14,6 @@ const Header = () => {
   return (
     <HeaderStyles>
       <Container>
-        <containerHeader>
           <div className="containerHeader">
             <NavLink to={token ? '/main' : '/'} className="logoBox">
               <div>
@@ -36,7 +35,6 @@ const Header = () => {
 
             {token && <UserLogoModal />}
           </div>
-        </containerHeader>
       </Container>
     </HeaderStyles>
   );

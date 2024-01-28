@@ -9,7 +9,7 @@ const signUpAPI = createAsyncThunk(
 
   async (user, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/user/register', user);
+      const { data } = await axios.post('/users/register', user);
 
       // write token to axios parameter
       axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;

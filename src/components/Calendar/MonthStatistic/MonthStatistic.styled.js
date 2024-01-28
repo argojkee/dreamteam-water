@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const MonthStatisticlist = styled.div`
 
@@ -9,7 +9,11 @@ export const MonthStatisticlist = styled.div`
 
   li{
     text-align: center;
+    height: 52px;
+    width: 34px;
   }
+
+  
 
   button {
       border: none;
@@ -26,6 +30,11 @@ export const MonthStatisticlist = styled.div`
       font-size: 16px;
       font-weight: 400;
       line-height: 1,25;
+      border-radius: 50%;
+
+      &[data-fulfilled='false'] {
+    border:1px solid #FF9D43;
+  }
 
     //   &:disabled {
     //    opacity: 0;
@@ -38,6 +47,10 @@ export const MonthStatisticlist = styled.div`
       font-weight: 400;
       line-height: 1.5;
     }
+
+    
+
+    
 
 
   }
@@ -62,3 +75,8 @@ export const MonthStatisticlist = styled.div`
 //         "percent": 0
 //     }
 // ]
+
+export const Li = styled.li.attrs(props => ({
+  // Every <PasswordInput /> should be type="password"
+  
+}))``

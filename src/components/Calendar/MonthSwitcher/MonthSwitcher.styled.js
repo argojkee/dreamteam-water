@@ -6,6 +6,7 @@ export const MonthSwitcherContainer = styled.div`
   gap: 12px;
   justify-content: space-between;
   align-items: center;
+  padding-top: 24px;
 
     h2{
       color: #2F2F2F;

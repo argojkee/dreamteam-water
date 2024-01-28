@@ -12,10 +12,10 @@ const MonthStatsTable = () => {
   });
 
   return (
-    <div style={{ marginTop: '50px', marginLeft: 'auto', width: '592px' }}>
+    <>
       <MonthSwitcher changeSelectedMonth={setSelectedMonth} />
       <MonthStatistic  selectedMonth={selectedMonth } />
-    </div>
+    </>
   );
 };
 

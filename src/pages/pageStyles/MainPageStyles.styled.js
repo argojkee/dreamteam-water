@@ -22,16 +22,11 @@ export const MainPageStyles = styled.section`
     .left-side {
       height: 504px;
       width: 100%;
+      padding-bottom: 40px;
     }
 
     .right-side {
       padding: 24px 8px;
-    }
-
-    .status-bar {
-      width: 100%;
-      height: 134px;
-      background-color: gray;
     }
 
     .today {
@@ -53,8 +48,28 @@ export const MainPageStyles = styled.section`
     .right-side {
       width: 100%;
     }
+
+    .status-bar {
+      width: 100%;
+      height: 134px;
+      background-color: gray;
+      padding-top: 16px;
+    }
   }
 
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    padding-top: 16px;
+    .left-side {
+      height: 548px;
+      width: 100%;
+    }
+
+    .today {
+      width: 100%;
+      height: 260px;
+      background-color: gray;
+    }
+  }
   @media screen and (min-width: 768px) {
     .left-side {
       padding-bottom: 40px;
@@ -67,20 +82,7 @@ export const MainPageStyles = styled.section`
       width: 100%;
       height: 90px;
       background-color: gray;
-    }
-
-    .today {
-      width: 100%;
-      height: 260px;
-      background-color: gray;
-    }
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    padding: 44px 16px;
-    .left-side {
-      height: 548px;
-      width: 100%;
+      padding-top: 24px;
     }
 
     .today {
@@ -91,10 +93,11 @@ export const MainPageStyles = styled.section`
   }
 
   @media screen and (min-width: 1280px) {
-    padding: 40px 20px;
+    padding-top: 22px;
     .left-side {
       height: 680px;
       width: 624px;
+      padding-right: 32px;
     }
 
     .right-side {

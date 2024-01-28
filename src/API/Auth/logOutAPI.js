@@ -8,7 +8,7 @@ export default createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
-      await axios.post('/user/logout');
+      await axios.post('/users/logout');
       axios.defaults.headers.common.Authorization = '';
       toastSuccess('Log out successful. Come back sooner');
     } catch (error) {

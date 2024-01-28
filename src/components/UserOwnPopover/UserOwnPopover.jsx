@@ -1,19 +1,58 @@
 import { useState } from 'react';
 import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
 import { UserOwnPopoverStyles } from './UserOwnPopoverStyles.styled';
 import vector from '../../icons/solid.png';
 import iconSettings from '../../icons/settings.png';
 import iconExit from '../../icons/exit.png';
 import { Button } from '@mui/material';
+// import { useSelector } from 'react-redux';
 import { Modal } from 'components/Modal/Modal';
 import LogoutDeleteModalContent from 'components/LogoutDeleteModal/LogoutDeleteModalContent';
 import { SettingModal } from 'components/SettingModal/SettingModal';
+// import { getdataUser } from '../../redux/auth/authSelectors';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+
+
 
 export default function UserOwnPopover() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [isShowLogoutModal, setIsShowLogoutModal] = useState(false);
   const [isShowSettingsModal, setIsShowSettingsModal] = useState(false);
+
+
+  // const userData = useSelector(getdataUser);
+  // let userName = useSelector(dataUser.getUserName);
+  // let userAvatar = useSelector(dataUser.getUserAvatar);
+  // let userEmail = useSelector(dataUser.getUserEmail);
+
+  let userName = "Ruslana";
+  let userAvatar = null;
+  let userEmail = "Ruslana@gmail.com";
+
+  useEffect(() => {
+    if (userName && userAvatar) {
+      return;
+    }
+    checkDataUser();
+  });
+
+  function checkDataUser() {
+    if (!userName && !userAvatar) {
+      userName = userEmail[0];
+      userAvatar = userEmail[0];
+    }
+    if (userName && !userAvatar) { 
+       userName = userEmail[0];
+      userAvatar = userName[0];
+    }
+    if (!userName && userAvatar) {
+      userName = userEmail[0];
+    }
+  }
+
+  console.log('проверка');
+  console.log(userAvatar);
 
   const onLogoutPress = () => {
     setIsShowLogoutModal(true);
@@ -38,8 +77,27 @@ export default function UserOwnPopover() {
 
   return (
     <UserOwnPopoverStyles>
-      <Button aria-describedby={id} variant="contained" onClick={handleClick}>
-        <img src={vector} alt="iconVector" className="iconSolid" />
+      <Button
+        className="buttonPopover"
+        variant="contained"
+        onClick={handleClick}
+      >
+        <div className="avatarContainer">
+          <div >
+            <span className="textName">{userName}</span>
+          </div>
+          <div>
+            {userAvatar && (
+              <img className="iconAvatar" src={userAvatar} alt="iconAvatar" />
+            )}
+            {!userAvatar &&
+              (<div className="avatarBox">{userAvatar}</div>
+            )}
+          </div>
+          <div>
+            <img src={vector} alt="iconVector" className="iconSolid" />
+          </div>
+        </div>
       </Button>
 
       <Popover
@@ -55,20 +113,31 @@ export default function UserOwnPopover() {
           vertical: 'top',
           horizontal: 'right',
         }}
+        // style={{
+        //   display: 'flex',
+        //   flexDirection: 'column',
+        //   padding: '16px',
+        //   position: 'absolute',
+        //   maxHeight: '118px',
+        //   maxWidth: '88px',
+        //   backgroundColor: 'red',
+        // }}
       >
-        <Typography sx={{ p: 2 }}>
-          <button className="settingsBox" onClick={onSettingsClick}>
-            <img src={iconSettings} alt="iconSettings" />
-            <span>Settings</span>
-          </button>
-        </Typography>
+        <div className="containerPopover">
+          <div className="buttonBox">
+            <Link onClick={onSettingsClick}>
+              <img src={iconSettings} alt="iconSettings" />
+              <span className="textSettings">Settings</span>
+            </Link>
+          </div>
 
-        <Typography sx={{ p: 2 }}>
-          <button className="logOutBox" onClick={onLogoutPress}>
-            <img src={iconExit} alt="iconExit" />
-            Log out
-          </button>
-        </Typography>
+          <div className="logOutBox">
+            <Link onClick={onLogoutPress}>
+              <img src={iconExit} alt="iconExit" />
+              Log out
+            </Link>
+          </div>
+        </div>
       </Popover>
 
       {isShowLogoutModal && (

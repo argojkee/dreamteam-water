@@ -12,7 +12,6 @@ export const editDailyNorm = createAsyncThunk(
         data: { norm },
       } = await axios.patch('/water/norm', data);
 
-      console.log(norm);
       toastSuccess('Deleted successful ');
       return norm;
     } catch (error) {

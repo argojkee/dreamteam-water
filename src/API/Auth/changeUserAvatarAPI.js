@@ -7,7 +7,6 @@ axios.defaults.baseURL = 'https://dreamteam-water-server.onrender.com/api/';
 export const changeUserAvatarAPI = createAsyncThunk(
   'auth/changeUserAvatarAPI',
   async (formData, { rejectWithValue }) => {
-    console.log(formData);
     try {
       const {
         data: { avatarURL },

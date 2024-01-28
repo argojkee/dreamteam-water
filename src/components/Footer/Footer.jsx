@@ -11,20 +11,19 @@ import { AddForm } from 'components/AddForm/AddForm';
 axios.defaults.baseURL = 'https://dreamteam-water-server.onrender.com/api/';
 
 const Footer = () => {
-  const [dailyId, setDailyId] = useState(null);
+  // const [dailyId, setDailyId] = useState(null);
   const dispatch = useDispatch();
   const [isAddShow, setIsAddShow] = useState(false);
   const [isEditShow, setIsEditShow] = useState(false);
 
-  console.log(dailyId);
+  // console.log(dailyId);
 
   const onCurrentDateInfoClick = async () => {
     try {
-      const todayInfo = await getCurrentDateInfo({
+      await getCurrentDateInfo({
         date: { year: 2024, month: '01', day: 28 },
       });
-      console.log(todayInfo);
-      setDailyId(todayInfo._id);
+      // setDailyId(todayInfo._id);
     } catch (error) {
       console.log(error.message);
     }

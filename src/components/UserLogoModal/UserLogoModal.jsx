@@ -6,30 +6,30 @@ import { IoExitOutline } from 'react-icons/io5';
 import { Modal } from 'components/Modal/Modal';
 import LogoutDeleteModalContent from 'components/LogoutDeleteModal/LogoutDeleteModalContent';
 import { SettingModal } from 'components/SettingModal/SettingModal';
-import { useSelector } from 'react-redux';
-import { getUserName, getUserEmail, getUserAvatar } from '../../redux/auth/authSelectors';
+// import { useSelector } from 'react-redux';
+import // getUserName,
+// getUserEmail,
+// getUserAvatar,
+'../../redux/auth/authSelectors';
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
 export default function UserLogoModal() {
   const [isOpen, setOpen] = useState(false);
   const [isShowLogoutModal, setIsShowLogoutModal] = useState(false);
   const [isShowSettingsModal, setIsShowSettingsModal] = useState(false);
- 
 
-  const userName1 = useSelector(getUserName);
-  const userEmail1 = useSelector(getUserEmail);
-  const userAvatar1 = useSelector(getUserAvatar);
+  // const userName1 = useSelector(getUserName);
+  // const userEmail1 = useSelector(getUserEmail);
+  // const userAvatar1 = useSelector(getUserAvatar);
 
-  console.log('проверка');
-  console.log(userName1);
-  console.log(userEmail1);
-  console.log(userAvatar1);
+  // console.log('проверка');
+  // console.log(userName1);
+  // console.log(userEmail1);
+  // console.log(userAvatar1);
 
   let userName = 'x'.toUpperCase();
   let userEmail = 'x';
   let userAvatar = '';
-
-  
 
   useEffect(() => {
     if (userName && userAvatar) {
@@ -52,7 +52,6 @@ export default function UserLogoModal() {
     }
   }
 
-
   const onLogoutPress = () => {
     setIsShowLogoutModal(true);
   };
@@ -68,7 +67,7 @@ export default function UserLogoModal() {
   return (
     <UserLogoModalStyles>
       <ClickAwayListener
-        className="avatar-container"
+        // className="avatar-container"
         onClickAway={handleClickAway}
       >
         <button

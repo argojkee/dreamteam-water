@@ -28,11 +28,7 @@ const schema = yup.object().shape({
   newPassword: yup
     .string()
     .min(8, 'Password must be at least 8 characters.')
-    .when('repeatNewPassword', ([repeatNewPassword], schema) => {
-      return repeatNewPassword !== ''
-        ? schema.required()
-        : schema.notRequired();
-    }),
+    .oneOf([yup.ref('repeatNewPassword')], 'Passwords do not match'),
   repeatNewPassword: yup
     .string()
     .min(8, 'Password must be at least 8 characters.')

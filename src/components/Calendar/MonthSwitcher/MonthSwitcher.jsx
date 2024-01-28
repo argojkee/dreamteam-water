@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useInitialDate } from './useInitialDate';
-import { monthsArr } from './monthsArr';
+import { monthsArr } from '../monthsArr';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { MonthSwitcherContainer } from './MonthSwitcher.styled';
 
@@ -51,17 +51,21 @@ const MonthSwitcher = ({ changeSelectedMonth }) => {
     );
   };
 
+
   return (
     <MonthSwitcherContainer>
-      <button onClick={handlePrevMonth} disabled={isButtonPrevDisabled()}>
+      <h2>Month</h2>
+      <div>
+        <button onClick={handlePrevMonth} disabled={isButtonPrevDisabled()}>
         <SlArrowLeft />
       </button>
-      <h2>
-        {monthsArr[pickedDate.month]} {pickedDate.year}
-      </h2>
+      <h3>
+        {monthsArr[pickedDate.month].name}, {pickedDate.year}
+      </h3>
       <button onClick={handleNextMonth} disabled={isButtonNextDisabled()}>
         <SlArrowRight />
-      </button>
+        </button>
+        </div>
     </MonthSwitcherContainer>
   );
 };

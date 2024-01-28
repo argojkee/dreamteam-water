@@ -1,9 +1,10 @@
-import Calendar from "components/Calendar/Calendar";
+import MonthStatsTable from "components/Calendar/MonthStatsTable";
+
 
 const MainPage = () => {
   return <>
     <div>MainPage</div>
-    <Calendar/>
+   <MonthStatsTable/>
   </>;
 };
 

@@ -4,10 +4,24 @@ export const MonthSwitcherContainer = styled.div`
 
   display: flex;
   gap: 12px;
-  justify-content: end;
-       align-items: center;
-  
+  justify-content: space-between;
+  align-items: center;
+
     h2{
+      color: #2F2F2F;
+      font-family: Roboto;
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 1,23
+    }
+
+    div{
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+  
+    h3{
       color:#407BFF;
       text-align: center;
       font-family: Roboto;
@@ -32,10 +46,5 @@ export const MonthSwitcherContainer = styled.div`
       &:disabled {
        opacity: 0;
   }
-  }
-
-  div{
-    width: 14px;
-    height: 14px;
   }
 `;

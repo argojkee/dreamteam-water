@@ -6,7 +6,7 @@ import fetchCurrentUserAPI from 'API/Auth/fetchCurrentUserAPI';
 import editDailyNorm from 'API/Auth/editDailyNorm';
 
 const initialState = {
-  user: { name: null, email: null, avatar: null, norm: null, id: null },
+  user: { name: null, email: null, avatarURL: null, norm: null, id: null },
   token: null,
   authIsLoading: false,
 };
@@ -54,11 +54,7 @@ const authSlice = createSlice({
 
       .addCase(fetchCurrentUserAPI.fulfilled, (state, { payload }) => {
         state.authIsLoading = false;
-        state.user.name = payload.name;
-        state.user.email = payload.email;
-        state.user.avatar = payload.avatarURL;
-        state.user.norm = payload.norm;
-        state.user.id = payload._id;
+        state.user = { ...payload };
       })
       .addCase(fetchCurrentUserAPI.pending, state => {
         state.authIsLoading = true;

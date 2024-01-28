@@ -1,4 +1,4 @@
- export const monthsArr = [
+export const monthsArr = [
   { name: 'January', numberOfDays: 31 },
   { name: 'February', numberOfDays: 28 },
   { name: 'March', numberOfDays: 31 },
@@ -13,17 +13,17 @@
   { name: 'December', numberOfDays: 31 },
 ];
 
-function isLeapYear(year) {
-  return (year % 4 === 0 && year % 100 !== 0) ||
-    year % 400 === 0 ? true : false
-}
+// function isLeapYear(year) {
+//   return (year % 4 === 0 && year % 100 !== 0) ||
+//     year % 400 === 0 ? true : false
+// }
 
-const statistic = {
-  2023: { 12: { 1: { '07:00': '10 ml', '08:00': '50ml' }, 5: { '07:00': '10ml', '08:00': '50ml' } } },
-  2024: { 12: { 1: { '07:00': '10 ml', '08:00': '50ml' }, 5: { '07:00': '10ml', '08:00': '50ml' } } }
-}
+// const statistic = {
+//   2023: { 12: { 1: { '07:00': '10 ml', '08:00': '50ml' }, 5: { '07:00': '10ml', '08:00': '50ml' } } },
+//   2024: { 12: { 1: { '07:00': '10 ml', '08:00': '50ml' }, 5: { '07:00': '10ml', '08:00': '50ml' } } }
+// }
 
-const monthStatistic = {
-  2023: { 12: { 1: { '07:00': '10 ml', '08:00': '50ml' }, 5: { '07:00': '10ml', '08:00': '50ml' } } },
-  2024: { 12: { 1: { '07:00': '10 ml', '08:00': '50ml' }, 5: { '07:00': '10ml', '08:00': '50ml' } } }
-}
+// const monthStatistic = {
+//   2023: { 12: { 1: { '07:00': '10 ml', '08:00': '50ml' }, 5: { '07:00': '10ml', '08:00': '50ml' } } },
+//   2024: { 12: { 1: { '07:00': '10 ml', '08:00': '50ml' }, 5: { '07:00': '10ml', '08:00': '50ml' } } }
+// }

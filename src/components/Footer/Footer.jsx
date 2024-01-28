@@ -3,7 +3,7 @@ import axios from 'axios';
 import { getCurrentDateInfo } from 'API/Water/getCurrentDateInfo';
 import { addDrink } from 'API/Water/addDrink';
 import { useState } from 'react';
-import editDailyNorm from 'API/Auth/editDailyNorm';
+import { editDailyNorm } from 'API/Auth/editDailyNorm';
 import { useDispatch } from 'react-redux';
 import { Modal } from 'components/Modal/Modal';
 import { AddForm } from 'components/AddForm/AddForm';
@@ -19,18 +19,20 @@ const Footer = () => {
   console.log(dailyId);
 
   const onCurrentDateInfoClick = async () => {
-    const todayInfo = await getCurrentDateInfo({
-      year: 2023,
-      month: 'January',
-      day: 28,
-    });
-    console.log(todayInfo);
-    setDailyId(todayInfo._id);
+    try {
+      const todayInfo = await getCurrentDateInfo({
+        date: { year: 2024, month: '01', day: 28 },
+      });
+      console.log(todayInfo);
+      setDailyId(todayInfo._id);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const onAddDrink = async () => {
     await addDrink({
-      date: { year: 2023, month: 'January', day: 28 },
+      date: { year: 2024, month: '01', day: 1 },
       drink: { ml: 250, time: '10:30' },
     });
   };
@@ -38,7 +40,7 @@ const Footer = () => {
   const onEditNormaClick = async () => {
     await dispatch(
       editDailyNorm({
-        date: { year: 2023, month: 'January', day: 28 },
+        date: { year: 2024, month: '01', day: 28 },
         norm: 2501,
       })
     );

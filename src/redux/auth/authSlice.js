@@ -3,12 +3,19 @@ import logOutAPI from 'API/Auth/logOutAPI';
 import signInAPI from '../../API/Auth/signInAPI';
 import signUpAPI from '../../API/Auth/signUpAPI';
 import fetchCurrentUserAPI from 'API/Auth/fetchCurrentUserAPI';
-import editDailyNorm from 'API/Auth/editDailyNorm';
+import { editDailyNorm } from 'API/Auth/editDailyNorm';
+import { changeUserAvatarAPI } from 'API/Auth/changeUserAvatarAPI';
 
 const initialState = {
-  user: { name: null, email: null, avatarURL: null, norm: null, id: null },
+  user: {
+    name: null,
+    email: null,
+    avatarURL: null,
+    norm: null,
+  },
   token: null,
   authIsLoading: false,
+  isLoadingChangeAvatar: false,
 };
 
 const authSlice = createSlice({
@@ -69,9 +76,22 @@ const authSlice = createSlice({
 
       .addCase(editDailyNorm.fulfilled, (state, { payload }) => {
         state.user.norm = payload;
+      })
+      // .addCase(editDailyNorm.pending, state => {})
+      // .addCase(editDailyNorm.rejected, state => {});
+
+      /*****************************change user avatar */
+
+      .addCase(changeUserAvatarAPI.fulfilled, (state, { payload }) => {
+        state.isLoadingChangeAvatar = false;
+        state.user.avatarURL = payload;
+      })
+      .addCase(changeUserAvatarAPI.pending, state => {
+        state.isLoadingChangeAvatar = true;
+      })
+      .addCase(changeUserAvatarAPI.rejected, state => {
+        state.isLoadingChangeAvatar = false;
       });
-    // .addCase(editDailyNorm.pending, state => {})
-    // .addCase(editDailyNorm.rejected, state => {});
   },
 });
 export default authSlice.reducer;

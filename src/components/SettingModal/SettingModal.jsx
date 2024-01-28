@@ -6,6 +6,9 @@ import { BsUpload } from 'react-icons/bs';
 import { FiEyeOff } from 'react-icons/fi';
 import { FiEye } from 'react-icons/fi';
 
+import { changeUserAvatarAPI } from 'API/Auth/changeUserAvatarAPI';
+import { useDispatch } from 'react-redux';
+
 const iconColor = '#407BFF';
 
 const schema = yup.object().shape({
@@ -44,10 +47,12 @@ export const SettingModal = ({ closeModal }) => {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showRepeatNewPassword, setShowRepeatNewPassword] = useState(false);
 
+  const dispatch = useDispatch();
+
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
-    resetForm();
-    closeModal();
+    // resetForm();
+    // closeModal();
   };
 
   const handleMouseDownPassword = event => {
@@ -67,6 +72,10 @@ export const SettingModal = ({ closeModal }) => {
     onSubmit: handleSubmit,
   });
 
+  const onChangeAvatar = e => {
+    dispatch(changeUserAvatarAPI(e.target.files[0]));
+  };
+
   return (
     <SettingModalStyled>
       <h2>Setting</h2>
@@ -80,6 +89,7 @@ export const SettingModal = ({ closeModal }) => {
           name="upload_photo"
           className="photo-input"
           accept=".png, .jpg, .jpeg"
+          onChange={onChangeAvatar}
         />
       </label>
       <form onSubmit={formik.handleSubmit}>

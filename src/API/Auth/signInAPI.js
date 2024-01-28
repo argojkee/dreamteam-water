@@ -8,7 +8,7 @@ const signInAPI = createAsyncThunk(
   'signIn/signInAPI',
   async (user, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/user/login', user);
+      const { data } = await axios.post('/users/login', user);
 
       // write token to axios parameter
       axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;

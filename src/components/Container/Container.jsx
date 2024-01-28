@@ -1,7 +1,7 @@
 import { ContainerStyles } from './ContainerStyles.styled';
 
 const Container = ({ children }) => {
-  return <ContainerStyles className="containerHeader">{children}</ContainerStyles>;
+  return <ContainerStyles>{children}</ContainerStyles>;
 };
 
 export default Container;

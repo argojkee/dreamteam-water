@@ -9,13 +9,16 @@ export const changeUserAvatarAPI = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     console.log(formData);
     try {
-      await axios.patch('/users/avatars', formData, {
+      const {
+        data: { avatarURL },
+      } = await axios.patch('/users/avatars', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
+
       toastSuccess('Avatar changed successful ');
-      // console.log(result);
+      return avatarURL;
     } catch (error) {
       toastError('Something went wrong');
       console.log(error.message);

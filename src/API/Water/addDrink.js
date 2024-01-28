@@ -5,7 +5,6 @@ export const addDrink = async data => {
   try {
     const result = await axios.post('/water/drinks', data);
     console.log(result);
-    console.log('Hello');
   } catch (error) {
     console.log(error.message);
   }

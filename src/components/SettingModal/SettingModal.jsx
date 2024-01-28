@@ -73,7 +73,8 @@ export const SettingModal = ({ closeModal }) => {
   });
 
   const onChangeAvatar = e => {
-    dispatch(changeUserAvatarAPI(e.target.files[0]));
+    // console.log(e.target.files[0]);
+    dispatch(changeUserAvatarAPI({ avatar: e.target.files[0] }));
   };
 
   return (

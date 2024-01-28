@@ -72,9 +72,12 @@ export const SettingModal = ({ closeModal }) => {
     onSubmit: handleSubmit,
   });
 
-  const onChangeAvatar = e => {
+  const onChangeAvatar = ({ target: { files } }) => {
     // console.log(e.target.files[0]);
-    dispatch(changeUserAvatarAPI({ avatar: e.target.files[0] }));
+    const formData = new FormData();
+    formData.append('avatar', files[0]);
+
+    dispatch(changeUserAvatarAPI(formData));
   };
 
   return (

@@ -1,4 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
+
+const errorAnimation = keyframes`
+ 0% { padding-left: 5px; }
+ 20% { padding-left: 0; }
+
+ 40% { padding-left: 5px; }
+ 60% { padding-left: 0; }
+ 
+ 80% { padding-left: 5px; }
+ 100% { padding-left: 0; }
+`;
 
 // 'FormContainer' get props  automatic from 'ContainerFormStyle' if you send them.
 const Div = styled.div`
@@ -6,18 +17,26 @@ const Div = styled.div`
   display: flex;
   flex-direction: ${props => props.$divDiraction || 'row'};
   justify-content: ${props => props.$justify || 'none'};
-  align-items: ${props => props.align || 'center'}; 
+  align-items: ${props => props.$align || 'center'}; 
 
   width: ${props => props.width || 'none'};
-  height: ${props => props.height || '100vh'};
+  height: ${props => props.height || 'none'};
 
-  margin-bottom: ${props => props.$marginBott || '8px'};
+  margin-bottom: ${props => props.$marginBott || 'none'};
 
   gap: ${props => props.$gap || 'none'};
 
   color: ${props => props.color || 'none'};
 
   background-color: ${props => props.Backcolor || 'none'};
+
+  ${props => props.$animaOn && css`
+
+    animation-name: ${errorAnimation};
+    animation-duration: 200ms;
+    animation-iteration-count: 1;
+
+  `};
 
 `;
 
@@ -30,9 +49,7 @@ const Form = styled.form`
   font-family: roboto;
 
   width: ${props => props.width || '100%'};
-  height: ${props => props.height || '100vh'};
-
-  gap: ${props => props.$gap || 'none'};
+  
 
   background-color: ${props => props.color || 'transparent'};
 
@@ -40,12 +57,12 @@ const Form = styled.form`
 
 const Input = styled.input`
 
-  width: ${props => props.width || '364px'};
-  height: ${props => props.height || '20px'};
+  width: ${props => props.width || '384px'};
+  height: ${props => props.height || '44px'};
 
   font-family: roboto;
   font-size: ${props => props.$fontSize || '16px'};
-  color: #407BFF;
+  color: ${props => props.$inputColor || 'none'};
 
   padding: 12px 10px;
 
@@ -55,6 +72,11 @@ const Input = styled.input`
   background-color: ${props => props.color || 'transparent'};
   border: 1px solid ${props => props.$borderColor || '#D7E3FF'};
   outline: 'none';
+
+  &:focus {
+    border: 1px solid ${props => props.$borderColor || '#D7E3FF'};
+    outline: none;
+  }
 
 `;
 
@@ -68,7 +90,7 @@ const Text = styled.p`
 
   text-align: ${props => props.$textAlign || 'start'};
 
-  margin-bottom: ${props => props.$fontSize || 'none'};
+  margin-bottom: ${props => props.$marginBott || 'none'};
 
 `;
 
@@ -99,20 +121,30 @@ const Button = styled.button`
   border-radius: ${props => props.$borderRadius || 'none'};
 
   background-color: ${props => props.color || '#407BFF'};
+
+  box-shadow: 0px 5px 8px rgba(64, 123, 255, 0.34);
+
+  &:hover {
+    box-shadow: 0px 5px 14px rgba(64, 123, 255, 0.54);
+  }
+
+  &:active {
+    box-shadow: none;
+  }
 `;
 
 const Link = styled.p`
   
-  width: ${props => props.$width || '100%'};
+  width: ${props => props.$width || 'fit-content'};
 
   font-weight: ${props => props.$fontWeight || '500'};
 
-  margin-bottom: ${props => props.$marginBott || '8px'};
+  margin-bottom: ${props => props.$marginBott || 'none'};
 
   cursor: pointer;
 
   &:hover {
-    color: #407BFF;
+    color: #FF9D43;
   }
   
 `;

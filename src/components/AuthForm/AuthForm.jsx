@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSpring, animated } from '@react-spring/web'
+import { useSpring, animated } from '@react-spring/web';
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -14,7 +14,6 @@ import Styles from './Styles';
 /* end */
 
 const AuthForm = () => {
-  
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -23,10 +22,16 @@ const AuthForm = () => {
 
   const isRegistrationPage = location.pathname === '/registration';
 
-  const animaDinamic = [{ paddingLeft: '20px', }, { paddingLeft: '0', },
-  { paddingLeft: '15px', }, { paddingLeft: '0', },
-  { paddingLeft: '10px', }, { paddingLeft: '0', },
-  { paddingLeft: '5px', }, { paddingLeft: '0', },];
+  const animaDinamic = [
+    { paddingLeft: '20px' },
+    { paddingLeft: '0' },
+    { paddingLeft: '15px' },
+    { paddingLeft: '0' },
+    { paddingLeft: '10px' },
+    { paddingLeft: '0' },
+    { paddingLeft: '5px' },
+    { paddingLeft: '0' },
+  ];
 
   // The 'formik' check all validation expression.
   // But we have two variants form (logIn and register).
@@ -39,17 +44,17 @@ const AuthForm = () => {
         /\w{0}[0-9a-zA-Zа-яА-Я]+@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/,
         { message: 'Invalid email' }
       )
-      .required("Email field is required"),
+      .required('Email field is required'),
     password: Yup.string()
       .min(8, 'Must be 8 characters or more')
-      .required("Password field is required"),
+      .required('Password field is required'),
   };
 
   const validationRegisterForm = {
     ...validationLoginForm,
     repeatPassword: Yup.string()
       .min(8, 'Must be 8 characters or more')
-      .required("RepeatPassword field is required")
+      .required('RepeatPassword field is required')
       .oneOf([Yup.ref('password'), null], 'Passwords must match'),
   };
 
@@ -66,27 +71,20 @@ const AuthForm = () => {
       isRegistrationPage ? validationRegisterForm : validationLoginForm
     ),
 
-    //! 'values' contains ended values all Form inputs. 
+    //! 'values' contains ended values all Form inputs.
     //! They will can get: 'values.<field name>' or change values on {email, password}
-    onSubmit: ({email, password}) => {
+    onSubmit: ({ email, password }) => {
       isRegistrationPage
-           ? dispatch(
-               signUpAPI({ email, password,})
-             )
-           : dispatch(
-               signInAPI({ email, password })
-            );
-
+        ? dispatch(signUpAPI({ email, password }))
+        : dispatch(signInAPI({ email, password }));
     },
   });
 
   const springs = useSpring({
-
-    from: { paddingLeft: '0',},
+    from: { paddingLeft: '0' },
     to: [...animaDinamic],
-  
-    config: {duration: 100,},
 
+    config: { duration: 100 },
   });
 
   const navTo = () => {
@@ -94,7 +92,7 @@ const AuthForm = () => {
   };
 
   return (
-    <Styles $div $justify={'flex-end'}  $align={'center'}>
+    <Styles $div $justify={'flex-end'} $align={'center'}>
       <Styles $div $divDiraction={'column'} width={'384px'}>
         <Styles $p $fontSize={'26px'} $marginBott={'16px'}>
           {isRegistrationPage ? 'Sign up' : 'Sign in'}
@@ -108,8 +106,16 @@ const AuthForm = () => {
           </Styles>
           <Styles
             $input
-            $inputColor={formik.touched.email && formik.errors.email ? '#EF5050' : '#407BFF'}
-            $borderColor={formik.touched.email && formik.errors.email ? '#EF5050' : '#D7E3FF'}
+            $inputColor={
+              formik.touched.email && formik.errors.email
+                ? '#EF5050'
+                : '#407BFF'
+            }
+            $borderColor={
+              formik.touched.email && formik.errors.email
+                ? '#EF5050'
+                : '#D7E3FF'
+            }
             $borderRadius={'6px'}
             $marginBott={'16px'}
             id="email"
@@ -128,8 +134,20 @@ const AuthForm = () => {
           </Styles>
           <Styles
             $input
-            $inputColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#407BFF'}
-            $borderColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#D7E3FF'}
+            $inputColor={
+              formik.touched.password &&
+              formik.errors.password &&
+              !formik.errors.email
+                ? '#EF5050'
+                : '#407BFF'
+            }
+            $borderColor={
+              formik.touched.password &&
+              formik.errors.password &&
+              !formik.errors.email
+                ? '#EF5050'
+                : '#D7E3FF'
+            }
             $borderRadius={'6px'}
             $marginBott={isRegistrationPage ? '16px' : '8px'}
             id="password"
@@ -150,8 +168,20 @@ const AuthForm = () => {
               </Styles>
               <Styles
                 $input
-                $inputColor={formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.password ? '#EF5050' : '#407BFF'}
-                $borderColor={formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.password ? '#EF5050' : '#D7E3FF'}
+                $inputColor={
+                  formik.touched.repeatPassword &&
+                  formik.errors.repeatPassword &&
+                  !formik.errors.password
+                    ? '#EF5050'
+                    : '#407BFF'
+                }
+                $borderColor={
+                  formik.touched.repeatPassword &&
+                  formik.errors.repeatPassword &&
+                  !formik.errors.password
+                    ? '#EF5050'
+                    : '#D7E3FF'
+                }
                 $borderRadius={'6px'}
                 $marginBott={'8px'}
                 id="repeatPassword"
@@ -163,29 +193,42 @@ const AuthForm = () => {
                 value={formik.values.repeatPassword}
               />
             </>
-          )} 
-         
-            <Styles $div $animaOn color={'#EF5050'} height={'8px'} width={'100%'} $justify={'flex-start'} $marginBott={'8px'}>
+          )}
 
-              <animated.div style={{...springs,}}>
-                {formik.touched.email && formik.errors.email
-                  ? formik.errors.email
-                  : formik.touched.password && formik.errors.password
-                  ? formik.errors.password
-                  : formik.touched.repeatPassword && formik.errors.repeatPassword
-                  ? formik.errors.repeatPassword
-                  : ''}
-              </animated.div>
-              
-            </Styles>
-         
-          <Styles $button type="submit" $borderRadius={'10px'} $marginBott={'16px'}>
+          <Styles
+            $div
+            $animaOn
+            color={'#EF5050'}
+            height={'8px'}
+            width={'100%'}
+            $justify={'flex-start'}
+            $marginBott={'8px'}
+          >
+            <animated.div style={{ ...springs }}>
+              {formik.touched.email && formik.errors.email
+                ? formik.errors.email
+                : formik.touched.password && formik.errors.password
+                ? formik.errors.password
+                : formik.touched.repeatPassword && formik.errors.repeatPassword
+                ? formik.errors.repeatPassword
+                : ''}
+            </animated.div>
+          </Styles>
+
+          <Styles
+            $button
+            type="submit"
+            $borderRadius={'10px'}
+            $marginBott={'16px'}
+          >
             Submit
           </Styles>
         </Styles>
 
         <Styles $div $justify={'flex-start'} width={'100%'}>
-          <Styles $link onClick={navTo}>To {isRegistrationPage ? 'Sign in' : 'Sign up'}</Styles>
+          <Styles $link onClick={navTo}>
+            To {isRegistrationPage ? 'Sign in' : 'Sign up'}
+          </Styles>
         </Styles>
       </Styles>
     </Styles>

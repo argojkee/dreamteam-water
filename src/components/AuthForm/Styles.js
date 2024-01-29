@@ -1,15 +1,17 @@
-import styled, { keyframes, css } from "styled-components";
+import styled
+// { keyframes, css }
+  from "styled-components";
 
-const errorAnimation = keyframes`
- 0% { padding-left: 5px; }
- 20% { padding-left: 0; }
+// const errorAnimation = keyframes`
+//  0% { padding-left: 5px; }
+//  20% { padding-left: 0; }
 
- 40% { padding-left: 5px; }
- 60% { padding-left: 0; }
+//  40% { padding-left: 5px; }
+//  60% { padding-left: 0; }
  
- 80% { padding-left: 5px; }
- 100% { padding-left: 0; }
-`;
+//  80% { padding-left: 5px; }
+//  100% { padding-left: 0; }
+// `;
 
 // 'FormContainer' get props  automatic from 'ContainerFormStyle' if you send them.
 const Div = styled.div`

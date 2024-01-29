@@ -16,27 +16,19 @@ const Div = styled.div`
 
   display: flex;
   flex-direction: ${props => props.$divDiraction || 'row'};
-  justify-content: ${props => props.$justify || 'none'};
+  justify-content: ${props => props.$justify || 'center'};
   align-items: ${props => props.$align || 'center'}; 
 
   width: ${props => props.width || 'none'};
   height: ${props => props.height || 'none'};
 
-  margin-bottom: ${props => props.$marginBott || 'none'};
+  margin-bottom: ${props => props.$marginBott || '0'};
 
   gap: ${props => props.$gap || 'none'};
 
-  color: ${props => props.color || 'none'};
+  color: ${props => props.color || '2F2F2F'};
 
-  background-color: ${props => props.Backcolor || 'none'};
-
-  ${props => props.$animaOn && css`
-
-    animation-name: ${errorAnimation};
-    animation-duration: 200ms;
-    animation-iteration-count: 1;
-
-  `};
+  background-color: ${props => props.Backcolor || 'white'};
 
 `;
 
@@ -90,7 +82,7 @@ const Text = styled.p`
 
   text-align: ${props => props.$textAlign || 'start'};
 
-  margin-bottom: ${props => props.$marginBott || 'none'};
+  margin-bottom: ${props => props.$marginBott || '0'};
 
 `;
 
@@ -139,7 +131,7 @@ const Link = styled.p`
 
   font-weight: ${props => props.$fontWeight || '500'};
 
-  margin-bottom: ${props => props.$marginBott || 'none'};
+  margin-bottom: ${props => props.$marginBott || '0'};
 
   cursor: pointer;
 

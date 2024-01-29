@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSpring, animated } from '@react-spring/web'
@@ -21,6 +22,11 @@ const AuthForm = () => {
   const location = useLocation();
 
   const isRegistrationPage = location.pathname === '/registration';
+
+  const animaDinamic = [{ paddingLeft: '20px', }, { paddingLeft: '0', },
+  { paddingLeft: '15px', }, { paddingLeft: '0', },
+  { paddingLeft: '10px', }, { paddingLeft: '0', },
+  { paddingLeft: '5px', }, { paddingLeft: '0', },];
 
   // The 'formik' check all validation expression.
   // But we have two variants form (logIn and register).
@@ -73,13 +79,13 @@ const AuthForm = () => {
 
     },
   });
-  
+
   const springs = useSpring({
 
-    from: { transform: ' rotateX(0) perspective(100px)',},
-    to: [{ transform: ' rotateX(45deg) perspective(100px)'}, { transform: 'rotateX(-45deg) perspective(100px)'}, { transform: 'rotateX(0) perspective(100px)'}],
-
-    config: { duration: 200, mass: 300,},
+    from: { paddingLeft: '0',},
+    to: [...animaDinamic],
+  
+    config: {duration: 100,},
 
   });
 
@@ -89,7 +95,7 @@ const AuthForm = () => {
 
   return (
     <Styles $div $justify={'flex-end'}  $align={'center'}>
-      <Styles $div $divDiraction={'column'} height={isRegistrationPage ? '404px' : '222px'} width={'384px'}>
+      <Styles $div $divDiraction={'column'} width={'384px'}>
         <Styles $p $fontSize={'26px'} $marginBott={'16px'}>
           {isRegistrationPage ? 'Sign up' : 'Sign in'}
         </Styles>

@@ -9,7 +9,7 @@ import { Modal } from 'components/Modal/Modal';
 import { AddForm } from 'components/AddForm/AddForm';
 import { deleteDrink } from 'API/Water/deleteDrink';
 import { getMonthInfo } from 'API/Water/getMonthInfo';
-
+import { editDrink } from 'API/Water/editDrink';
 axios.defaults.baseURL = 'https://dreamteam-water-server.onrender.com/api/';
 
 const Footer = () => {
@@ -19,8 +19,9 @@ const Footer = () => {
 
   const onCurrentDateInfoClick = async () => {
     try {
+      const date = { year: 2024, month: 'January', day: 1 };
       const dayInfo = await getCurrentDateInfo({
-        date: { year: 2024, month: '01', day: 1 },
+        date,
       });
       console.log(dayInfo);
     } catch (error) {
@@ -31,7 +32,7 @@ const Footer = () => {
   const onAddDrink = async () => {
     try {
       const drink = await addDrink({
-        date: { year: 2024, month: '01', day: 1 },
+        date: { year: 2024, month: 'January', day: 1 },
         drink: { ml: 250, time: '10:30' },
       });
       console.log(drink);
@@ -42,10 +43,7 @@ const Footer = () => {
 
   const onDeleteDrink = async () => {
     try {
-      const result = await deleteDrink({
-        _dayId: '65b7e6e9e77d7443c7b136bb',
-        _drinkId: '65b7e97a9edee7c2cc23fbdc',
-      });
+      const result = await deleteDrink('65b804d29be4e2161a1e5a15');
       console.log(result);
     } catch (e) {
       console.log(e.message);
@@ -54,7 +52,14 @@ const Footer = () => {
 
   const onGetMonthInfo = async () => {
     const result = await getMonthInfo({
-      date: { year: 2024, month: '01' },
+      date: { year: 2024, month: 'January' },
+    });
+    console.log(result);
+  };
+
+  const onEditDrink = async () => {
+    const result = await editDrink('65b804c19be4e2161a1e5a0f', {
+      drink: { ml: 500, time: '7:30' },
     });
     console.log(result);
   };
@@ -70,16 +75,41 @@ const Footer = () => {
 
   return (
     <Container>
-      <button onClick={onCurrentDateInfoClick}>Get current date info</button>
-      <button onClick={onAddDrink}>Add drink</button>
-      {/* <button onClick={onEditNormaClick}>Edit drink</button> */}
+      <button
+        style={{ backgroundColor: 'rgba(0,128,0,0.5)' }}
+        onClick={onCurrentDateInfoClick}
+      >
+        Get current date info
+      </button>
+      <button
+        style={{ backgroundColor: 'rgba(0,128,0,0.5)' }}
+        onClick={onAddDrink}
+      >
+        Add drink
+      </button>
+      <button onClick={onEditDrink}>Edit drink</button>
       <button onClick={onDeleteDrink}>Delete drink</button>
-      <button onClick={onGetMonthInfo}>Get month info</button>
+      <button
+        style={{ backgroundColor: 'rgba(0,128,0,0.5)' }}
+        onClick={onGetMonthInfo}
+      >
+        Get month info
+      </button>
       <button onClick={onEditNormaClick}>Edit norm</button>
-      <button>Get any day info</button>
+      {/* <button>Get any day info</button> */}
 
-      <button onClick={() => setIsAddShow(true)}>Open Add form</button>
-      <button onClick={() => setIsEditShow(true)}>Open Edit form</button>
+      <button
+        style={{ backgroundColor: 'rgba(0,128,0,0.5)' }}
+        onClick={() => setIsAddShow(true)}
+      >
+        Open Add form
+      </button>
+      <button
+        style={{ backgroundColor: 'rgba(0,128,0,0.5)' }}
+        onClick={() => setIsEditShow(true)}
+      >
+        Open Edit form
+      </button>
       {isAddShow && (
         <Modal
           closeModal={() => setIsAddShow(false)}

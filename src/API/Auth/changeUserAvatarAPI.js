@@ -6,12 +6,18 @@ axios.defaults.baseURL = 'https://dreamteam-water-server.onrender.com/api/';
 
 export const changeUserAvatarAPI = createAsyncThunk(
   'auth/changeUserAvatarAPI',
-  async (file, { rejectWithValue }) => {
+  async (formData, { rejectWithValue }) => {
     try {
-      const result = await axios.patch('/users/avatars', file);
-      console.log('hello');
-      toastSuccess('Deleted successful ');
-      console.log(result);
+      const {
+        data: { avatarURL },
+      } = await axios.patch('/users/avatars', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      toastSuccess('Avatar changed successful ');
+      return avatarURL;
     } catch (error) {
       toastError('Something went wrong');
       console.log(error.message);

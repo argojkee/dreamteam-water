@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import background from '../../images/main-bg/Bottle-Main-sm.png';
+
+import background from '../../images/main-bg/Bottle-Main-lg.png';
 
 export const DailyNormStyles = styled.div`
   background-image: url(${background});
@@ -8,13 +9,9 @@ export const DailyNormStyles = styled.div`
   background-repeat: no-repeat;
 
   .dailyNormaSection {
-    width: 164px;
-    height: 76px;
-
     padding: 8px 20px 8px 20px;
 
-    background-color: linear-gradient(0deg, #ffffff, #ffffff),
-      linear-gradient(0deg, #ecf2ff, #ecf2ff);
+    box-shadow: rgba(158, 187, 255, 0.12);
     border: 1px solid rgba(236, 242, 255, 1);
     border-radius: 10px;
   }
@@ -26,6 +23,11 @@ export const DailyNormStyles = styled.div`
     line-height: 1.33;
 
     text-align: left;
+  }
+
+  .button-info-container {
+    display: flex;
+    flex-direction: row;
   }
 
   span {
@@ -48,9 +50,7 @@ export const DailyNormStyles = styled.div`
     border: none;
     background-color: inherit;
 
-    /* width: 28px;
-    height: 20px; */
-
+    margin-left: 12px;
     text-align: left;
 
     color: rgba(139, 174, 255, 1);
@@ -60,13 +60,16 @@ export const DailyNormStyles = styled.div`
 
   @media screen and (max-width: 767px) {
     height: 290px;
+    background-image: url(${background});
   }
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     height: 418px;
+    background-image: url(${background});
   }
 
   @media screen and (min-width: 1280px) {
     height: 548px;
+    background-image: url(${background});
   }
 `;

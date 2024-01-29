@@ -8,29 +8,35 @@ import { BackgroundContainer,
   BenefitItem,
   BenefitItemIcon,
   BenefitItemText,
-  TrackerButton,
-  TrackerButtonText,
+  StyledLink,
+  LinkText,
   WhyDrinkWaterContainer,
   WhyDrinkWaterTitle,
   WhyDrinkWaterList,
   WhyDrinkWaterListItem,
-  WhyDrinkWaterListItemIcon} from './HomePage.styled';
+  WhyDrinkWaterListItemIcon,
+  ListText} from './HomePage.styled';
 import settingIcon from '../homepageimages/Setting.svg'; 
 import pointIcon from '../homepageimages/point.svg'; 
 import StatisticsIcon from '../homepageimages/Statistics.svg'; 
 import CalendarIcon from '../homepageimages/Calendar.svg';
-import { Link } from 'react-router-dom'; 
+import Container from 'components/Container/Container';
 
 const HomePage = () => {
   return (
     <>
       <BackgroundContainer>
+<Container>
       <ContentContainer>
+
         <TrackerBlock>
+
         <TrackerTitle>Water consumption tracker</TrackerTitle>
         <TrackerSubtitle>Record daily water intake and track</TrackerSubtitle>
         <BenefitsListTitle>Tracker Benefits</BenefitsListTitle>
+
 <BenefitsList>
+
   <BenefitItem>
   <BenefitItemIcon src={CalendarIcon} alt="CalendarIcon" width={40} height={40} />
     <BenefitItemText>Habit drive</BenefitItemText>
@@ -43,44 +49,52 @@ const HomePage = () => {
   <BenefitItemIcon src={settingIcon} alt="Setting Icon" width={40} height={40} />
     <BenefitItemText>Personal rate setting</BenefitItemText>
   </BenefitItem>
+
 </BenefitsList>
-      <TrackerButton as={Link} to="/dreamteam-water/register">
-      <TrackerButtonText>Try tracker</TrackerButtonText>
-      </TrackerButton>
+
+      <StyledLink to="/registration"> 
+      <LinkText>Try tracker</LinkText>
+      </StyledLink>
+
         </TrackerBlock>
+
         <WhyDrinkWaterContainer>
+
         <WhyDrinkWaterTitle>Why drink water</WhyDrinkWaterTitle>
       <WhyDrinkWaterList>
         <WhyDrinkWaterListItem>
         <WhyDrinkWaterListItemIcon src={pointIcon} alt="Point Icon" width={8} height={8} />
-          Supply of nutrients to all organs
+          <ListText>Supply of nutrients to all organs</ListText>
           </WhyDrinkWaterListItem>
         <WhyDrinkWaterListItem> 
           <WhyDrinkWaterListItemIcon src={pointIcon} alt="Point Icon" width={8} height={8}/>
-          Providing oxygen to the lungs
+          <ListText>Providing oxygen to the lungs</ListText>
            </WhyDrinkWaterListItem>
         <WhyDrinkWaterListItem> 
           <WhyDrinkWaterListItemIcon src={pointIcon} alt="Point Icon" width={8} height={8} />
-          Maintaining the work of the heart
+          <ListText>Maintaining the work of the heart</ListText>
           </WhyDrinkWaterListItem>
         <WhyDrinkWaterListItem> 
           <WhyDrinkWaterListItemIcon src={pointIcon} alt="Point Icon" width={8} height={8} />
-          Release of processed substances
+          <ListText>Release of processed substances</ListText>
           </WhyDrinkWaterListItem>
         <WhyDrinkWaterListItem>
         <WhyDrinkWaterListItemIcon src={pointIcon} alt="Point Icon" width={8} height={8} />
-        Ensuring the stability of the internal environment
+        <ListText>Ensuring the stability of the internal environment</ListText>
         </WhyDrinkWaterListItem>
         <WhyDrinkWaterListItem>
         <WhyDrinkWaterListItemIcon src={pointIcon} alt="Point Icon" width={8} height={8} />
-        Maintaining within the normal temperature
+        <ListText>Maintaining within the normal temperature</ListText>
         </WhyDrinkWaterListItem>
         <WhyDrinkWaterListItem> <WhyDrinkWaterListItemIcon src={pointIcon} alt="Point Icon" width={8} height={8} />
-        Maintaining an immune system capable of resisting disease
+        <ListText>Maintaining an immune system capable of resisting disease</ListText>
         </WhyDrinkWaterListItem>
       </WhyDrinkWaterList>
+
         </WhyDrinkWaterContainer>
+
       </ContentContainer>
+      </Container>
       </BackgroundContainer>
     </>
   );

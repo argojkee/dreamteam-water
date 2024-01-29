@@ -22,7 +22,7 @@ const Header = () => {
               <div className="logoText">TRACKER of water</div>
             </NavLink>
 
-            {token && (
+            {!token && (
               <div className="AuthContainer">
                 <NavLink className="textSignIn" to="login">
                   Sign in
@@ -33,7 +33,7 @@ const Header = () => {
               </div>
             )}
 
-            {!token && <UserLogoModal />}
+            {token && <UserLogoModal />}
           </div>
       </Container>
     </HeaderStyles>

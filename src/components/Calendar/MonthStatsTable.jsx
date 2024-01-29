@@ -1,20 +1,22 @@
 import { useState } from 'react';
 import MonthSwitcher from './MonthSwitcher/MonthSwitcher';
+import MonthStatistic from './MonthStatistic/MonthStatistic';
 
-const Calendar = () => {
+
+
+const MonthStatsTable = () => {
   const [selectedMonth, setSelectedMonth] = useState({
     day: null,
     month: null,
     year: null,
   });
 
-  console.log(selectedMonth);
-
   return (
-    <div style={{ marginTop: '50px', marginLeft: 'auto' }}>
+    <>
       <MonthSwitcher changeSelectedMonth={setSelectedMonth} />
-    </div>
+      <MonthStatistic  selectedMonth={selectedMonth } />
+    </>
   );
 };
 
-export default Calendar;
+export default MonthStatsTable;

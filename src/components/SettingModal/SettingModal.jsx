@@ -50,7 +50,7 @@ export const SettingModal = ({ closeModal }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    // console.log(values);
     // resetForm();
     // closeModal();
   };
@@ -72,9 +72,11 @@ export const SettingModal = ({ closeModal }) => {
     onSubmit: handleSubmit,
   });
 
-  const onChangeAvatar = e => {
-    // console.log(e.target.files[0]);
-    dispatch(changeUserAvatarAPI({ avatar: e.target.files[0] }));
+  const onChangeAvatar = ({ target: { files } }) => {
+    const formData = new FormData();
+    formData.append('avatar', files[0]);
+
+    dispatch(changeUserAvatarAPI(formData));
   };
 
   return (

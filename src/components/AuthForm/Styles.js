@@ -158,6 +158,34 @@ const Main = styled.main`
 
 `;
 
+const Main = styled.main`
+
+  width: 100%;
+  object-fit: contain;
+
+  background-image: url(../../images/signIn-signUp/back/mobile/desktop_tablet@1x.png);
+  background-image: url(../../images/signIn-signUp/back/mobile/desktop_tablet@1x.png);
+
+  @media screen and (min-width: 320px) and (max-width: 768px) { 
+    max-width: 767px;
+    background-image: url(../../images/signIn-signUp/back/mobile/back_mobile@1x.png);
+
+    @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
+      background-image: url(../../images/signIn-signUp/back/mobile/back_mobile@2x.png);
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1440px) { 
+    max-width: 1439px;
+    background-image: url(../../images/signIn-signUp/back/mobile/back_tablet@1x.png);
+
+    @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
+      background-image: url(../../images/signIn-signUp/back/mobile/back_tablet@2x.png);
+    }
+  }
+
+`;
+
 const Styles = (props) => {
 
   return( 

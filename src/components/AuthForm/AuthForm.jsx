@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSpring, animated } from '@react-spring/web'
+import { useSpring, animated } from '@react-spring/web';
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -13,7 +13,6 @@ import Styles from './Styles';
 /* end */
 
 const AuthForm = () => {
-  
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -38,17 +37,17 @@ const AuthForm = () => {
         /\w{0}[0-9a-zA-Zа-яА-Я]+@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/,
         { message: 'Invalid email' }
       )
-      .required("Email field is required"),
+      .required('Email field is required'),
     password: Yup.string()
       .min(8, 'Must be 8 characters or more')
-      .required("Password field is required"),
+      .required('Password field is required'),
   };
 
   const validationRegisterForm = {
     ...validationLoginForm,
     repeatPassword: Yup.string()
       .min(8, 'Must be 8 characters or more')
-      .required("RepeatPassword field is required")
+      .required('RepeatPassword field is required')
       .oneOf([Yup.ref('password'), null], 'Passwords must match'),
   };
 
@@ -65,17 +64,12 @@ const AuthForm = () => {
       isRegistrationPage ? validationRegisterForm : validationLoginForm
     ),
 
-    //! 'values' contains ended values all Form inputs. 
+    //! 'values' contains ended values all Form inputs.
     //! They will can get: 'values.<field name>' or change values on {email, password}
-    onSubmit: ({email, password}) => {
+    onSubmit: ({ email, password }) => {
       isRegistrationPage
-           ? dispatch(
-               signUpAPI({ email, password,})
-             )
-           : dispatch(
-               signInAPI({ email, password })
-            );
-
+        ? dispatch(signUpAPI({ email, password }))
+        : dispatch(signInAPI({ email, password }));
     },
   });
 

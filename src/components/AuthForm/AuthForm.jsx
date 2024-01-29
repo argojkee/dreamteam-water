@@ -1,6 +1,7 @@
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSpring, animated } from '@react-spring/web'
+import { useSpring, useTransition, animated } from '@react-spring/web'
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -21,6 +22,12 @@ const AuthForm = () => {
   const location = useLocation();
 
   const isRegistrationPage = location.pathname === '/registration';
+
+  const animaItems = [];
+
+  useEffect(() => {
+    if(formik.errors.email !== undefined) animaItems = formik.errors.email.split('')
+  },[]);
 
   // The 'formik' check all validation expression.
   // But we have two variants form (logIn and register).
@@ -82,6 +89,12 @@ const AuthForm = () => {
     config: { duration: 200, mass: 300,},
 
   });
+
+  const transition = useTransition(animaItems.map(element => ({...element})), {
+    from: {opacity: 0,},
+    enter: {opacity: 0,},
+    leave: {opacity: 0,},
+  })
 
   const navTo = () => {
     isRegistrationPage ? navigate('/login') : navigate('/registration');
@@ -170,6 +183,12 @@ const AuthForm = () => {
                   ? formik.errors.repeatPassword
                   : ''}
               </animated.div>
+
+              {
+                transition((item, props, key) => {
+                  <animated.p key={key} style={{...props, height: '10px', color: 'blue'}}>{item}</animated.p>
+                })
+              }
               
             </Styles>
          

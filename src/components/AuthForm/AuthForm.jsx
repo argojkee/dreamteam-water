@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSpring, animated } from '@react-spring/web'
@@ -94,98 +93,100 @@ const AuthForm = () => {
   };
 
   return (
-    <Styles $div $justify={'flex-end'}  $align={'center'}>
-      <Styles $div $divDiraction={'column'} width={'384px'}>
-        <Styles $p $fontSize={'26px'} $marginBott={'16px'}>
-          {isRegistrationPage ? 'Sign up' : 'Sign in'}
-        </Styles>
-
-        <Styles onSubmit={formik.handleSubmit} $form $formDiraction={'column'}>
-          <Styles $label htmlFor="email">
-            <Styles $p $fontWeight={'400'}>
-              Enter your email
-            </Styles>
+    <Styles $main>
+      <Styles $div $justify={'flex-end'}  $align={'center'}>
+        <Styles $div $divDiraction={'column'} width={'384px'}>
+          <Styles $p $fontSize={'26px'} $marginBott={'16px'}>
+            {isRegistrationPage ? 'Sign up' : 'Sign in'}
           </Styles>
-          <Styles
-            $input
-            $inputColor={formik.touched.email && formik.errors.email ? '#EF5050' : '#407BFF'}
-            $borderColor={formik.touched.email && formik.errors.email ? '#EF5050' : '#D7E3FF'}
-            $borderRadius={'6px'}
-            $marginBott={'16px'}
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
 
-          <Styles $label htmlFor="password">
-            <Styles $p $fontWeight={'400'}>
-              Enter your password
-            </Styles>
-          </Styles>
-          <Styles
-            $input
-            $inputColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#407BFF'}
-            $borderColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#D7E3FF'}
-            $borderRadius={'6px'}
-            $marginBott={isRegistrationPage ? '16px' : '8px'}
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-          />
-
-          {isRegistrationPage && (
-            <>
-              <Styles $label htmlFor="repeatPassword">
-                <Styles $p $fontWeight={'400'}>
-                  Repeat password
-                </Styles>
+          <Styles onSubmit={formik.handleSubmit} $form $formDiraction={'column'}>
+            <Styles $label htmlFor="email">
+              <Styles $p $fontWeight={'400'}>
+                Enter your email
               </Styles>
-              <Styles
-                $input
-                $inputColor={formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.password ? '#EF5050' : '#407BFF'}
-                $borderColor={formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.password ? '#EF5050' : '#D7E3FF'}
-                $borderRadius={'6px'}
-                $marginBott={'8px'}
-                id="repeatPassword"
-                name="repeatPassword"
-                type="password"
-                onChange={formik.handleChange}
-                placeholder="Repeat password"
-                onBlur={formik.handleBlur}
-                value={formik.values.repeatPassword}
-              />
-            </>
-          )} 
-         
-            <Styles $div $animaOn color={'#EF5050'} height={'8px'} width={'100%'} $justify={'flex-start'} $marginBott={'8px'}>
-
-              <animated.div style={{...springs,}}>
-                {formik.touched.email && formik.errors.email
-                  ? formik.errors.email
-                  : formik.touched.password && formik.errors.password
-                  ? formik.errors.password
-                  : formik.touched.repeatPassword && formik.errors.repeatPassword
-                  ? formik.errors.repeatPassword
-                  : ''}
-              </animated.div>
-              
             </Styles>
-         
-          <Styles $button type="submit" $borderRadius={'10px'} $marginBott={'16px'}>
-            Submit
-          </Styles>
-        </Styles>
+            <Styles
+              $input
+              $inputColor={formik.touched.email && formik.errors.email ? '#EF5050' : '#407BFF'}
+              $borderColor={formik.touched.email && formik.errors.email ? '#EF5050' : '#D7E3FF'}
+              $borderRadius={'6px'}
+              $marginBott={'16px'}
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Email"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+            />
 
-        <Styles $div $justify={'flex-start'} width={'100%'}>
-          <Styles $link onClick={navTo}>To {isRegistrationPage ? 'Sign in' : 'Sign up'}</Styles>
+            <Styles $label htmlFor="password">
+              <Styles $p $fontWeight={'400'}>
+                Enter your password
+              </Styles>
+            </Styles>
+            <Styles
+              $input
+              $inputColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#407BFF'}
+              $borderColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#D7E3FF'}
+              $borderRadius={'6px'}
+              $marginBott={isRegistrationPage ? '16px' : '8px'}
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Password"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+            />
+
+            {isRegistrationPage && (
+              <>
+                <Styles $label htmlFor="repeatPassword">
+                  <Styles $p $fontWeight={'400'}>
+                    Repeat password
+                  </Styles>
+                </Styles>
+                <Styles
+                  $input
+                  $inputColor={formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.password ? '#EF5050' : '#407BFF'}
+                  $borderColor={formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.password ? '#EF5050' : '#D7E3FF'}
+                  $borderRadius={'6px'}
+                  $marginBott={'8px'}
+                  id="repeatPassword"
+                  name="repeatPassword"
+                  type="password"
+                  onChange={formik.handleChange}
+                  placeholder="Repeat password"
+                  onBlur={formik.handleBlur}
+                  value={formik.values.repeatPassword}
+                />
+              </>
+            )} 
+          
+              <Styles $div $animaOn color={'#EF5050'} height={'8px'} width={'100%'} $justify={'flex-start'} $marginBott={'8px'}>
+
+                <animated.div style={{...springs,}}>
+                  {formik.touched.email && formik.errors.email
+                    ? formik.errors.email
+                    : formik.touched.password && formik.errors.password
+                    ? formik.errors.password
+                    : formik.touched.repeatPassword && formik.errors.repeatPassword
+                    ? formik.errors.repeatPassword
+                    : ''}
+                </animated.div>
+                
+              </Styles>
+          
+            <Styles $button type="submit" $borderRadius={'10px'} $marginBott={'16px'}>
+              Submit
+            </Styles>
+          </Styles>
+
+          <Styles $div $justify={'flex-start'} width={'100%'}>
+            <Styles $link onClick={navTo}>To {isRegistrationPage ? 'Sign in' : 'Sign up'}</Styles>
+          </Styles>
         </Styles>
       </Styles>
     </Styles>

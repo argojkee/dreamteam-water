@@ -41,7 +41,7 @@ export default function UserLogoModal() {
 
   let userEmail = userEmail1;
   let userName = !'' ? userEmail : userName1;
-  // let userName = 'dddddddddddddddddddddddd';
+  // let userName = 'ddddddddddddddddddddddddddddddddddddddd';
   let userAvatarUrl = '';
 
   useEffect(() => {

@@ -6,6 +6,9 @@ import { BsUpload } from 'react-icons/bs';
 import { FiEyeOff } from 'react-icons/fi';
 import { FiEye } from 'react-icons/fi';
 
+import { changeUserAvatarAPI } from 'API/Auth/changeUserAvatarAPI';
+import { useDispatch } from 'react-redux';
+
 const iconColor = '#407BFF';
 
 const schema = yup.object().shape({
@@ -40,10 +43,12 @@ export const SettingModal = ({ closeModal }) => {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showRepeatNewPassword, setShowRepeatNewPassword] = useState(false);
 
+  const dispatch = useDispatch();
+
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-    resetForm();
-    closeModal();
+    // console.log(values);
+    // resetForm();
+    // closeModal();
   };
 
   const handleMouseDownPassword = event => {
@@ -63,6 +68,13 @@ export const SettingModal = ({ closeModal }) => {
     onSubmit: handleSubmit,
   });
 
+  const onChangeAvatar = ({ target: { files } }) => {
+    const formData = new FormData();
+    formData.append('avatar', files[0]);
+
+    dispatch(changeUserAvatarAPI(formData));
+  };
+
   return (
     <SettingModalStyled>
       <h2 className="setting-title">Setting</h2>
@@ -78,6 +90,7 @@ export const SettingModal = ({ closeModal }) => {
               name="upload_photo"
               className="photo-input"
               accept=".png, .jpg, .jpeg"
+              onChange={onChangeAvatar}
             />
           </label>
         </div>

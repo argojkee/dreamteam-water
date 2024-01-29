@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { UserLogoModalStyles } from './UserLogoModal.styled';
 import vector from '../../icons/solid.png';
 import { IoMdSettings } from 'react-icons/io';
@@ -11,67 +11,25 @@ import {
   getUserName,
   getUserEmail,
   getUserAvatar,
-  getdataUser,
 } from '../../redux/auth/authSelectors';
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
+const defaultAvatarURL = 'avatars\\avatarDefault.png';
 
 export default function UserLogoModal() {
   const [isOpen, setOpen] = useState(false);
   const [isShowLogoutModal, setIsShowLogoutModal] = useState(false);
   const [isShowSettingsModal, setIsShowSettingsModal] = useState(false);
 
-  
   const userName1 = useSelector(getUserName);
-  const userEmail1 = useSelector(getUserEmail);
+  const userEmail = useSelector(getUserEmail);
   const userAvatarUrl1 = useSelector(getUserAvatar);
-  const dataUser1 = useSelector(getdataUser);
-
-  console.log('проверка');
-  console.log(userName1);
-  console.log(userEmail1);
-  console.log(userAvatarUrl1);
-  console.log(dataUser1);
-
   
-
-  // let userEmail = userEmail1;
-  // let userName = !'' ? userEmail : userName1;
-  // let userAvatarUrl = ! undefined ? userEmail[0] : userAvatarUrl1;
-
-  let userEmail = userEmail1;
-  let userName = !'' ? userEmail : userName1;
-  // let userName = 'dddddddddddddddddddddddd';
-  let userAvatarUrl = '';
-
-  useEffect(() => {
-    console.log('ефект');
-    console.log(userName);
-    if (userAvatarUrl !== undefined) {
-      return;
-      
-    }
-    checkDataUser();
-      
-  });
-
-  function checkDataUser() {
-    userAvatarUrl = userEmail[0].toUpperCase(); 
-    // if (!userName && !userAvatar) {
-    //   console.log('нету имени и аватарки');
-    //   userName = userEmail;
-    //   userAvatar = userEmail[0].toUpperCase();
-    // }
-    // if (userName && !userAvatar) {
-    //   console.log('нету аватарки');
-    //   userAvatar = userName[0].toUpperCase();
-    // }
-    // if (!userName && userAvatar) {
-    //   console.log('нету имени');
-    //   userName = userEmail;
-    // }
-  }
-
+  let userName = userName1==='' ? userEmail : userName1;
+  let userAvatarUrl = userAvatarUrl1 === defaultAvatarURL ? userEmail[0]
+    : 'https://dreamteam-water-server.onrender.com/' + userAvatarUrl1;
+  
+  
   const onLogoutPress = () => {
     setIsShowLogoutModal(true);
   };
@@ -100,11 +58,18 @@ export default function UserLogoModal() {
             >
               <div className="user-items">
                 <div className="avatarBox">
-                  {userAvatarUrl && (
-                    <img className="iconAvatar" src={userAvatarUrl} alt="" />
+                  {userAvatarUrl1 === defaultAvatarURL && (
+                    <div className="iconAvatarText">{userAvatarUrl}</div>
                   )}
-                  {!userAvatarUrl && (
-                    <div className="avatarBox">{userAvatarUrl}</div>
+                  
+                  {userAvatarUrl1 !== defaultAvatarURL && (                    
+                    <img
+                      className="iconAvatar"
+                      src={userAvatarUrl}
+                      alt="avatar"
+                      width="28"
+                      height="28"
+                    />
                   )}
                 </div>
                 <div className="стрелка">

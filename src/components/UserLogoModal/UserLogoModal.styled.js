@@ -8,17 +8,29 @@ export const UserLogoModalStyles = styled.div`
     box-shadow: none;
   }
 
+ 
+
   .avatarBox {
     width: 28px;
     height: 28px;
     border-radius: 100%;
     border: none;
-    background-color: #d3d3d3;
+    background-color: #EFECEC;
     display: inline-block;
 
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+  }
+
+  .avatar {
+    display: block;
+    font-size: xx-large;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: space-evenly;
+    align-items: center;
+}
   }
 
   .menu-user-button {
@@ -44,6 +56,14 @@ export const UserLogoModalStyles = styled.div`
     height: 100%;
     color: blue;
   }
+
+  .iconAvatarText{
+    height: 100%;
+    align-items: center;
+    font-size: x-large;
+  }
+
+ 
 
   .icon {
     margin-right: 8px;
@@ -134,7 +154,7 @@ export const UserLogoModalStyles = styled.div`
   }
 
   .test {
-    display: contents;
+    display: block;
     height: 100%;
   }
   .menu.active {

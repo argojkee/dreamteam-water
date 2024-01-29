@@ -51,8 +51,8 @@ export default function UserOwnPopover() {
     }
   }
 
-  // console.log('проверка');
-  // console.log(userAvatar);
+  console.log('проверка');
+  console.log(userAvatar);
 
   const onLogoutPress = () => {
     setIsShowLogoutModal(true);

@@ -22,7 +22,7 @@ const AuthForm = () => {
 
   const isRegistrationPage = location.pathname === '/registration';
 
-  const animaDinamic = [{ paddingLeft: '20px', }, { paddingLeft: '0', },
+  const animaDynamic = [{ paddingLeft: '20px', }, { paddingLeft: '0', },
   { paddingLeft: '15px', }, { paddingLeft: '0', },
   { paddingLeft: '10px', }, { paddingLeft: '0', },
   { paddingLeft: '5px', }, { paddingLeft: '0', },];
@@ -82,7 +82,7 @@ const AuthForm = () => {
   const springs = useSpring({
 
     from: { paddingLeft: '0',},
-    to: [...animaDinamic],
+    to: [...animaDynamic],
   
     config: {duration: 100,},
 

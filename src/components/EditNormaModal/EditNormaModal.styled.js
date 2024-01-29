@@ -1,12 +1,29 @@
 import styled from 'styled-components';
 
 export const StyledDailyNormaContainer = styled.div`
-  color: rgba(47, 47, 47, 1);
+  :root {
+    --primary-text-color: #2f2f2f;
+    --secondary-text-color: #407bff;
+  }
+
+  color: #2f2f2f;
   text-align: left;
   font-family: Roboto;
 
-  ul {
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+
+    padding: 0;
+    margin: 0;
+
     list-style: none;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 16px;
   }
 
   h1 {
@@ -18,7 +35,7 @@ export const StyledDailyNormaContainer = styled.div`
   }
 
   .form-text {
-    display: flex;
+    /* display: flex; */
     align-items: baseline;
 
     font-size: 16px;
@@ -26,15 +43,17 @@ export const StyledDailyNormaContainer = styled.div`
     line-height: 1.25;
   }
 
-  .form-text span {
+  .form-text .formula {
     font-size: 18px;
     font-weight: 400;
     line-height: 0.75;
 
-    color: rgba(64, 123, 255, 1);
+    color: #407bff;
   }
 
   .invisibleText {
+    display: block;
+
     font-size: 12px;
     font-weight: 400;
     line-height: 1.33;
@@ -48,7 +67,7 @@ export const StyledDailyNormaContainer = styled.div`
     color: rgba(143, 143, 143, 1);
 
     span {
-      color: rgba(64, 123, 255, 1);
+      color: #407bff;
     }
   }
 
@@ -71,17 +90,16 @@ export const StyledDailyNormaContainer = styled.div`
     width: 100%;
     height: 44px;
 
-    border-width: 1px;
-    border-color: rgba(215, 227, 255, 1);
-    border-style: solid;
+    border: 1px solid #d7e3ff;
     border-radius: 6px;
     padding-left: 10px;
     margin-top: 8px;
 
+    font-style: normal;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.25;
-    color: rgba(64, 123, 255, 1);
+    color: #8f8f8f;
   }
 
   h2 .water {
@@ -94,6 +112,8 @@ export const StyledDailyNormaContainer = styled.div`
     font-size: 18px;
     font-weight: 700;
     line-height: 1.33;
+
+    color: #407bff;
   }
 
   .btn-save {
@@ -102,7 +122,7 @@ export const StyledDailyNormaContainer = styled.div`
     padding: 8px, 30px, 8px, 30px;
     border-color: transparent;
     border-radius: 10px;
-    background-color: rgba(64, 123, 255, 1);
+    background-color: #407bff;
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
@@ -111,11 +131,20 @@ export const StyledDailyNormaContainer = styled.div`
     color: rgba(255, 255, 255, 1);
   }
 
-  @media screen and (max-width: 767px) {
-    /* height: 290px; */
-  }
-
+  /* @media screen and (max-width: 767px) {
+    height: 290px;
+  } */
   @media screen and (min-width: 768px) and (max-width: 1279px) {
+    .container {
+      max-width: 768px;
+    }
+
+    button.btn-save {
+      display: block;
+      width: 0;
+      padding: 10px 30px;
+      margin-left: auto;
+    }
     /* height: 418px; */
   }
 

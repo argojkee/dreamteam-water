@@ -5,25 +5,25 @@ const EditNormaModal = () => {
     <StyledDailyNormaContainer>
       <h1>My daily norma</h1>
       <form action="#" name="save_form">
-        <ul>
-          <li>
+        <ul className="list">
+          <li className="link">
             <p className="form-text">
-              For girl: <span> V=(M*0.03) + (T*0.4)</span>
+              For girl: <span className="formula"> V=(M*0.03) + (T*0.4)</span>
             </p>
           </li>
-          <li>
+          <li className="link">
             <p className="form-text">
-              For man: <span> V=(M*0,04) + (T*0,6)</span>
+              For man: <span className="formula"> V=(M*0,04) + (T*0,6)</span>
             </p>
           </li>
         </ul>
 
-        <span className="invisibleText">
+        <p className="invisibleText">
           <span>&#42;</span>V is the volume of the water norm in liters per day,
           M is your body weight, T is the time of active sports, or another type
           of activity commensurate in terms of loads (in the absence of these,
           you must set 0)
-        </span>
+        </p>
         <h2>Calculate your rate:</h2>
 
         <label htmlFor="#" className="form-text">

@@ -32,6 +32,12 @@ export const UserLogoModalStyles = styled.div`
     margin-left: auto;
   }
 
+  .main-user-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
   .menu-button svg {
     display: block;
     width: 100%;
@@ -88,7 +94,11 @@ export const UserLogoModalStyles = styled.div`
     height: 100%;
   }
 
-  .avatar-container {
+  .user-box {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    align-items: center;
     height: 100%;
   }
 
@@ -106,6 +116,8 @@ export const UserLogoModalStyles = styled.div`
 
   .menu {
     position: absolute;
+    top: calc(100% - (100% - 48px));
+    right: calc((100% - 1216px) / 2);
     width: 118px;
     height: 88px;
     padding: 16px;
@@ -121,8 +133,11 @@ export const UserLogoModalStyles = styled.div`
     transition: 0.3s;
   }
 
+  .test {
+    display: contents;
+    height: 100%;
+  }
   .menu.active {
-    top-left: 10;
     top: calc(100% - 48);
     transform: translateY(0);
     opacity: 1;

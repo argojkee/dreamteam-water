@@ -41,6 +41,7 @@ export default function UserLogoModal() {
 
   let userEmail = userEmail1;
   let userName = !'' ? userEmail : userName1;
+  // let userName = 'dddddddddddddddddddddddd';
   let userAvatarUrl = '';
 
   useEffect(() => {
@@ -84,64 +85,69 @@ export default function UserLogoModal() {
   };
 
   return (
-    <UserLogoModalStyles>
-      <ClickAwayListener
-        className="avatar-container"
-        onClickAway={handleClickAway}
-      >
-        <button
-          className="menu-user-button"
-          variant="contained"
-          onClick={() => setOpen(!isOpen)}
-        >
-          <div className="user-items">
-            <div>
-              <span className="textName">{userName}</span>
-            </div>
-            <div className="avatarBox">
-              {userAvatarUrl && (
-                <img className="iconAvatar" src={userAvatarUrl} alt="" />
-              )}
-              {!userAvatarUrl && <div className="avatarBox">{userAvatarUrl}</div>}
-            </div>
-            <div>
-              <img src={vector} alt="iconVector" className="iconSolid" />
-            </div>
-          </div>
-        </button>
-      </ClickAwayListener>
-      <nav className={`menu ${isOpen ? 'active' : ''}`}>
-        <ul className="menu-list">
-          <div className="box-menu-item" onClick={onSettingsClick}>
-            <IoMdSettings className="icon" />
-            <li className="menu-item">Settings</li>
-          </div>
-          <div className="box-menu-item" onClick={onLogoutPress}>
-            <IoExitOutline className="icon" />
-            <li className="menu-item">Log out</li>
-          </div>
-        </ul>
-      </nav>
+    <UserLogoModalStyles className="test">
+      <div className="main-user-container">
+        <div className="user-box">
+          <div className="textName">{userName}</div>
+          <ClickAwayListener
+            className="user-box-item"
+            onClickAway={handleClickAway}
+          >
+            <button
+              className="menu-user-button"
+              variant="contained"
+              onClick={() => setOpen(!isOpen)}
+            >
+              <div className="user-items">
+                <div className="avatarBox">
+                  {userAvatarUrl && (
+                    <img className="iconAvatar" src={userAvatarUrl} alt="" />
+                  )}
+                  {!userAvatarUrl && (
+                    <div className="avatarBox">{userAvatarUrl}</div>
+                  )}
+                </div>
+                <div className="стрелка">
+                  <img src={vector} alt="iconVector" className="iconSolid" />
+                </div>
+              </div>
+            </button>
+          </ClickAwayListener>
+        </div>
 
-      {isShowLogoutModal && (
-        <Modal
-          closeModal={() => setIsShowLogoutModal(false)}
-          children={
-            <LogoutDeleteModalContent
-              closeModal={() => setIsShowLogoutModal(false)}
-            />
-          }
-        />
-      )}
+        <nav className={`menu ${isOpen ? 'active' : ''}`}>
+          <ul className="menu-list">
+            <div className="box-menu-item" onClick={onSettingsClick}>
+              <IoMdSettings className="icon" />
+              <li className="menu-item">Settings</li>
+            </div>
+            <div className="box-menu-item" onClick={onLogoutPress}>
+              <IoExitOutline className="icon" />
+              <li className="menu-item">Log out</li>
+            </div>
+          </ul>
+        </nav>
 
-      {isShowSettingsModal && (
-        <Modal
-          closeModal={() => setIsShowSettingsModal(false)}
-          children={
-            <SettingModal closeModal={() => setIsShowSettingsModal(false)} />
-          }
-        />
-      )}
+        {isShowLogoutModal && (
+          <Modal
+            closeModal={() => setIsShowLogoutModal(false)}
+            children={
+              <LogoutDeleteModalContent
+                closeModal={() => setIsShowLogoutModal(false)}
+              />
+            }
+          />
+        )}
+
+        {isShowSettingsModal && (
+          <Modal
+            closeModal={() => setIsShowSettingsModal(false)}
+            children={
+              <SettingModal closeModal={() => setIsShowSettingsModal(false)} />
+            }
+          />
+        )}
+      </div>
     </UserLogoModalStyles>
   );
 }

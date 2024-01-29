@@ -7,39 +7,62 @@ import { editDailyNorm } from 'API/Auth/editDailyNorm';
 import { useDispatch } from 'react-redux';
 import { Modal } from 'components/Modal/Modal';
 import { AddForm } from 'components/AddForm/AddForm';
+import { deleteDrink } from 'API/Water/deleteDrink';
+import { getMonthInfo } from 'API/Water/getMonthInfo';
 
 axios.defaults.baseURL = 'https://dreamteam-water-server.onrender.com/api/';
 
 const Footer = () => {
-  // const [dailyId, setDailyId] = useState(null);
   const dispatch = useDispatch();
   const [isAddShow, setIsAddShow] = useState(false);
   const [isEditShow, setIsEditShow] = useState(false);
 
-  // console.log(dailyId);
-
   const onCurrentDateInfoClick = async () => {
     try {
-      await getCurrentDateInfo({
-        date: { year: 2024, month: '01', day: 28 },
+      const dayInfo = await getCurrentDateInfo({
+        date: { year: 2024, month: '01', day: 1 },
       });
-      // setDailyId(todayInfo._id);
+      console.log(dayInfo);
     } catch (error) {
       console.log(error.message);
     }
   };
 
   const onAddDrink = async () => {
-    await addDrink({
-      date: { year: 2024, month: '01', day: 1 },
-      drink: { ml: 250, time: '10:30' },
+    try {
+      const drink = await addDrink({
+        date: { year: 2024, month: '01', day: 1 },
+        drink: { ml: 250, time: '10:30' },
+      });
+      console.log(drink);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const onDeleteDrink = async () => {
+    try {
+      const result = await deleteDrink({
+        _dayId: '65b7e6e9e77d7443c7b136bb',
+        _drinkId: '65b7e97a9edee7c2cc23fbdc',
+      });
+      console.log(result);
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
+  const onGetMonthInfo = async () => {
+    const result = await getMonthInfo({
+      date: { year: 2024, month: '01' },
     });
+    console.log(result);
   };
 
   const onEditNormaClick = async () => {
     await dispatch(
       editDailyNorm({
-        date: { year: 2024, month: '01', day: 28 },
+        date: { year: 2024, month: '01', day: 1 },
         norm: 2501,
       })
     );
@@ -49,9 +72,9 @@ const Footer = () => {
     <Container>
       <button onClick={onCurrentDateInfoClick}>Get current date info</button>
       <button onClick={onAddDrink}>Add drink</button>
-      <button>Edit drink</button>
-      <button>Delete drink</button>
-      <button>Get month info</button>
+      {/* <button onClick={onEditNormaClick}>Edit drink</button> */}
+      <button onClick={onDeleteDrink}>Delete drink</button>
+      <button onClick={onGetMonthInfo}>Get month info</button>
       <button onClick={onEditNormaClick}>Edit norm</button>
       <button>Get any day info</button>
 

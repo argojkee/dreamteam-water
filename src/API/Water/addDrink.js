@@ -1,9 +1,6 @@
 import axios from 'axios';
 
-export const addDrink = async data => {
-  try {
-    await axios.post('/water/drinks', data);
-  } catch (error) {
-    console.log(error.message);
-  }
+export const addDrink = async drink => {
+  const { data } = await axios.post('/water/drinks', drink);
+  return data;
 };

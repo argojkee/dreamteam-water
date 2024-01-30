@@ -1,7 +1,13 @@
 // import { ClassNames } from "@emotion/react";
+import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats';
 import { monthsArr } from '../monthsArr';
 import { MonthStatisticlist } from './MonthStatistic.styled';
-const MonthStatistic = ({ selectedMonth }) => {
+
+
+
+const MonthStatistic = ({ selectedMonth, modalVisible, setModalVisible, setModalPosition, setSelectedMonth }) => {
+  
+
   const currentMonth = (month, statistic) => {
     const daysArr = [];
     const monthData = monthsArr[month];
@@ -26,14 +32,35 @@ const MonthStatistic = ({ selectedMonth }) => {
     { date: 8, percentage: 80 },
   ];
 
+  const handleClick = (event) => {
+    const day = Number(event.target.innerText)
+    if (day !== selectedMonth.day  ) {
+       setSelectedMonth({ ...selectedMonth, day: day });
+
+    if (modalVisible) {
+      setModalVisible(false);
+    } else {
+      const buttonRect = event.target.getBoundingClientRect();
+      const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+      const buttonCenterY = buttonRect.top + buttonRect.width;
+      
+    setModalPosition({ top: buttonCenterY, left: buttonCenterX });
+    setModalVisible(true);
+  }
+    } else {
+      setModalVisible(false);
+      // setSelectedMonth({ ...selectedMonth, day: null });
+    }
+   
+  };
+
+  
   return (
     <>
-      <MonthStatisticlist
-        style={{ display: 'flex', flexWrap: 'wrap', listStyle: 'none' }}
-      >
+      <MonthStatisticlist>
         {currentMonth(selectedMonth.month, stat).map(({ date, percentage }) => (
           <li key={date}>
-            <button
+            <button onClick={handleClick}
               title="Click to view daily statistics"
               data-fulfilled={percentage > 100 ? 'true' : 'false'}
             >
@@ -48,5 +75,3 @@ const MonthStatistic = ({ selectedMonth }) => {
 };
 
 export default MonthStatistic;
-
-// {percentage < 100 ? 'true' : 'false'}

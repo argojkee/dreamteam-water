@@ -12,6 +12,10 @@ import signUpAPI from '../../API/Auth/signUpAPI';
 import Styles from './Styles';
 /* end */
 
+import { ReactComponent as EyeIconOn } from '../../icons/signIn-signUp/outlineOn.svg';
+import { ReactComponent as EyeIconOff } from '../../icons/signIn-signUp/outlineOff.svg';
+import { useState } from 'react';
+
 const AuthForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,6 +29,10 @@ const AuthForm = () => {
   { paddingLeft: '15px', }, { paddingLeft: '0', },
   { paddingLeft: '10px', }, { paddingLeft: '0', },
   { paddingLeft: '5px', }, { paddingLeft: '0', },];
+
+  const [ passEyeToggle, setPassEyeToggle ] = useState(false);
+  const [ passRepEyeToggle, setPassRepEyeToggle ] = useState(false);
+
 
   // The 'formik' check all validation expression.
   // But we have two variants form (logIn and register).
@@ -86,6 +94,14 @@ const AuthForm = () => {
     isRegistrationPage ? navigate('/login') : navigate('/registration');
   };
 
+  const passEyeHandler = (evt) => {
+    setPassEyeToggle(value => !value)
+  };
+
+  const passRepEyeHandler = (evt) => {
+    setPassRepEyeToggle(value => !value)
+  };
+
   return (
     <Styles $main>
       <Styles $div $justify={'flex-end'}  $align={'center'}>
@@ -100,40 +116,54 @@ const AuthForm = () => {
                 Enter your email
               </Styles>
             </Styles>
-            <Styles
-              $input
-              $inputColor={formik.touched.email && formik.errors.email ? '#EF5050' : '#407BFF'}
-              $borderColor={formik.touched.email && formik.errors.email ? '#EF5050' : '#D7E3FF'}
-              $borderRadius={'6px'}
-              $marginBott={'16px'}
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Email"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
-            />
 
+           
+              <Styles
+                $input
+                $inputColor={formik.touched.email && formik.errors.email ? '#EF5050' : '#407BFF'}
+                $borderColor={formik.touched.email && formik.errors.email ? '#EF5050' : '#D7E3FF'}
+                $borderRadius={'6px'}
+                $marginBott={'16px'}
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Email"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+              />
+            
             <Styles $label htmlFor="password">
               <Styles $p $fontWeight={'400'}>
                 Enter your password
               </Styles>
             </Styles>
-            <Styles
-              $input
-              $inputColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#407BFF'}
+
+            <Styles $div width={'384px'} 
+             
               $borderColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#D7E3FF'}
-              $borderRadius={'6px'}
-              $marginBott={isRegistrationPage ? '16px' : '8px'}
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Password"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.password}
-            />
+              $borderRadius={'6px'} $marginBott={isRegistrationPage ? '16px' : '8px'} $inputPadding={'12px 10px'}
+              $border={'1px solid'}>
+          
+              <Styles
+                $input
+                $border={'none'}
+                $marginBott={'0'}
+                $inputPadding={'0'}
+                height={'fit-content'}
+                $inputColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#407BFF'}
+                id="password"
+                name="password"
+                type="text"
+                placeholder="Password"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
+              />
+
+              {formik.values.password !== '' ? passEyeToggle ? <EyeIconOff onClick={passEyeHandler}/> : <EyeIconOn onClick={passEyeHandler}/> : ''}
+
+            </Styles>
 
             {isRegistrationPage && (
               <>
@@ -142,20 +172,30 @@ const AuthForm = () => {
                     Repeat password
                   </Styles>
                 </Styles>
+
+                <Styles $div width={'384px'} 
+             
+                  $borderColor={formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.email ? '#EF5050' : '#D7E3FF'}
+                  $borderRadius={'6px'} $marginBott={isRegistrationPage ? '8px' : '16px'} $inputPadding={'12px 10px'}
+                  $border={'1px solid'}>
+
                 <Styles
                   $input
+                  $border={'none'}
+                  $marginBott={'0'}
+                  $inputPadding={'0'}
+                  height={'fit-content'}
                   $inputColor={formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.password ? '#EF5050' : '#407BFF'}
-                  $borderColor={formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.password ? '#EF5050' : '#D7E3FF'}
-                  $borderRadius={'6px'}
-                  $marginBott={'8px'}
                   id="repeatPassword"
                   name="repeatPassword"
-                  type="password"
+                  type="text"
                   onChange={formik.handleChange}
                   placeholder="Repeat password"
                   onBlur={formik.handleBlur}
                   value={formik.values.repeatPassword}
                 />
+                {formik.values.repeatPassword !== '' ? passRepEyeToggle ? <EyeIconOff onClick={passRepEyeHandler}/> : <EyeIconOn onClick={passRepEyeHandler}/> : ''}
+                </Styles>
               </>
             )} 
           

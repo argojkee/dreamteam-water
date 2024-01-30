@@ -13,11 +13,17 @@ const Div = styled.div`
 
   margin-bottom: ${props => props.$marginBott || '0'};
 
-  gap: ${props => props.$gap || 'none'};
+  padding: ${props => props.$inputPadding ||'0'};
+
+  gap: ${props => props.$gap || '0'};
 
   color: ${props => props.color || '2F2F2F'};
 
   background-color: ${props => props.Backcolor || 'white'};
+
+  border-radius: ${props => props.$borderRadius || 'none'};
+
+  border: ${props => props.$border || 'none'} ${props => props.$borderColor || 'white'};
 
 `;
 
@@ -31,7 +37,7 @@ const Form = styled.form`
 
   width: ${props => props.width || '100%'};
   
-
+  margin-bottom: ${props => props.$marginBott || '8px'};
   background-color: ${props => props.color || 'transparent'};
 
 `;
@@ -45,17 +51,17 @@ const Input = styled.input`
   font-size: ${props => props.$fontSize || '16px'};
   color: ${props => props.$inputColor || 'none'};
 
-  padding: 12px 10px;
+  padding: ${props => props.$inputPadding ||'12px 10px'};
 
   margin-bottom: ${props => props.$marginBott || '8px'};
 
   border-radius: ${props => props.$borderRadius || 'none'};
   background-color: ${props => props.color || 'transparent'};
-  border: 1px solid ${props => props.$borderColor || '#D7E3FF'};
+  border: ${props => props.$border || '1px solid'};
+  border-color: ${props => props.$borderColor || '#D7E3FF'};
   outline: 'none';
 
   &:focus {
-    border: 1px solid ${props => props.$borderColor || '#D7E3FF'};
     outline: none;
   }
 

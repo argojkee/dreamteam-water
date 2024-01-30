@@ -41,6 +41,7 @@ export const SettingModalStyled = styled.div`
   .upload-photo-label {
     display: flex;
     gap: 8px;
+    cursor: pointer;
   }
 
   .upload-photo-text {

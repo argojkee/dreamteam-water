@@ -1,13 +1,15 @@
-// import { ClassNames } from "@emotion/react";
+import { useCallback, useState } from 'react';
 import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats';
 import { monthsArr } from '../monthsArr';
 import { MonthStatisticlist } from './MonthStatistic.styled';
+// import { throttle } from 'lodash';
+import { throttle } from './throttle';
 
+const MonthStatistic = ({ selectedMonth, setSelectedMonth}) => {
 
-
-const MonthStatistic = ({ selectedMonth, modalVisible, setModalVisible, setModalPosition, setSelectedMonth }) => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   
-
   const currentMonth = (month, statistic) => {
     const daysArr = [];
     const monthData = monthsArr[month];
@@ -19,7 +21,7 @@ const MonthStatistic = ({ selectedMonth, modalVisible, setModalVisible, setModal
       if (day) {
         daysArr.push({ date: i, percentage: day.percentage });
       } else {
-        daysArr.push({ date: i, percentage: '0' });
+        daysArr.push({ date: i, percentage: '' });
       }
     }
     return daysArr;
@@ -32,36 +34,27 @@ const MonthStatistic = ({ selectedMonth, modalVisible, setModalVisible, setModal
     { date: 8, percentage: 80 },
   ];
 
-  const handleClick = (event) => {
-    const day = Number(event.target.innerText)
-    if (day !== selectedMonth.day  ) {
-       setSelectedMonth({ ...selectedMonth, day: day });
+ const handleMouseEnter = useCallback(
+    throttle((event) => {
+      const day = Number(event.target.innerText);
+      setSelectedMonth(prevState => ({ ...prevState, day }))
 
-    if (modalVisible) {
-      setModalVisible(false);
-    } else {
       const buttonRect = event.target.getBoundingClientRect();
       const buttonCenterX = buttonRect.left + buttonRect.width / 2;
-      const buttonCenterY = buttonRect.top + buttonRect.width;
-      
-    setModalPosition({ top: buttonCenterY, left: buttonCenterX });
-    setModalVisible(true);
-  }
-    } else {
-      setModalVisible(false);
-      // setSelectedMonth({ ...selectedMonth, day: null });
-    }
-   
-  };
+      const buttonCenterY = buttonRect.top + window.scrollY;
 
-  
+      setModalPosition({ top: buttonCenterY, left: buttonCenterX });
+      setModalVisible(true);
+    }, 500),
+    []
+  );
+
   return (
     <>
       <MonthStatisticlist>
         {currentMonth(selectedMonth.month, stat).map(({ date, percentage }) => (
           <li key={date}>
-            <button onClick={handleClick}
-              title="Click to view daily statistics"
+            <button onMouseEnter={handleMouseEnter}
               data-fulfilled={percentage > 100 ? 'true' : 'false'}
             >
               {date}
@@ -70,6 +63,7 @@ const MonthStatistic = ({ selectedMonth, modalVisible, setModalVisible, setModal
           </li>
         ))}
       </MonthStatisticlist>
+      {modalVisible && (<DaysGeneralStats top={modalPosition.top} left={modalPosition.left} setModalVisible={setModalVisible} selectedMonth={selectedMonth}/>)}
     </>
   );
 };

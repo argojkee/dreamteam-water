@@ -104,19 +104,18 @@ const AuthForm = () => {
 
   return (
     <Styles $main>
-      <Styles $div $justify={'flex-end'}  $align={'center'}>
-        <Styles $div $divDiraction={'column'} width={'384px'}>
+      <Styles $div $back $justify={'flex-end'} $align={'center'} width={'100%'}>
+        <Styles $div $divDiraction={'column'} $pass>
           <Styles $p $fontSize={'26px'} $marginBott={'16px'}>
             {isRegistrationPage ? 'Sign up' : 'Sign in'}
           </Styles>
-
+          
           <Styles onSubmit={formik.handleSubmit} $form $formDiraction={'column'}>
             <Styles $label htmlFor="email">
               <Styles $p $fontWeight={'400'}>
                 Enter your email
               </Styles>
             </Styles>
-
            
               <Styles
                 $input
@@ -139,7 +138,7 @@ const AuthForm = () => {
               </Styles>
             </Styles>
            
-            <Styles $div width={'384px'} 
+            <Styles $div $pass  
              
               $borderColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#D7E3FF'}
               $borderRadius={'6px'} $marginBott={isRegistrationPage ? '16px' : '8px'} $inputPadding={'12px 10px'}
@@ -173,7 +172,7 @@ const AuthForm = () => {
                   </Styles>
                 </Styles>
 
-                <Styles $div width={'384px'} 
+                <Styles $div $pass 
              
                   $borderColor={formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.email ? '#EF5050' : '#D7E3FF'}
                   $borderRadius={'6px'} $marginBott={isRegistrationPage ? '8px' : '16px'} $inputPadding={'12px 10px'}

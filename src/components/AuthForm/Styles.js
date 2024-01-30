@@ -1,4 +1,13 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+import BackMobile1 from '../../images/signIn-signUp/back/mobile/back_mobile@1x.png';
+import BackMobile2 from '../../images/signIn-signUp/back/mobile/back_mobile@2x.png';
+
+import BackTablet1 from '../../images/signIn-signUp/back/tablet/back_tablet@1x.png';
+import BackTablet2 from '../../images/signIn-signUp/back/tablet/back_tablet@2x.png';
+
+import BackDesk1 from '../../images/signIn-signUp/back/desktop/back__desktop@1x.png';
+import BackDesk2 from '../../images/signIn-signUp/back/desktop/back__desktop@2x.png';
 
 // 'FormContainer' get props  automatic from 'ContainerFormStyle' if you send them.
 const Div = styled.div`
@@ -8,8 +17,8 @@ const Div = styled.div`
   justify-content: ${props => props.$justify || 'center'};
   align-items: ${props => props.$align || 'center'}; 
 
-  width: ${props => props.width || 'none'};
-  height: ${props => props.height || 'none'};
+  width: ${props => props.width || '0'};
+  height: ${props => props.height || 'fit-content'};
 
   margin-bottom: ${props => props.$marginBott || '0'};
 
@@ -19,12 +28,53 @@ const Div = styled.div`
 
   color: ${props => props.color || '2F2F2F'};
 
-  background-color: ${props => props.Backcolor || 'white'};
+  background-color: ${props => props.$backColor || 'transparent'};
 
   border-radius: ${props => props.$borderRadius || 'none'};
 
   border: ${props => props.$border || 'none'} ${props => props.$borderColor || 'white'};
 
+  ${props => props.$back && css `
+
+    background-size: contain;
+
+    background: url(${BackMobile1});
+    background: url(${BackMobile2});
+
+    @media screen and (min-width: 320px) and (max-width: 768px) { 
+      max-width: 767px;
+      background: url(${BackTablet1});
+
+      @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
+        background: url(${BackTablet2});
+      }
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1440px) { 
+      max-width: 1439px;
+      background: url(${BackDesk1});
+
+      @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
+        background: url(${BackDesk2});
+      }
+    }
+
+  `}
+
+  ${props => props.$pass && css `
+
+    width: 280px;
+
+    @media screen and (min-width: 768px) and (max-width: 1440px) { 
+      width: 336px;
+    }
+  
+    @media screen and (min-width: 1440px) { 
+      width: 384px;
+    }
+
+  `};
+  
 `;
 
 const Form = styled.form`
@@ -38,13 +88,13 @@ const Form = styled.form`
   width: ${props => props.width || '100%'};
   
   margin-bottom: ${props => props.$marginBott || '8px'};
-  background-color: ${props => props.color || 'transparent'};
+  background-color: ${props => props.Backcolor || 'transparent'};
 
 `;
 
 const Input = styled.input`
 
-  width: ${props => props.width || '384px'};
+  width: ${props => props.width || '280px'};
   height: ${props => props.height || '44px'};
 
   font-family: roboto;
@@ -63,6 +113,14 @@ const Input = styled.input`
 
   &:focus {
     outline: none;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1440px) { 
+    width: 336px;
+  }
+
+  @media screen and (min-width: 1440px) { 
+    width: 384px;
   }
 
 `;
@@ -141,26 +199,7 @@ const Main = styled.main`
   width: 100%;
   object-fit: contain;
 
-  background-image: url(../../images/signIn-signUp/back/mobile/desktop_tablet@1x.png);
-  background-image: url(../../images/signIn-signUp/back/mobile/desktop_tablet@1x.png);
-
-  @media screen and (min-width: 320px) and (max-width: 768px) { 
-    max-width: 767px;
-    background-image: url(../../images/signIn-signUp/back/mobile/back_mobile@1x.png);
-
-    @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
-      background-image: url(../../images/signIn-signUp/back/mobile/back_mobile@2x.png);
-    }
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1440px) { 
-    max-width: 1439px;
-    background-image: url(../../images/signIn-signUp/back/mobile/back_tablet@1x.png);
-
-    @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
-      background-image: url(../../images/signIn-signUp/back/mobile/back_tablet@2x.png);
-    }
-  }
+ 
 
 `;
 

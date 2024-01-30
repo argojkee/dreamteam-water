@@ -24,12 +24,12 @@ const EditNormaModal = () => {
         <label htmlFor="#">
           Your weight in kilograms:
           <br />
-          <input type="number" name="number" value={0} />
+          {/* <input type="number" name="number" value={0} /> */}
         </label>
         <p>The required amount of water in liters per day: 1.8 L</p>
 
         <h2>Write down how much water you will drink:</h2>
-        <input type="number" name="number" value={0} />
+        {/* <input type="number" name="number" value={0} /> */}
         <br />
         <button type="submit">Save</button>
       </form>

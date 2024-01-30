@@ -138,7 +138,7 @@ const AuthForm = () => {
                 Enter your password
               </Styles>
             </Styles>
-
+           
             <Styles $div width={'384px'} 
              
               $borderColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#D7E3FF'}

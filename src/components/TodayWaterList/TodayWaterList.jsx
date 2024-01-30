@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { DrinkElement } from "./DrinkElement";
 import { EmptyTxt, H2, ListUl } from "./TodayWaterList.styled";
 

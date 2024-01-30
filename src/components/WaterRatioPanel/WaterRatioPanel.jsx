@@ -19,25 +19,25 @@
 //    )
 // }
 
-import React, { useState } from "react";
 import { CiCirclePlus } from "react-icons/ci";
 
-import { AddWaterButton, ButtonIcon, PanelDiv, Slider2, SliderContainerDiv, SliderInput } from "./WaterRatioPanel.styled";
+import { AddWaterButton, ButtonIcon, PanelDiv, SliderContainerDiv, SliderInput } from "./WaterRatioPanel.styled";
 
-const marks = {
-   0: '0%',
-   50: '50%',
-   100: '100%',
-}
+// const marks = {
+//    0: '0%',
+//    50: '50%',
+//    100: '100%',
+// }
 
 export const WaterRatioPanel = () => {
-   const [value, setValue] = useState(20); // добавить значение
+   // const [value, setValue] = useState(20); // добавить значение
+   const value = 20;
 
    
 
-   const handleSliderChange = (event) => {
-      setValue(event.target.value);
-   };
+   // const handleSliderChange = (event) => {
+   //    setValue(event.target.value);
+   // };
 
    return (
       <PanelDiv>
@@ -65,7 +65,7 @@ export const WaterRatioPanel = () => {
                value={value}
                // onChange={handleSliderChange}
             />
-
+            
             {/* <SliderValueDiv className="slider-value" id="sliderValue">
                {value}
             </SliderValueDiv> */}

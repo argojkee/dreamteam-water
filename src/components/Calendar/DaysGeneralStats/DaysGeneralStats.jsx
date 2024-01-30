@@ -3,7 +3,7 @@ import { WaterStatsContainer } from "./DaysGeneralStats.styled";
 import { TfiClose } from "react-icons/tfi";
 import { monthsArr } from "../monthsArr";
 
-const DaysGeneralStats = ({ setModalVisible, top, left, selectedMonth, selectedDay, setSelectedDay}) => {
+const DaysGeneralStats = ({ setModalVisible, top, left, selectedMonth}) => {
 
 useEffect(() => {
     function handleClickOutside(event) {

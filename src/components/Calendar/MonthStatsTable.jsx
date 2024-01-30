@@ -11,7 +11,7 @@ const MonthStatsTable = () => {
 
   return (
     <div >
-      <MonthSwitcher setSelectedMonth={setSelectedMonth} />
+      <MonthSwitcher setSelectedMonth={setSelectedMonth}/>
       <MonthStatistic selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth} /> 
     </div>
   );

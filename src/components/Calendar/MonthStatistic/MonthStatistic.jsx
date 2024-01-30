@@ -1,9 +1,8 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats';
 import { monthsArr } from '../monthsArr';
 import { MonthStatisticlist } from './MonthStatistic.styled';
-// import { throttle } from 'lodash';
-import { throttle } from './throttle';
+
 
 const MonthStatistic = ({ selectedMonth, setSelectedMonth}) => {
 
@@ -34,20 +33,17 @@ const MonthStatistic = ({ selectedMonth, setSelectedMonth}) => {
     { date: 8, percentage: 80 },
   ];
 
- const handleMouseEnter = useCallback(
-    throttle((event) => {
-      const day = Number(event.target.innerText);
-      setSelectedMonth(prevState => ({ ...prevState, day }))
+  const handleMouseEnter = (event) => {
+    const day = Number(event.target.innerText);
+    setSelectedMonth(prevState => ({ ...prevState, day }))
 
-      const buttonRect = event.target.getBoundingClientRect();
-      const buttonCenterX = buttonRect.left + buttonRect.width / 2;
-      const buttonCenterY = buttonRect.top + window.scrollY;
+    const buttonRect = event.target.getBoundingClientRect();
+    const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+    const buttonCenterY = buttonRect.top + window.scrollY;
 
-      setModalPosition({ top: buttonCenterY, left: buttonCenterX });
-      setModalVisible(true);
-    }, 500),
-    []
-  );
+    setModalPosition({ top: buttonCenterY, left: buttonCenterX });
+    setModalVisible(true);
+  }
 
   return (
     <>

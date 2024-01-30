@@ -158,7 +158,7 @@ const AuthForm = () => {
                 placeholder="Password"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.password}
+                value={formik.values.password }
               />
 
               {formik.values.password !== '' ? passEyeToggle ? <EyeIconOff onClick={passEyeHandler}/> : <EyeIconOn onClick={passEyeHandler}/> : ''}

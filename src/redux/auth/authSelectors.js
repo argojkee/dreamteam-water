@@ -4,6 +4,8 @@ export const getUserAvatar = state => state.auth.user.avatarURL;
 
 export const getUserEmail = state => state.auth.user.email;
 
+export const getUserGender = state => state.auth.user.gender;
+
 export const getToken = state => state.auth.token;
 
 export const getdataUser = state => state.auth.user;

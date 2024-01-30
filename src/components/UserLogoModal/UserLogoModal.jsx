@@ -14,6 +14,7 @@ import {
 } from '../../redux/auth/authSelectors';
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
+const BASE_URL = 'https://dreamteam-water-server.onrender.com/';
 const defaultAvatarURL = 'avatars\\avatarDefault.png';
 
 export default function UserLogoModal() {
@@ -24,14 +25,15 @@ export default function UserLogoModal() {
   let userName1 = useSelector(getUserName);
   const userEmail = useSelector(getUserEmail);
   const userAvatarUrl1 = useSelector(getUserAvatar);
-  console.log('dddddddddddddddd');
-  console.log(userName1);
+  console.log('проверка аватарки');
+  console.log(userAvatarUrl1);
   
   
   let userName = userName1 === '' ? userEmail : userName1;
-  let userAvatarUrl = userAvatarUrl1 === defaultAvatarURL ? userEmail[0]
-    : 'https://dreamteam-water-server.onrender.com/' + userAvatarUrl1;
+  let userAvatarUrl = userAvatarUrl1 === defaultAvatarURL ? BASE_URL + defaultAvatarURL:
+    BASE_URL + userAvatarUrl1;
   
+  console.log(userAvatarUrl);
   
   const onLogoutPress = () => {
     setIsShowLogoutModal(true);
@@ -51,17 +53,16 @@ export default function UserLogoModal() {
         <div className="user-box">
           <div className="textName">{userName}</div>
           <ClickAwayListener onClickAway={handleClickAway}>
-           
-              <button
-                className="menu-user-button"
-                variant="contained"
-                onClick={() => setOpen(!isOpen)}
-              >
-                <div className="user-items">
-                  <div className="avatarBox">
-                    {userAvatarUrl1 === defaultAvatarURL && (
-                      <div className="iconAvatarText">{userAvatarUrl}</div>
-                    )}
+            <button
+              className="menu-user-button"
+              variant="contained"
+              onClick={() => setOpen(!isOpen)}
+            >
+              <div className="user-items">
+                <div className="avatarBox">
+                  {userAvatarUrl1 === defaultAvatarURL && (
+                    <div className="iconAvatarText">{userEmail[0]}</div>
+                  )}
 
                   {userAvatarUrl1 !== defaultAvatarURL && (
                     <div className="avatarBox">
@@ -72,15 +73,14 @@ export default function UserLogoModal() {
                         width="28"
                         height="28"
                       />
-                      </div>
-                    )}
-                  </div>
-                  <div className="стрелка">
-                    <img src={vector} alt="iconVector" className="iconSolid" />
-                  </div>
+                    </div>
+                  )}
                 </div>
-              </button>
-          
+                <div className="стрелка">
+                  <img src={vector} alt="iconVector" className="iconSolid" />
+                </div>
+              </div>
+            </button>
           </ClickAwayListener>
         </div>
 

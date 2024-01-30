@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Slider from 'rc-slider';
 
 export const PanelDiv = styled.div`
     width: 100%;
@@ -13,24 +12,24 @@ export const SliderContainerDiv = styled.div`
     width: 100%;
     position: relative;
 `
+// rc-slider - не получилось
+// export const Slider2 = styled(Slider)`
+//   &.rc-slider-rail {
+//     position: absolute;
+//     width: 100%;
+//     height: 4px;
+//     background-color: #e9e9e9;
+//     border-radius: 6px;
+//   }
 
-export const Slider2 = styled(Slider)`
-  &.rc-slider-rail {
-    position: absolute;
-    width: 100%;
-    height: 4px;
-    background-color: #e9e9e9;
-    border-radius: 6px;
-  }
-
-  &.rc-slider-track,
-  &.rc-slider-tracks {
-    position: absolute;
-    height: 4px;
-    background-color: tint(blue, 60%);
-    border-radius: 6px;
-  }
-`
+//   &.rc-slider-track,
+//   &.rc-slider-tracks {
+//     position: absolute;
+//     height: 4px;
+//     background-color: tint(blue, 60%);
+//     border-radius: 6px;
+//   }
+// `
 
 export const SliderInput = styled.input`
     width: 100%;

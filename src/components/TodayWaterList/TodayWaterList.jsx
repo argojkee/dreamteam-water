@@ -3,12 +3,6 @@ import { useDispatch} from "react-redux";
 import { DrinkElement } from "./DrinkElement";
 import { EmptyTxt, H2, ListUl } from "./TodayWaterList.styled";
 
-/*
-    ✔ TodayWaterList - показує список порцій води, випитої юзером на протязі дня,
-    Компонент рендерить: 
-    -шкалу з відношенням випитої води за день відносно визначеної норми,
-    -кнопку AddWater що відкриває модалку TodayListModal для вводу значення кількості випитої порції води.
-*/
 const testList = [
     {
         id: 1,
@@ -54,7 +48,8 @@ export function TodayWaterList() {
     useEffect(() => {
         // dispatch(requestGetAllContacts())
     }, [dispatch])
-
+    
+    //TODO Логика для определения значений списка
     // const contacts = useSelector((state) => state.contactList.contacts.items);
     // const filterWord = useSelector((state) => state.contactList.filter)
 

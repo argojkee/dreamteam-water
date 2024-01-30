@@ -1,24 +1,3 @@
-/*
-   ✔ WaterRatioPanel - показує відношення фактично випитої води до запланованої к-сті, а також здійснює відкриття модалки в якій відбувається запис,
-   Історія споживання води протягом дня:
-   - В цьому компоненті відображається список з порціями води випитими користувачем протягом дня.
-   - Кожен запис(елемент списку) містить інформацію про обсяг випитої води (наприклад, "250 мл") та час споживання (наприклад, "7:00 AM").
-   - Користувач може додавати нові записи, використовуючи кнопку Add water з компоненту WaterRatioPanel
-*/
-
-// export const WaterRatioPanel = () => {
-//    return (
-//       <div>
-//          <progress max="100" value="50">прогресс</progress>
-//          <div>
-//             <div>0%</div>
-//             <div>50%</div>
-//             <div>100%</div>
-//          </div>
-//       </div>
-//    )
-// }
-
 import { CiCirclePlus } from "react-icons/ci";
 
 import { AddWaterButton, ButtonIcon, PanelDiv, SliderContainerDiv, SliderInput } from "./WaterRatioPanel.styled";
@@ -32,8 +11,6 @@ import { AddWaterButton, ButtonIcon, PanelDiv, SliderContainerDiv, SliderInput }
 export const WaterRatioPanel = () => {
    // const [value, setValue] = useState(20); // добавить значение
    const value = 20;
-
-   
 
    // const handleSliderChange = (event) => {
    //    setValue(event.target.value);

@@ -51,37 +51,21 @@ export const SettingModal = ({ closeModal }) => {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showRepeatNewPassword, setShowRepeatNewPassword] = useState(false);
   const userData = useSelector(getCurrentUser);
-  const avatar = userData.user.avatarURL;
-  const userName = userData.user.name;
-  const userEmail = userData.user.email;
-  const userGender = userData.user.gender;
+  const avatar = userData.avatarURL;
+  const userName = userData.name;
+  const userEmail = userData.email;
+  const userGender = userData.gender;
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (
-    { name, email, gender, password, newPassword },
-    { resetForm }
-  ) => {
-    if (newPassword === '') {
-      dispatch(
-        changeUserData({
-          name,
-          email,
-          gender,
-          password,
-        })
-      );
-    } else {
-      dispatch(
-        changeUserData({
-          name,
-          email,
-          password,
-          gender,
-          newPassword,
-        })
-      );
-    }
+  const handleSubmit = (values, { resetForm }) => {
+    const arrayWithValues = Object.entries(values).filter(
+      ([key, value]) => value
+    );
+
+    const requestObj = Object.fromEntries(arrayWithValues);
+    dispatch(changeUserData(requestObj));
+
     resetForm();
     closeModal();
   };

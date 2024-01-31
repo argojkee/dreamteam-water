@@ -1,7 +1,7 @@
-import Calendar from 'components/Calendar/Calendar';
 import Container from 'components/Container/Container';
 import DailyNorm from 'components/DailyNorm/DailyNorm';
 import { MainPageStyles } from './pageStyles/MainPageStyles.styled';
+import MonthStatsTable from 'components/Calendar/MonthStatsTable';
 
 const MainPage = () => {
   return (
@@ -15,7 +15,7 @@ const MainPage = () => {
             </div>
             <div className="right-side">
               <div className="today">Today</div>
-              <Calendar />
+              <MonthStatsTable/>
             </div>
           </div>
         </Container>

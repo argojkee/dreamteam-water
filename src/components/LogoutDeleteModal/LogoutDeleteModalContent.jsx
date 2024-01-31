@@ -3,7 +3,6 @@ import logOutAPI from 'API/Auth/logOutAPI';
 import { useDispatch } from 'react-redux';
 
 const LogoutDeleteModalContent = ({ closeModal, id }) => {
-  console.log(closeModal);
   const isDeleteModal = !!id;
   const dispatch = useDispatch();
 

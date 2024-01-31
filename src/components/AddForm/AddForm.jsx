@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AddFormStyles } from './AddForm.styled';
+import { getToken } from '../../redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
 
 export const AddForm = ({
   closeAddForm,
@@ -9,13 +11,36 @@ export const AddForm = ({
 }) => {
   const [waterAmount, setWaterAmount] = useState(0);
   const [recordTime, setRecordTime] = useState(getDefaultTime());
+  const [lastWaterInfo, setLastWaterInfo] = useState(null);
+  const token = useSelector(getToken);
 
-  useEffect(() => {
-    if (drinkId) {
-      setWaterAmount(previousWaterData?.amount || 0);
-      setRecordTime(previousWaterData?.time || getDefaultTime());
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        'https://dreamteam-water-server.onrender.com/api/water',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ date: new Date() }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+
+      const data = await response.json();
+      setLastWaterInfo(data.dayInfo);
+    } catch (error) {
+      console.error('Error fetching water data:', error);
     }
-  }, [drinkId, previousWaterData]);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   function getDefaultTime() {
     const now = new Date();
@@ -41,6 +66,14 @@ export const AddForm = ({
     closeAddForm();
   };
 
+  const showLastWaterInfo = lastWaterInfo &&
+    lastWaterInfo.drinks.length > 0 && (
+      <>
+        <h2>🥤</h2>
+        <p>{`${lastWaterInfo.drinks[0].ml} ml ${lastWaterInfo.drinks[0].time}`}</p>
+      </>
+    );
+
   const showEditData = drinkId ? (
     <>
       <h1>Edit the entered amount of water</h1>
@@ -57,6 +90,7 @@ export const AddForm = ({
   return (
     <AddFormStyles>
       {showEditData}
+      {showLastWaterInfo}
       <div className="edit-water-form">
         <div className="step-input">
           <button onClick={() => setWaterAmount(prev => prev - 50)}>-</button>

@@ -104,6 +104,7 @@ export const AddWaterButton = styled.button`
     letter-spacing: 0em;
     text-align: center;
     color: white;
+    text-transform: capitalize;
 
     &:hover, &:focus, &:active {
         outline: none;

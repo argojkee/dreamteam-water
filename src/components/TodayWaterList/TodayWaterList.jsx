@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch} from "react-redux";
+import { FaPlus } from "react-icons/fa6";
+
 import { DrinkElement } from "./DrinkElement";
-import { EmptyTxt, H2, ListUl } from "./TodayWaterList.styled";
+import { AddTodayWaterBtn, EmptyTxt, H2, ListUl } from "./TodayWaterList.styled";
 
 const testList = [
     {
@@ -72,11 +74,17 @@ export function TodayWaterList() {
                             id={id}
                             vol={vol}
                             time={time}
+                            color="#cfdaf5aa"
                         />
                     ))
                     : (<EmptyTxt>List is empty.</EmptyTxt>)
                 }
             </ListUl>
+
+            <AddTodayWaterBtn>
+                <FaPlus />
+                add water
+            </AddTodayWaterBtn>
         </>
     )
 }

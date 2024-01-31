@@ -13,11 +13,9 @@ const MainPage = () => {
           <div className="main-container">
             <div className="left-side">
               <DailyNorm />
-              {/* <div className="status-bar"> Status bar</div> */}
               <WaterRatioPanel></WaterRatioPanel>
             </div>
             <div className="right-side">
-              {/* <div className="today">Today</div> */}
               <TodayWaterList></TodayWaterList>
               <MonthStatsTable />
             </div>

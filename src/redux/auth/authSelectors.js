@@ -8,7 +8,7 @@ export const getUserGender = state => state.auth.user.gender;
 
 export const getToken = state => state.auth.token;
 
-export const getCurrentUser = state => state.auth.user.user;
+export const getCurrentUser = state => state.auth.user;
 
 // export const getIsLoadingAuthUser = state => state.auth.isLoadingAuthUser;
 

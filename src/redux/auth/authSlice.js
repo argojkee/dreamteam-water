@@ -65,7 +65,7 @@ const authSlice = createSlice({
       })
       .addCase(fetchCurrentUserAPI.fulfilled, (state, { payload }) => {
         state.authIsLoading = false;
-        state.user = { ...payload };
+        state.user = { ...payload.user };
       })
       .addCase(fetchCurrentUserAPI.rejected, state => {
         state.authIsLoading = false;
@@ -96,7 +96,7 @@ const authSlice = createSlice({
 
       /******************************fetch user info */
       .addCase(changeUserData.fulfilled, (state, { payload }) => {
-        state.user = { ...state.user, ...payload };
+        state.user = { ...state.user, ...payload.user };
       });
   },
 });

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { UserLogoModalStyles } from './UserLogoModal.styled';
 import vector from '../../icons/solid.png';
 import { IoMdSettings } from 'react-icons/io';
@@ -21,19 +21,20 @@ export default function UserLogoModal() {
   const dataUser = useSelector(getCurrentUser);
 
   let unpolished_userEmail = '';
-  let unpolished_userName =  '';
+  let unpolished_userName = '';
   let unpolished_userAvatarUrl = '';
   console.log(dataUser);
   try {
-     //const get_water_Current_Month = useSelector(getCurrentMonth);
-   unpolished_userEmail = dataUser.email; //dataUser.email;
-   unpolished_userName =  dataUser.name;
-   unpolished_userAvatarUrl = dataUser.avatarURL;
+    //const get_water_Current_Month = useSelector(getCurrentMonth);
+    unpolished_userEmail = dataUser.email; //dataUser.email;
+    unpolished_userName = dataUser.name;
+    unpolished_userAvatarUrl = dataUser.avatarURL;
+  } catch (error) {
+    console.log(
+      'данные скинулись и все по нулям, а сейчас снова подтянутся с бекенда'
+    );
   }
-  catch (error) {
-    console.log('данные скинулись и все по нулям, а сейчас снова подтянутся с бекенда');
-  }
-  
+
   let userAvatar = polishingAvatar();
 
   //   console.log('проверяем воду');

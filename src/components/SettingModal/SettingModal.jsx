@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import { SettingModalStyled } from './SettingModalStyled.styled';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import * as yup from 'yup';
 import { BsUpload } from 'react-icons/bs';
 import { FiEyeOff } from 'react-icons/fi';
@@ -9,12 +9,13 @@ import { FiEye } from 'react-icons/fi';
 import { changeUserAvatarAPI } from 'API/Auth/changeUserAvatarAPI';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getUserAvatar,
-  getUserEmail,
-  getUserGender,
-  getUserName,
+  // getUserAvatar,
+  // getUserEmail,
+  // getUserGender,
+  // getUserName,
+  getCurrentUser,
 } from '../../redux/auth/authSelectors';
-import { changeUserData, fetchUserData } from 'API/Auth/fetchChangeUserDataAPI';
+import { changeUserData } from 'API/Auth/fetchChangeUserDataAPI';
 
 const iconColor = '#407BFF';
 
@@ -49,39 +50,35 @@ export const SettingModal = ({ closeModal }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showRepeatNewPassword, setShowRepeatNewPassword] = useState(false);
+  const userData = useSelector(getCurrentUser);
+  const avatar = userData.user.avatarURL;
+  const userName = userData.user.name;
+  const userEmail = userData.user.email;
+  const userGender = userData.user.gender;
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchUserData());
-  }, [dispatch]);
-
-  const avatar = useSelector(getUserAvatar);
-  const userName = useSelector(getUserName);
-  const userEmail = useSelector(getUserEmail);
-  const userGender = useSelector(getUserGender);
-
-  const genderString = userGender ? 'Man' : 'Woman';
-
-  const handleSubmit = (values, { resetForm }) => {
-    const genderValue = values.gender === 'Woman' ? false : true;
-    if (values.newPassword === '') {
+  const handleSubmit = (
+    { name, email, gender, password, newPassword },
+    { resetForm }
+  ) => {
+    if (newPassword === '') {
       dispatch(
         changeUserData({
-          name: values.name,
-          email: values.email,
-          password: values.password,
-          gender: genderValue,
+          name,
+          email,
+          gender,
+          password,
         })
       );
     } else {
       dispatch(
         changeUserData({
-          name: values.name,
-          email: values.email,
-          password: values.password,
-          gender: genderValue,
-          newPassword: values.newPassword,
+          name,
+          email,
+          password,
+          gender,
+          newPassword,
         })
       );
     }
@@ -95,7 +92,7 @@ export const SettingModal = ({ closeModal }) => {
 
   const formik = useFormik({
     initialValues: {
-      gender: genderString,
+      gender: userGender,
       name: userName,
       email: userEmail,
       password: '',
@@ -119,7 +116,11 @@ export const SettingModal = ({ closeModal }) => {
       <div>
         <p className="setting-text setting-modal-text">Your photo</p>
         <div className="setting-photo-wrapper">
-          <img src={avatar} alt="avatar" className="setting-avatar" />
+          <img
+            src={`https://dreamteam-water-server.onrender.com/${avatar}`}
+            alt="avatar"
+            className="setting-avatar"
+          />
           <label className="upload-photo-label">
             <BsUpload color={iconColor} />
             <p className="upload-photo-text">Upload a photo</p>
@@ -146,9 +147,9 @@ export const SettingModal = ({ closeModal }) => {
                     className="setting-form-gender-button"
                     type="radio"
                     name="gender"
-                    value="Woman"
+                    value="woman"
                     onChange={formik.handleChange}
-                    checked={formik.values.gender === 'Woman'}
+                    checked={formik.values.gender === 'woman'}
                   />
                   <p className="setting-form-gender-text">Woman</p>
                 </label>
@@ -157,9 +158,9 @@ export const SettingModal = ({ closeModal }) => {
                     className="setting-form-gender-button"
                     type="radio"
                     name="gender"
-                    value="Man"
+                    value="man"
                     onChange={formik.handleChange}
-                    checked={formik.values.gender === 'Man'}
+                    checked={formik.values.gender === 'man'}
                   />
                   <p className="setting-form-gender-text">Man</p>
                 </label>

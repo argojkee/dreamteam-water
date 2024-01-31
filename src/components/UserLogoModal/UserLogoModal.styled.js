@@ -46,6 +46,7 @@ export const UserLogoModalStyles = styled.div`
   }
 
   .main-user-container {
+    position: relative;
     display: flex;
     align-items: center;
     height: 100%;
@@ -138,7 +139,7 @@ export const UserLogoModalStyles = styled.div`
   .menu {
     position: absolute;
     top: calc(100% - (100% - 48px));
-    right: calc((100% - 1216px) / 2);
+    right: 0;
     width: 118px;
     height: 88px;
     padding: 16px;

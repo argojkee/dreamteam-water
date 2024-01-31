@@ -15,8 +15,9 @@ export default createAsyncThunk(
 
     axios.defaults.headers.common.Authorization = `Bearer ${currentToken}`;
     try {
-      const { data } = await axios.get('/users/current');
-      return data;
+      const { data: user } = await axios.get('/users/current');
+
+      return user;
     } catch (error) {
       axios.defaults.headers.common.Authorization = '';
       toastError(

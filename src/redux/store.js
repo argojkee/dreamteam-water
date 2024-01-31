@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import authSliceReducer from './auth/authSlice';
+import waterSlice from './water/waterSlice';
 
 const authPersistConfig = {
   // 'key' is identification of one or more storage
@@ -21,11 +22,16 @@ const authPersistConfig = {
 };
 
 // basic reducer
-const persistedReducer = persistReducer(authPersistConfig, authSliceReducer);
+const persistedReducer = persistReducer(
+  authPersistConfig,
+  authSliceReducer,
+  waterSlice
+);
 
 //...or more reducers
 const rootReducer = combineReducers({
   auth: persistedReducer,
+  water: waterSlice.reducer,
 });
 
 const middleware = getDefaultMiddleware =>

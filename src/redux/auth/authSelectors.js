@@ -10,6 +10,7 @@ export const getToken = state => state.auth.token;
 
 export const getdataUser = state => state.auth.user;
 
+
 // export const getIsLoadingAuthUser = state => state.auth.isLoadingAuthUser;
 
 // export const getIsPending = state => state.auth.isPending;

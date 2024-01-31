@@ -13,7 +13,7 @@ import {
   // getUserEmail,
   // getUserGender,
   // getUserName,
-  getdataUser,
+  getCurrentUser,
 } from '../../redux/auth/authSelectors';
 import { changeUserData } from 'API/Auth/fetchChangeUserDataAPI';
 
@@ -50,7 +50,7 @@ export const SettingModal = ({ closeModal }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showRepeatNewPassword, setShowRepeatNewPassword] = useState(false);
-  const userData = useSelector(getdataUser);
+  const userData = useSelector(getCurrentUser);
   const avatar = userData.user.avatarURL;
   const userName = userData.user.name;
   const userEmail = userData.user.email;

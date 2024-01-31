@@ -20,7 +20,7 @@ export default function UserLogoModal() {
   const dataUser = useSelector(getCurrentUser);
 
   let unpolished_userEmail = '';
-  let unpolished_userName =  '';
+  let unpolished_userName = '';
   let unpolished_userAvatarUrl = '';
   
   try {

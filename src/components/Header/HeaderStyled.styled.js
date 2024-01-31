@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const HeaderStyles = styled.header`
-  .containerHeader {
+  .containerHeader {    
+    
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
   }
 
@@ -45,14 +47,15 @@ export const HeaderStyles = styled.header`
   .logoText {
     width: 58px;
     height: 28px;
+    box-sizing: border-box;
 
     color: #407bff;
     text-decoration: none;
     list-style: none;
 
     font-style: Roboto;
-    font-weight: 400;
-    font-size: 1.2;
+    font-weight: 700;
+    font-size: 12px;
     line-height: 14.06px;
   }
 

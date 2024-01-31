@@ -1,7 +1,15 @@
-// import { ClassNames } from "@emotion/react";
+import { useCallback, useState } from 'react';
+import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats';
 import { monthsArr } from '../monthsArr';
 import { MonthStatisticlist } from './MonthStatistic.styled';
-const MonthStatistic = ({ selectedMonth }) => {
+// import { throttle } from 'lodash';
+import { throttle } from './throttle';
+
+const MonthStatistic = ({ selectedMonth, setSelectedMonth}) => {
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+  
   const currentMonth = (month, statistic) => {
     const daysArr = [];
     const monthData = monthsArr[month];
@@ -13,7 +21,7 @@ const MonthStatistic = ({ selectedMonth }) => {
       if (day) {
         daysArr.push({ date: i, percentage: day.percentage });
       } else {
-        daysArr.push({ date: i, percentage: '0' });
+        daysArr.push({ date: i, percentage: '' });
       }
     }
     return daysArr;
@@ -26,15 +34,27 @@ const MonthStatistic = ({ selectedMonth }) => {
     { date: 8, percentage: 80 },
   ];
 
+ const handleMouseEnter = useCallback(
+    throttle((event) => {
+      const day = Number(event.target.innerText);
+      setSelectedMonth(prevState => ({ ...prevState, day }))
+
+      const buttonRect = event.target.getBoundingClientRect();
+      const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+      const buttonCenterY = buttonRect.top + window.scrollY;
+
+      setModalPosition({ top: buttonCenterY, left: buttonCenterX });
+      setModalVisible(true);
+    }, 500),
+    []
+  );
+
   return (
     <>
-      <MonthStatisticlist
-        style={{ display: 'flex', flexWrap: 'wrap', listStyle: 'none' }}
-      >
+      <MonthStatisticlist>
         {currentMonth(selectedMonth.month, stat).map(({ date, percentage }) => (
           <li key={date}>
-            <button
-              title="Click to view daily statistics"
+            <button onMouseEnter={handleMouseEnter}
               data-fulfilled={percentage > 100 ? 'true' : 'false'}
             >
               {date}
@@ -43,10 +63,9 @@ const MonthStatistic = ({ selectedMonth }) => {
           </li>
         ))}
       </MonthStatisticlist>
+      {modalVisible && (<DaysGeneralStats top={modalPosition.top} left={modalPosition.left} setModalVisible={setModalVisible} selectedMonth={selectedMonth}/>)}
     </>
   );
 };
 
 export default MonthStatistic;
-
-// {percentage < 100 ? 'true' : 'false'}

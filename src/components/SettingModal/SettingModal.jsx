@@ -1,13 +1,20 @@
 import { useFormik } from 'formik';
 import { SettingModalStyled } from './SettingModalStyled.styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { BsUpload } from 'react-icons/bs';
 import { FiEyeOff } from 'react-icons/fi';
 import { FiEye } from 'react-icons/fi';
 
 import { changeUserAvatarAPI } from 'API/Auth/changeUserAvatarAPI';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getUserAvatar,
+  getUserEmail,
+  getUserGender,
+  getUserName,
+} from '../../redux/auth/authSelectors';
+import { changeUserData, fetchUserData } from 'API/Auth/fetchChangeUserDataAPI';
 
 const iconColor = '#407BFF';
 
@@ -45,10 +52,41 @@ export const SettingModal = ({ closeModal }) => {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchUserData());
+  }, [dispatch]);
+
+  const avatar = useSelector(getUserAvatar);
+  const userName = useSelector(getUserName);
+  const userEmail = useSelector(getUserEmail);
+  const userGender = useSelector(getUserGender);
+
+  const genderString = userGender ? 'Man' : 'Woman';
+
   const handleSubmit = (values, { resetForm }) => {
-    // console.log(values);
-    // resetForm();
-    // closeModal();
+    const genderValue = values.gender === 'Woman' ? false : true;
+    if (values.newPassword === '') {
+      dispatch(
+        changeUserData({
+          name: values.name,
+          email: values.email,
+          password: values.password,
+          gender: genderValue,
+        })
+      );
+    } else {
+      dispatch(
+        changeUserData({
+          name: values.name,
+          email: values.email,
+          password: values.password,
+          gender: genderValue,
+          newPassword: values.newPassword,
+        })
+      );
+    }
+    resetForm();
+    closeModal();
   };
 
   const handleMouseDownPassword = event => {
@@ -57,9 +95,9 @@ export const SettingModal = ({ closeModal }) => {
 
   const formik = useFormik({
     initialValues: {
-      gender: 'Woman',
-      name: '',
-      email: '',
+      gender: genderString,
+      name: userName,
+      email: userEmail,
       password: '',
       newPassword: '',
       repeatNewPassword: '',
@@ -81,7 +119,7 @@ export const SettingModal = ({ closeModal }) => {
       <div>
         <p className="setting-text setting-modal-text">Your photo</p>
         <div className="setting-photo-wrapper">
-          <img src="" alt="avatar" className="setting-avatar" />
+          <img src={avatar} alt="avatar" className="setting-avatar" />
           <label className="upload-photo-label">
             <BsUpload color={iconColor} />
             <p className="upload-photo-text">Upload a photo</p>

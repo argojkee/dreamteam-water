@@ -60,13 +60,12 @@ const authSlice = createSlice({
         state.token = null;
       })
       /******************************fetch current user */
-
+      .addCase(fetchCurrentUserAPI.pending, state => {
+        state.authIsLoading = true;
+      })
       .addCase(fetchCurrentUserAPI.fulfilled, (state, { payload }) => {
         state.authIsLoading = false;
         state.user = { ...payload };
-      })
-      .addCase(fetchCurrentUserAPI.pending, state => {
-        state.authIsLoading = true;
       })
       .addCase(fetchCurrentUserAPI.rejected, state => {
         state.authIsLoading = false;

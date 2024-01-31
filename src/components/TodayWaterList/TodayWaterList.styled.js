@@ -69,7 +69,6 @@ export const BtnWrapDiv = styled.div`
     margin-right: 6px;
 `
 export const SmallRoundBtn = styled.button`
-    /* border-radius: 50%; */
     width: 18px;
     height: 18px;
     padding: 0;

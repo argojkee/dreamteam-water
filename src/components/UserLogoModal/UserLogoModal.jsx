@@ -12,25 +12,43 @@ import {
   getUserEmail,
   getUserAvatar,
 } from '../../redux/auth/authSelectors';
+//import { getCurrentMonth } from '../../redux/water/waterSelectors';
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
 const BASE_URL = 'https://dreamteam-water-server.onrender.com/';
-const defaultAvatarURL = 'avatars\\avatarDefault.png';
 
 export default function UserLogoModal() {
   const [isOpen, setOpen] = useState(false);
   const [isShowLogoutModal, setIsShowLogoutModal] = useState(false);
   const [isShowSettingsModal, setIsShowSettingsModal] = useState(false);
 
-  let userName1 = useSelector(getUserName);
-  const userEmail = useSelector(getUserEmail);
-  const userAvatarUrl1 = useSelector(getUserAvatar);
-  
-  
-  let userName = userName1 === '' ? userEmail : userName1;
-  let userAvatarUrl = userAvatarUrl1 === defaultAvatarURL ? BASE_URL + defaultAvatarURL:
-    BASE_URL + userAvatarUrl1;
-  
+  //const get_water_Current_Month = useSelector(getCurrentMonth);
+  const unpolished_userName = useSelector(getUserName);
+  let unpolished_userEmail = useSelector(getUserEmail);
+  const unpolished_userAvatarUrl = useSelector(getUserAvatar);
+  unpolished_userEmail = 'DreamWater@ukr.net';
+  let userAvatar = polishingAvatar();
+
+//   console.log('проверяем воду');
+//   console.log(get_water_Current_Month);
+//   console.log('проверка!!!!!!!!!!!!!!');
+//   console.log(unpolished_userName);
+//   console.log(unpolished_userEmail);
+//   console.log(unpolished_userAvatarUrl);
+// console.log(userAvatar);
+ 
+  //ф-ция возвращает то, что будет выведено на аватарку (аватарка есть, то аватарка,
+  //иначе имя[0] или емейл[0])
+  function polishingAvatar() {
+    let  avatar = unpolished_userEmail[0];    
+    if (unpolished_userAvatarUrl ===  null && unpolished_userName !== null){  
+      avatar = unpolished_userName[0];
+    }
+    else if (unpolished_userAvatarUrl) {
+      avatar = BASE_URL + unpolished_userAvatarUrl;
+    }
+    return avatar;
+  }
 
   const onLogoutPress = () => {
     setIsShowLogoutModal(true);
@@ -44,11 +62,16 @@ export default function UserLogoModal() {
     setOpen(false);
   };
 
+ 
   return (
     <UserLogoModalStyles className="test">
       <div className="main-user-container">
         <div className="user-box">
-          <div className="textName">{userName}</div>
+          <div className="textName">
+            {unpolished_userName
+              ? unpolished_userName
+              : unpolished_userEmail.split('@')[0]}
+          </div>
           <ClickAwayListener onClickAway={handleClickAway}>
             <button
               className="menu-user-button"
@@ -57,15 +80,15 @@ export default function UserLogoModal() {
             >
               <div className="user-items">
                 <div className="avatarBox">
-                  {userAvatarUrl1 === defaultAvatarURL && (
-                    <div className="iconAvatarText">{userEmail[0]}</div>
+                  {!unpolished_userAvatarUrl && (
+                    <div className="iconAvatarText">{userAvatar}</div>
                   )}
 
-                  {userAvatarUrl1 !== defaultAvatarURL && (
+                  {unpolished_userAvatarUrl && (
                     <div className="avatarBox">
                       <img
                         className="iconAvatar"
-                        src={userAvatarUrl}
+                        src={userAvatar}
                         alt="avatar"
                         width="28"
                         height="28"

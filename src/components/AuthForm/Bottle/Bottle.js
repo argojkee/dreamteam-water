@@ -9,13 +9,24 @@ const Bottle = () => {
  
   useEffect(() => {
 
-    setInterval(() => {
+    const random = () => {
+        return {
+            size: randomGenerator(20, 5, true), 
+            x: 400, 
+            startY: randomGenerator(window.innerHeight / 2 + 100, true), 
+            speed: randomGenerator(10, null, false) * 1000,
+        };
+      };
+
+    const timer = setInterval(() => {
 
         setParameters(random())
        
     }, randomGenerator(100, null, false) * 1000);
 
-    // return clearInterval(timer);
+    return () => {
+        clearInterval(timer);
+    }; 
     
   }, []);
 
@@ -27,15 +38,6 @@ const Bottle = () => {
       return Math.round(Math.floor(Math.random() * max));
     };
     
-  };
-
-  const random = () => {
-    return {
-        size: randomGenerator(20, 5, true), 
-        x: 400, 
-        startY: randomGenerator(window.innerHeight / 2 + 100, true), 
-        speed: randomGenerator(10, null, false) * 1000,
-    };
   };
 
   const springs = useSpring({
@@ -51,8 +53,7 @@ const Bottle = () => {
 
   return (
     <animated.div style={{...springs,}}>
-        <BottleCircle style={{ position: 'absolute', width: `${parameters.size}`, height: `${parameters.size}`, stroke: 'blue',
-           }}/>
+        <BottleCircle style={{ position: 'absolute', width: `${parameters.size}`, height: `${parameters.size}`, stroke: 'blue',}}/>
     </animated.div>
   )
 }

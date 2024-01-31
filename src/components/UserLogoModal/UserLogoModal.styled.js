@@ -8,17 +8,30 @@ export const UserLogoModalStyles = styled.div`
     box-shadow: none;
   }
 
+ 
+
   .avatarBox {
     width: 28px;
     height: 28px;
     border-radius: 100%;
     border: none;
-    background-color: #D3D3D3;
+    background-color: #EFECEC;
     display: inline-block;
-
+      overflow:hidden;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    box-sizing: border-box;
+  }
+
+  .avatar {
+    display: block;
+    font-size: xx-large;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: space-evenly;
+    align-items: center;
+}
   }
 
   .menu-user-button {
@@ -26,10 +39,17 @@ export const UserLogoModalStyles = styled.div`
     margin: 0px;
     padding: 0px;
     height: 100%;
-    min-width: 122px;
+
     cursor: pointer;
 
     margin-left: auto;
+  }
+
+  .main-user-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
 
   .menu-button svg {
@@ -38,6 +58,14 @@ export const UserLogoModalStyles = styled.div`
     height: 100%;
     color: blue;
   }
+
+  .iconAvatarText{
+    height: 100%;
+    align-items: center;
+    font-size: x-large;
+  }
+
+ 
 
   .icon {
     margin-right: 8px;
@@ -76,18 +104,23 @@ export const UserLogoModalStyles = styled.div`
     background-size: auto;
     background-position: center;
 
-    fill: #407BFF;
+    fill: #407bff;
   }
 
   .user-items {
     display: flex;
+    justify-content: space-between;
     gap: 8px;
     flex-direction: row;
     align-items: center;
     height: 100%;
   }
 
-  .avatar-container {
+  .user-box {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    align-items: center;
     height: 100%;
   }
 
@@ -105,6 +138,8 @@ export const UserLogoModalStyles = styled.div`
 
   .menu {
     position: absolute;
+    top: calc(100% - (100% - 48px));
+    right: 0;
     width: 118px;
     height: 88px;
     padding: 16px;
@@ -120,8 +155,11 @@ export const UserLogoModalStyles = styled.div`
     transition: 0.3s;
   }
 
+  .test {
+    display: block;
+    height: 100%;
+  }
   .menu.active {
-    top-right: 0;
     top: calc(100% - 48);
     transform: translateY(0);
     opacity: 1;

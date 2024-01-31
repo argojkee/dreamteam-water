@@ -67,7 +67,13 @@ const Footer = () => {
         <Modal
           closeModal={() => setIsEditShow(false)}
           children={
-            <AddForm drinkId={1} closeModal={() => setIsEditShow(false)} />
+            <>
+              <AddForm
+                drinkId={1}
+                previousWaterData={{ amount: 250, time: '12:00 PM' }}
+                closeModal={() => setIsEditShow(false)}
+              />
+            </>
           }
         />
       )}

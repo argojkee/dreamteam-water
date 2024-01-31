@@ -74,6 +74,18 @@ const Div = styled.div`
     }
 
   `};
+
+  ${props => props.$contentBlock && css `
+
+    @media screen and (min-width: 768px) and (max-width: 1440px) { 
+      justify-content: left;
+    }
+
+    @media screen and (min-width: 1440px) { 
+      justify-content: right;
+    }
+
+  `};
   
 `;
 
@@ -106,7 +118,7 @@ const Input = styled.input`
   margin-bottom: ${props => props.$marginBott || '8px'};
 
   border-radius: ${props => props.$borderRadius || 'none'};
-  background-color: ${props => props.color || 'transparent'};
+  background-color: ${props => props.color || 'white'};
   border: ${props => props.$border || '1px solid'};
   border-color: ${props => props.$borderColor || '#D7E3FF'};
   outline: 'none';

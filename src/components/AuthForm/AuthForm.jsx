@@ -12,6 +12,8 @@ import signUpAPI from '../../API/Auth/signUpAPI';
 import Styles from './Styles';
 /* end */
 
+import Bubbles from './Bottle/Bottle'
+
 import { ReactComponent as EyeIconOn } from '../../icons/signIn-signUp/outlineOn.svg';
 import { ReactComponent as EyeIconOff } from '../../icons/signIn-signUp/outlineOff.svg';
 import { useState } from 'react';
@@ -94,17 +96,20 @@ const AuthForm = () => {
     isRegistrationPage ? navigate('/login') : navigate('/registration');
   };
 
-  const passEyeHandler = (evt) => {
+  const passEyeHandler = () => {
     setPassEyeToggle(value => !value)
   };
 
-  const passRepEyeHandler = (evt) => {
+  const passRepEyeHandler = () => {
     setPassRepEyeToggle(value => !value)
   };
 
   return (
     <Styles $main>
-      <Styles $div $back $justify={'flex-end'} $align={'center'} width={'100%'}>
+      <Styles $div $back $contentBlock $align={'center'} width={'100%'} >
+
+      <Bubbles style={{width: '200px'}}/>
+      
         <Styles $div $divDiraction={'column'} $pass>
           <Styles $p $fontSize={'26px'} $marginBott={'16px'}>
             {isRegistrationPage ? 'Sign up' : 'Sign in'}
@@ -139,7 +144,7 @@ const AuthForm = () => {
             </Styles>
            
             <Styles $div $pass  
-             
+              $backColor={'white'}
               $borderColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#D7E3FF'}
               $borderRadius={'6px'} $marginBott={isRegistrationPage ? '16px' : '8px'} $inputPadding={'12px 10px'}
               $border={'1px solid'}>
@@ -173,7 +178,8 @@ const AuthForm = () => {
                 </Styles>
 
                 <Styles $div $pass 
-             
+
+                  $backColor={'white'}
                   $borderColor={formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.email ? '#EF5050' : '#D7E3FF'}
                   $borderRadius={'6px'} $marginBott={isRegistrationPage ? '8px' : '16px'} $inputPadding={'12px 10px'}
                   $border={'1px solid'}>

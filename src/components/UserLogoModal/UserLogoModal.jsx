@@ -6,50 +6,54 @@ import { IoExitOutline } from 'react-icons/io5';
 import { Modal } from 'components/Modal/Modal';
 import LogoutDeleteModalContent from 'components/LogoutDeleteModal/LogoutDeleteModalContent';
 import { SettingModal } from 'components/SettingModal/SettingModal';
-// import { useSelector } from 'react-redux';
-import // getUserName,
-// getUserEmail,
-// getUserAvatar,
-'../../redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
+import { getCurrentUser } from '../../redux/auth/authSelectors';
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
+//import { getCurrentMonth } from '../../redux/water/waterSelectors';
+
+const BASE_URL = 'https://dreamteam-water-server.onrender.com/';
 
 export default function UserLogoModal() {
   const [isOpen, setOpen] = useState(false);
   const [isShowLogoutModal, setIsShowLogoutModal] = useState(false);
   const [isShowSettingsModal, setIsShowSettingsModal] = useState(false);
 
-  // const userName1 = useSelector(getUserName);
-  // const userEmail1 = useSelector(getUserEmail);
-  // const userAvatar1 = useSelector(getUserAvatar);
+  const dataUser = useSelector(getCurrentUser);
 
-  // console.log('проверка');
-  // console.log(userName1);
-  // console.log(userEmail1);
-  // console.log(userAvatar1);
+  let unpolished_userEmail = '';
+  let unpolished_userName =  '';
+  let unpolished_userAvatarUrl = '';
+  console.log(dataUser);
+  try {
+     //const get_water_Current_Month = useSelector(getCurrentMonth);
+   unpolished_userEmail = dataUser.email; //dataUser.email;
+   unpolished_userName =  dataUser.name;
+   unpolished_userAvatarUrl = dataUser.avatarURL;
+  }
+  catch (error) {
+    console.log('данные скинулись и все по нулям, а сейчас снова подтянутся с бекенда');
+  }
+  
+  let userAvatar = polishingAvatar();
 
-  let userName = 'x'.toUpperCase();
-  let userEmail = 'x';
-  let userAvatar = '';
+  //   console.log('проверяем воду');
+  //   console.log(get_water_Current_Month);
+  //   console.log('проверка!!!!!!!!!!!!!!');
+  //   console.log(unpolished_userName);
+  //   console.log(unpolished_userEmail);
+  //   console.log(unpolished_userAvatarUrl);
+  // console.log(userAvatar);
 
-  useEffect(() => {
-    if (userName && userAvatar) {
-      return;
+  //ф-ция возвращает то, что будет выведено на аватарку (аватарка есть, то аватарка,
+  //иначе имя[0] или емейл[0])
+  function polishingAvatar() {
+    let avatar = unpolished_userEmail[0];
+    if (unpolished_userAvatarUrl === null && unpolished_userName !== null) {
+      avatar = unpolished_userName[0];
+    } else if (unpolished_userAvatarUrl) {
+      avatar = BASE_URL + unpolished_userAvatarUrl;
     }
-    checkDataUser();
-  });
-
-  function checkDataUser() {
-    if (!userName && !userAvatar) {
-      userName = userEmail[0].toUpperCase();
-      userAvatar = userEmail[0].toUpperCase();
-    }
-    if (userName && !userAvatar) {
-      userName = userEmail[0].toUpperCase();
-      userAvatar = userName[0].toUpperCase();
-    }
-    if (!userName && userAvatar) {
-      userName = userEmail[0].toUpperCase();
-    }
+    return avatar;
   }
 
   const onLogoutPress = () => {
@@ -65,64 +69,79 @@ export default function UserLogoModal() {
   };
 
   return (
-    <UserLogoModalStyles>
-      <ClickAwayListener
-        // className="avatar-container"
-        onClickAway={handleClickAway}
-      >
-        <button
-          className="menu-user-button"
-          variant="contained"
-          onClick={() => setOpen(!isOpen)}
-        >
-          <div className="user-items">
-            <div>
-              <span className="textName">{userName}</span>
-            </div>
-            <div className="avatarBox">
-              {userAvatar && (
-                <img className="iconAvatar" src={userAvatar} alt="iconAvatar" />
-              )}
-              {!userAvatar && <div className="avatarBox">{userAvatar}</div>}
-            </div>
-            <div>
-              <img src={vector} alt="iconVector" className="iconSolid" />
-            </div>
+    <UserLogoModalStyles className="test">
+      <div className="main-user-container">
+        <div className="user-box">
+          <div className="textName">
+            {unpolished_userName
+              ? unpolished_userName
+              : unpolished_userEmail.split('@')[0]}
           </div>
-        </button>
-      </ClickAwayListener>
-      <nav className={`menu ${isOpen ? 'active' : ''}`}>
-        <ul className="menu-list">
-          <div className="box-menu-item" onClick={onSettingsClick}>
-            <IoMdSettings className="icon" />
-            <li className="menu-item">Settings</li>
-          </div>
-          <div className="box-menu-item" onClick={onLogoutPress}>
-            <IoExitOutline className="icon" />
-            <li className="menu-item">Log out</li>
-          </div>
-        </ul>
-      </nav>
+          <ClickAwayListener onClickAway={handleClickAway}>
+            <button
+              className="menu-user-button"
+              variant="contained"
+              onClick={() => setOpen(!isOpen)}
+            >
+              <div className="user-items">
+                <div className="avatarBox">
+                  {!unpolished_userAvatarUrl && (
+                    <div className="iconAvatarText">{userAvatar}</div>
+                  )}
 
-      {isShowLogoutModal && (
-        <Modal
-          closeModal={() => setIsShowLogoutModal(false)}
-          children={
-            <LogoutDeleteModalContent
-              closeModal={() => setIsShowLogoutModal(false)}
-            />
-          }
-        />
-      )}
+                  {unpolished_userAvatarUrl && (
+                    <div className="avatarBox">
+                      <img
+                        className="iconAvatar"
+                        src={userAvatar}
+                        alt="avatar"
+                        width="28"
+                        height="28"
+                      />
+                    </div>
+                  )}
+                </div>
+                <div className="стрелка">
+                  <img src={vector} alt="iconVector" className="iconSolid" />
+                </div>
+              </div>
+            </button>
+          </ClickAwayListener>
+        </div>
 
-      {isShowSettingsModal && (
-        <Modal
-          closeModal={() => setIsShowSettingsModal(false)}
-          children={
-            <SettingModal closeModal={() => setIsShowSettingsModal(false)} />
-          }
-        />
-      )}
+        <nav className={`menu ${isOpen ? 'active' : ''}`}>
+          <ul className="menu-list">
+            <div className="box-menu-item" onClick={onSettingsClick}>
+              <IoMdSettings className="icon" />
+              <li className="menu-item">Settings</li>
+            </div>
+            <div className="box-menu-item" onClick={onLogoutPress}>
+              <IoExitOutline className="icon" />
+              <li className="menu-item">Log out</li>
+            </div>
+          </ul>
+        </nav>
+
+        {isShowLogoutModal && (
+          <Modal
+            closeModal={() => setIsShowLogoutModal(false)}
+            children={
+              <LogoutDeleteModalContent
+                closeModal={() => setIsShowLogoutModal(false)}
+              />
+            }
+          />
+        )}
+
+        {isShowSettingsModal && (
+          <Modal
+            closeModal={() => setIsShowSettingsModal(false)}
+            children={
+              <SettingModal closeModal={() => setIsShowSettingsModal(false)} />
+            }
+          />
+        )}
+      </div>
     </UserLogoModalStyles>
   );
 }

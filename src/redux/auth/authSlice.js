@@ -5,6 +5,7 @@ import signUpAPI from '../../API/Auth/signUpAPI';
 import fetchCurrentUserAPI from 'API/Auth/fetchCurrentUserAPI';
 import { editDailyNorm } from 'API/Auth/editDailyNorm';
 import { changeUserAvatarAPI } from 'API/Auth/changeUserAvatarAPI';
+import { changeUserData, fetchUserData } from 'API/Auth/fetchChangeUserDataAPI';
 
 const initialState = {
   user: {
@@ -12,6 +13,7 @@ const initialState = {
     email: null,
     avatarURL: null,
     norm: null,
+    gender: null,
   },
   token: null,
   authIsLoading: false,
@@ -58,13 +60,12 @@ const authSlice = createSlice({
         state.token = null;
       })
       /******************************fetch current user */
-
+      .addCase(fetchCurrentUserAPI.pending, state => {
+        state.authIsLoading = true;
+      })
       .addCase(fetchCurrentUserAPI.fulfilled, (state, { payload }) => {
         state.authIsLoading = false;
         state.user = { ...payload };
-      })
-      .addCase(fetchCurrentUserAPI.pending, state => {
-        state.authIsLoading = true;
       })
       .addCase(fetchCurrentUserAPI.rejected, state => {
         state.authIsLoading = false;
@@ -91,6 +92,14 @@ const authSlice = createSlice({
       })
       .addCase(changeUserAvatarAPI.rejected, state => {
         state.isLoadingChangeAvatar = false;
+      })
+
+      /******************************fetch user info */
+      .addCase(fetchUserData.fulfilled, (state, { payload }) => {
+        state.user = { ...state.user, ...payload };
+      })
+      .addCase(changeUserData.fulfilled, (state, { payload }) => {
+        state.user = { ...state.user, ...payload };
       });
   },
 });

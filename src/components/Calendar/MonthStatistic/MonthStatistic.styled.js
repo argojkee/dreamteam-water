@@ -2,10 +2,13 @@ import styled from // , { css }
 'styled-components';
 
 export const MonthStatisticlist = styled.div`
+
   display: flex;
   gap: 22px;
   align-items: start;
   padding-top: 16px;
+  flex-wrap: wrap;
+  list-style: none;
 
   li {
     text-align: center;

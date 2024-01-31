@@ -4,7 +4,7 @@ import { monthsArr } from '../monthsArr';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { MonthSwitcherContainer } from './MonthSwitcher.styled';
 
-const MonthSwitcher = ({ changeSelectedMonth }) => {
+const MonthSwitcher = ({ setSelectedMonth }) => {
   const [today] = useInitialDate();
   const [pickedDate, setPickedDate] = useState(today);
   const [registrationDate] = useState({ day: 1, month: 9, year: 2023 });
@@ -15,8 +15,8 @@ const MonthSwitcher = ({ changeSelectedMonth }) => {
       month: pickedDate.month,
       year: pickedDate.year,
     };
-    changeSelectedMonth(newCurrentMonth);
-  }, [pickedDate, changeSelectedMonth]);
+    setSelectedMonth(newCurrentMonth);
+  }, [pickedDate, setSelectedMonth]);
 
   const handlePrevMonth = () => {
     pickedDate.month === 0
@@ -50,7 +50,6 @@ const MonthSwitcher = ({ changeSelectedMonth }) => {
       pickedDate.year >= today.year + 5 && pickedDate.month === today.month
     );
   };
-
 
   return (
     <MonthSwitcherContainer>

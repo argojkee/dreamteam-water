@@ -14,27 +14,27 @@ const Header = () => {
   return (
     <HeaderStyles>
       <Container>
-          <div className="containerHeader">
-            <NavLink to={token ? '/main' : '/'} className="logoBox">
+        <div className="containerHeader">
+          <NavLink to={token ? '/main' : '/'} className="logoBox">
+            <div>
+              <img src={iconHome} alt="iconHome" />
+            </div>
+            <div className="logoText">TRACKER of water</div>
+          </NavLink>
+
+          {!token && (
+            <div className="AuthContainer">
+              <NavLink className="textSignIn" to="login">
+                Sign in
+              </NavLink>
               <div>
-                <img src={iconHome} alt="iconHome" />
+                <img src={avatar} alt="iconHome" />
               </div>
-              <div className="logoText">TRACKER of water</div>
-            </NavLink>
+            </div>
+          )}
 
-            {!token && (
-              <div className="AuthContainer">
-                <NavLink className="textSignIn" to="login">
-                  Sign in
-                </NavLink>
-                <div>
-                  <img src={avatar} alt="iconHome" />
-                </div>
-              </div>
-            )}
-
-            {token && <UserLogoModal />}
-          </div>
+          {token && <UserLogoModal />}
+        </div>
       </Container>
     </HeaderStyles>
   );

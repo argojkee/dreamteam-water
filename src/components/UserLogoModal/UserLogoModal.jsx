@@ -9,7 +9,6 @@ import { SettingModal } from 'components/SettingModal/SettingModal';
 import { useSelector } from 'react-redux';
 import { getCurrentUser } from '../../redux/auth/authSelectors';
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
-//import { getCurrentMonth } from '../../redux/water/waterSelectors';
 
 const BASE_URL = 'https://dreamteam-water-server.onrender.com/';
 
@@ -28,7 +27,7 @@ export default function UserLogoModal() {
      //const get_water_Current_Month = useSelector(getCurrentMonth);
    unpolished_userEmail = dataUser.email; //dataUser.email;
    unpolished_userName =  dataUser.name;
-   unpolished_userAvatarUrl = dataUser.avatarURL;
+   unpolished_userAvatarUrl = dataUser.avatarURL;    
   }
   catch (error) {
    

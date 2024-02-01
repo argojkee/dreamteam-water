@@ -14,33 +14,35 @@ export const AddForm = ({
   const [lastWaterInfo, setLastWaterInfo] = useState(null);
   const token = useSelector(getToken);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        'https://dreamteam-water-server.onrender.com/api/water',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ date: new Date() }),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch data');
-      }
-
-      const data = await response.json();
-      setLastWaterInfo(data.dayInfo);
-    } catch (error) {
-      console.error('Error fetching water data:', error);
-    }
-  };
   useEffect(() => {
-    fetchData();
-  }, []);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          'https://dreamteam-water-server.onrender.com/api/water',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ date: new Date() }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+
+        const data = await response.json();
+        setLastWaterInfo(data.dayInfo);
+      } catch (error) {
+        console.error('Error fetching water data:', error);
+      }
+    };
+    if (token) {
+      fetchData();
+    }
+  }, [token]);
 
   function getDefaultTime() {
     const now = new Date();

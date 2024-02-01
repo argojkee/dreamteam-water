@@ -1,4 +1,3 @@
-// import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSpring, animated } from '@react-spring/web';
@@ -13,6 +12,12 @@ import signUpAPI from '../../API/Auth/signUpAPI';
 import Styles from './Styles';
 /* end */
 
+import Bubbles from './Bottle/Bottle'
+
+import { ReactComponent as EyeIconOn } from '../../icons/signIn-signUp/outlineOn.svg';
+import { ReactComponent as EyeIconOff } from '../../icons/signIn-signUp/outlineOff.svg';
+import { useState } from 'react';
+
 const AuthForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,16 +27,14 @@ const AuthForm = () => {
 
   const isRegistrationPage = location.pathname === '/registration';
 
-  const animaDinamic = [
-    { paddingLeft: '20px' },
-    { paddingLeft: '0' },
-    { paddingLeft: '15px' },
-    { paddingLeft: '0' },
-    { paddingLeft: '10px' },
-    { paddingLeft: '0' },
-    { paddingLeft: '5px' },
-    { paddingLeft: '0' },
-  ];
+  const animaDynamic = [{ paddingLeft: '20px', }, { paddingLeft: '0', },
+  { paddingLeft: '15px', }, { paddingLeft: '0', },
+  { paddingLeft: '10px', }, { paddingLeft: '0', },
+  { paddingLeft: '5px', }, { paddingLeft: '0', },];
+
+  const [ passEyeToggle, setPassEyeToggle ] = useState(false);
+  const [ passRepEyeToggle, setPassRepEyeToggle ] = useState(false);
+
 
   // The 'formik' check all validation expression.
   // But we have two variants form (logIn and register).
@@ -81,153 +84,147 @@ const AuthForm = () => {
   });
 
   const springs = useSpring({
-    from: { paddingLeft: '0' },
-    to: [...animaDinamic],
 
-    config: { duration: 100 },
+    from: { paddingLeft: '0',},
+    to: [...animaDynamic],
+  
+    config: {duration: 100,},
+
   });
 
   const navTo = () => {
     isRegistrationPage ? navigate('/login') : navigate('/registration');
   };
 
+  const passEyeHandler = () => {
+    setPassEyeToggle(value => !value)
+  };
+
+  const passRepEyeHandler = () => {
+    setPassRepEyeToggle(value => !value)
+  };
+
   return (
-    <Styles $div $justify={'flex-end'} $align={'center'}>
-      <Styles $div $divDiraction={'column'} width={'384px'}>
-        <Styles $p $fontSize={'26px'} $marginBott={'16px'}>
-          {isRegistrationPage ? 'Sign up' : 'Sign in'}
-        </Styles>
+    <Styles $main>
+      <Styles $div $back $contentBlock $align={'center'} width={'100%'} >
 
-        <Styles onSubmit={formik.handleSubmit} $form $formDiraction={'column'}>
-          <Styles $label htmlFor="email">
-            <Styles $p $fontWeight={'400'}>
-              Enter your email
-            </Styles>
+      <Bubbles style={{width: '200px'}}/>
+      
+        <Styles $div $divDiraction={'column'} $pass>
+          <Styles $p $fontSize={'26px'} $marginBott={'16px'}>
+            {isRegistrationPage ? 'Sign up' : 'Sign in'}
           </Styles>
-          <Styles
-            $input
-            $inputColor={
-              formik.touched.email && formik.errors.email
-                ? '#EF5050'
-                : '#407BFF'
-            }
-            $borderColor={
-              formik.touched.email && formik.errors.email
-                ? '#EF5050'
-                : '#D7E3FF'
-            }
-            $borderRadius={'6px'}
-            $marginBott={'16px'}
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
-
-          <Styles $label htmlFor="password">
-            <Styles $p $fontWeight={'400'}>
-              Enter your password
-            </Styles>
-          </Styles>
-          <Styles
-            $input
-            $inputColor={
-              formik.touched.password &&
-              formik.errors.password &&
-              !formik.errors.email
-                ? '#EF5050'
-                : '#407BFF'
-            }
-            $borderColor={
-              formik.touched.password &&
-              formik.errors.password &&
-              !formik.errors.email
-                ? '#EF5050'
-                : '#D7E3FF'
-            }
-            $borderRadius={'6px'}
-            $marginBott={isRegistrationPage ? '16px' : '8px'}
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-          />
-
-          {isRegistrationPage && (
-            <>
-              <Styles $label htmlFor="repeatPassword">
-                <Styles $p $fontWeight={'400'}>
-                  Repeat password
-                </Styles>
+          
+          <Styles onSubmit={formik.handleSubmit} $form $formDiraction={'column'}>
+            <Styles $label htmlFor="email">
+              <Styles $p $fontWeight={'400'}>
+                Enter your email
               </Styles>
+            </Styles>
+           
               <Styles
                 $input
-                $inputColor={
-                  formik.touched.repeatPassword &&
-                  formik.errors.repeatPassword &&
-                  !formik.errors.password
-                    ? '#EF5050'
-                    : '#407BFF'
-                }
-                $borderColor={
-                  formik.touched.repeatPassword &&
-                  formik.errors.repeatPassword &&
-                  !formik.errors.password
-                    ? '#EF5050'
-                    : '#D7E3FF'
-                }
+                $inputColor={formik.touched.email && formik.errors.email ? '#EF5050' : '#407BFF'}
+                $borderColor={formik.touched.email && formik.errors.email ? '#EF5050' : '#D7E3FF'}
                 $borderRadius={'6px'}
-                $marginBott={'8px'}
-                id="repeatPassword"
-                name="repeatPassword"
-                type="password"
+                $marginBott={'16px'}
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Email"
                 onChange={formik.handleChange}
-                placeholder="Repeat password"
                 onBlur={formik.handleBlur}
-                value={formik.values.repeatPassword}
+                value={formik.values.email}
               />
-            </>
-          )}
+            
+            <Styles $label htmlFor="password">
+              <Styles $p $fontWeight={'400'}>
+                Enter your password
+              </Styles>
+            </Styles>
+           
+            <Styles $div $pass  
+              $backColor={'white'}
+              $borderColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#D7E3FF'}
+              $borderRadius={'6px'} $marginBott={isRegistrationPage ? '16px' : '8px'} $inputPadding={'12px 10px'}
+              $border={'1px solid'}>
+          
+              <Styles
+                $input
+                $border={'none'}
+                $marginBott={'0'}
+                $inputPadding={'0'}
+                height={'fit-content'}
+                $inputColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#407BFF'}
+                id="password"
+                name="password"
+                type="text"
+                placeholder="Password"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password }
+              />
 
-          <Styles
-            $div
-            $animaOn
-            color={'#EF5050'}
-            height={'8px'}
-            width={'100%'}
-            $justify={'flex-start'}
-            $marginBott={'8px'}
-          >
-            <animated.div style={{ ...springs }}>
-              {formik.touched.email && formik.errors.email
-                ? formik.errors.email
-                : formik.touched.password && formik.errors.password
-                ? formik.errors.password
-                : formik.touched.repeatPassword && formik.errors.repeatPassword
-                ? formik.errors.repeatPassword
-                : ''}
-            </animated.div>
+              {formik.values.password !== '' ? passEyeToggle ? <EyeIconOff onClick={passEyeHandler}/> : <EyeIconOn onClick={passEyeHandler}/> : ''}
+
+            </Styles>
+
+            {isRegistrationPage && (
+              <>
+                <Styles $label htmlFor="repeatPassword">
+                  <Styles $p $fontWeight={'400'}>
+                    Repeat password
+                  </Styles>
+                </Styles>
+
+                <Styles $div $pass 
+
+                  $backColor={'white'}
+                  $borderColor={formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.email ? '#EF5050' : '#D7E3FF'}
+                  $borderRadius={'6px'} $marginBott={isRegistrationPage ? '8px' : '16px'} $inputPadding={'12px 10px'}
+                  $border={'1px solid'}>
+
+                <Styles
+                  $input
+                  $border={'none'}
+                  $marginBott={'0'}
+                  $inputPadding={'0'}
+                  height={'fit-content'}
+                  $inputColor={formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.password ? '#EF5050' : '#407BFF'}
+                  id="repeatPassword"
+                  name="repeatPassword"
+                  type="text"
+                  onChange={formik.handleChange}
+                  placeholder="Repeat password"
+                  onBlur={formik.handleBlur}
+                  value={formik.values.repeatPassword}
+                />
+                {formik.values.repeatPassword !== '' ? passRepEyeToggle ? <EyeIconOff onClick={passRepEyeHandler}/> : <EyeIconOn onClick={passRepEyeHandler}/> : ''}
+                </Styles>
+              </>
+            )} 
+          
+              <Styles $div $animaOn color={'#EF5050'} height={'8px'} width={'100%'} $justify={'flex-start'} $marginBott={'8px'}>
+
+                <animated.div style={{...springs,}}>
+                  {formik.touched.email && formik.errors.email
+                    ? formik.errors.email
+                    : formik.touched.password && formik.errors.password
+                    ? formik.errors.password
+                    : formik.touched.repeatPassword && formik.errors.repeatPassword
+                    ? formik.errors.repeatPassword
+                    : ''}
+                </animated.div>
+                
+              </Styles>
+          
+            <Styles $button type="submit" $borderRadius={'10px'} $marginBott={'16px'}>
+              Submit
+            </Styles>
           </Styles>
 
-          <Styles
-            $button
-            type="submit"
-            $borderRadius={'10px'}
-            $marginBott={'16px'}
-          >
-            Submit
-          </Styles>
-        </Styles>
-
-        <Styles $div $justify={'flex-start'} width={'100%'}>
-          <Styles $link onClick={navTo}>
-            To {isRegistrationPage ? 'Sign in' : 'Sign up'}
+          <Styles $div $justify={'flex-start'} width={'100%'}>
+            <Styles $link onClick={navTo}>To {isRegistrationPage ? 'Sign in' : 'Sign up'}</Styles>
           </Styles>
         </Styles>
       </Styles>

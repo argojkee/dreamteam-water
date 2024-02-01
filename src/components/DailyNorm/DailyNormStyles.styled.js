@@ -11,8 +11,9 @@ export const DailyNormStyles = styled.div`
   .dailyNormaSection {
     padding: 8px 20px 8px 20px;
 
-    box-shadow: rgba(158, 187, 255, 0.12);
-    border: 1px solid rgba(236, 242, 255, 1);
+    box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
+
+    border: 1px solid #ecf2ff;
     border-radius: 10px;
   }
 

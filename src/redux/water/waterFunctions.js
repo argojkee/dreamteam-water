@@ -1,13 +1,34 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getCurrentMonthAPI } from '../../API/Water/getCurrentMonth';
+import { getMonthInfoAPI } from '../../API/Water/getMonthInfoAPI';
+import axios from 'axios';
 
 //санка для отримання даних по воді за поточний місяць
-export const getCurrentMonthThunk = createAsyncThunk(
-  'water/get',
-  async (date, thunkAPI) => {
+export const getCurrentMonthInfoThunk = createAsyncThunk(
+  'water/getMonth',
+  async (_, thunkAPI) => {
     try {
-      const currentMonth = await getCurrentMonthAPI(date);
+      const currentDate = new Date();
+
+      const currentMonth = await getMonthInfoAPI({
+        month: currentDate.getMonth() + 1,
+        year: currentDate.getFullYear(),
+      });
       return currentMonth; // ЦЕ БУДЕ ЗАПИСАНО В ЕКШИН ПЕЙЛОАД
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+//санка для получения данных по текущему
+export const getCurrentDayInfo = createAsyncThunk(
+  'water/getDay',
+  async (_, thunkAPI) => {
+    try {
+      const date = new Date();
+      const { data } = await axios.post('water', { date });
+
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -2,6 +2,7 @@ import Container from 'components/Container/Container';
 import DailyNorm from 'components/DailyNorm/DailyNorm';
 import { MainPageStyles } from './pageStyles/MainPageStyles.styled';
 import MonthStatsTable from 'components/Calendar/MonthStatsTable';
+import WaterTracker from 'components/WaterTracker/WaterTracker';
 
 const MainPage = () => {
   return (
@@ -11,7 +12,9 @@ const MainPage = () => {
           <div className="main-container">
             <div className="left-side">
               <DailyNorm />
-              <div className="status-bar"> Status bar</div>
+              <div className="status-bar">
+                <WaterTracker/>
+              </div>
             </div>
             <div className="right-side">
               <div className="today">Today</div>

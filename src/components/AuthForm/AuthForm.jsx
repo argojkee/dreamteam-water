@@ -106,9 +106,7 @@ const AuthForm = () => {
 
   return (
     <Styles $main>
-      <Styles $div $back $contentBlock $align={'center'} width={'100%'} >
-
-      <Bubbles style={{width: '200px'}}/>
+      <Styles $div $back $contentBlock $align={'center'} $justify={'space-between'} width={'100%'} >
       
         <Styles $div $divDiraction={'column'} $pass>
           <Styles $p $fontSize={'26px'} $marginBott={'16px'}>
@@ -227,6 +225,9 @@ const AuthForm = () => {
             <Styles $link onClick={navTo}>To {isRegistrationPage ? 'Sign in' : 'Sign up'}</Styles>
           </Styles>
         </Styles>
+
+        <Bubbles />
+
       </Styles>
     </Styles>
   );

@@ -135,7 +135,14 @@ const MonthStatistic = ({ selectedMonth, setSelectedMonth, today }) => {
           </li>
         ))}
       </MonthStatisticlist>
-      {modalVisible && (<DaysGeneralStats top={modalPosition.top} left={modalPosition.left} setModalVisible={setModalVisible} selectedMonth={selectedMonth}/>)}
+      {modalVisible && (
+        <DaysGeneralStats
+          top={modalPosition.top}
+          left={modalPosition.left}
+          setModalVisible={setModalVisible}
+          selectedMonth={selectedMonth}
+        />
+      )}
     </>
   );
 };

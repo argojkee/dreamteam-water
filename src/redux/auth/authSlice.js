@@ -5,7 +5,7 @@ import signUpAPI from '../../API/Auth/signUpAPI';
 import fetchCurrentUserAPI from 'API/Auth/fetchCurrentUserAPI';
 import { editDailyNorm } from 'API/Auth/editDailyNorm';
 import { changeUserAvatarAPI } from 'API/Auth/changeUserAvatarAPI';
-import { changeUserData } from 'API/Auth/fetchChangeUserDataAPI';
+import { changeUserData } from 'API/Auth/changeUserDataAPI';
 
 const initialState = {
   user: {

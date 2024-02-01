@@ -16,6 +16,7 @@ const Footer = () => {
   const dispatch = useDispatch();
   const [isAddShow, setIsAddShow] = useState(false);
   const [isEditShow, setIsEditShow] = useState(false);
+  const [editFormData, setEditFormData] = useState(null);
 
   const onCurrentDateInfoClick = async () => {
     try {
@@ -57,6 +58,24 @@ const Footer = () => {
     console.log(result);
   };
 
+  // const onEditDrink = async () => {
+  //   try {
+  //     const drinkId = '65b804c19be4e2161a1e5a0f';
+  //     const result = await editDrink(drinkId, {
+  //       drink: { ml: 500, time: '7:30' },
+  //     });
+
+  //     const updatedDrink = result?.updatedDrink;
+
+  //     if (updatedDrink) {
+  //       setEditFormData(updatedDrink);
+  //       setIsEditShow(true);
+  //     }
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+
   const onEditDrink = async () => {
     const result = await editDrink('65b804c19be4e2161a1e5a0f', {
       drink: { ml: 500, time: '7:30' },
@@ -97,7 +116,6 @@ const Footer = () => {
       </button>
       <button onClick={onEditNormaClick}>Edit norm</button>
       {/* <button>Get any day info</button> */}
-
       <button
         style={{ backgroundColor: 'rgba(0,128,0,0.5)' }}
         onClick={() => setIsAddShow(true)}
@@ -119,9 +137,18 @@ const Footer = () => {
 
       {isEditShow && (
         <Modal
-          closeModal={() => setIsEditShow(false)}
+          closeModal={() => {
+            setIsEditShow(false);
+            setEditFormData(null);
+          }}
           children={
-            <AddForm drinkId={1} closeModal={() => setIsEditShow(false)} />
+            <>
+              <AddForm
+                drinkId={editFormData?.id}
+                previousWaterData={editFormData}
+                closeModal={() => setIsEditShow(false)}
+              />
+            </>
           }
         />
       )}

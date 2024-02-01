@@ -64,4 +64,4 @@ const Bottle = () => {
   )
 };
 
-export default Bottle
+export default Bottle;

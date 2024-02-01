@@ -1,22 +1,11 @@
-import { useEffect, useState } from 'react';
-import { useInitialDate } from './useInitialDate';
-import { monthsArr } from '../monthsArr';
+import { useState } from 'react';
+import { getMonthsArr } from '../getMonthsArr';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { MonthSwitcherContainer } from './MonthSwitcher.styled';
 
-const MonthSwitcher = ({ setSelectedMonth }) => {
-  const [today] = useInitialDate();
-  const [pickedDate, setPickedDate] = useState(today);
+const MonthSwitcher = ({ today}) => {
+  const [pickedDate, setPickedDate] = useState({ ...today });
   const [registrationDate] = useState({ day: 1, month: 9, year: 2023 });
-
-  useEffect(() => {
-    const newCurrentMonth = {
-      day: null,
-      month: pickedDate.month,
-      year: pickedDate.year,
-    };
-    setSelectedMonth(newCurrentMonth);
-  }, [pickedDate, setSelectedMonth]);
 
   const handlePrevMonth = () => {
     pickedDate.month === 0
@@ -59,7 +48,7 @@ const MonthSwitcher = ({ setSelectedMonth }) => {
         <SlArrowLeft />
       </button>
       <h3>
-        {monthsArr[pickedDate.month].name}, {pickedDate.year}
+        {getMonthsArr(pickedDate.year)[pickedDate.month].name}, {pickedDate.year}
       </h3>
       <button onClick={handleNextMonth} disabled={isButtonNextDisabled()}>
         <SlArrowRight />

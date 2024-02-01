@@ -1,18 +1,16 @@
 import { useState } from 'react';
 import MonthSwitcher from './MonthSwitcher/MonthSwitcher';
 import MonthStatistic from './MonthStatistic/MonthStatistic';
+import { useInitialDate } from './MonthSwitcher/useInitialDate';
 
 const MonthStatsTable = () => {
-  const [selectedMonth, setSelectedMonth] = useState({
-    day:null,
-    month: null,
-    year: null,
-  });
+  const today = useInitialDate();
+  const [selectedMonth, setSelectedMonth] = useState({ ...today });
 
   return (
-    <div >
-      <MonthSwitcher setSelectedMonth={setSelectedMonth}/>
-      <MonthStatistic selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth} /> 
+    <div>
+      <MonthSwitcher today={today} />
+      <MonthStatistic selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth} today={today} /> 
     </div>
   );
 };

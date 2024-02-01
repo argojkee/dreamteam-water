@@ -1,13 +1,11 @@
-import { useState } from "react";
-
 export const useInitialDate = () => {
   const currentDate = new Date();
 
-  const [today, setToday] = useState({
+  const today = {
       day: currentDate.getDate(),
       month: currentDate.getMonth(),
       year: currentDate.getFullYear()
-  });
+  }
 
-  return [today, setToday];
+  return today
 };

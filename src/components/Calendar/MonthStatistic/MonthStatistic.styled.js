@@ -37,8 +37,9 @@ export const MonthStatisticlist = styled.div`
       border: 1px solid #ff9d43;
     }
 
-    //   &:disabled {
-    //    opacity: 0;
+      &:disabled {
+       border: none;
+       cursor: auto;
   }
 
   p {

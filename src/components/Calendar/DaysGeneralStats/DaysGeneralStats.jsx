@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { WaterStatsContainer } from "./DaysGeneralStats.styled";
 import { TfiClose } from "react-icons/tfi";
-import { monthsArr } from "../monthsArr";
+import { getMonthsArr } from "../getMonthsArr";
 
 const DaysGeneralStats = ({ setModalVisible, top, left, selectedMonth}) => {
 
@@ -34,7 +34,7 @@ useEffect(() => {
   return (
       <WaterStatsContainer data-modal-container $top={top} $left={left}>
           <div>
-        <p>{selectedMonth.day}, {monthsArr[selectedMonth.month].name }</p>
+        <p>{selectedMonth.day}, {getMonthsArr(selectedMonth.year)[selectedMonth.month].name }</p>
               <button onClick={closeModal} ><TfiClose/></button>
           </div>
           <p>Daily norma: <span>2L</span></p>

@@ -9,7 +9,7 @@ import Styles from './pageStyles/LogInStyle/Styles';
 const LoginPage = () => {
   return (
 
-    <Styles $section $back>
+    <Styles $section>
       <Container>
         <AuthForm />
       </Container>

@@ -9,13 +9,12 @@ import { FiEye } from 'react-icons/fi';
 import { changeUserAvatarAPI } from 'API/Auth/changeUserAvatarAPI';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  // getUserAvatar,
-  // getUserEmail,
-  // getUserGender,
-  // getUserName,
-  getCurrentUser,
+  getUserAvatar,
+  getUserEmail,
+  getUserGender,
+  getUserName,
 } from '../../redux/auth/authSelectors';
-import { changeUserData } from 'API/Auth/fetchChangeUserDataAPI';
+import { changeUserData } from 'API/Auth/changeUserDataAPI';
 
 const iconColor = '#407BFF';
 
@@ -50,21 +49,23 @@ export const SettingModal = ({ closeModal }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showRepeatNewPassword, setShowRepeatNewPassword] = useState(false);
-  const userData = useSelector(getCurrentUser);
-  const avatar = userData.avatarURL;
-  const userName = userData.name;
-  const userEmail = userData.email;
-  const userGender = userData.gender;
+  const avatar = useSelector(getUserAvatar);
+  const userName = useSelector(getUserName);
+  const userEmail = useSelector(getUserEmail);
+  const userGender = useSelector(getUserGender);
+  const defaultAvatar = userName !== null ? userName[0] : userEmail[0];
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
-    const arrayWithValues = Object.entries(values).filter(
-      ([key, value]) => value
-    );
-
-    const requestObj = Object.fromEntries(arrayWithValues);
-    dispatch(changeUserData(requestObj));
+  const handleSubmit = (
+    { name, email, gender, password, newPassword },
+    { resetForm }
+  ) => {
+    if (newPassword === '') {
+      dispatch(changeUserData({ name, email, gender, password }));
+    } else {
+      dispatch(changeUserData({ name, email, gender, password, newPassword }));
+    }
 
     resetForm();
     closeModal();
@@ -100,11 +101,20 @@ export const SettingModal = ({ closeModal }) => {
       <div>
         <p className="setting-text setting-modal-text">Your photo</p>
         <div className="setting-photo-wrapper">
-          <img
-            src={`https://dreamteam-water-server.onrender.com/${avatar}`}
-            alt="avatar"
-            className="setting-avatar"
-          />
+          {avatar === null && (
+            <div className="setting-default-avatar">
+              <p>{defaultAvatar}</p>
+            </div>
+          )}
+          {avatar !== null && (
+            <img
+              src={`https://dreamteam-water-server.onrender.com/${avatar}`}
+              alt="avatar"
+              className="setting-avatar"
+              width="80"
+              height="80"
+            />
+          )}
           <label className="upload-photo-label">
             <BsUpload color={iconColor} />
             <p className="upload-photo-text">Upload a photo</p>

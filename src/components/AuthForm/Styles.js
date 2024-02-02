@@ -1,27 +1,19 @@
-import styled, { css } from 'styled-components';
-
-import BackMobile1 from '../../images/signIn-signUp/back/mobile/back_mobile@1x.png';
-import BackMobile2 from '../../images/signIn-signUp/back/mobile/back_mobile@2x.png';
-
-import BackTablet1 from '../../images/signIn-signUp/back/tablet/back_tablet@1x.png';
-import BackTablet2 from '../../images/signIn-signUp/back/tablet/back_tablet@2x.png';
-
-import BackDesk1 from '../../images/signIn-signUp/back/desktop/back__desktop@1x.png';
-import BackDesk2 from '../../images/signIn-signUp/back/desktop/back__desktop@2x.png';
+import styled, { css } from "styled-components";
 
 // 'FormContainer' get props  automatic from 'ContainerFormStyle' if you send them.
 const Div = styled.div`
+
   display: flex;
   flex-direction: ${props => props.$divDiraction || 'row'};
   justify-content: ${props => props.$justify || 'center'};
-  align-items: ${props => props.$align || 'center'};
+  // align-items: ${props => props.$align || 'center'}; 
 
   width: ${props => props.width || '0'};
   height: ${props => props.height || 'fit-content'};
+  
+  margin: ${props => props.$marginTop  '0'} ${props => props.$marginRight  '0'} ${props => props.$marginBott || '0'} 0;
 
-  margin-bottom: ${props => props.$marginBott || '0'};
-
-  padding: ${props => props.$inputPadding || '0'};
+  padding: ${props => props.$inputPadding ||'0'};
 
   gap: ${props => props.$gap || '0'};
 
@@ -31,81 +23,79 @@ const Div = styled.div`
 
   border-radius: ${props => props.$borderRadius || 'none'};
 
-  border: ${props => props.$border || 'none'}
-    ${props => props.$borderColor || 'white'};
+  border: ${props => props.$border  'none'} ${props => props.$borderColor  'white'};
 
-  ${props =>
-    props.$back &&
-    css`
-      background-size: contain;
+  ${props => props.$pass && css `
 
-      background: url(${BackMobile1});
-      background: url(${BackMobile2});
+    width: 280px;
 
-      @media screen and (min-width: 320px) and (max-width: 768px) {
-        max-width: 767px;
-        background: url(${BackTablet1});
+    @media screen and (min-width: 768px) and (max-width: 1439px) { 
+      width: 336px;
+    }
+  
+    @media screen and (min-width: 1440px) { 
+   
+      width: 384px;
+    }
 
-        @media (min-device-pixel-ratio: 2),
-          (min-resolution: 192dpi),
-          (min-resolution: 2dppx) {
-          background: url(${BackTablet2});
-        }
-      }
+  `};
 
-      @media screen and (min-width: 768px) and (max-width: 1440px) {
-        max-width: 1439px;
-        background: url(${BackDesk1});
+  ${props => props.$contentBlock && css `
 
-        @media (min-device-pixel-ratio: 2),
-          (min-resolution: 192dpi),
-          (min-resolution: 2dppx) {
-          background: url(${BackDesk2});
-        }
-      }
-    `}
+    @media screen and (min-width: 320px) and (max-width: 767px) { 
+      flex-direction: ${props => props.$divDiraction || 'column'};
+      align-items: center; 
+    }
 
-  ${props =>
-    props.$pass &&
-    css`
-      width: 280px;
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      justify-content: left;
+    }
 
-      @media screen and (min-width: 768px) and (max-width: 1440px) {
-        width: 336px;
-      }
+    @media screen and (min-width: 1440px) { 
 
-      @media screen and (min-width: 1440px) {
-        width: 384px;
-      }
+      
+      flex-direction: row-reverse;
+      
+    }
     `};
 
-  ${props =>
-    props.$contentBlock &&
-    css`
-      @media screen and (min-width: 768px) and (max-width: 1440px) {
-        justify-content: left;
-      }
+    ${props => props.$divDiraction && css `
 
-      @media screen and (min-width: 1440px) {
-        justify-content: right;
-      }
-    `};
+    @media screen and (min-width: 320px) and (max-width: 767px) { 
+      margin: 30px 0 10px 0;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      margin: 100px 0 0 0; 
+    }
+
+    @media screen and (min-width: 1440px) { 
+
+      margin: auto 100px auto 0; 
+      
+    }
+
+  `};
+  
 `;
 
 const Form = styled.form`
+
   display: flex;
   flex-direction: ${props => props.$formDiraction || 'row'};
-  align-items: ${props => props.$align || 'center'};
+  align-items: ${props => props.$align || 'center'}; 
 
   font-family: roboto;
 
   width: ${props => props.width || '100%'};
-
+  
   margin-bottom: ${props => props.$marginBott || '8px'};
   background-color: ${props => props.Backcolor || 'transparent'};
+
 `;
 
 const Input = styled.input`
+
   width: ${props => props.width || '280px'};
   height: ${props => props.height || '44px'};
 
@@ -113,7 +103,7 @@ const Input = styled.input`
   font-size: ${props => props.$fontSize || '16px'};
   color: ${props => props.$inputColor || 'none'};
 
-  padding: ${props => props.$inputPadding || '12px 10px'};
+  padding: ${props => props.$inputPadding ||'12px 10px'};
 
   margin-bottom: ${props => props.$marginBott || '8px'};
 
@@ -127,16 +117,18 @@ const Input = styled.input`
     outline: none;
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1440px) {
+  @media screen and (min-width: 768px) and (max-width: 1440px) { 
     width: 336px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1440px) { 
     width: 384px;
   }
+
 `;
 
 const Text = styled.p`
+
   font-family: roboto;
   font-weight: ${props => props.$fontWeight || '500'};
   font-size: ${props => props.$fontSize || '18px'};
@@ -146,17 +138,21 @@ const Text = styled.p`
   text-align: ${props => props.$textAlign || 'start'};
 
   margin-bottom: ${props => props.$marginBott || '0'};
+
 `;
 
 const Label = styled.label`
+  
   width: ${props => props.$width || '100%'};
 
   font-weight: ${props => props.$fontWeight || '500'};
 
   margin-bottom: ${props => props.$marginBott || '8px'};
+  
 `;
 
 const Button = styled.button`
+  
   width: ${props => props.$width || '100%'};
   height: ${props => props.height || '44px'};
 
@@ -185,6 +181,7 @@ const Button = styled.button`
 `;
 
 const Link = styled.p`
+  
   width: ${props => props.$width || 'fit-content'};
 
   font-weight: ${props => props.$fontWeight || '500'};
@@ -194,28 +191,34 @@ const Link = styled.p`
   cursor: pointer;
 
   &:hover {
-    color: #ff9d43;
+    color: #FF9D43;
   }
+  
 `;
 
 const Main = styled.main`
-  width: 100%;
+
+width: 100 %;
   object-fit: contain;
+
+ 
+
 `;
 
-const Styles = props => {
-  return (
+const Styles = (props) => {
+
+  return( 
     <>
-      {props.$div ? <Div {...props} /> : ''}
-      {props.$form ? <Form {...props} /> : ''}
-      {props.$input ? <Input {...props} /> : ''}
-      {props.$p ? <Text {...props} /> : ''}
-      {props.$label ? <Label {...props} /> : ''}
-      {props.$button ? <Button {...props} /> : ''}
-      {props.$link ? <Link {...props} /> : ''}
-      {props.$main ? <Main {...props} /> : ''}
+      {props.$div ? <Div {...props}/> : ''}
+      {props.$form ? <Form {...props}/> : ''}
+      {props.$input ? <Input {...props}/> : ''}
+      {props.$p ? <Text {...props}/> : ''}
+      {props.$label ? <Label {...props}/> : ''}
+      {props.$button ? <Button {...props}/> : ''}
+      {props.$link ? <Link {...props}/> : ''}
+      {props.$main ? <Main {...props}/> : ''}
     </>
-  );
+  )
 };
 
 export default Styles;

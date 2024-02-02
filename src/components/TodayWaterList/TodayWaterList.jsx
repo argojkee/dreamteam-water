@@ -1,90 +1,53 @@
-import { useEffect } from "react";
-import { useDispatch} from "react-redux";
-import { FaPlus } from "react-icons/fa6";
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { FaPlus } from 'react-icons/fa6';
 
-import { DrinkElement } from "./DrinkElement";
-import { AddTodayWaterBtn, EmptyTxt, H2, ListUl } from "./TodayWaterList.styled";
-
-const testList = [
-    {
-        id: 1,
-        vol: 100,
-        // time: Date.parse('2023-01-01T14:48:00'),
-        time: '10:13 AM',
-    },
-    {
-        id: 2,
-        vol: 300,
-        // time: Date.parse('2023-01-01T22:22:00'),
-        time: '2:22 PM',
-    },
-    {
-        id: 3,
-        vol: 600,
-        // time: Date.parse('2023-01-01T23:54:00'),
-        time: '6:41 PM',
-    },
-    {
-        id: 4,
-        vol: 100,
-        // time: Date.parse('2023-01-01T23:54:00'),
-        time: '7:22 PM',
-    },
-    {
-        id: 5,
-        vol: 100,
-        // time: Date.parse('2023-01-01T23:54:00'),
-        time: '8:00 PM',
-    },
-    {
-        id: 6,
-        vol: 100,
-        // time: Date.parse('2023-01-01T23:54:00'),
-        time: '8:56 PM',
-    },
-]
-const list = testList;
+import { DrinkElement } from './DrinkElement';
+import {
+  AddTodayWaterBtn,
+  EmptyTxt,
+  H2,
+  ListUl,
+} from './TodayWaterList.styled';
+import { Modal } from 'components/Modal/Modal';
+import { AddForm } from 'components/AddForm/AddForm';
+import { getDrinks } from '../../redux/water/waterSelectors';
 
 export function TodayWaterList() {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        // dispatch(requestGetAllContacts())
-    }, [dispatch])
-    
-    //TODO Логика для определения значений списка
-    // const contacts = useSelector((state) => state.contactList.contacts.items);
-    // const filterWord = useSelector((state) => state.contactList.filter)
+  const [isShowAddModal, setIsShowAddModal] = useState(false);
+  const drinks = useSelector(getDrinks);
 
-    // const filterContactsByName = () => {
-    //     const ff = filterWord.toLowerCase() ?? '';
-    //     return contacts.filter(contact => contact.name.toLowerCase().includes(ff))
-    // }
+  return (
+    <>
+      <H2>Today</H2>
 
-    // const list = filterContactsByName();
+      <ListUl>
+        {drinks?.length ? (
+          drinks.map(({ _id, ml, time }) => (
+            <DrinkElement
+              key={_id}
+              id={_id}
+              ml={ml}
+              time={time}
+              color="#cfdaf5aa"
+            />
+          ))
+        ) : (
+          <EmptyTxt>List is empty.</EmptyTxt>
+        )}
+      </ListUl>
 
-    return (
-        <>
-            <H2>Today</H2>
+      <AddTodayWaterBtn onClick={() => setIsShowAddModal(true)}>
+        <FaPlus />
+        add water
+      </AddTodayWaterBtn>
 
-            <ListUl>
-                {list.length
-                    ? (list.map(({ id, vol, time }) =>
-                        <DrinkElement
-                            key={id}
-                            id={id}
-                            vol={vol}
-                            time={time}
-                            color="#cfdaf5aa"
-                        />
-                    ))
-                    : (<EmptyTxt>List is empty.</EmptyTxt>)
-                }
-            </ListUl>
-
-            <AddTodayWaterBtn>
-                <FaPlus />
-                add water
-            </AddTodayWaterBtn>
-        </>
-    )
+      {isShowAddModal && (
+        <Modal
+          closeModal={() => setIsShowAddModal(false)}
+          children={<AddForm closeAddForm={() => setIsShowAddModal(false)} />}
+        />
+      )}
+    </>
+  );
 }

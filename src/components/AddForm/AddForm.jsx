@@ -1,48 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { AddFormStyles } from './AddForm.styled';
-import { getToken } from '../../redux/auth/authSelectors';
+import { getCurrentDay } from '../../redux/water/waterSelectors';
 import { useSelector } from 'react-redux';
+import {
+  addWaterThunk,
+  editDrinkThunk,
+} from '../../redux/water/waterFunctions';
+import { useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
 
 export const AddForm = ({
   closeAddForm,
   previousWaterData,
-  onSave,
-  drinkId,
+  // onSave,
+  drink,
 }) => {
   const [waterAmount, setWaterAmount] = useState(0);
   const [recordTime, setRecordTime] = useState(getDefaultTime());
-  const [lastWaterInfo, setLastWaterInfo] = useState(null);
-  const token = useSelector(getToken);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          'https://dreamteam-water-server.onrender.com/api/water',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({ date: new Date() }),
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-
-        const data = await response.json();
-        setLastWaterInfo(data.dayInfo);
-      } catch (error) {
-        console.error('Error fetching water data:', error);
-      }
-    };
-    if (token) {
-      fetchData();
-    }
-  }, [token]);
+  const dispatch = useDispatch();
+  const { _id: dayId } = useSelector(getCurrentDay);
 
   function getDefaultTime() {
     const now = new Date();
@@ -60,39 +36,39 @@ export const AddForm = ({
     });
   }
 
-  const handleSave = () => {
-    onSave({
-      amount: waterAmount,
-      time: recordTime,
-    });
+  const handleSave = async () => {
+    if (drink) {
+      dispatch(
+        editDrinkThunk({ id: drink.id, time: recordTime, ml: waterAmount })
+      );
+    } else {
+      await dispatch(
+        addWaterThunk({ dayId, drink: { ml: waterAmount, time: recordTime } })
+      );
+    }
+
     closeAddForm();
   };
 
-  const showLastWaterInfo = lastWaterInfo &&
-    lastWaterInfo.drinks.length > 0 && (
-      <>
-        <h2>🥤</h2>
-        <p>{`${lastWaterInfo.drinks[0].ml} ml ${lastWaterInfo.drinks[0].time}`}</p>
-      </>
-    );
-
-  const showEditData = drinkId ? (
+  const showContentData = drink ? (
     <>
       <h1>Edit the entered amount of water</h1>
-      <p>{`${previousWaterData.amount} ml ${previousWaterData.time}`}</p>
+      <div>🥤</div>
+      <p>{`${drink.ml} ml ${drink.time}`}</p>
       <h2>Correct entered data:</h2>
+      <p>Amount of water:</p>
     </>
   ) : (
     <>
       <h1>Add water</h1>
       <h3>Choose a value:</h3>
+      <p>Amount of water:</p>
     </>
   );
 
   return (
     <AddFormStyles>
-      {showEditData}
-      {showLastWaterInfo}
+      {showContentData}
       <div className="edit-water-form">
         <div className="step-input">
           <button onClick={() => setWaterAmount(prev => prev - 50)}>-</button>
@@ -128,7 +104,9 @@ function generateTimeOptions() {
 
   options.push(
     <option
-      key={`${currentFormattedHour}:${currentFormattedMinute}`}
+      //!Било ошибки, что у элементов одинаковый ключ. Подключил наноАйи
+      // key={`${currentFormattedHour}:${currentFormattedMinute}`}
+      key={nanoid()}
       value={`${currentFormattedHour}:${currentFormattedMinute}`}
     >
       {`${currentFormattedHour}:${currentFormattedMinute}`}
@@ -141,7 +119,8 @@ function generateTimeOptions() {
       const formattedMinute = minute.toString().padStart(2, '0');
       options.push(
         <option
-          key={`${formattedHour}:${formattedMinute}`}
+          // key={`${formattedHour}:${formattedMinute}`}
+          key={nanoid()}
           value={`${formattedHour}:${formattedMinute}`}
         >
           {`${formattedHour}:${formattedMinute}`}

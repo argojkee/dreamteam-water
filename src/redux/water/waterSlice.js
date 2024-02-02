@@ -1,6 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCurrentMonthInfoThunk } from './waterFunctions';
-import { getCurrentDayInfo } from './waterFunctions';
+import {
+  getCurrentMonthInfoThunk,
+  getCurrentDayInfoThunk,
+  addWaterThunk,
+  deleteDrinkThunk,
+  editDrinkThunk,
+} from './waterFunctions';
 
 const initialState = {
   month: null,
@@ -10,6 +15,9 @@ const initialState = {
   dayDataLoading: false,
   monthError: null,
   dayError: false,
+  isAddDrinkLoading: false,
+  isDeleting: false,
+  isEditing: false,
 };
 
 const waterSlice = createSlice({
@@ -32,18 +40,51 @@ const waterSlice = createSlice({
         state.monthDataLoading = false;
         state.monthError = payload;
       })
-      .addCase(getCurrentDayInfo.pending, state => {
+      .addCase(getCurrentDayInfoThunk.pending, state => {
         state.dayDataLoading = true;
         state.dayError = false;
       })
-      .addCase(getCurrentDayInfo.fulfilled, (state, { payload }) => {
+      .addCase(getCurrentDayInfoThunk.fulfilled, (state, { payload }) => {
         state.dayDataLoading = false;
         state.dayInfo = { ...payload.dayInfo };
         state.registerDay = payload.startDay;
       })
-      .addCase(getCurrentDayInfo.rejected, (state, { payload }) => {
+      .addCase(getCurrentDayInfoThunk.rejected, (state, { payload }) => {
         state.dayDataLoading = false;
         state.dayError = payload;
+      })
+      .addCase(addWaterThunk.pending, state => {
+        state.isAddDrinkLoading = true;
+      })
+      .addCase(addWaterThunk.fulfilled, (state, { payload }) => {
+        state.isAddDrinkLoading = false;
+        state.dayInfo = { ...payload };
+        console.log({ ...payload });
+      })
+      .addCase(addWaterThunk.rejected, state => {
+        state.isAddDrinkLoading = false;
+      })
+      .addCase(deleteDrinkThunk.pending, state => {
+        state.isDeleting = true;
+      })
+      .addCase(deleteDrinkThunk.fulfilled, (state, { payload }) => {
+        state.isDeleting = false;
+        state.dayInfo = { ...payload };
+        console.log(payload);
+      })
+      .addCase(deleteDrinkThunk.rejected, state => {
+        state.isDeleting = false;
+      })
+      .addCase(editDrinkThunk.pending, state => {
+        state.isEditing = true;
+      })
+      .addCase(editDrinkThunk.fulfilled, (state, { payload }) => {
+        state.isEditing = false;
+        state.dayInfo = { ...payload };
+        console.log(payload);
+      })
+      .addCase(editDrinkThunk.rejected, state => {
+        state.isEditing = false;
       });
   },
 });

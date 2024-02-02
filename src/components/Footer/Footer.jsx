@@ -1,6 +1,5 @@
 import Container from 'components/Container/Container';
 import axios from 'axios';
-import { getCurrentDateInfo } from 'API/Water/getCurrentDateInfo';
 import { addDrink } from 'API/Water/addDrink';
 import { useState } from 'react';
 import { editDailyNorm } from 'API/Auth/editDailyNorm';
@@ -8,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import { Modal } from 'components/Modal/Modal';
 import { AddForm } from 'components/AddForm/AddForm';
 import { deleteDrink } from 'API/Water/deleteDrink';
-import { getMonthInfo } from 'API/Water/getMonthInfo';
 import { editDrink } from 'API/Water/editDrink';
 axios.defaults.baseURL = 'https://dreamteam-water-server.onrender.com/api/';
 
@@ -17,18 +15,6 @@ const Footer = () => {
   const [isAddShow, setIsAddShow] = useState(false);
   const [isEditShow, setIsEditShow] = useState(false);
   const [editFormData, setEditFormData] = useState(null);
-
-  const onCurrentDateInfoClick = async () => {
-    try {
-      const date = { year: 2024, month: 'January', day: 1 };
-      const dayInfo = await getCurrentDateInfo({
-        date,
-      });
-      console.log(dayInfo);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
 
   const onAddDrink = async () => {
     try {
@@ -49,13 +35,6 @@ const Footer = () => {
     } catch (e) {
       console.log(e.message);
     }
-  };
-
-  const onGetMonthInfo = async () => {
-    const result = await getMonthInfo({
-      date: { year: 2024, month: 'January' },
-    });
-    console.log(result);
   };
 
   // const onEditDrink = async () => {
@@ -96,24 +75,13 @@ const Footer = () => {
     <Container>
       <button
         style={{ backgroundColor: 'rgba(0,128,0,0.5)' }}
-        onClick={onCurrentDateInfoClick}
-      >
-        Get current date info
-      </button>
-      <button
-        style={{ backgroundColor: 'rgba(0,128,0,0.5)' }}
         onClick={onAddDrink}
       >
         Add drink
       </button>
       <button onClick={onEditDrink}>Edit drink</button>
       <button onClick={onDeleteDrink}>Delete drink</button>
-      <button
-        style={{ backgroundColor: 'rgba(0,128,0,0.5)' }}
-        onClick={onGetMonthInfo}
-      >
-        Get month info
-      </button>
+
       <button onClick={onEditNormaClick}>Edit norm</button>
       {/* <button>Get any day info</button> */}
       <button

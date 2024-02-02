@@ -4,6 +4,7 @@ export function isLeapYear(year) {
 
 export function getMonthsArr(year) {
   const isLeap = isLeapYear(year);
+
   return [
     { name: 'January', numberOfDays: 31 },
     { name: 'February', numberOfDays: isLeap ? 29 : 28 },

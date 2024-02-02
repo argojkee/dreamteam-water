@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/dreamteam-water/static/css/main.a52c4b64.css",
-    "main.js": "/dreamteam-water/static/js/main.55bab6c0.js",
+    "main.js": "/dreamteam-water/static/js/main.a5a4ee35.js",
     "static/js/944.518e58d4.chunk.js": "/dreamteam-water/static/js/944.518e58d4.chunk.js",
     "static/js/888.120325d8.chunk.js": "/dreamteam-water/static/js/888.120325d8.chunk.js",
     "static/js/245.0bbd29da.chunk.js": "/dreamteam-water/static/js/245.0bbd29da.chunk.js",
-    "static/js/215.c8b9ff1f.chunk.js": "/dreamteam-water/static/js/215.c8b9ff1f.chunk.js",
+    "static/js/659.7750de50.chunk.js": "/dreamteam-water/static/js/659.7750de50.chunk.js",
     "static/js/764.8b016f1d.chunk.js": "/dreamteam-water/static/js/764.8b016f1d.chunk.js",
-    "static/js/580.028f03b8.chunk.js": "/dreamteam-water/static/js/580.028f03b8.chunk.js",
+    "static/js/202.0d667507.chunk.js": "/dreamteam-water/static/js/202.0d667507.chunk.js",
     "static/js/938.603bee08.chunk.js": "/dreamteam-water/static/js/938.603bee08.chunk.js",
     "static/media/back2_desktop@2x.png": "/dreamteam-water/static/media/back2_desktop@2x.eab44f0d2ec9118c2754.png",
     "static/media/tablet_onlybottle@2x.png": "/dreamteam-water/static/media/tablet_onlybottle@2x.09074072dcf7995e5207.png",
@@ -77,17 +77,17 @@
     "static/media/Statistics.svg": "/dreamteam-water/static/media/Statistics.8cfec11a5c739ea320477bba603d1a57.svg",
     "static/media/point.svg": "/dreamteam-water/static/media/point.fddb539b56ea3011c50a91ee6d888f28.svg",
     "main.a52c4b64.css.map": "/dreamteam-water/static/css/main.a52c4b64.css.map",
-    "main.55bab6c0.js.map": "/dreamteam-water/static/js/main.55bab6c0.js.map",
+    "main.a5a4ee35.js.map": "/dreamteam-water/static/js/main.a5a4ee35.js.map",
     "944.518e58d4.chunk.js.map": "/dreamteam-water/static/js/944.518e58d4.chunk.js.map",
     "888.120325d8.chunk.js.map": "/dreamteam-water/static/js/888.120325d8.chunk.js.map",
     "245.0bbd29da.chunk.js.map": "/dreamteam-water/static/js/245.0bbd29da.chunk.js.map",
-    "215.c8b9ff1f.chunk.js.map": "/dreamteam-water/static/js/215.c8b9ff1f.chunk.js.map",
+    "659.7750de50.chunk.js.map": "/dreamteam-water/static/js/659.7750de50.chunk.js.map",
     "764.8b016f1d.chunk.js.map": "/dreamteam-water/static/js/764.8b016f1d.chunk.js.map",
-    "580.028f03b8.chunk.js.map": "/dreamteam-water/static/js/580.028f03b8.chunk.js.map",
+    "202.0d667507.chunk.js.map": "/dreamteam-water/static/js/202.0d667507.chunk.js.map",
     "938.603bee08.chunk.js.map": "/dreamteam-water/static/js/938.603bee08.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a52c4b64.css",
-    "static/js/main.55bab6c0.js"
+    "static/js/main.a5a4ee35.js"
   ]
 }

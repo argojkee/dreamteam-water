@@ -10,7 +10,7 @@ const RegistrationPage = () => {
 
   return (
     
-    <Styles $section $back>
+    <Styles $section>
       <Container>
         <AuthForm/>
       </Container>

@@ -4,23 +4,34 @@ import { useTransition, animated } from '@react-spring/web';
 import {ReactComponent as BottleCircle} from '../../../images/signIn-signUp/bottle/bottleCircle.svg';
 
 /* styles import */
-import Styles from './Styles';
+import { BottleStyles } from './BottleStyles.styled';
 /* end */
 
 const Bottle = () => {
 
   const [parameters, setParameters] = useState([]);
+  const [bottleStartY, setBottleStartY] = useState(0);
 
-  const ref = useRef();
+  const bottleRef = useRef();
  
   useEffect(() => {
 
     const random = () => {
-      
+        
+        let bottleCenterX = 0;
+
+        if(bottleRef.current !== null) {
+
+          bottleCenterX = bottleRef.current.offsetWidth / 2;
+          setBottleStartY(bottleRef.current.offsetHeight);
+
+        } 
+        
         return {
    
           size: randomGenerator(15, 5), 
-          x: randomGenerator(220, 150), 
+          x: randomGenerator(bottleCenterX + 20, bottleCenterX - 40),
+
         };
       };
 
@@ -28,7 +39,7 @@ const Bottle = () => {
 
         setParameters([...parameters, random()])
        
-    }, randomGenerator(3000, 300));
+    }, randomGenerator(150, 50) * 10);
 
     return () => {
         clearInterval(timer);
@@ -43,23 +54,25 @@ const Bottle = () => {
   };
 
   const transitions = useTransition(parameters, {
-    from: {transform: `translateY(250px)`, opacity: '1',},
-    enter: {transform: `translateY(70px)`, opacity: '0',},
-    config: {duration: randomGenerator(3000, 1000), friction: randomGenerator(100, 10) * 10,}
+    from: {transform: `translateY(${bottleStartY - 20}px)`, opacity: '1',},
+    enter: {transform: `translateY(30px)`, opacity: '0,8',},
+    config: {duration: randomGenerator(4000, 2000), friction: randomGenerator(300, 5) * 10,}
   })
 
   return ( 
     
-    <Styles $div >
-     { transitions((style, item) => 
-      (<animated.div style={style}>
-      
-        <BottleCircle style={{ position: 'absolute', width: `${item.size}px`, height: `${item.size}px`,
-        left: item.x}}/>
+    <BottleStyles>
+      <div className='bottleContainer' ref={bottleRef}>
+      { transitions((style, item) => 
+        (<animated.div style={style}>
         
-      </animated.div>)
-      )}
-    </Styles>
+          <BottleCircle style={{ position: 'absolute', width: `${item.size}px`, height: `${item.size}px`,
+          left: `${item.x}px`}}/>
+          
+        </animated.div>)
+        )}
+      </div>
+    </BottleStyles>
 
   )
 };

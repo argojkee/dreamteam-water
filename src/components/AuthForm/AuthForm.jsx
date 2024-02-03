@@ -12,7 +12,7 @@ import signUpAPI from '../../API/Auth/signUpAPI';
 import Styles from './Styles';
 /* end */
 
-import Bubbles from './Bottle/Bottle'
+import BubblesBottle from './Bottle/Bottle'
 
 import { ReactComponent as EyeIconOn } from '../../icons/signIn-signUp/outlineOn.svg';
 import { ReactComponent as EyeIconOff } from '../../icons/signIn-signUp/outlineOff.svg';
@@ -106,11 +106,9 @@ const AuthForm = () => {
 
   return (
     <Styles $main>
-      <Styles $div $back $contentBlock $align={'center'} width={'100%'} >
-
-      <Bubbles style={{width: '200px'}}/>
+      <Styles $div $contentBlock $align={'center'} $justify={'space-between'} width={'100%'} >
       
-        <Styles $div $divDiraction={'column'} $pass>
+        <Styles $div $divDiraction={'column'} $pass  $marginRight={'100px'}>
           <Styles $p $fontSize={'26px'} $marginBott={'16px'}>
             {isRegistrationPage ? 'Sign up' : 'Sign in'}
           </Styles>
@@ -204,7 +202,7 @@ const AuthForm = () => {
               </>
             )} 
           
-              <Styles $div $animaOn color={'#EF5050'} height={'8px'} width={'100%'} $justify={'flex-start'} $marginBott={'8px'}>
+              <Styles $div $animaOn color={'#EF5050'} height={'16px'} width={'100%'} $justify={'flex-start'} $marginBott={'8px'}>
 
                 <animated.div style={{...springs,}}>
                   {formik.touched.email && formik.errors.email
@@ -227,6 +225,9 @@ const AuthForm = () => {
             <Styles $link onClick={navTo}>To {isRegistrationPage ? 'Sign in' : 'Sign up'}</Styles>
           </Styles>
         </Styles>
+
+        <BubblesBottle />
+
       </Styles>
     </Styles>
   );

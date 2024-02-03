@@ -1,54 +1,71 @@
-import { useState, useEffect } from 'react';
-import { useSpring, animated } from '@react-spring/web';
+import { useState, useEffect, useRef } from 'react';
+import { useTransition, animated } from '@react-spring/web';
 
 import { ReactComponent as BottleCircle } from '../../../images/signIn-signUp/bottle/bottleCircle.svg';
 
-const Bottle = () => {
-  const [parameters, setParameters] = useState({});
+/* styles import */
+import { BottleStyles } from './BottleStyles.styled';
+/* end */
 
+const Bottle = () => {
+  const [parameters, setParameters] = useState([]);
+  const [bottleStartY, setBottleStartY] = useState(0);
+
+  const bottleRef = useRef();
   useEffect(() => {
     const random = () => {
+      let bottleCenterX = 0;
+
+      if (bottleRef.current !== null) {
+        bottleCenterX = bottleRef.current.offsetWidth / 2;
+        setBottleStartY(bottleRef.current.offsetHeight);
+      }
+
       return {
-        size: randomGenerator(20, 5, true),
-        x: 400,
-        startY: randomGenerator(window.innerHeight / 2 + 100, true),
-        speed: randomGenerator(10, null, false) * 1000,
+        size: randomGenerator(15, 5),
+        x: randomGenerator(bottleCenterX + 20, bottleCenterX - 40),
       };
     };
-    setInterval(() => {
-      setParameters(random());
-    }, randomGenerator(100, null, false) * 1000);
 
-    // return clearInterval(timer);
-  }, []);
+    const timer = setInterval(() => {
+      setParameters([...parameters, random()]);
+    }, randomGenerator(150, 50) * 10);
 
-  const randomGenerator = (max, min, mode) => {
-    if (mode) {
-      return Math.round(Math.random() * (max - min) + min);
-    } else {
-      return Math.round(Math.floor(Math.random() * max));
-    }
+    return () => {
+      clearInterval(timer);
+    };
+  }, [parameters]);
+
+  const randomGenerator = (max, min) => {
+    return Math.round(Math.random() * (max - min) + min);
   };
 
-  const springs = useSpring({
-    loop: true,
-    from: { transform: `translate(0, 50px)`, opacity: '1' },
-    to: { transform: `translate(0, 0)`, opacity: '0' },
-
-    config: { duration: parameters.speed, friction: 50 },
+  const transitions = useTransition(parameters, {
+    from: { transform: `translateY(${bottleStartY - 20}px)`, opacity: '1' },
+    enter: { transform: `translateY(30px)`, opacity: '0,8' },
+    config: {
+      duration: randomGenerator(4000, 2000),
+      friction: randomGenerator(300, 5) * 10,
+    },
   });
 
   return (
-    <animated.div style={{ ...springs }}>
-      <BottleCircle
-        style={{
-          position: 'absolute',
-          width: `${parameters.size}`,
-          height: `${parameters.size}`,
-          stroke: 'blue',
-        }}
-      />
-    </animated.div>
+    <BottleStyles>
+      <div className="bottleContainer" ref={bottleRef}>
+        {transitions((style, item) => (
+          <animated.div style={style}>
+            <BottleCircle
+              style={{
+                position: 'absolute',
+                width: `${item.size}px`,
+                height: `${item.size}px`,
+                left: `${item.x}px`,
+              }}
+            />
+          </animated.div>
+        ))}
+      </div>
+    </BottleStyles>
   );
 };
 

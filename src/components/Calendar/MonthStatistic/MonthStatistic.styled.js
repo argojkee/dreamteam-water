@@ -37,8 +37,9 @@ export const MonthStatisticlist = styled.div`
       border: 1px solid #ff9d43;
     }
 
-    //   &:disabled {
-    //    opacity: 0;
+      &:disabled {
+       border: none;
+       cursor: auto;
   }
 
   p {
@@ -49,27 +50,3 @@ export const MonthStatisticlist = styled.div`
     line-height: 1.5;
   }
 `;
-
-// [{ date: { year, month, day }, percent }, { date: { year, month, day }, percent }]
-// [
-//     {
-//         "date": {
-//             "year": 2024,
-//             "month": "01",
-//             "day": 1
-//         },
-//         "percent": 157.7
-//     },
-//     {
-//         "date": {
-//             "year": 2024,
-//             "month": "01",
-//             "day": 3
-//         },
-//         "percent": 0
-//     }
-// ]
-
-export const Li = styled.li.attrs(props => ({
-  // Every <PasswordInput /> should be type="password"
-}))``;

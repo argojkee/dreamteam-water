@@ -100,13 +100,17 @@ const Footer = () => {
 
       <button
         style={{ backgroundColor: 'rgba(0,128,0,0.5)' }}
-        onClick={() => setIsAddShow(true)}
+        onClick={() => {
+          setIsAddShow(true);
+        }}
       >
         Open Add form
       </button>
       <button
         style={{ backgroundColor: 'rgba(0,128,0,0.5)' }}
-        onClick={() => setIsEditShow(true)}
+        onClick={() => {
+          setIsEditShow(true);
+        }}
       >
         Open Edit form
       </button>
@@ -116,7 +120,6 @@ const Footer = () => {
           children={<AddForm closeModal={() => setIsAddShow(false)} />}
         />
       )}
-
       {isEditShow && (
         <Modal
           closeModal={() => setIsEditShow(false)}

@@ -9,6 +9,5 @@ export function updateOrAddCurrentDay(data, currentDay) {
     }
   });
 
-  console.log(newData);
   return newData;
 }

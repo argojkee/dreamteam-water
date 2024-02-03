@@ -23,7 +23,7 @@ const elTypes = {
   progressBarThumb: 'PROGRESS_BAR_THUMB',
   progressBarLower: 'PROGRESS_BAR_LOWER',
   progressBarValue: 'PROGRESS_BAR_VALUE',
-}
+};
 
 export const WaterRatioPanel = () => {
   // const [value, setValue] = useState(20); // добавить значение
@@ -31,28 +31,31 @@ export const WaterRatioPanel = () => {
 
   const progressValue = useSelector(getCurrentPercentage);
 
-  const calcWidth = (elType) => {
+  const calcWidth = elType => {
     switch (elType) {
-      case 'PROGRESS_BAR_THUMB':
-        {
-          if (progressValue >= 100) { return 'calc(100% - 13px)' }
-          if (progressValue <=3) return `calc(${progressValue}% - 7px)`
-          return progressValue < 2 ? `0` : `calc(${progressValue}% - 13px)`;
+      case 'PROGRESS_BAR_THUMB': {
+        if (progressValue >= 100) {
+          return 'calc(100% - 13px)';
         }
-      case 'PROGRESS_BAR_LOWER':
-        {
-          if (progressValue >= 100) { return '100%' }
-          return progressValue < 2 ? `0` : `calc(${progressValue}%)`;
+        if (progressValue <= 3) return `calc(${progressValue}% - 7px)`;
+        return progressValue < 2 ? `0` : `calc(${progressValue}% - 13px)`;
+      }
+      case 'PROGRESS_BAR_LOWER': {
+        if (progressValue >= 100) {
+          return '100%';
         }
-      case 'PROGRESS_BAR_VALUE':
-        {
-          if (progressValue >= 100) { return 'calc(95%)' }
-          return progressValue < 2 ? `0` : `calc(${progressValue}% - 3%)`;
+        return progressValue < 2 ? `0` : `calc(${progressValue}%)`;
+      }
+      case 'PROGRESS_BAR_VALUE': {
+        if (progressValue >= 100) {
+          return 'calc(95%)';
         }
-        default: return `${progressValue}%`;
+        return progressValue < 2 ? `0` : `calc(${progressValue}% - 3%)`;
+      }
+      default:
+        return `${progressValue}%`;
     }
-  }
-   
+  };
 
   return (
     <div>
@@ -60,31 +63,24 @@ export const WaterRatioPanel = () => {
 
       <PanelDiv>
         <AddWaterButton onClick={() => setIsShowAddModal(true)}>
-          <ButtonIcon><CiCirclePlus /></ButtonIcon>
+          <ButtonIcon>
+            <CiCirclePlus />
+          </ButtonIcon>
           Add Water
         </AddWaterButton>
 
         <SliderContainerDiv className="slider-container">
-
           <BarContainerDiv>
             <ProgressBarDiv />
             <ProgressBarLower width={calcWidth(elTypes.progressBarLower)} />
-            <WaterProgressThumb Width={calcWidth(elTypes.progressBarThumb)} />
+            <WaterProgressThumb width={calcWidth(elTypes.progressBarThumb)} />
 
-            <SliderValueDiv Width={calcWidth(elTypes.progressBarValue)}>
+            <SliderValueDiv width={calcWidth(elTypes.progressBarValue)}>
               {progressValue}%
             </SliderValueDiv>
-
-
           </BarContainerDiv>
 
-
-
-          <div>
-            {/* <div>0%</div> */}
-          </div>
-
-
+          <div>{/* <div>0%</div> */}</div>
         </SliderContainerDiv>
 
         {isShowAddModal && (

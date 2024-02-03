@@ -11,6 +11,9 @@ const HomePage = lazy(() => import('../pages/HomePage'));
 const RegistrationPage = lazy(() => import('../pages/RegistrationPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const MainPage = lazy(() => import('../pages/MainPage'));
+const VerificationPage = lazy(() => import('../pages/Verification'));
+
+// for verification
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -32,6 +35,11 @@ export const App = () => {
         />
         <Route path="login" element={<PublicRoute component={LoginPage} />} />
         <Route path="main" element={<PrivateRoute component={MainPage} />} />
+
+        <Route
+          path="verification/:verToken"
+          element={<PublicRoute component={VerificationPage} />}
+        />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

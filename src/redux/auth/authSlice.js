@@ -3,7 +3,6 @@ import logOutAPI from 'API/Auth/logOutAPI';
 import signInAPI from '../../API/Auth/signInAPI';
 import signUpAPI from '../../API/Auth/signUpAPI';
 import fetchCurrentUserAPI from 'API/Auth/fetchCurrentUserAPI';
-import { editDailyNorm } from 'API/Auth/editDailyNorm';
 import { changeUserAvatarAPI } from 'API/Auth/changeUserAvatarAPI';
 import { changeUserData } from 'API/Auth/changeUserDataAPI';
 
@@ -85,14 +84,6 @@ const authSlice = createSlice({
         state.user = { ...initialState.user };
         state.token = null;
       })
-
-      /*******************edit daily norm */
-
-      .addCase(editDailyNorm.fulfilled, (state, { payload }) => {
-        state.user.norm = payload;
-      })
-      // .addCase(editDailyNorm.pending, state => {})
-      // .addCase(editDailyNorm.rejected, state => {});
 
       /*****************************change user avatar */
 

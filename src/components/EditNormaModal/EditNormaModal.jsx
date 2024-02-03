@@ -1,6 +1,15 @@
 import { StyledDailyNormaContainer } from './EditNormaModal.styled';
+import { useDispatch } from 'react-redux';
+import { editDailyNorm } from '../../redux/water/waterFunctions';
 
-const EditNormaModal = () => {
+const EditNormaModal = ({ closeModal }) => {
+  const dispatch = useDispatch();
+  const onSubmit = e => {
+    e.preventDefault();
+    //После валидации и всего прочего, передаёшь норму, которую получишь по формуле или какая там логика...
+    dispatch(editDailyNorm(2000));
+    closeModal();
+  };
   return (
     <StyledDailyNormaContainer>
       <h1>My daily norma</h1>
@@ -23,7 +32,7 @@ const EditNormaModal = () => {
         activity commensurate in terms of loads (in the absence of these, you
         must set 0)
       </p>
-      <form action="#" name="save_form">
+      <form action="#" name="save_form" onSubmit={onSubmit}>
         <h2>Calculate your rate:</h2>
 
         <label htmlFor="#" className="form-text">

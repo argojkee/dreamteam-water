@@ -20,18 +20,16 @@ const Section = styled.section`
 
 width: 100vw;
 
-background-size: cover;
-
 @media screen and (min-width: 320px) and (max-width: 767px) { 
   background: url(${BackMobile1}), url(${Back2Mobile1});
       background-repeat: no-repeat, no-repeat;
-      background-size: contain, 70%;
+      background-size: cover, 70%;
       background-position: 0 10px, calc(100vw / 2 - 180px) calc(100vh - 130px);
     
       @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
         background: url(${BackMobile2}), url(${Back2Mobile2});
         background-repeat: no-repeat, no-repeat;
-        background-size: contain, 70%;
+        background-size: cover, 70%;
         background-position: 0 50px, calc(100vw / 2 - 110px) calc(100vh - 80px);
       }
 }
@@ -40,13 +38,13 @@ background-size: cover;
  
   background: url(${BackTablet1}), url(${Back2Tablet1});
   background-repeat: no-repeat, no-repeat;
-  background-size: contain, 70%;
+  background-size: cover, 70%;
   background-position: 0 10px, calc(100vw / 2 - 180px) calc(100vh - 130px);
 
   @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
     background: url(${BackTablet2}), url(${Back2Tablet2});
     background-repeat: no-repeat, no-repeat;
-    background-size: contain, 70%;
+    background-size: cover, 70%;
     background-position: 0 3px, calc(100vw / 2 - 180px) calc(100vh - 130px);
   }
 }
@@ -55,13 +53,13 @@ background-size: cover;
   
   background: url(${BackDesktop1}), url(${Back2Desktop1});
   background-repeat: no-repeat, no-repeat;
-  background-size: contain, 50%;
+  background-size: cover, 50%;
   background-position: 0 10px, calc(100vw / 2 - 180px) calc(100vh - 130px);
  
   @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
     background: url(${BackDesktop2}), url(${Back2Desktop2});
     background-repeat: no-repeat, no-repeat;
-    background-size: contain, 50%;
+    background-size: cover, 50%;
     background-position: 0 10px, 50px 360px;
   }
 }

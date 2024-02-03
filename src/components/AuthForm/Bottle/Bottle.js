@@ -45,7 +45,7 @@ const Bottle = () => {
         clearInterval(timer);
     }; 
     
-  }, []);
+  }, [parameters]);
 
   const randomGenerator = (max, min) => {
 

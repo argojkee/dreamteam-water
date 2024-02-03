@@ -58,9 +58,10 @@ const EditNormaModal = ({ closeModal }) => {
         </div>
 
         <br />
-        <label htmlFor="#" className="form-text">
+        <label htmlFor="weight" className="form-text">
           Your weight in kilograms:
           <input
+            id="weight"
             type="text"
             name="numberKilo"
             // value="0"
@@ -71,8 +72,9 @@ const EditNormaModal = ({ closeModal }) => {
           The time of active participation in sports or other activities with a
           high physical. load in hours:
         </p>
-        <label htmlFor="#" className="form-text time">
+        <label htmlFor="activity" className="form-text time">
           <input
+            id="activity"
             type="text"
             name="amountOfTime"
             className="numberKilo"

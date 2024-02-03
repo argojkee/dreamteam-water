@@ -59,10 +59,7 @@ const DaysGeneralStats = ({
         Fulfillment of the daily norm:{' '}
         <span>{statistic[selectedMonth.day - 1].percent}%</span>
       </p>
-      <p>
-        How many servings of water:{' '}
-        <span>{statistic[selectedMonth.day - 1].drinks}</span>
-      </p>
+      {/* <p>How many servings of water: <span>{statistic[selectedMonth.day-1].drinks}</span></p> */}
     </WaterStatsContainer>
   );
 };

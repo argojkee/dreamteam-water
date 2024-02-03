@@ -9,14 +9,13 @@ import {
   PanelDiv,
   RatioBarH3,
   SliderContainerDiv,
-  SliderInput,
   SliderValueDiv,
   ProgressBarLower,
   WaterProgressThumb,
   ProgressBarDiv,
 } from './WaterRatioPanel.styled';
 import { Modal } from 'components/Modal/Modal';
-import { getCurrentDay, getCurrentPercentage } from '../../redux/water/waterSelectors';
+import { getCurrentPercentage } from '../../redux/water/waterSelectors';
 import { AddForm } from 'components/AddForm/AddForm';
 
 const elTypes = {

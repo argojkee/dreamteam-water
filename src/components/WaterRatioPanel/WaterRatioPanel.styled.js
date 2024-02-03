@@ -26,27 +26,6 @@ export const SliderContainerDiv = styled.div`
 export const BarContainerDiv = styled.div`
     position: relative;
 `
-
-// export const SliderInput = styled.input`
-//     width: 100%;
-//     -webkit-appearance: none;
-//     appearance: none;
-//     background-color: #D7E3FF;
-//     height: 8px;
-//     border-radius: 5px;
-//     outline: none;
-//     margin-top: 20px;
-//     &::-webkit-slider-thumb {
-//         -webkit-appearance: none;
-//         appearance: none;
-//         width: 14px;
-//         height: 14px;
-//         background-color: white;
-//         border-radius: 50%;
-//         border: solid 1px #407BFF;
-//         filled-color: #9EBBFF;
-//     }
-// `
 export const ProgressBarDiv = styled.input`
     position: relative;
     transform: translateY(-50%);
@@ -87,9 +66,7 @@ export const WaterProgressThumb = styled.div`
 
 export const SliderValueDiv = styled.div`
     position: absolute;
-    /* top: -30px; */
     left: 0;
-    /* width: 100%; */
     left: ${({ Width }) => Width};
 
     text-align: center;

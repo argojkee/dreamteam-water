@@ -45,7 +45,7 @@ export const ProgressBarLower = styled.div`
 
     top:20px;
     height: 8px;
-    width: ${({ width }) => width};
+    width: ${({ val }) => val};
     border-radius: 10px;
     background-color: #9EBBFF;
 `
@@ -54,7 +54,7 @@ export const WaterProgressThumb = styled.div`
     position: absolute;
     top: 50%;
     transform: translateY(calc(-50% + 4px));
-    left: ${({ Width }) => Width};
+    left: ${({ val }) => val};
 
 
     width: 14px;
@@ -67,7 +67,7 @@ export const WaterProgressThumb = styled.div`
 export const SliderValueDiv = styled.div`
     position: absolute;
     left: 0;
-    left: ${({ Width }) => Width};
+    left: ${({ val }) => val};
 
     text-align: center;
     font-family: Roboto;

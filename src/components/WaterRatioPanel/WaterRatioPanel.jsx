@@ -33,6 +33,12 @@ export const WaterRatioPanel = () => {
 
   const calcWidth = elType => {
     switch (elType) {
+      case 'PROGRESS_BAR_LOWER': {
+        if (progressValue >= 100) {
+          return '100%';
+        }
+        return progressValue < 2 ? `0` : `calc(${progressValue}%)`;
+      }
       case 'PROGRESS_BAR_THUMB': {
         if (progressValue >= 100) {
           return 'calc(100% - 13px)';
@@ -40,15 +46,9 @@ export const WaterRatioPanel = () => {
         if (progressValue <= 3) return `calc(${progressValue}% - 7px)`;
         return progressValue < 2 ? `0` : `calc(${progressValue}% - 13px)`;
       }
-      case 'PROGRESS_BAR_LOWER': {
-        if (progressValue >= 100) {
-          return '100%';
-        }
-        return progressValue < 2 ? `0` : `calc(${progressValue}%)`;
-      }
       case 'PROGRESS_BAR_VALUE': {
         if (progressValue >= 100) {
-          return 'calc(95%)';
+          return '95%';
         }
         return progressValue < 2 ? `0` : `calc(${progressValue}% - 3%)`;
       }
@@ -72,10 +72,10 @@ export const WaterRatioPanel = () => {
         <SliderContainerDiv className="slider-container">
           <BarContainerDiv>
             <ProgressBarDiv />
-            <ProgressBarLower width={calcWidth(elTypes.progressBarLower)} />
-            <WaterProgressThumb width={calcWidth(elTypes.progressBarThumb)} />
+            <ProgressBarLower val={calcWidth(elTypes.progressBarLower)} />
+            <WaterProgressThumb val={calcWidth(elTypes.progressBarThumb)} />
 
-            <SliderValueDiv width={calcWidth(elTypes.progressBarValue)}>
+            <SliderValueDiv val={calcWidth(elTypes.progressBarValue)}>
               {progressValue}%
             </SliderValueDiv>
           </BarContainerDiv>

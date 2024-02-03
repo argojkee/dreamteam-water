@@ -17,12 +17,6 @@ import { useState } from 'react';
 export const DrinkElement = ({ id, ml, time }) => {
   const dispatch = useDispatch();
   const [isShowEditForm, setIsShowEditForm] = useState(false);
-  // const [showAddModal, setShowAddModal] = useState(false);
-
-  // const qwe = () => {
-  //     console.info('########TEST openModal#############');
-  //     setShowAddModal(true)
-  // }
 
   const onDeleteClick = async () => {
     dispatch(deleteDrinkThunk(id));
@@ -36,14 +30,11 @@ export const DrinkElement = ({ id, ml, time }) => {
         <div>{time}</div>
       </DrinkInfoDiv>
       <BtnWrapDiv>
-        <SmallRoundBtn onClick={() => setIsShowEditForm(true)}>
-          <EditBtnIcon
-            title="Edit"
-            // onClick={() => qwe()}
-          />
+        <SmallRoundBtn onClick={() => setIsShowEditForm(true)} title="Edit">
+          <EditBtnIcon/>
         </SmallRoundBtn>
-        <SmallRoundBtn onClick={onDeleteClick}>
-          <DelBtnIcon title="Delete" />
+        <SmallRoundBtn onClick={onDeleteClick} title="Delete">
+          <DelBtnIcon />
         </SmallRoundBtn>
       </BtnWrapDiv>
       {isShowEditForm && (

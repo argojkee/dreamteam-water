@@ -12,7 +12,6 @@ const Bottle = () => {
   const [bottleStartY, setBottleStartY] = useState(0);
 
   const bottleRef = useRef();
-
   useEffect(() => {
     const random = () => {
       let bottleCenterX = 0;

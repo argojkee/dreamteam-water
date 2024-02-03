@@ -6,7 +6,6 @@ const Div = styled.div`
   display: flex;
   flex-direction: ${props => props.$divDiraction || 'row'};
   justify-content: ${props => props.$justify || 'center'};
-  // align-items: ${props => props.$align || 'center'}; 
 
   width: ${props => props.width || '0'};
   height: ${props => props.height || 'fit-content'};

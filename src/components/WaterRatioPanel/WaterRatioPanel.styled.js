@@ -6,7 +6,7 @@ export const RatioBarH3 = styled.h3`
     font-weight: 400;
     line-height: 1.33;
     margin-bottom: 8px;
-    @media (min-width: 768px) and (max-width: 1439px){
+    @media screen and (max-width: 1439px){
         margin-bottom: 0;
     }
 `;
@@ -14,10 +14,13 @@ export const RatioBarH3 = styled.h3`
 export const PanelDiv = styled.div`
     width: 100%;
     display: flex;
-    flex-direction: row-reverse;
     justify-content: space-between;
     gap: 23px;
 
+    flex-direction: column;
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+    }
 `
 export const SliderContainerDiv = styled.div`
     width: 100%;
@@ -25,6 +28,8 @@ export const SliderContainerDiv = styled.div`
 `
 export const BarContainerDiv = styled.div`
     position: relative;
+    margin: 0 14px 0 19px;
+    height: 14px;
 `
 export const ProgressBarDiv = styled.input`
     position: relative;
@@ -53,7 +58,7 @@ export const ProgressBarLower = styled.div`
 export const WaterProgressThumb = styled.div`
     position: absolute;
     top: 50%;
-    transform: translateY(calc(-50% + 4px));
+    transform: translateY(44%);
     left: ${({ val }) => val};
 
 
@@ -78,7 +83,9 @@ export const SliderValueDiv = styled.div`
     text-align: center;
     color: #407BFF;
 
-
+    /* background-color: #FFF; */
+    margin-top: 13px;
+    padding: 0 13px;
 `
 
 export const AddWaterButton = styled.button`
@@ -87,17 +94,17 @@ export const AddWaterButton = styled.button`
     border-radius: 10px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
     min-width: 31%;
+    width: 100%;
     
-    padding: 10px 30px 10px 30px;
     gap: 10px;
     align-items: center;
-    justify-content: space-between;
 
     font-family: Roboto;
-    font-size: 18px;
     font-weight: 500;
-    line-height: 24px;
     letter-spacing: 0em;
     text-align: center;
     color: white;
@@ -114,12 +121,51 @@ export const AddWaterButton = styled.button`
         background-color: #306af0;
         box-shadow: 0px 0px 4px 3px #D7E3FFAA;
     }
+
+    padding: 8px 30px 8px 30px;
+
+    font-size: 16px;
+    line-height: 20px;
+    @media screen and (min-width: 768px) {
+        padding: 10px 30px 10px 30px;
+        width: 50%;
+        
+        font-size: 18px;
+        line-height: 24px;
+    }
 `
 export const ButtonIcon = styled.span`
     display: block;
     padding: 0;
     margin: 0;
-    width: 20%;
-    font-size: 30px;
-    font-weight: 700;
+
+    stroke-width: 3px;
+    
+    font-size: 24px;
+    @media screen and (min-width: 768px) {    
+        font-size: 30px;
+    }
+`
+
+export const RulerDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #407BFF;
+
+    margin: 15px 0 0 5px;
+`
+export const RulerElStripDiv = styled.div`
+    color: #D7E3FF;
+    font-size: 10px;
+`
+export const RulerElDiv = styled.div`
+    width: 30px;
 `

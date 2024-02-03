@@ -13,6 +13,9 @@ import {
   ProgressBarLower,
   WaterProgressThumb,
   ProgressBarDiv,
+  RulerDiv,
+  RulerElStripDiv,
+  RulerElDiv,
 } from './WaterRatioPanel.styled';
 import { Modal } from 'components/Modal/Modal';
 import { getCurrentPercentage } from '../../redux/water/waterSelectors';
@@ -26,7 +29,6 @@ const elTypes = {
 };
 
 export const WaterRatioPanel = () => {
-  // const [value, setValue] = useState(20); // добавить значение
   const [isShowAddModal, setIsShowAddModal] = useState(false);
 
   const progressValue = useSelector(getCurrentPercentage);
@@ -34,22 +36,20 @@ export const WaterRatioPanel = () => {
   const calcWidth = elType => {
     switch (elType) {
       case 'PROGRESS_BAR_LOWER': {
-        if (progressValue >= 100) {
-          return '100%';
-        }
+        if (progressValue >= 100) return '100%';
         return progressValue < 2 ? `0` : `calc(${progressValue}%)`;
       }
       case 'PROGRESS_BAR_THUMB': {
-        if (progressValue >= 100) {
-          return 'calc(100% - 13px)';
-        }
-        if (progressValue <= 3) return `calc(${progressValue}% - 7px)`;
+
+        if (progressValue >= 100) return 'calc(100% - 13px)';
+        return `calc(${progressValue}% - 7px)`;
+        if (progressValue <= 5) return `calc(${progressValue}% - 7px)`;
         return progressValue < 2 ? `0` : `calc(${progressValue}% - 13px)`;
       }
       case 'PROGRESS_BAR_VALUE': {
-        if (progressValue >= 100) {
-          return '95%';
-        }
+        if (progressValue >= 100) return `calc(100% - 50px)`;
+
+        return `calc(${progressValue}% - 30px)`;
         return progressValue < 2 ? `0` : `calc(${progressValue}% - 3%)`;
       }
       default:
@@ -57,17 +57,27 @@ export const WaterRatioPanel = () => {
     }
   };
 
+  const checkOverlap = (rulerVal, currentVal) => {
+    switch (rulerVal) {
+      case 0:
+        if(currentVal <= 8) return true;
+        else return false;
+      case 50:
+        if(currentVal >= 42 && currentVal <= 62) return true;
+        else return false;
+      case 100:
+        if(currentVal >= 92) return true;
+        else return false;
+    
+      default: return false;
+    }
+  }
+
   return (
     <div>
       <RatioBarH3>Today</RatioBarH3>
 
       <PanelDiv>
-        <AddWaterButton onClick={() => setIsShowAddModal(true)}>
-          <ButtonIcon>
-            <CiCirclePlus />
-          </ButtonIcon>
-          Add Water
-        </AddWaterButton>
 
         <SliderContainerDiv className="slider-container">
           <BarContainerDiv>
@@ -76,12 +86,31 @@ export const WaterRatioPanel = () => {
             <WaterProgressThumb val={calcWidth(elTypes.progressBarThumb)} />
 
             <SliderValueDiv val={calcWidth(elTypes.progressBarValue)}>
-              {progressValue}%
+              {progressValue ?? '0'}%
             </SliderValueDiv>
           </BarContainerDiv>
 
-          <div>{/* <div>0%</div> */}</div>
+          <RulerDiv>
+            <RulerElDiv>
+              <RulerElStripDiv>|</RulerElStripDiv>
+              { !checkOverlap(0, progressValue) && <div>0%</div>}
+            </RulerElDiv>
+            <RulerElDiv>
+              <RulerElStripDiv>|</RulerElStripDiv>
+              { !checkOverlap(50, progressValue) && <div>50%</div>}
+            </RulerElDiv>
+            <RulerElDiv>
+              <RulerElStripDiv>|</RulerElStripDiv>
+              { !checkOverlap(100, progressValue) && <div>100%</div>}
+            </RulerElDiv>
+          </RulerDiv>
+
         </SliderContainerDiv>
+
+        <AddWaterButton onClick={() => setIsShowAddModal(true)}>
+          <ButtonIcon><CiCirclePlus /></ButtonIcon>
+          Add Water
+        </AddWaterButton>
 
         {isShowAddModal && (
           <Modal

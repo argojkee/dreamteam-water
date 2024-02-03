@@ -1,6 +1,7 @@
 import {
   BtnWrapDiv,
   DelBtnIcon,
+  DrinkIconImg,
   DrinkInfoDiv,
   DrinkLi,
   EditBtnIcon,
@@ -24,19 +25,23 @@ export const DrinkElement = ({ id, ml, time }) => {
 
   return (
     <DrinkLi id={id}>
+        
       <DrinkInfoDiv>
-        <img src={DrinkIcon} alt="Glass of water" />
+        <DrinkIconImg src={DrinkIcon} alt="Glass of water" />
         <VolumeDiv>{ml} ml</VolumeDiv>
         <div>{time}</div>
       </DrinkInfoDiv>
+
       <BtnWrapDiv>
         <SmallRoundBtn onClick={() => setIsShowEditForm(true)} title="Edit">
           <EditBtnIcon/>
         </SmallRoundBtn>
+
         <SmallRoundBtn onClick={onDeleteClick} title="Delete">
           <DelBtnIcon />
         </SmallRoundBtn>
       </BtnWrapDiv>
+
       {isShowEditForm && (
         <Modal
           closeModal={() => setIsShowEditForm(false)}

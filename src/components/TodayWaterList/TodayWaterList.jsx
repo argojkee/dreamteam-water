@@ -52,7 +52,7 @@ export function TodayWaterList() {
 
       <AddTodayWaterBtn onClick={() => setIsShowAddModal(true)}>
         <FaPlus />
-        add water
+        Add water
       </AddTodayWaterBtn>
 
       {isShowAddModal && (

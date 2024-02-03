@@ -9,6 +9,9 @@ export const StyledDailyNormaContainer = styled.div`
   color: #2f2f2f;
   text-align: left;
   font-family: Roboto;
+  object-fit: contain;
+  overflow-y: auto;
+  height: 500px;
 
   .list {
     display: flex;
@@ -41,6 +44,10 @@ export const StyledDailyNormaContainer = styled.div`
     font-size: 16px;
     font-weight: 400;
     line-height: 1.25;
+  }
+
+  .form-text.time {
+    width: 100%;
   }
 
   .form-text .formula {
@@ -127,6 +134,7 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 500;
     line-height: 20px;
 
+    margin: 24px 0;
     text-align: center;
     color: rgba(255, 255, 255, 1);
   }

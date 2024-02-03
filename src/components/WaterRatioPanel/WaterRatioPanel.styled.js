@@ -1,5 +1,16 @@
 import styled from "styled-components";
 
+export const RatioBarH3 = styled.h3`
+    color:  #407BFF;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.33;
+    margin-bottom: 8px;
+    @media (min-width: 768px) and (max-width: 1439px){
+        margin-bottom: 0;
+    }
+`;
+
 export const PanelDiv = styled.div`
     width: 100%;
     display: flex;
@@ -56,6 +67,15 @@ export const SliderInput = styled.input`
     border-radius: 0;
   }
   `
+  export const WaterProgress = styled.div`
+    position: absolute;
+
+    top:20px;
+    height: 8px;
+    width: ${({ width }) => width};
+    border-radius: 10px;
+    background-color: #9EBBFF;
+  `;
 
 
 // export const RangeSliderInput = styled.input`
@@ -105,9 +125,16 @@ export const AddWaterButton = styled.button`
     text-align: center;
     color: white;
     text-transform: capitalize;
+    transition: all .2s ease-out;
 
     &:hover, &:focus, &:active {
         outline: none;
+        background-color: #3872f8;
+        box-shadow: 0px 0px 5px 3px #D7E3FFAA;
+    }
+    &:active {
+        background-color: #306af0;
+        box-shadow: 0px 0px 4px 3px #D7E3FFAA;
     }
 `
 export const ButtonIcon = styled.span`
@@ -118,3 +145,4 @@ export const ButtonIcon = styled.span`
     font-size: 30px;
     font-weight: 700;
 `
+

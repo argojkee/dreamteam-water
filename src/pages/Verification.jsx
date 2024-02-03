@@ -29,8 +29,7 @@ const HomePage = () => {
       .catch(() => {
         setStatus(false);
       });
-    console.log(verStatus);
-  }, []);
+  }, [verToken]);
   return (
     <>
       <BackgroundContainer>

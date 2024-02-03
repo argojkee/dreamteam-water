@@ -84,3 +84,24 @@ export const editDrinkThunk = createAsyncThunk(
     }
   }
 );
+
+//Смена дневной нормы
+
+export const editDailyNorm = createAsyncThunk(
+  'auth/editDailyNorm',
+  async (norm, { rejectWithValue }) => {
+    try {
+      const date = new Date();
+      const { data } = await axios.patch('/water/norm', {
+        date,
+        norm,
+      });
+
+      toastSuccess('Deleted successful ');
+      return data;
+    } catch (error) {
+      toastError('Something went wrong');
+      return rejectWithValue('Something went wrong');
+    }
+  }
+);

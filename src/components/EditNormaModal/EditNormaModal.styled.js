@@ -9,6 +9,9 @@ export const StyledDailyNormaContainer = styled.div`
   color: #2f2f2f;
   text-align: left;
   font-family: Roboto;
+  object-fit: contain;
+  overflow-y: auto;
+  height: 500px;
 
   .list {
     display: flex;
@@ -24,6 +27,10 @@ export const StyledDailyNormaContainer = styled.div`
     margin: 0;
     padding: 0;
     margin-bottom: 16px;
+  }
+
+  li:last-child {
+    margin-bottom: 12px;
   }
 
   h1 {
@@ -43,10 +50,14 @@ export const StyledDailyNormaContainer = styled.div`
     line-height: 1.25;
   }
 
+  .form-text.time {
+    width: 100%;
+  }
+
   .form-text .formula {
     font-size: 18px;
     font-weight: 400;
-    line-height: 0.75;
+    line-height: 1.33;
 
     color: #407bff;
   }
@@ -59,7 +70,7 @@ export const StyledDailyNormaContainer = styled.div`
     line-height: 1.33;
 
     margin-top: 12px;
-    margin-bottom: 24px;
+
     padding: 10px;
     border-radius: 10px;
     border: 1px solid rgba(215, 227, 255, 1);
@@ -74,7 +85,7 @@ export const StyledDailyNormaContainer = styled.div`
   h2 {
     font-size: 18px;
     font-weight: 500;
-    line-height: 1.1;
+    line-height: 1.33;
 
     margin-top: 24px;
     margin-bottom: 16px;
@@ -127,8 +138,65 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 500;
     line-height: 20px;
 
+    margin: 24px 0;
     text-align: center;
     color: rgba(255, 255, 255, 1);
+  }
+
+  /**************INPUT********************* */
+  /* для елемента input з type="radio" */
+  .custom-radio {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+  /* для элемента label зв'язанного з .custom-radio */
+  .custom-radio + label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+  }
+  /* створення в label псевдоелемента before з наступними стилями */
+  .custom-radio + label::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid rgb(64, 123, 255);
+    border-radius: 50%;
+    margin: 0px 6px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+  }
+  /* стилі при наведені курсора на радіо */
+  .custom-radio:not(:disabled):not(:checked) + label:hover::before {
+    border-color: #b3d7ff;
+  }
+  /* стилі для активної радіокнопки (при натиснені на неї) */
+  .custom-radio:not(:disabled):active + label::before {
+    background-color: #ffffff;
+    border-color: #b3d7ff;
+  }
+
+  /* стилі для радіокнопки, яка знаходиться у фокусі */
+  .custom-radio:focus + label::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+  /* стилі для радіокнопки, яка знаходиться у фокусі та не знаходиться у стані checked */
+  .custom-radio:focus:not(:checked) + label::before {
+    border-color: #80bdff;
+  }
+
+  /* стилі для радіокнопки, яка знаходиться у стані checked */
+  .custom-radio:checked + label::before {
+    border-color: #407bff;
+    background-color: #ffffff;
+    /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e"); */
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23407BFF'/%3E%3C/svg%3E");
   }
 
   /* @media screen and (max-width: 767px) {

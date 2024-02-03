@@ -5,6 +5,7 @@ import {
   addWaterThunk,
   deleteDrinkThunk,
   editDrinkThunk,
+  editDailyNorm,
 } from './waterFunctions';
 
 const initialState = {
@@ -17,7 +18,8 @@ const initialState = {
   dayError: false,
   isAddDrinkLoading: false,
   isDeleting: false,
-  isEditing: false,
+  isEditingDrink: false,
+  isEditingNorm: false,
 };
 
 const waterSlice = createSlice({
@@ -76,15 +78,27 @@ const waterSlice = createSlice({
         state.isDeleting = false;
       })
       .addCase(editDrinkThunk.pending, state => {
-        state.isEditing = true;
+        state.isEditingDrink = true;
       })
       .addCase(editDrinkThunk.fulfilled, (state, { payload }) => {
-        state.isEditing = false;
+        state.isEditingDrink = false;
         state.dayInfo = { ...payload };
         console.log(payload);
       })
       .addCase(editDrinkThunk.rejected, state => {
-        state.isEditing = false;
+        state.isEditingDrink = false;
+      })
+
+      .addCase(editDailyNorm.fulfilled, (state, { payload }) => {
+        state.dayInfo.norm = payload.norm;
+        state.dayInfo.percent = payload.percent;
+        state.dayInfo.isEditingNorm = false;
+      })
+      .addCase(editDailyNorm.pending, state => {
+        state.isEditingNorm = true;
+      })
+      .addCase(editDailyNorm.rejected, state => {
+        state.isEditingNorm = false;
       });
   },
 });

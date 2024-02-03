@@ -1,4 +1,4 @@
-import {  useEffect, useState } from 'react';
+// import {  useEffect, useState } from 'react';
 import { getMonthsArr } from '../helpers/getMonthsArr';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { MonthSwitcherContainer } from './MonthSwitcher.styled';

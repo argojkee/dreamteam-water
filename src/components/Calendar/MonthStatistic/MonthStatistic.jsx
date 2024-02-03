@@ -7,7 +7,7 @@ import { getMonthsArr } from '../helpers/getMonthsArr';
 const MonthStatistic = ({ selectedMonth, monthStatistic,setSelectedMonth }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const [modalData, setModalData] = useState([]);
+  // const [modalData, setModalData] = useState([]);
 
   const handleMouseEnter = (event) => {
     const day = Number(event.target.innerText);

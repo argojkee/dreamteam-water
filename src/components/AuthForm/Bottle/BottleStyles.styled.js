@@ -51,7 +51,7 @@ export const BottleStyles = styled.div`
       width: 213px;
       height: 474px;
 
-      margin: 160px 0 70px 0;
+      margin: 160px 0 30px 0;
 
       .bottleContainer {
     

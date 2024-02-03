@@ -124,6 +124,10 @@ const Input = styled.input`
     width: 384px;
   }
 
+  &::-ms-reveal{
+    display: none;
+  }
+
 `;
 
 const Text = styled.p`

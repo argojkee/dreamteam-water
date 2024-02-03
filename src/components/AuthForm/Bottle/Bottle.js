@@ -16,7 +16,7 @@ const Bottle = () => {
 
   const [parameters, setParameters] = useState([]);
   const [bottleStartY, setBottleStartY] = useState(0);
-
+  
   const bottleRef = useRef();
 
   useEffect(() => {
@@ -28,6 +28,7 @@ const Bottle = () => {
 
     // generate random parameter of bubble
     const random = () => {
+
       let bottleCenterX = 0;
 
       if (bottleRef.current !== null) {
@@ -40,15 +41,18 @@ const Bottle = () => {
         x: randomGenerator(bottleCenterX + 20, bottleCenterX - 40),
       };
     };
-
+    
     // random generation interval
     const timer = setInterval(() => {
-      setParameters([...parameters, random()]);
+      parameters.length >= 10 
+        ? setParameters([])
+        : setParameters([...parameters, random()]);
     }, randomGenerator(150, 50) * 10);
 
     return () => {
       clearInterval(timer);
     };
+    
   }, [dispatch, parameters]);
 
   const randomGenerator = (max, min) => {

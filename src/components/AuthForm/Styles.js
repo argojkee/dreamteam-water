@@ -1,17 +1,4 @@
-import styled
-// { keyframes, css }
-  from "styled-components";
-
-// const errorAnimation = keyframes`
-//  0% { padding-left: 5px; }
-//  20% { padding-left: 0; }
-
-//  40% { padding-left: 5px; }
-//  60% { padding-left: 0; }
- 
-//  80% { padding-left: 5px; }
-//  100% { padding-left: 0; }
-// `;
+import styled, { css } from "styled-components";
 
 // 'FormContainer' get props  automatic from 'ContainerFormStyle' if you send them.
 const Div = styled.div`
@@ -19,19 +6,76 @@ const Div = styled.div`
   display: flex;
   flex-direction: ${props => props.$divDiraction || 'row'};
   justify-content: ${props => props.$justify || 'center'};
-  align-items: ${props => props.$align || 'center'}; 
 
-  width: ${props => props.width || 'none'};
-  height: ${props => props.height || 'none'};
+  width: ${props => props.width || '0'};
+  height: ${props => props.height || 'fit-content'};
+  
+  margin: ${props => props.$marginTop || '0'} ${props => props.$marginRight || '0'} ${props => props.$marginBott || '0'} 0;
 
-  margin-bottom: ${props => props.$marginBott || '0'};
+  padding: ${props => props.$inputPadding ||'0'};
 
-  gap: ${props => props.$gap || 'none'};
+  gap: ${props => props.$gap || '0'};
 
   color: ${props => props.color || '2F2F2F'};
 
-  background-color: ${props => props.Backcolor || 'white'};
+  background-color: ${props => props.$backColor || 'transparent'};
 
+  border-radius: ${props => props.$borderRadius || 'none'};
+
+  border: ${props => props.$border || 'none'} ${props => props.$borderColor || 'white'};
+
+  ${props => props.$pass && css `
+
+    width: 280px;
+
+    @media screen and (min-width: 768px) and (max-width: 1439px) { 
+      width: 336px;
+    }
+  
+    @media screen and (min-width: 1440px) { 
+   
+      width: 384px;
+    }
+
+  `};
+
+  ${props => props.$contentBlock && css `
+
+    @media screen and (min-width: 320px) and (max-width: 767px) { 
+      flex-direction: ${props => props.$divDiraction || 'column'};
+      align-items: center; 
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      justify-content: left;
+    }
+
+    @media screen and (min-width: 1440px) { 
+
+      
+      flex-direction: row-reverse;
+      
+    }
+    `};
+
+    ${props => props.$divDiraction && css `
+
+    @media screen and (min-width: 320px) and (max-width: 767px) { 
+      margin: 30px 0 10px 0;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      margin: 100px 0 0 0; 
+    }
+
+    @media screen and (min-width: 1440px) { 
+
+      margin: auto 100px auto 0; 
+      
+    }
+
+  `};
+  
 `;
 
 const Form = styled.form`
@@ -44,32 +88,40 @@ const Form = styled.form`
 
   width: ${props => props.width || '100%'};
   
-
-  background-color: ${props => props.color || 'transparent'};
+  margin-bottom: ${props => props.$marginBott || '8px'};
+  background-color: ${props => props.Backcolor || 'transparent'};
 
 `;
 
 const Input = styled.input`
 
-  width: ${props => props.width || '384px'};
+  width: ${props => props.width || '280px'};
   height: ${props => props.height || '44px'};
 
   font-family: roboto;
   font-size: ${props => props.$fontSize || '16px'};
   color: ${props => props.$inputColor || 'none'};
 
-  padding: 12px 10px;
+  padding: ${props => props.$inputPadding ||'12px 10px'};
 
   margin-bottom: ${props => props.$marginBott || '8px'};
 
   border-radius: ${props => props.$borderRadius || 'none'};
-  background-color: ${props => props.color || 'transparent'};
-  border: 1px solid ${props => props.$borderColor || '#D7E3FF'};
+  background-color: ${props => props.color || 'white'};
+  border: ${props => props.$border || '1px solid'};
+  border-color: ${props => props.$borderColor || '#D7E3FF'};
   outline: 'none';
 
   &:focus {
-    border: 1px solid ${props => props.$borderColor || '#D7E3FF'};
     outline: none;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1440px) { 
+    width: 336px;
+  }
+
+  @media screen and (min-width: 1440px) { 
+    width: 384px;
   }
 
 `;
@@ -143,6 +195,15 @@ const Link = styled.p`
   
 `;
 
+const Main = styled.main`
+
+  width: 100%;
+  object-fit: contain;
+
+ 
+
+`;
+
 const Styles = (props) => {
 
   return( 
@@ -154,6 +215,7 @@ const Styles = (props) => {
       {props.$label ? <Label {...props}/> : ''}
       {props.$button ? <Button {...props}/> : ''}
       {props.$link ? <Link {...props}/> : ''}
+      {props.$main ? <Main {...props}/> : ''}
     </>
   )
 };

@@ -8,10 +8,11 @@ export const StyledDailyNormaContainer = styled.div`
 
   color: #2f2f2f;
   text-align: left;
-  font-family: Roboto;
+
   object-fit: contain;
   overflow-y: auto;
   height: 500px;
+  padding-top: 8px;
 
   .list {
     display: flex;
@@ -93,7 +94,7 @@ export const StyledDailyNormaContainer = styled.div`
 
   label.form-text {
     display: inline-block;
-    margin-right: 24px;
+
     margin-bottom: 16px;
   }
 
@@ -119,7 +120,12 @@ export const StyledDailyNormaContainer = styled.div`
     line-height: 1.1;
   }
 
-  .form-text .norma {
+  .norma-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .norma-container .norma {
     font-size: 18px;
     font-weight: 700;
     line-height: 1.33;
@@ -138,12 +144,12 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 500;
     line-height: 20px;
 
-    margin: 24px 0;
+    margin: 24px 0 0 0;
     text-align: center;
     color: rgba(255, 255, 255, 1);
   }
 
-  /**************INPUT********************* */
+  /**************INPUT TYPE RADIO********************* */
   /* для елемента input з type="radio" */
   .custom-radio {
     position: absolute;
@@ -166,7 +172,7 @@ export const StyledDailyNormaContainer = styled.div`
     flex-grow: 0;
     border: 1px solid rgb(64, 123, 255);
     border-radius: 50%;
-    margin: 0px 6px;
+    margin: 0px 6px 0px 3px;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 50% 50%;
@@ -195,8 +201,23 @@ export const StyledDailyNormaContainer = styled.div`
   .custom-radio:checked + label::before {
     border-color: #407bff;
     background-color: #ffffff;
-    /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e"); */
+
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23407BFF'/%3E%3C/svg%3E");
+  }
+
+  .radio-buttons-container {
+    display: flex;
+    gap: 24px;
+  }
+
+  .form-radio {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+  }
+
+  input[type='text'] {
+    color: #407bff;
   }
 
   /* @media screen and (max-width: 767px) {
@@ -209,7 +230,7 @@ export const StyledDailyNormaContainer = styled.div`
 
     button.btn-save {
       display: block;
-      width: 0;
+      /* width: 0; */
       padding: 10px 30px;
       margin-left: auto;
     }

@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getMonthInfoAPI } from '../../API/Water/getMonthInfoAPI';
 import axios from 'axios';
+import { toastError, toastSuccess } from 'services/toastNotification';
 
 //санка для отримання даних по воді за поточний місяць
 export const getCurrentMonthInfoThunk = createAsyncThunk(
@@ -21,7 +22,7 @@ export const getCurrentMonthInfoThunk = createAsyncThunk(
 );
 
 //санка для получения данных по текущему
-export const getCurrentDayInfo = createAsyncThunk(
+export const getCurrentDayInfoThunk = createAsyncThunk(
   'water/getDay',
   async (_, thunkAPI) => {
     try {
@@ -30,6 +31,55 @@ export const getCurrentDayInfo = createAsyncThunk(
 
       return data;
     } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+//Санка добавления воды
+export const addWaterThunk = createAsyncThunk(
+  'water/add',
+  async (data, thunkAPI) => {
+    const { drink, dayId } = data;
+    try {
+      const { data } = await axios.post(`water/drinks/${dayId}`, drink);
+      toastSuccess('Drink has been added successful');
+      return data;
+    } catch (error) {
+      toastError('Sorry, something went wrong. Please, try again');
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+//Санка удаления напитка
+
+export const deleteDrinkThunk = createAsyncThunk(
+  'water/delete',
+  async (drinkId, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(`water/drinks/${drinkId}`);
+      toastSuccess('Drink has been deleted successful');
+      console.log(data);
+      return data;
+    } catch (error) {
+      toastError('Sorry, something went wrong. Please, try again');
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+//Санка редактирования напитка
+export const editDrinkThunk = createAsyncThunk(
+  'water/edit',
+  async (drink, thunkAPI) => {
+    const { id, time, ml } = drink;
+    try {
+      const { data } = await axios.patch(`water/drinks/${id}`, { time, ml });
+      toastSuccess('Drink has been edited successful');
+      return data;
+    } catch (error) {
+      toastError('Sorry, something went wrong. Please, try again');
       return thunkAPI.rejectWithValue(error.message);
     }
   }

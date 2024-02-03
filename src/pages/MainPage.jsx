@@ -6,7 +6,7 @@ import { WaterRatioPanel } from 'components/WaterRatioPanel/WaterRatioPanel';
 import { TodayWaterList } from 'components/TodayWaterList/TodayWaterList';
 import {
   getCurrentMonthInfoThunk,
-  getCurrentDayInfo,
+  getCurrentDayInfoThunk,
 } from '../redux/water/waterFunctions';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -37,7 +37,7 @@ const MainPage = () => {
 
   useEffect(() => {
     dispatch(getCurrentMonthInfoThunk());
-    dispatch(getCurrentDayInfo());
+    dispatch(getCurrentDayInfoThunk());
   }, [dispatch]);
 
   // console.log(month);

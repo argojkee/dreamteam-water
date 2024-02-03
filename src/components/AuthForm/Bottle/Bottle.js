@@ -32,6 +32,8 @@ const Bottle = () => {
       let bottleCenterX = 0;
 
       if (bottleRef.current !== null) {
+
+        // start coordinate of bottle for bubble 
         bottleCenterX = bottleRef.current.offsetWidth / 2;
         setBottleStartY(bottleRef.current.offsetHeight);
       }

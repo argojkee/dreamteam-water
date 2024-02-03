@@ -27,22 +27,36 @@ const EditNormaModal = ({ closeModal }) => {
       </ul>
 
       <p className="invisibleText">
-        <span>&#42;</span>V is the volume of the water norm in liters per day, M
-        is your body weight, T is the time of active sports, or another type of
-        activity commensurate in terms of loads (in the absence of these, you
+        <span>&#42; </span>V is the volume of the water norm in liters per day,
+        M is your body weight, T is the time of active sports, or another type
+        of activity commensurate in terms of loads (in the absence of these, you
         must set 0)
       </p>
       <form action="#" name="save_form" onSubmit={onSubmit}>
         <h2>Calculate your rate:</h2>
 
-        <label htmlFor="#" className="form-text">
-          <input type="radio" name="gender" value="woman" />
-          For woman
-        </label>
-        <label htmlFor="#" className="form-text">
-          <input type="radio" name="gender" value="man" />
-          For man
-        </label>
+        <div className="radio">
+          <input
+            className="custom-radio"
+            type="radio"
+            name="gender"
+            value="woman"
+            id="woman"
+          />
+          <label htmlFor="woman">For woman</label>
+        </div>
+
+        <div className="radio">
+          <input
+            className="custom-radio"
+            type="radio"
+            name="gender"
+            value="man"
+            id="man"
+          />
+          <label htmlFor="man">For man</label>
+        </div>
+
         <br />
         <label htmlFor="#" className="form-text">
           Your weight in kilograms:

@@ -36,6 +36,10 @@ const DaysGeneralStats = ({
     setModalVisible(false);
   };
   // console.log('statistic in modal', statistic [selectedMonth.day-1])
+  console.log('span1', statistic[selectedMonth.day - 1].norm / 1000);
+  console.log('span2', statistic[selectedMonth.day - 1].percent);
+  console.log('span3', statistic[selectedMonth.day - 1].drinks);
+
   return (
     <WaterStatsContainer data-modal-container $top={top} $left={left}>
       <div>

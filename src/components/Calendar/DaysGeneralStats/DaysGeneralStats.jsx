@@ -30,7 +30,7 @@ useEffect(() => {
   const closeModal = () => {
     setModalVisible(false);
   }
-  console.log('statistic in modal', statistic [selectedMonth.day-1])
+  // console.log('statistic in modal', statistic [selectedMonth.day-1])
   return (
       <WaterStatsContainer data-modal-container $top={top} $left={left}>
           <div>

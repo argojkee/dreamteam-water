@@ -26,26 +26,32 @@ const EditNormaModal = () => {
       <form action="#" name="save_form">
         <h2>Calculate your rate:</h2>
 
-        <div className="radio">
-          <input
-            className="custom-radio"
-            type="radio"
-            name="gender"
-            value="woman"
-            id="woman"
-          />
-          <label htmlFor="woman">For woman</label>
-        </div>
+        <div className="radio-buttons-container">
+          <div className="radio">
+            <input
+              className="custom-radio"
+              type="radio"
+              name="gender"
+              value="woman"
+              id="woman"
+            />
+            <label htmlFor="woman" className="form-radio">
+              For woman
+            </label>
+          </div>
 
-        <div className="radio">
-          <input
-            className="custom-radio"
-            type="radio"
-            name="gender"
-            value="man"
-            id="man"
-          />
-          <label htmlFor="man">For man</label>
+          <div className="radio">
+            <input
+              className="custom-radio"
+              type="radio"
+              name="gender"
+              value="man"
+              id="man"
+            />
+            <label htmlFor="man" className="form-radio">
+              For man
+            </label>
+          </div>
         </div>
 
         <br />
@@ -70,10 +76,12 @@ const EditNormaModal = () => {
             // value=0
           />
         </label>
-        <p className="form-text">
-          The required amount of water in liters per day:{' '}
+        <div className="norma-container">
+          <p className="form-text">
+            The required amount of water in liters per day:{' '}
+          </p>
           <span className="norma">1.8L</span>
-        </p>
+        </div>
 
         <h2 className="water">Write down how much water you will drink:</h2>
         <input

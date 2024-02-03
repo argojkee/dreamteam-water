@@ -1,26 +1,16 @@
 import styled, { css } from "styled-components";
 
-import BackMobile1 from '../../images/signIn-signUp/back/mobile/back_mobile@1x.png';
-import BackMobile2 from '../../images/signIn-signUp/back/mobile/back_mobile@2x.png';
-
-import BackTablet1 from '../../images/signIn-signUp/back/tablet/back_tablet@1x.png';
-import BackTablet2 from '../../images/signIn-signUp/back/tablet/back_tablet@2x.png';
-
-import BackDesk1 from '../../images/signIn-signUp/back/desktop/back__desktop@1x.png';
-import BackDesk2 from '../../images/signIn-signUp/back/desktop/back__desktop@2x.png';
-
 // 'FormContainer' get props  automatic from 'ContainerFormStyle' if you send them.
 const Div = styled.div`
 
   display: flex;
   flex-direction: ${props => props.$divDiraction || 'row'};
   justify-content: ${props => props.$justify || 'center'};
-  align-items: ${props => props.$align || 'center'}; 
 
   width: ${props => props.width || '0'};
   height: ${props => props.height || 'fit-content'};
-
-  margin-bottom: ${props => props.$marginBott || '0'};
+  
+  margin: ${props => props.$marginTop || '0'} ${props => props.$marginRight || '0'} ${props => props.$marginBott || '0'} 0;
 
   padding: ${props => props.$inputPadding ||'0'};
 
@@ -34,42 +24,16 @@ const Div = styled.div`
 
   border: ${props => props.$border || 'none'} ${props => props.$borderColor || 'white'};
 
-  ${props => props.$back && css `
-
-    background-size: contain;
-
-    background: url(${BackMobile1});
-    background: url(${BackMobile2});
-
-    @media screen and (min-width: 320px) and (max-width: 768px) { 
-      max-width: 767px;
-      background: url(${BackTablet1});
-
-      @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
-        background: url(${BackTablet2});
-      }
-    }
-
-    @media screen and (min-width: 768px) and (max-width: 1440px) { 
-      max-width: 1439px;
-      background: url(${BackDesk1});
-
-      @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
-        background: url(${BackDesk2});
-      }
-    }
-
-  `}
-
   ${props => props.$pass && css `
 
     width: 280px;
 
-    @media screen and (min-width: 768px) and (max-width: 1440px) { 
+    @media screen and (min-width: 768px) and (max-width: 1439px) { 
       width: 336px;
     }
   
     @media screen and (min-width: 1440px) { 
+   
       width: 384px;
     }
 
@@ -77,12 +41,37 @@ const Div = styled.div`
 
   ${props => props.$contentBlock && css `
 
-    @media screen and (min-width: 768px) and (max-width: 1440px) { 
+    @media screen and (min-width: 320px) and (max-width: 767px) { 
+      flex-direction: ${props => props.$divDiraction || 'column'};
+      align-items: center; 
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
       justify-content: left;
     }
 
     @media screen and (min-width: 1440px) { 
-      justify-content: right;
+
+      
+      flex-direction: row-reverse;
+      
+    }
+    `};
+
+    ${props => props.$divDiraction && css `
+
+    @media screen and (min-width: 320px) and (max-width: 767px) { 
+      margin: 30px 0 10px 0;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      margin: 100px 0 0 0; 
+    }
+
+    @media screen and (min-width: 1440px) { 
+
+      margin: auto 100px auto 0; 
+      
     }
 
   `};

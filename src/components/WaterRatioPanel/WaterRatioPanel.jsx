@@ -4,34 +4,58 @@ import { useSelector } from 'react-redux';
 
 import {
   AddWaterButton,
+  BarContainerDiv,
   ButtonIcon,
   PanelDiv,
   RatioBarH3,
   SliderContainerDiv,
-  SliderInput,
   SliderValueDiv,
-  WaterProgress,
+  ProgressBarLower,
+  WaterProgressThumb,
+  ProgressBarDiv,
 } from './WaterRatioPanel.styled';
 import { Modal } from 'components/Modal/Modal';
-import { getCurrentDay } from '../../redux/water/waterSelectors';
+import { getCurrentPercentage } from '../../redux/water/waterSelectors';
 import { AddForm } from 'components/AddForm/AddForm';
 
-// const marks = {
-//    0: '0%',
-//    50: '50%',
-//    100: '100%',
-// }
+const elTypes = {
+  progressBar: 'PROGRESS_BAR',
+  progressBarThumb: 'PROGRESS_BAR_THUMB',
+  progressBarLower: 'PROGRESS_BAR_LOWER',
+  progressBarValue: 'PROGRESS_BAR_VALUE',
+};
 
 export const WaterRatioPanel = () => {
   // const [value, setValue] = useState(20); // добавить значение
   const [isShowAddModal, setIsShowAddModal] = useState(false);
 
-  const currentDayQWE = useSelector(getCurrentDay);
-  const progressValue = currentDayQWE?.percent || 0;
+  const progressValue = useSelector(getCurrentPercentage);
 
-  // const handleSliderChange = (event) => {
-  //    setValue(event.target.value);
-  // };
+  const calcWidth = elType => {
+    switch (elType) {
+      case 'PROGRESS_BAR_THUMB': {
+        if (progressValue >= 100) {
+          return 'calc(100% - 13px)';
+        }
+        if (progressValue <= 3) return `calc(${progressValue}% - 7px)`;
+        return progressValue < 2 ? `0` : `calc(${progressValue}% - 13px)`;
+      }
+      case 'PROGRESS_BAR_LOWER': {
+        if (progressValue >= 100) {
+          return '100%';
+        }
+        return progressValue < 2 ? `0` : `calc(${progressValue}%)`;
+      }
+      case 'PROGRESS_BAR_VALUE': {
+        if (progressValue >= 100) {
+          return 'calc(95%)';
+        }
+        return progressValue < 2 ? `0` : `calc(${progressValue}% - 3%)`;
+      }
+      default:
+        return `${progressValue}%`;
+    }
+  };
 
   return (
     <div>
@@ -39,33 +63,24 @@ export const WaterRatioPanel = () => {
 
       <PanelDiv>
         <AddWaterButton onClick={() => setIsShowAddModal(true)}>
-
-          <ButtonIcon><CiCirclePlus /></ButtonIcon>
+          <ButtonIcon>
+            <CiCirclePlus />
+          </ButtonIcon>
           Add Water
         </AddWaterButton>
 
         <SliderContainerDiv className="slider-container">
-          <SliderInput
-            type="range"
-            min="0"
-            max="100"
-            step="1"
-            disabled
-            id="range-slider"
-            value={progressValue}
-          // onChange={handleSliderChange}
-          />
-          <WaterProgress width={`${progressValue}%`} />
+          <BarContainerDiv>
+            <ProgressBarDiv />
+            <ProgressBarLower width={calcWidth(elTypes.progressBarLower)} />
+            <WaterProgressThumb width={calcWidth(elTypes.progressBarThumb)} />
 
-          <SliderValueDiv className="slider-value" id="sliderValue">
-            {progressValue}
-          </SliderValueDiv>
+            <SliderValueDiv width={calcWidth(elTypes.progressBarValue)}>
+              {progressValue}%
+            </SliderValueDiv>
+          </BarContainerDiv>
 
-          <div>
-            {/* <div>0%</div> */}
-          </div>
-
-
+          <div>{/* <div>0%</div> */}</div>
         </SliderContainerDiv>
 
         {isShowAddModal && (

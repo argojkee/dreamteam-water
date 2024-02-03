@@ -3,7 +3,6 @@ import logOutAPI from 'API/Auth/logOutAPI';
 import signInAPI from '../../API/Auth/signInAPI';
 import signUpAPI from '../../API/Auth/signUpAPI';
 import fetchCurrentUserAPI from 'API/Auth/fetchCurrentUserAPI';
-import { editDailyNorm } from 'API/Auth/editDailyNorm';
 import { changeUserAvatarAPI } from 'API/Auth/changeUserAvatarAPI';
 import { changeUserData } from 'API/Auth/changeUserDataAPI';
 
@@ -18,11 +17,24 @@ const initialState = {
   token: null,
   authIsLoading: false,
   isLoadingChangeAvatar: false,
+  bottleXY: {},
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+
+  reducers: {
+    change(state, action) {
+      switch (action.payload.operation) {
+        case 'changeBottleXY':
+          state.bottleXY = action.payload.data;
+          break;
+        default: break;
+      }
+    }
+  },
+
   extraReducers: builder => {
     builder
       /*****************signIn********************/
@@ -73,14 +85,6 @@ const authSlice = createSlice({
         state.token = null;
       })
 
-      /*******************edit daily norm */
-
-      .addCase(editDailyNorm.fulfilled, (state, { payload }) => {
-        state.user.norm = payload;
-      })
-      // .addCase(editDailyNorm.pending, state => {})
-      // .addCase(editDailyNorm.rejected, state => {});
-
       /*****************************change user avatar */
 
       .addCase(changeUserAvatarAPI.fulfilled, (state, { payload }) => {
@@ -100,4 +104,7 @@ const authSlice = createSlice({
       });
   },
 });
+export const {
+  change
+} = authSlice.actions;
 export default authSlice.reducer;

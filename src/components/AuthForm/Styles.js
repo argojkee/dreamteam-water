@@ -65,7 +65,7 @@ const Div = styled.div`
     }
 
     @media screen and (min-width: 768px) and (max-width: 1439px) {
-      margin: 100px 0 0 0; 
+      margin: 50px 0 0 0; 
     }
 
     @media screen and (min-width: 1440px) { 
@@ -122,6 +122,10 @@ const Input = styled.input`
 
   @media screen and (min-width: 1440px) { 
     width: 384px;
+  }
+
+  &::-ms-reveal{
+    display: none;
   }
 
 `;

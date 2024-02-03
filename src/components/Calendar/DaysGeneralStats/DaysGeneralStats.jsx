@@ -36,15 +36,12 @@ const DaysGeneralStats = ({
     setModalVisible(false);
   };
   // console.log('statistic in modal', statistic [selectedMonth.day-1])
-  console.log('span1', statistic[selectedMonth.day - 1].norm / 1000);
-  console.log('span2', statistic[selectedMonth.day - 1].percent);
-  console.log('span3', statistic[selectedMonth.day - 1].drinks);
 
   return (
     <WaterStatsContainer data-modal-container $top={top} $left={left}>
       <div>
         <p>
-          {selectedMonth.day},{' '}
+          {selectedMonth.day},
           {getMonthsArr(selectedMonth.year)[selectedMonth.month].name}
         </p>
         <button onClick={closeModal}>
@@ -52,16 +49,16 @@ const DaysGeneralStats = ({
         </button>
       </div>
       <p>
-        Daily norma:{' '}
+        Daily norma:
         <span>{statistic[selectedMonth.day - 1].norm / 1000}L</span>
       </p>
       <p>
-        Fulfillment of the daily norm:{' '}
+        Fulfillment of the daily norm:
         <span>{statistic[selectedMonth.day - 1].percent}%</span>
       </p>
       <p>
         How many servings of water:{' '}
-        <span>{statistic[selectedMonth.day - 1].drinks}</span>
+        <span>{statistic[selectedMonth.day - 1].drinks.length || 0}</span>
       </p>
     </WaterStatsContainer>
   );

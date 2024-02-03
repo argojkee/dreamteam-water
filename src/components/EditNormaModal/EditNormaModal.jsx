@@ -35,32 +35,39 @@ const EditNormaModal = ({ closeModal }) => {
       <form action="#" name="save_form" onSubmit={onSubmit}>
         <h2>Calculate your rate:</h2>
 
-        <div className="radio">
-          <input
-            className="custom-radio"
-            type="radio"
-            name="gender"
-            value="woman"
-            id="woman"
-          />
-          <label htmlFor="woman">For woman</label>
-        </div>
+        <div className="radio-buttons-container">
+          <div className="radio">
+            <input
+              className="custom-radio"
+              type="radio"
+              name="gender"
+              value="woman"
+              id="woman"
+            />
+            <label htmlFor="woman" className="form-radio">
+              For woman
+            </label>
+          </div>
 
-        <div className="radio">
-          <input
-            className="custom-radio"
-            type="radio"
-            name="gender"
-            value="man"
-            id="man"
-          />
-          <label htmlFor="man">For man</label>
+          <div className="radio">
+            <input
+              className="custom-radio"
+              type="radio"
+              name="gender"
+              value="man"
+              id="man"
+            />
+            <label htmlFor="man" className="form-radio">
+              For man
+            </label>
+          </div>
         </div>
 
         <br />
-        <label htmlFor="#" className="form-text">
+        <label htmlFor="weight" className="form-text">
           Your weight in kilograms:
           <input
+            id="weight"
             type="text"
             name="numberKilo"
             // value="0"
@@ -71,18 +78,21 @@ const EditNormaModal = ({ closeModal }) => {
           The time of active participation in sports or other activities with a
           high physical. load in hours:
         </p>
-        <label htmlFor="#" className="form-text time">
+        <label htmlFor="activity" className="form-text time">
           <input
+            id="activity"
             type="text"
             name="amountOfTime"
             className="numberKilo"
             // value=0
           />
         </label>
-        <p className="form-text">
-          The required amount of water in liters per day:{' '}
+        <div className="norma-container">
+          <p className="form-text">
+            The required amount of water in liters per day:{' '}
+          </p>
           <span className="norma">1.8L</span>
-        </p>
+        </div>
 
         <h2 className="water">Write down how much water you will drink:</h2>
         <input

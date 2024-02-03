@@ -92,7 +92,9 @@ const AuthForm = () => {
 
   });
 
-  const navTo = () => {
+  const navTo = (evt) => {
+
+    evt.preventDefault();
     isRegistrationPage ? navigate('/login') : navigate('/registration');
   };
 
@@ -156,7 +158,7 @@ const AuthForm = () => {
                 $inputColor={formik.touched.password && formik.errors.password && !formik.errors.email ? '#EF5050' : '#407BFF'}
                 id="password"
                 name="password"
-                type="text"
+                type={passEyeToggle ? "text" : "password"}
                 placeholder="Password"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -191,7 +193,7 @@ const AuthForm = () => {
                   $inputColor={formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.password ? '#EF5050' : '#407BFF'}
                   id="repeatPassword"
                   name="repeatPassword"
-                  type="text"
+                  type={passRepEyeToggle ? "text" : "password"}
                   onChange={formik.handleChange}
                   placeholder="Repeat password"
                   onBlur={formik.handleBlur}
@@ -202,14 +204,14 @@ const AuthForm = () => {
               </>
             )} 
           
-              <Styles $div $animaOn color={'#EF5050'} height={'16px'} width={'100%'} $justify={'flex-start'} $marginBott={'8px'}>
+              <Styles $div color={'#EF5050'} height={'16px'} width={'100%'} $justify={'flex-start'} $marginBott={'8px'}>
 
                 <animated.div style={{...springs,}}>
                   {formik.touched.email && formik.errors.email
                     ? formik.errors.email
-                    : formik.touched.password && formik.errors.password
+                    : formik.touched.password && formik.errors.password && !formik.errors.email 
                     ? formik.errors.password
-                    : formik.touched.repeatPassword && formik.errors.repeatPassword
+                    : formik.touched.repeatPassword && formik.errors.repeatPassword && !formik.errors.password
                     ? formik.errors.repeatPassword
                     : ''}
                 </animated.div>

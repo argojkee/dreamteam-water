@@ -202,7 +202,7 @@ const AuthForm = () => {
               </>
             )} 
           
-              <Styles $div $animaOn color={'#EF5050'} height={'16px'} width={'100%'} $justify={'flex-start'} $marginBott={'8px'}>
+              <Styles $div color={'#EF5050'} height={'16px'} width={'100%'} $justify={'flex-start'} $marginBott={'8px'}>
 
                 <animated.div style={{...springs,}}>
                   {formik.touched.email && formik.errors.email

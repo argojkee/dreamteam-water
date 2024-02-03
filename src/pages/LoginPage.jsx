@@ -7,7 +7,6 @@ import Container from 'components/Container/Container';
 import Styles from './pageStyles/LogInStyle/Styles';
 /* end */
 
-
 const LoginPage = () => {
 
   const selector = useSelector(state => state.auth);

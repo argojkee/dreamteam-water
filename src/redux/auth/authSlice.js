@@ -18,11 +18,24 @@ const initialState = {
   token: null,
   authIsLoading: false,
   isLoadingChangeAvatar: false,
+  bottleXY: {},
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+
+  reducers: {
+    change(state, action) {
+      switch (action.payload.operation) {
+        case 'changeBottleXY':
+          state.bottleXY = action.payload.data;
+          break;
+        default: break;
+      }
+    }
+  },
+
   extraReducers: builder => {
     builder
       /*****************signIn********************/
@@ -100,4 +113,7 @@ const authSlice = createSlice({
       });
   },
 });
+export const {
+  change
+} = authSlice.actions;
 export default authSlice.reducer;

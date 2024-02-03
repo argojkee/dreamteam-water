@@ -1,66 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats';
-import { getMonthsArr } from '../getMonthsArr';
 import { MonthStatisticlist } from './MonthStatistic.styled';
-import { getDate } from '../MonthSwitcher/getDate';
+import { compareDates, today } from '../helpers/getDate';
+import { getMonthsArr } from '../helpers/getMonthsArr';
 
-const MonthStatistic = ({ selectedMonth, setSelectedMonth, today }) => {
+const MonthStatistic = ({ selectedMonth, monthStatistic,setSelectedMonth }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const [statistic, setStatistic] = useState([]);
-
-  useEffect(() => {
-    
-    setStatistic(currentMonth(selectedMonth.year,selectedMonth.month, statistic1));
-  }, [selectedMonth]);
-
-  const currentMonth = (year, month, statistic) => {
-    const daysArr = [];
-    const monthData = getMonthsArr(year)[month];
-    if (!monthData) {
-      return daysArr;
-    }
-    for (let i = 1; i <= monthData.numberOfDays; i += 1) {
-      const day = statistic.find(statisticOneDay => new Date(`${statisticOneDay.date}`).getDate() === i);
-      
-      if (day) {
-        const dateDrink = getDate(day.date)
-        // console.log(dateDrink)
-        // console.log(dateDrink.month)
-        // console.log(month)
-        // console.log(dateDrink.month===month)
-        if (dateDrink.month === month && dateDrink.year === year) {
-          // console.log('yes')
-          daysArr.push({ date: i, month, year, percent: day.percent });
-        }
-        
-      } else {
-        if (i < today.day && new Date(statistic[statistic.length - 1].date) < Date.now()) {
-          daysArr.push({ date: i, month, year, percent: 0 });
-        } else {
-          daysArr.push({ date: i, month, year, percent: '' });
-        }
-      }
-    }
-    return daysArr;
-  };
-
-
-
-  const statistic1 =  [
-    {
-        "date": "2024-01-10T00:00:00.000Z",
-        "percent": 63,
-        "norm": 2000,
-        "drinks": 5
-    },
-    {
-        "date": "2024-01-11T00:00:00.000Z",
-        "percent": 25,
-        "norm": 2000,
-        "drinks": 2
-    }
-  ]
+  const [modalData, setModalData] = useState([]);
 
   const handleMouseEnter = (event) => {
     const day = Number(event.target.innerText);
@@ -73,13 +20,68 @@ const MonthStatistic = ({ selectedMonth, setSelectedMonth, today }) => {
     setModalPosition({ top: buttonCenterY, left: buttonCenterX });
     setModalVisible(true);
   }
+  const currentMonth = (year, month, statistic) => {
+    const daysArr = [];
+    const monthData = getMonthsArr(year)[month];
+    if (!monthData) {
+      return daysArr;
+    }
+
+    // console.log('statistic in currentmonth', statistic)
+
+    const picData = [selectedMonth.month, selectedMonth.year]
+    const todayData = [today.month, today.year]
+    const compare = compareDates(picData, todayData)
+
+    for (let i = 1; i <= monthData.numberOfDays; i += 1) {
+      
+      const day = statistic.find(statisticOneDay => {
+  const date = statisticOneDay.date? new Date(statisticOneDay.date):new Date(statisticOneDay.day);
+  return date.getDate() === i;
+});
+      // console.log('day', day)
+      if (compare === 0) {
+        // console.log('compare in currentmonth - 0')
+         if (!day && i <= today.day) {
+            daysArr.push({ date: i, percent: 0, norm: 2000, drinks:0 });
+          }
+          if (!day && i > today.day) {
+            daysArr.push({ date: i, percent: '' });
+          }
+          if (day ) {
+            daysArr.push({ date: i, percent: day.percent, norm: day.norm, drinks:day.drinks });
+          }
+      }
+
+      if (compare === 1) {
+        // console.log('compare in currentmonth - 1')
+            daysArr.push({ date: i, percent: '' });
+      }
+      
+      if (compare === -1) {
+        //  console.log('compare in currentmonth - "-1"')
+        if (day) {
+           daysArr.push({ date: i, percent: day.percent, norm: day.norm, drinks:day.drinks });
+              // console.log('if day', day)
+            } else {
+           daysArr.push({ date: i, percent: 0, norm: 2000, drinks: 0  });
+          //  console.log('else-0', day)
+          }
+          }   
+    }
+    return daysArr;
+  };
+
+  const statistic = currentMonth(selectedMonth.year, selectedMonth.month, monthStatistic)
 
   return (
     <>
       <MonthStatisticlist>
         {statistic.map(({ date, percent }) => (
           <li key={date}>
-            <button onMouseEnter={handleMouseEnter}
+            <button
+              onMouseEnter={handleMouseEnter}
+
               data-fulfilled={percent > 100 ? 'true' : 'false'}
               disabled={percent === '' ? true : false}
             >
@@ -95,6 +97,7 @@ const MonthStatistic = ({ selectedMonth, setSelectedMonth, today }) => {
           left={modalPosition.left}
           setModalVisible={setModalVisible}
           selectedMonth={selectedMonth}
+          statistic ={statistic }
         />
       )}
     </>

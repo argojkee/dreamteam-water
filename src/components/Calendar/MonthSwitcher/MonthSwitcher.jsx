@@ -1,15 +1,14 @@
-import {  useState } from 'react';
-import { getMonthsArr } from '../getMonthsArr';
+import {  useEffect, useState } from 'react';
+import { getMonthsArr } from '../helpers/getMonthsArr';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { MonthSwitcherContainer } from './MonthSwitcher.styled';
 import { useSelector } from 'react-redux';
 import { getStartDay } from '../../../redux/auth/authSelectors';
-import { getDate } from './getDate';
+import { funcGetDate, today } from '../helpers/getDate';
 
-const MonthSwitcher = ({ selectedMonth, setSelectedMonth, today }) => {
+const MonthSwitcher = ({ selectedMonth, setSelectedMonth }) => {
   const startDay = useSelector(getStartDay);
-  const [registrationDate] = useState(getDate(startDay));
-  console.log(registrationDate)
+  const registrationDate = funcGetDate(startDay);
 
   const handlePrevMonth = () => {
     selectedMonth.month === 0

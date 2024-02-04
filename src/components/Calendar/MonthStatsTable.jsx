@@ -40,7 +40,7 @@ const MonthStatsTable = () => {
         try {
           const newMonthStatistic = await getMonthInfoAPI({
             month: selectedMonth.month + 1,
-            year: selectedMonth.day,
+            year: selectedMonth.year,
           });
 
           setMonthStatistic([...newMonthStatistic]);

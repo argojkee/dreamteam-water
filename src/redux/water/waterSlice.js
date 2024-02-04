@@ -61,7 +61,6 @@ const waterSlice = createSlice({
       .addCase(addWaterThunk.fulfilled, (state, { payload }) => {
         state.isAddDrinkLoading = false;
         state.dayInfo = { ...payload };
-        console.log({ ...payload });
       })
       .addCase(addWaterThunk.rejected, state => {
         state.isAddDrinkLoading = false;
@@ -72,7 +71,6 @@ const waterSlice = createSlice({
       .addCase(deleteDrinkThunk.fulfilled, (state, { payload }) => {
         state.isDeleting = false;
         state.dayInfo = { ...payload };
-        console.log(payload);
       })
       .addCase(deleteDrinkThunk.rejected, state => {
         state.isDeleting = false;
@@ -83,7 +81,6 @@ const waterSlice = createSlice({
       .addCase(editDrinkThunk.fulfilled, (state, { payload }) => {
         state.isEditingDrink = false;
         state.dayInfo = { ...payload };
-        console.log(payload);
       })
       .addCase(editDrinkThunk.rejected, state => {
         state.isEditingDrink = false;

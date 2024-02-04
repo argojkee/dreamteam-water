@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AddFormStyles } from './AddForm.styled';
 import { getCurrentDay } from '../../redux/water/waterSelectors';
 import { useSelector } from 'react-redux';
@@ -8,21 +8,30 @@ import {
 } from '../../redux/water/waterFunctions';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
-import {
-  getIsAddingDrink,
-  getIsEditingDrink,
-} from '../../redux/water/waterSelectors';
+import { toastError } from 'services/toastNotification';
 import { PiSpinnerGap } from 'react-icons/pi';
+import {
+  getIsEditingDrink,
+  getIsAddingDrink,
+} from '../../redux/water/waterSelectors';
 
-export const AddForm = ({ closeAddForm, drink }) => {
+export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
   const [waterAmount, setWaterAmount] = useState(0);
   const [recordTime, setRecordTime] = useState(getDefaultTime());
+  const [inputValue, setInputValue] = useState('');
   const dispatch = useDispatch();
   const { _id: dayId } = useSelector(getCurrentDay);
   const isAdding = useSelector(getIsAddingDrink);
   const isEditing = useSelector(getIsEditingDrink);
-
   const isLoading = isAdding || isEditing;
+
+  useEffect(() => {
+    setRecordTime(getDefaultTime());
+  }, []);
+
+  useEffect(() => {
+    setInputValue(waterAmount.toString());
+  }, [waterAmount]);
 
   function getDefaultTime() {
     const now = new Date();
@@ -41,17 +50,36 @@ export const AddForm = ({ closeAddForm, drink }) => {
   }
 
   const handleSave = async () => {
-    if (drink) {
-      await dispatch(
-        editDrinkThunk({ id: drink.id, time: recordTime, ml: waterAmount })
-      );
-    } else {
-      await dispatch(
-        addWaterThunk({ dayId, drink: { ml: waterAmount, time: recordTime } })
-      );
-    }
+    if (waterAmount > 0) {
+      if (drink) {
+        if (waterAmount === drink.ml && recordTime === drink.time) {
+          return toastError(
+            'Please enter a different value than the previous one.'
+          );
+        }
 
-    closeAddForm();
+        await dispatch(
+          editDrinkThunk({ id: drink.id, time: recordTime, ml: waterAmount })
+        );
+      } else {
+        await dispatch(
+          addWaterThunk({
+            dayId,
+            drink: { ml: waterAmount, time: recordTime },
+          })
+        );
+      }
+
+      closeAddForm();
+    } else {
+      return toastError('Please, enter water amount or delete this drink');
+    }
+  };
+
+  const handleInputChange = e => {
+    const newValue = e.target.value;
+    setInputValue(newValue);
+    setWaterAmount(newValue >= 0 ? parseInt(newValue, 10) : 0);
   };
 
   const showContentData = drink ? (
@@ -75,8 +103,12 @@ export const AddForm = ({ closeAddForm, drink }) => {
       {showContentData}
       <div className="edit-water-form">
         <div className="step-input">
-          <button onClick={() => setWaterAmount(prev => prev - 50)}>-</button>
-          <span>{waterAmount} ml</span>
+          <button
+            onClick={() => setWaterAmount(prev => Math.max(prev - 50, 0))}
+          >
+            -
+          </button>
+          <span>{waterAmount || 0} ml</span>
           <button onClick={() => setWaterAmount(prev => prev + 50)}>+</button>
         </div>
         <label>Recording time:</label>
@@ -89,9 +121,18 @@ export const AddForm = ({ closeAddForm, drink }) => {
         <h2>Enter the value of the water used:</h2>
         <input
           type="number"
-          value={waterAmount}
-          onChange={e => setWaterAmount(parseInt(e.target.value, 10) || 0)}
+          value={inputValue}
+          onChange={handleInputChange}
+          onBlur={() => {
+            if (drink && waterAmount === drink.ml) {
+              setWaterAmount(0);
+              toastError(
+                'Invalid water amount. Please enter a different value than the previous one.'
+              );
+            }
+          }}
         />
+
         <p>Entered amount: {waterAmount} ml</p>
       </div>
       <button onClick={handleSave}>
@@ -104,30 +145,27 @@ export const AddForm = ({ closeAddForm, drink }) => {
 function generateTimeOptions() {
   const options = [];
   const now = new Date();
-  const roundedMinutes = Math.ceil(now.getMinutes() / 5) * 5;
-  const currentFormattedHour = now.getHours().toString().padStart(2, '0');
-  const currentFormattedMinute = roundedMinutes.toString().padStart(2, '0');
-
-  options.push(
-    <option
-      //!Било ошибки, что у элементов одинаковый ключ. Подключил наноАйи
-
-      key={nanoid()}
-      value={`${currentFormattedHour}:${currentFormattedMinute}`}
-    >
-      {`${currentFormattedHour}:${currentFormattedMinute}`}
-    </option>
-  );
+  // const roundedMinutes = Math.ceil(now.getMinutes() / 5) * 5;
+  // const currentFormattedHour = now.getHours().toString().padStart(2, '0');
+  // const currentFormattedMinute = roundedMinutes.toString().padStart(2, '0');
 
   for (let hour = 0; hour < 24; hour++) {
     for (let minute = 0; minute < 60; minute += 5) {
       const formattedHour = hour.toString().padStart(2, '0');
       const formattedMinute = minute.toString().padStart(2, '0');
-      options.push(
-        <option key={nanoid()} value={`${formattedHour}:${formattedMinute}`}>
-          {`${formattedHour}:${formattedMinute}`}
-        </option>
-      );
+      if (
+        (hour < now.getHours() ||
+          (hour === now.getHours() && minute <= now.getMinutes())) &&
+        !options.some(
+          option => option.props.value === `${formattedHour}:${formattedMinute}`
+        )
+      ) {
+        options.push(
+          <option key={nanoid()} value={`${formattedHour}:${formattedMinute}`}>
+            {`${formattedHour}:${formattedMinute}`}
+          </option>
+        );
+      }
     }
   }
 

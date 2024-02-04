@@ -17,6 +17,7 @@ const initialState = {
   token: null,
   authIsLoading: false,
   isLoadingChangeAvatar: false,
+  isDataUpdating: false,
   bottleXY: {},
 };
 
@@ -105,9 +106,16 @@ const authSlice = createSlice({
         state.isLoadingChangeAvatar = false;
       })
 
-      /******************************fetch user info */
+      /******************************change user info */
+      .addCase(changeUserData.pending, (state, { payload }) => {
+        state.isDataUpdating = true;
+      })
       .addCase(changeUserData.fulfilled, (state, { payload }) => {
         state.user = { ...state.user, ...payload.user };
+        state.isDataUpdating = false;
+      })
+      .addCase(changeUserData.rejected, (state, { payload }) => {
+        state.isDataUpdating = false;
       });
   },
 });

@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { BsUpload } from 'react-icons/bs';
 import { FiEyeOff } from 'react-icons/fi';
 import { FiEye } from 'react-icons/fi';
+import { PiSpinnerGap } from 'react-icons/pi';
 
 import { changeUserAvatarAPI } from 'API/Auth/changeUserAvatarAPI';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,6 +14,8 @@ import {
   getUserEmail,
   getUserGender,
   getUserName,
+  getIsChangingAvatar,
+  getIsDataUpdating,
 } from '../../redux/auth/authSelectors';
 import { changeUserData } from 'API/Auth/changeUserDataAPI';
 
@@ -54,17 +57,21 @@ export const SettingModal = ({ closeModal }) => {
   const userEmail = useSelector(getUserEmail);
   const userGender = useSelector(getUserGender);
   const defaultAvatar = userName !== null ? userName[0] : userEmail[0];
+  const isChangingAvatar = useSelector(getIsChangingAvatar);
+  const isUserDataUpdating = useSelector(getIsDataUpdating);
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (
+  const handleSubmit = async (
     { name, email, gender, password, newPassword },
     { resetForm }
   ) => {
     if (newPassword === '') {
-      dispatch(changeUserData({ name, email, gender, password }));
+      await dispatch(changeUserData({ name, email, gender, password }));
     } else {
-      dispatch(changeUserData({ name, email, gender, password, newPassword }));
+      await dispatch(
+        changeUserData({ name, email, gender, password, newPassword })
+      );
     }
 
     resetForm();
@@ -101,12 +108,13 @@ export const SettingModal = ({ closeModal }) => {
       <div>
         <p className="setting-text setting-modal-text">Your photo</p>
         <div className="setting-photo-wrapper">
-          {avatar === null && (
+          {isChangingAvatar && <PiSpinnerGap className="spinner" size={16} />}
+          {!isChangingAvatar && avatar === null && (
             <div className="setting-default-avatar">
               <p>{defaultAvatar}</p>
             </div>
           )}
-          {avatar !== null && (
+          {!isChangingAvatar && avatar !== null && (
             <img
               src={avatar}
               alt="avatar"
@@ -115,17 +123,19 @@ export const SettingModal = ({ closeModal }) => {
               height="80"
             />
           )}
-          <label className="upload-photo-label">
-            <BsUpload color={iconColor} />
-            <p className="upload-photo-text">Upload a photo</p>
-            <input
-              type="file"
-              name="upload_photo"
-              className="photo-input"
-              accept=".png, .jpg, .jpeg"
-              onChange={onChangeAvatar}
-            />
-          </label>
+          {!isChangingAvatar && (
+            <label className="upload-photo-label">
+              <BsUpload color={iconColor} />
+              <p className="upload-photo-text">Upload a photo</p>
+              <input
+                type="file"
+                name="upload_photo"
+                className="photo-input"
+                accept=".png, .jpg, .jpeg"
+                onChange={onChangeAvatar}
+              />
+            </label>
+          )}
         </div>
       </div>
       <form onSubmit={formik.handleSubmit} className="setting-form">
@@ -369,7 +379,11 @@ export const SettingModal = ({ closeModal }) => {
           </div>
         </div>
         <button type="submit" className="setting-form-submit">
-          Save
+          {isUserDataUpdating ? (
+            <PiSpinnerGap className="spinner" size={16} />
+          ) : (
+            'Save'
+          )}
         </button>
       </form>
     </SettingModalStyled>

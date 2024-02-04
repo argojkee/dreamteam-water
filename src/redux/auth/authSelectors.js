@@ -13,3 +13,7 @@ export const getCurrentUser = state => state.auth.user;
 export const getStartDay = state => state.auth.user.startDay;
 
 export const getIsAuthLoading = state => state.auth.authIsLoading;
+
+export const getIsChangingAvatar = state => state.auth.isLoadingChangeAvatar;
+
+export const getIsDataUpdating = state => state.auth.isDataUpdating;

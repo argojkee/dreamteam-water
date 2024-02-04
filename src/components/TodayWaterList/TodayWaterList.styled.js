@@ -54,8 +54,8 @@ export const TimeDiv = styled.div`
 `
 
 export const EmptyTxt = styled.div`
-    color: blue;
-    font-weight: 700;
+    color: #9EBBFF;
+    font-weight: 400;
 `
 export const H2 = styled.h2`
     color: #2F2F2F;
@@ -102,12 +102,15 @@ export const SmallRoundBtn = styled.button`
     cursor: pointer;
 
     &:hover, :focus {
-        background-color: #cfdaf5aa;
-        box-shadow: 0px 0px 4px 5px #D7E3FFAA;
+        /* background-color: #cfdaf5aa; */
+        /* box-shadow: 0px 0px 4px 5px #D7E3FFAA; */
+        box-shadow: 0px 1px 5px rgba(64, 123, 255, 0.24);
     }
     &:active {
-        background-color: #c0cfff55;
-        box-shadow: 0px 0px 5px 7px #c0d2ff55;
+        background-color: #c0cfff35;
+        /* box-shadow: 0px 0px 5px 7px #c0d2ff55; */
+        
+        box-shadow: 0px 1px 2px rgba(64, 123, 255, 0.34);
     }
 
     @media screen and (min-width: 768px) {
@@ -148,12 +151,15 @@ export const AddTodayWaterBtn = styled.button`
     cursor: pointer;
     transition: all .2s ease-out;
     &:hover, :focus {
-        background-color: #D7E3FFAA;
-        box-shadow: 0px 0px 5px 4px #D7E3FFAA;
+        box-shadow: 0px 5px 7px rgba(64, 123, 255, 0.14);
+        /* background-color: #D7E3FFAA; */
+        /* box-shadow: 0px 0px 5px 4px #D7E3FFAA; */
     }
     &:active {
-        background-color: #c0cfff40;
-        box-shadow: 0px 0px 5px 7px #c1ddff54;
+        /* background-color: #c0cfff40; */
+        background-color: #D7E3FF1A;
+        box-shadow: 0px 1px 7px rgba(64, 123, 255, 0.14);
+        /* box-shadow: 0px 0px 5px 7px #c1ddff54; */
     }
 
     font-size: 16px;

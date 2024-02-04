@@ -1,11 +1,9 @@
-import { CiCirclePlus } from 'react-icons/ci';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
   AddWaterButton,
   BarContainerDiv,
-  ButtonIcon,
   PanelDiv,
   RatioBarH3,
   SliderContainerDiv,
@@ -16,6 +14,7 @@ import {
   RulerDiv,
   RulerElStripDiv,
   RulerElDiv,
+  BtnIcon,
 } from './WaterRatioPanel.styled';
 import { Modal } from 'components/Modal/Modal';
 import { getCurrentPercentage } from '../../redux/water/waterSelectors';
@@ -43,14 +42,14 @@ export const WaterRatioPanel = () => {
 
         if (progressValue >= 100) return 'calc(100% - 13px)';
         return `calc(${progressValue}% - 7px)`;
-        if (progressValue <= 5) return `calc(${progressValue}% - 7px)`;
-        return progressValue < 2 ? `0` : `calc(${progressValue}% - 13px)`;
+        // if (progressValue <= 5) return `calc(${progressValue}% - 7px)`;
+        // return progressValue < 2 ? `0` : `calc(${progressValue}% - 13px)`;
       }
       case 'PROGRESS_BAR_VALUE': {
         if (progressValue >= 100) return `calc(100% - 50px)`;
 
         return `calc(${progressValue}% - 30px)`;
-        return progressValue < 2 ? `0` : `calc(${progressValue}% - 3%)`;
+        // return progressValue < 2 ? `0` : `calc(${progressValue}% - 3%)`;
       }
       default:
         return `${progressValue}%`;
@@ -108,7 +107,7 @@ export const WaterRatioPanel = () => {
         </SliderContainerDiv>
 
         <AddWaterButton onClick={() => setIsShowAddModal(true)}>
-          <ButtonIcon><CiCirclePlus /></ButtonIcon>
+            <BtnIcon />
           Add Water
         </AddWaterButton>
 

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { CiCirclePlus } from "react-icons/ci";
 
 export const RatioBarH3 = styled.h3`
     color:  #407BFF;
@@ -31,6 +32,7 @@ export const BarContainerDiv = styled.div`
     margin: 0 14px 0 19px;
     height: 14px;
 `
+// 
 export const ProgressBarDiv = styled.input`
     position: relative;
     transform: translateY(-50%);
@@ -83,68 +85,8 @@ export const SliderValueDiv = styled.div`
     text-align: center;
     color: #407BFF;
 
-    /* background-color: #FFF; */
     margin-top: 13px;
     padding: 0 13px;
-`
-
-export const AddWaterButton = styled.button`
-    background-color: #407BFF;
-    border: none;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    min-width: 31%;
-    width: 100%;
-    
-    gap: 10px;
-    align-items: center;
-
-    font-family: Roboto;
-    font-weight: 500;
-    letter-spacing: 0em;
-    text-align: center;
-    color: white;
-    text-transform: capitalize;
-    transition: all .2s ease-out;
-    cursor: pointer;
-
-    &:hover, &:focus, &:active {
-        outline: none;
-        background-color: #3872f8;
-        box-shadow: 0px 0px 5px 3px #D7E3FFAA;
-    }
-    &:active {
-        background-color: #306af0;
-        box-shadow: 0px 0px 4px 3px #D7E3FFAA;
-    }
-
-    padding: 8px 30px 8px 30px;
-
-    font-size: 16px;
-    line-height: 20px;
-    @media screen and (min-width: 768px) {
-        padding: 10px 30px 10px 30px;
-        width: 50%;
-        
-        font-size: 18px;
-        line-height: 24px;
-    }
-`
-export const ButtonIcon = styled.span`
-    display: block;
-    padding: 0;
-    margin: 0;
-
-    stroke-width: 3px;
-    
-    font-size: 24px;
-    @media screen and (min-width: 768px) {    
-        font-size: 30px;
-    }
 `
 
 export const RulerDiv = styled.div`
@@ -168,4 +110,64 @@ export const RulerElStripDiv = styled.div`
 `
 export const RulerElDiv = styled.div`
     width: 30px;
+`
+
+export const AddWaterButton = styled.button`
+    background-color: #407BFF;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    gap: 10px;
+    align-items: center;
+
+    font-family: Roboto;
+    font-weight: 500;
+    letter-spacing: 0em;
+    text-align: center;
+    color: white;
+    text-transform: capitalize;
+    transition: all .2s ease-out;
+    cursor: pointer;
+
+    box-shadow: 0px 4px 8px 0px #407BFF57;
+
+    &:hover, &:focus, &:active {
+        outline: none;
+        box-shadow: 0px 5px 7px rgba(64, 123, 255, 0.54);
+    }
+    &:active {
+        background-color: #3872f8;
+        box-shadow: 0px 2px 7px rgba(64, 123, 255, 0.54);
+    }
+
+    padding: 8px 30px 8px 30px;
+    min-width: 100%;
+    height: 36px;
+
+    font-size: 16px;
+    line-height: 20px;
+    @media screen and (min-width: 768px) {
+        padding: 10px 30px 10px 30px;
+        min-width: 50%;
+        height: 44px;
+        
+        font-size: 18px;
+        line-height: 24px;
+    }
+    @media screen and (min-width: 1280px) {
+        min-width: 31%;
+        
+    }
+`
+export const BtnIcon = styled(CiCirclePlus)`
+    stroke-width: 1px;
+    width: 26px;
+    height: 26px;
+
+    padding: 0;
+    margin: 0;
 `

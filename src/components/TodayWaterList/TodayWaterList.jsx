@@ -46,7 +46,7 @@ export function TodayWaterList() {
             />
           ))
         ) : (
-          <EmptyTxt>List is empty.</EmptyTxt>
+          <EmptyTxt>It's time to drink some water!</EmptyTxt>
         )}
       </ListUl>
 

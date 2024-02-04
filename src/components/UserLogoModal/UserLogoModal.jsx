@@ -24,8 +24,8 @@ export default function UserLogoModal() {
   let unpolished_userAvatarUrl = '';
 
   //const get_water_Current_Month = useSelector(getCurrentMonth);
-  unpolished_userEmail = email.replace(email[0], email[0].toUpperCase()); //email;
-  unpolished_userName = name.replace(name[0], name[0].toUpperCase());
+  unpolished_userEmail = email?.replace(email[0], email[0].toUpperCase()); //email;
+  unpolished_userName = name?.replace(name[0], name[0].toUpperCase());
   unpolished_userAvatarUrl = avatarURL;
 
   let userAvatar = polishingAvatar();

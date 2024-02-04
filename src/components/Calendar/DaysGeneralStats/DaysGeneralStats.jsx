@@ -58,7 +58,10 @@ const DaysGeneralStats = ({
       </p>
       <p>
         How many servings of water:{' '}
-        <span>{statistic[selectedMonth.day - 1].drinks.length || 0}</span>
+        <span>
+          {statistic[selectedMonth.day - 1].drinks.length ||
+            statistic[selectedMonth.day - 1].drinks}
+        </span>
       </p>
     </WaterStatsContainer>
   );

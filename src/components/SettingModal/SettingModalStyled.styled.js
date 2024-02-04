@@ -5,6 +5,8 @@ export const SettingModalStyled = styled.div`
   flex-direction: column;
   gap: 24px;
   color: #2f2f2f;
+  padding-top: 8px;
+  padding-bottom: 8px;
 
   .setting-title {
     font-size: 26px;
@@ -90,9 +92,43 @@ export const SettingModalStyled = styled.div`
     gap: 8px;
   }
 
-  .setting-form-gender-button {
+  .setting-form-gender-label::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid rgb(64, 123, 255);
+    border-radius: 50%;
+    margin: 0px 6px 0px 3px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+    border-color: #80bdff;
+  }
+
+  .setting-form-gender-label:hover::before {
+    border-color: #b3d7ff;
+  }
+
+  .setting-form-gender-button:not(:disabled):active + .setting-form-gender-label:hover::before {
+    background-color: #ffffff;
+    border-color: #b3d7ff;
+  }
+
+  .setting-form-gender-button:checked + .setting-form-gender-label::before {
     border-color: #407bff;
-    background-color: #407bff;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23407BFF'/%3E%3C/svg%3E");
+  }
+
+  .setting-form-gender-button {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
   }
 
   .setting-form-gender-text {
@@ -181,8 +217,10 @@ export const SettingModalStyled = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    width: 656px;
-    height: 796px;
+    width: 680px;
+    height: 812px;
+    padding-left: 12px;
+    padding-right: 12px;
 
     .setting-form-input,
     .setting-form-password-wrapper {
@@ -198,8 +236,8 @@ export const SettingModalStyled = styled.div`
   }
 
   @media screen and (min-width: 1158px) {
-    width: 960px;
-    height: 528px;
+    width: 984px;
+    height: 544px;
 
     .setting-form-wrapper {
       display: flex;

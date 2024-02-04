@@ -89,7 +89,7 @@ const waterSlice = createSlice({
       .addCase(editDailyNorm.fulfilled, (state, { payload }) => {
         state.dayInfo.norm = payload.norm;
         state.dayInfo.percent = payload.percent;
-        state.dayInfo.isEditingNorm = false;
+        state.isEditingNorm = false;
       })
       .addCase(editDailyNorm.pending, state => {
         state.isEditingNorm = true;

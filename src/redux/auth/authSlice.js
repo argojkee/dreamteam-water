@@ -17,6 +17,7 @@ const initialState = {
   token: null,
   authIsLoading: false,
   isLoadingChangeAvatar: false,
+  isDataUpdating: false,
   bottleXY: {},
 };
 
@@ -30,9 +31,10 @@ const authSlice = createSlice({
         case 'changeBottleXY':
           state.bottleXY = action.payload.data;
           break;
-        default: break;
+        default:
+          break;
       }
-    }
+    },
   },
 
   extraReducers: builder => {
@@ -46,6 +48,9 @@ const authSlice = createSlice({
         state.user = { ...payload.user };
         state.token = payload.token;
       })
+      .addCase(signInAPI.rejected, state => {
+        state.authIsLoading = false;
+      })
       /*****************end********************/
 
       /*****************signUp********************/
@@ -53,6 +58,9 @@ const authSlice = createSlice({
         state.authIsLoading = true;
       })
       .addCase(signUpAPI.fulfilled, state => {
+        state.authIsLoading = false;
+      })
+      .addCase(signUpAPI.rejected, state => {
         state.authIsLoading = false;
       })
       /*****************end********************/
@@ -98,13 +106,18 @@ const authSlice = createSlice({
         state.isLoadingChangeAvatar = false;
       })
 
-      /******************************fetch user info */
+      /******************************change user info */
+      .addCase(changeUserData.pending, (state, { payload }) => {
+        state.isDataUpdating = true;
+      })
       .addCase(changeUserData.fulfilled, (state, { payload }) => {
         state.user = { ...state.user, ...payload.user };
+        state.isDataUpdating = false;
+      })
+      .addCase(changeUserData.rejected, (state, { payload }) => {
+        state.isDataUpdating = false;
       });
   },
 });
-export const {
-  change
-} = authSlice.actions;
+export const { change } = authSlice.actions;
 export default authSlice.reducer;

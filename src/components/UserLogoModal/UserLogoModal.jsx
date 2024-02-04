@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { getCurrentUser } from '../../redux/auth/authSelectors';
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
-const BASE_URL = 'https://dreamteam-water-server.onrender.com/';
+//const BASE_URL = 'https://dreamteam-water-server.onrender.com/';
 
 export default function UserLogoModal() {
   const [isOpen, setOpen] = useState(false);
@@ -36,9 +36,9 @@ export default function UserLogoModal() {
     if (email) {
       let avatar = unpolished_userEmail[0];
       if (unpolished_userAvatarUrl === null && unpolished_userName !== null) {
-        avatar = unpolished_userName[0];
+        avatar = unpolished_userName[0].toUpperCase();
       } else if (unpolished_userAvatarUrl) {
-        avatar = BASE_URL + unpolished_userAvatarUrl;
+        avatar = unpolished_userAvatarUrl;
       }
       return avatar;
     }

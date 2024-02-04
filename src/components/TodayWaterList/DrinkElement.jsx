@@ -1,6 +1,7 @@
 import {
   BtnWrapDiv,
   DelBtnIcon,
+  DrinkIconImg,
   DrinkInfoDiv,
   DrinkLi,
   EditBtnIcon,
@@ -8,44 +9,33 @@ import {
   VolumeDiv,
 } from './TodayWaterList.styled';
 import DrinkIcon from '../../icons/drink.svg';
-import { deleteDrinkThunk } from '../../redux/water/waterFunctions';
-import { useDispatch } from 'react-redux';
 import { Modal } from 'components/Modal/Modal';
 import { AddForm } from 'components/AddForm/AddForm';
 import { useState } from 'react';
+import LogoutDeleteModalContent from 'components/LogoutDeleteModal/LogoutDeleteModalContent';
 
 export const DrinkElement = ({ id, ml, time }) => {
-  const dispatch = useDispatch();
   const [isShowEditForm, setIsShowEditForm] = useState(false);
-  // const [showAddModal, setShowAddModal] = useState(false);
-
-  // const qwe = () => {
-  //     console.info('########TEST openModal#############');
-  //     setShowAddModal(true)
-  // }
-
-  const onDeleteClick = async () => {
-    dispatch(deleteDrinkThunk(id));
-  };
+  const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
 
   return (
     <DrinkLi id={id}>
+        
       <DrinkInfoDiv>
-        <img src={DrinkIcon} alt="Glass of water" />
+        <DrinkIconImg src={DrinkIcon} alt="Glass of water" />
         <VolumeDiv>{ml} ml</VolumeDiv>
         <div>{time}</div>
       </DrinkInfoDiv>
+
       <BtnWrapDiv>
-        <SmallRoundBtn onClick={() => setIsShowEditForm(true)}>
-          <EditBtnIcon
-            title="Edit"
-            // onClick={() => qwe()}
-          />
+        <SmallRoundBtn title="Edit" onClick={() => setIsShowEditForm(true)}>
+          <EditBtnIcon />
         </SmallRoundBtn>
-        <SmallRoundBtn onClick={onDeleteClick}>
-          <DelBtnIcon title="Delete" />
+        <SmallRoundBtn title="Delete" onClick={() => setIsShowDeleteModal(true)}>
+          <DelBtnIcon />
         </SmallRoundBtn>
       </BtnWrapDiv>
+
       {isShowEditForm && (
         <Modal
           closeModal={() => setIsShowEditForm(false)}
@@ -53,6 +43,17 @@ export const DrinkElement = ({ id, ml, time }) => {
             <AddForm
               drink={{ id, ml, time }}
               closeAddForm={() => setIsShowEditForm(false)}
+            />
+          }
+        />
+      )}
+      {isShowDeleteModal && (
+        <Modal
+          closeModal={() => setIsShowDeleteModal(false)}
+          children={
+            <LogoutDeleteModalContent
+              closeModal={() => setIsShowDeleteModal(false)}
+              id={id}
             />
           }
         />

@@ -15,11 +15,21 @@ export const DrinkLi = styled.li`
     border-bottom: solid 1px #D7E3FF;
     transition: all .2s ease-out;
 `
+export const DrinkIconImg = styled.img`
+    width: 24px;
+    height: 24px;
+
+    @media screen and (min-width: 768px) {
+        width: 36px;
+        height: 36px;
+    }
+`
 export const DrinkInfoDiv = styled.div`
     display: flex;
     align-items: center;
     flex-direction: row;
     gap: 10px;
+    font-size: 12px;
 `
 export const VolumeDiv = styled.div`
     color: #407BFF;
@@ -28,8 +38,15 @@ export const VolumeDiv = styled.div`
     line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
+    
+    min-width: 60px;
+    /* margin-right: 12px; */
+
+    @media screen and (min-width: 768px) {
+        margin-right: 16px;
+    }
 `
-export const TimeDiv = styled.div `
+export const TimeDiv = styled.div`
     font-size: 12px;
     line-height: 24px;
     letter-spacing: 0em;
@@ -37,8 +54,8 @@ export const TimeDiv = styled.div `
 `
 
 export const EmptyTxt = styled.div`
-    color: blue;
-    font-weight: 700;
+    color: #9EBBFF;
+    font-weight: 400;
 `
 export const H2 = styled.h2`
     color: #2F2F2F;
@@ -66,13 +83,18 @@ export const ListUl = styled.ul`
     }
 `
 export const BtnWrapDiv = styled.div`
-    margin-right: 6px;
+    display: flex;
+    gap: 18px;
+    justify-content: space-between;
+    margin-right: 4px;
+    @media screen and (min-width: 768px) {
+        margin-right: 6px;
+    }
 `
 export const SmallRoundBtn = styled.button`
     width: 18px;
     height: 18px;
     padding: 0;
-    margin: 0 9px;
     background-color: transparent;
     border: none;
     border-radius: 50%;
@@ -80,12 +102,19 @@ export const SmallRoundBtn = styled.button`
     cursor: pointer;
 
     &:hover, :focus {
-        background-color: #cfdaf5aa;
-        box-shadow: 0px 0px 4px 5px #D7E3FFAA;
+        /* background-color: #cfdaf5aa; */
+        /* box-shadow: 0px 0px 4px 5px #D7E3FFAA; */
+        box-shadow: 0px 1px 5px rgba(64, 123, 255, 0.24);
     }
     &:active {
-        background-color: #c0cfff55;
-        box-shadow: 0px 0px 5px 7px #c0d2ff55;
+        background-color: #c0cfff35;
+        /* box-shadow: 0px 0px 5px 7px #c0d2ff55; */
+        
+        box-shadow: 0px 1px 2px rgba(64, 123, 255, 0.34);
+    }
+
+    @media screen and (min-width: 768px) {
+        margin: 0 9px;
     }
 
 `
@@ -105,15 +134,12 @@ export const ActionsWrapper = styled.div`
 export const AddTodayWaterBtn = styled.button`
     background-color: transparent;
     border: none;
-    text-transform: capitalize;
     color: #407BFF;
-    /* font-family: Roboto; */
-    font-size: 18px;
+    font-family: Roboto;
     font-weight: 500;
-    line-height: 24px;
+   
     letter-spacing: 0em;
     text-align: left;
-
     display: flex;
     gap: 12px;
     justify-content: space-evenly;
@@ -125,12 +151,23 @@ export const AddTodayWaterBtn = styled.button`
     cursor: pointer;
     transition: all .2s ease-out;
     &:hover, :focus {
-        background-color: #D7E3FFAA;
-        box-shadow: 0px 0px 5px 4px #D7E3FFAA;
+        box-shadow: 0px 5px 7px rgba(64, 123, 255, 0.14);
+        /* background-color: #D7E3FFAA; */
+        /* box-shadow: 0px 0px 5px 4px #D7E3FFAA; */
     }
     &:active {
-        background-color: #c0cfff40;
-        box-shadow: 0px 0px 5px 7px #c1ddff54;
+        /* background-color: #c0cfff40; */
+        background-color: #D7E3FF1A;
+        box-shadow: 0px 1px 7px rgba(64, 123, 255, 0.14);
+        /* box-shadow: 0px 0px 5px 7px #c1ddff54; */
+    }
+
+    font-size: 16px;
+    line-height: 20px;
+
+    @media screen and (min-width: 768px) {
+        font-size: 18px;
+        line-height: 24px;
     }
 `
 export const PlusSpan = styled.span`

@@ -16,7 +16,7 @@ const Bottle = () => {
 
   const [parameters, setParameters] = useState([]);
   const [bottleStartY, setBottleStartY] = useState(0);
-  
+
   const bottleRef = useRef();
 
   useEffect(() => {
@@ -39,15 +39,16 @@ const Bottle = () => {
       }
 
       return {
-        size: randomGenerator(15, 5),
-        x: randomGenerator(bottleCenterX + 20, bottleCenterX - 40),
+        size: bottleRef.current && bottleRef.current.offsetWidth < 100 
+        ? randomGenerator(7, 3) : randomGenerator(15, 5),
+        x: randomGenerator(bottleCenterX + bottleRef.current.offsetWidth / 4, bottleCenterX - bottleRef.current.offsetWidth / 4),
       };
     };
     
     // random generation interval
     const timer = setInterval(() => {
       parameters.length >= 10 
-        ? setParameters([])
+        ? setParameters(parameters.filter(element => element.size !== randomGenerator(15, 5)))
         : setParameters([...parameters, random()]);
     }, randomGenerator(150, 50) * 10);
 
@@ -63,7 +64,7 @@ const Bottle = () => {
 
   const transitions = useTransition(parameters, {
     from: { transform: `translateY(${bottleStartY - 20}px)`, opacity: '1' },
-    enter: { transform: `translateY(30px)`, opacity: '0,8' },
+    enter: { transform: `translateY(${bottleRef.current ? bottleRef.current.offsetHeight / 5 : 0})`,},
     config: {
       duration: randomGenerator(4000, 2000),
       friction: randomGenerator(300, 5) * 10,

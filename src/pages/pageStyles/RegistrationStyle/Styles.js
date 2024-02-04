@@ -10,7 +10,6 @@ import BackTablet2 from '../../../images/signIn-signUp/back/tablet/back_tablet@2
 import Back2Tablet1 from '../../../images/signIn-signUp/back/tablet/back2_tablet@1x.png';
 import Back2Tablet2 from '../../../images/signIn-signUp/back/tablet/back2_tablet@2x.png';
 
-
 import BackDesktop1 from '../../../images/signIn-signUp/back/desktop/back_desktop@1x.png';
 import BackDesktop2 from '../../../images/signIn-signUp/back/desktop/back_desktop@2x.png';
 import Back2Desktop1 from '../../../images/signIn-signUp/back/desktop/back2_desktop@1x.png';
@@ -21,8 +20,6 @@ import Back2Desktop2 from '../../../images/signIn-signUp/back/desktop/back2_desk
 const Section = styled.section`
 
   width: 100vw;
-
-    background-size: cover;
 
     @media screen and (min-width: 320px) and (max-width: 767px) { 
       background: url(${BackMobile1}), url(${Back2Mobile1});

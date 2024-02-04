@@ -2,27 +2,23 @@ import styled from 'styled-components';
 
 export const MonthSwitcherContainer = styled.div`
 
+  padding-top: 24px;
   display: flex;
-  gap: 12px;
   justify-content: space-between;
   align-items: center;
-  padding-top: 24px;
 
-    h2{
-      color: #2F2F2F;
-      font-family: Roboto;
-      font-size: 26px;
-      font-weight: 500;
-      line-height: 1,23
-    }
-
-    div{
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-  
-    h3{
+  h2{
+        color: #2F2F2F;
+        font-family: Roboto;
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 1,23;
+      }
+  div{
+        display: flex;
+        align-items: center;
+      }
+  p{
       color:#407BFF;
       text-align: center;
       font-family: Roboto;
@@ -32,6 +28,17 @@ export const MonthSwitcherContainer = styled.div`
       display: block;
     }
 
+  // @media screen and (max-width: 319px) {}
+  // @media screen and (min-width: 320px) {}
+  // @media screen and (min-width: 320px) and (max-width: 767px) {}
+  // @media screen and (min-width: 768px) and (max-width: 1279px) {}
+  
+  @media screen and (min-width: 1280px) {
+    h2{
+      font-size: 24px;
+      line-height: 1,25;
+    }
+  }
     button {
       border: none;
       background-color: transparent;

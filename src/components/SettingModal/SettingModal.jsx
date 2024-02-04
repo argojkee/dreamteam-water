@@ -108,7 +108,7 @@ export const SettingModal = ({ closeModal }) => {
           )}
           {avatar !== null && (
             <img
-              src={`https://dreamteam-water-server.onrender.com/${avatar}`}
+              src={avatar}
               alt="avatar"
               className="setting-avatar"
               width="80"
@@ -136,28 +136,34 @@ export const SettingModal = ({ closeModal }) => {
                 Your gender identity
               </p>
               <div className="setting-form-gender-wrapper">
-                <label className="setting-form-gender-label">
+                <div className="setting-form-gender-label-wrapper">
                   <input
                     className="setting-form-gender-button"
+                    id="woman"
                     type="radio"
                     name="gender"
                     value="woman"
                     onChange={formik.handleChange}
                     checked={formik.values.gender === 'woman'}
                   />
-                  <p className="setting-form-gender-text">Woman</p>
-                </label>
-                <label className="setting-form-gender-label">
+                  <label className="setting-form-gender-label" htmlFor="woman">
+                    <p className="setting-form-gender-text">Woman</p>
+                  </label>
+                </div>
+                <div className="setting-form-gender-label-wrapper">
                   <input
                     className="setting-form-gender-button"
+                    id="man"
                     type="radio"
                     name="gender"
                     value="man"
                     onChange={formik.handleChange}
                     checked={formik.values.gender === 'man'}
                   />
-                  <p className="setting-form-gender-text">Man</p>
-                </label>
+                  <label className="setting-form-gender-label" htmlFor="man">
+                    <p className="setting-form-gender-text">Man</p>
+                  </label>
+                </div>
               </div>
             </div>
             <label className="setting-form-name-label">

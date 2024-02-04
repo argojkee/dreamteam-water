@@ -8,17 +8,21 @@ import {
 } from '../../redux/water/waterFunctions';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
+import {
+  getIsAddingDrink,
+  getIsEditingDrink,
+} from '../../redux/water/waterSelectors';
+import { PiSpinnerGap } from 'react-icons/pi';
 
-export const AddForm = ({
-  closeAddForm,
-  previousWaterData,
-  // onSave,
-  drink,
-}) => {
+export const AddForm = ({ closeAddForm, drink }) => {
   const [waterAmount, setWaterAmount] = useState(0);
   const [recordTime, setRecordTime] = useState(getDefaultTime());
   const dispatch = useDispatch();
   const { _id: dayId } = useSelector(getCurrentDay);
+  const isAdding = useSelector(getIsAddingDrink);
+  const isEditing = useSelector(getIsEditingDrink);
+
+  const isLoading = isAdding || isEditing;
 
   function getDefaultTime() {
     const now = new Date();
@@ -38,7 +42,7 @@ export const AddForm = ({
 
   const handleSave = async () => {
     if (drink) {
-      dispatch(
+      await dispatch(
         editDrinkThunk({ id: drink.id, time: recordTime, ml: waterAmount })
       );
     } else {
@@ -90,7 +94,9 @@ export const AddForm = ({
         />
         <p>Entered amount: {waterAmount} ml</p>
       </div>
-      <button onClick={handleSave}>Save</button>
+      <button onClick={handleSave}>
+        {isLoading ? <PiSpinnerGap className="spinner" size={16} /> : 'Save'}
+      </button>
     </AddFormStyles>
   );
 };
@@ -105,7 +111,7 @@ function generateTimeOptions() {
   options.push(
     <option
       //!Било ошибки, что у элементов одинаковый ключ. Подключил наноАйи
-      // key={`${currentFormattedHour}:${currentFormattedMinute}`}
+
       key={nanoid()}
       value={`${currentFormattedHour}:${currentFormattedMinute}`}
     >
@@ -118,11 +124,7 @@ function generateTimeOptions() {
       const formattedHour = hour.toString().padStart(2, '0');
       const formattedMinute = minute.toString().padStart(2, '0');
       options.push(
-        <option
-          // key={`${formattedHour}:${formattedMinute}`}
-          key={nanoid()}
-          value={`${formattedHour}:${formattedMinute}`}
-        >
+        <option key={nanoid()} value={`${formattedHour}:${formattedMinute}`}>
           {`${formattedHour}:${formattedMinute}`}
         </option>
       );

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LogoutDeleteModalCotntentStyles = styled.div`
+export const LogoutDeleteModalContentStyles = styled.div`
   .title,
   .message {
     color: #2f2f2f;

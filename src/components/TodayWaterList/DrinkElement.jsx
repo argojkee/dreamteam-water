@@ -28,11 +28,11 @@ export const DrinkElement = ({ id, ml, time }) => {
       </DrinkInfoDiv>
 
       <BtnWrapDiv>
-        <SmallRoundBtn onClick={() => setIsShowEditForm(true)}>
-          <EditBtnIcon title="Edit" />
+        <SmallRoundBtn title="Edit" onClick={() => setIsShowEditForm(true)}>
+          <EditBtnIcon />
         </SmallRoundBtn>
-        <SmallRoundBtn onClick={() => setIsShowDeleteModal(true)}>
-          <DelBtnIcon title="Delete" />
+        <SmallRoundBtn title="Delete" onClick={() => setIsShowDeleteModal(true)}>
+          <DelBtnIcon />
         </SmallRoundBtn>
       </BtnWrapDiv>
 

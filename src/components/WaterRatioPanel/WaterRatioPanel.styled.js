@@ -1,125 +1,173 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { CiCirclePlus } from 'react-icons/ci';
 
 export const RatioBarH3 = styled.h3`
-    color:  #407BFF;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.33;
-    margin-bottom: 8px;
-    @media (min-width: 768px) and (max-width: 1439px){
-        margin-bottom: 0;
-    }
+  color: #407bff;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
+  margin-bottom: 8px;
+  @media screen and (max-width: 1279px) {
+    margin-bottom: 0;
+  }
 `;
 
 export const PanelDiv = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    gap: 23px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 23px;
 
-`
+  flex-direction: column;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
 export const SliderContainerDiv = styled.div`
-    width: 100%;
-    position: relative;
-`
+  width: 100%;
+  position: relative;
+`;
 export const BarContainerDiv = styled.div`
-    position: relative;
-`
+  position: relative;
+  margin: 0 14px 0 19px;
+  height: 14px;
+`;
+//
 export const ProgressBarDiv = styled.input`
-    position: relative;
-    transform: translateY(-50%);
+  position: relative;
+  transform: translateY(-50%);
 
-    width: 100%;
-    background-color: #D7E3FF;
-    height: 8px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    margin-top: 20px;
-`
+  width: 100%;
+  background-color: #d7e3ff;
+  height: 8px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  margin-top: 20px;
+`;
 
 export const ProgressBarLower = styled.div`
-    position: absolute;
-    transform: translateY(-50%);
+  position: absolute;
+  transform: translateY(-50%);
 
-    top:20px;
-    height: 8px;
-    width: ${({ width }) => width};
-    border-radius: 10px;
-    background-color: #9EBBFF;
-`
+  top: 20px;
+  height: 8px;
+  width: ${({ $percentage }) => $percentage};
+  border-radius: 10px;
+  background-color: #9ebbff;
+`;
 
 export const WaterProgressThumb = styled.div`
-    position: absolute;
-    top: 50%;
-    transform: translateY(calc(-50% + 4px));
-    left: ${({ Width }) => Width};
+  position: absolute;
+  top: 50%;
+  transform: translateY(44%);
+  left: ${({ $percentage }) => $percentage};
 
-
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background-color: #fff;
-    border: solid 1px #407BFF;
-`
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: solid 1px #407bff;
+`;
 
 export const SliderValueDiv = styled.div`
-    position: absolute;
-    left: 0;
-    left: ${({ Width }) => Width};
+  position: absolute;
+  left: 0;
+  left: ${({ $percentage }) => $percentage};
 
-    text-align: center;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #407BFF;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #407bff;
 
+  margin-top: 13px;
+  padding: 0 13px;
+`;
 
-`
+export const RulerDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #407bff;
+
+  margin: 15px 0 0 5px;
+`;
+export const RulerElStripDiv = styled.div`
+  color: #d7e3ff;
+  font-size: 10px;
+`;
+export const RulerElDiv = styled.div`
+  width: 30px;
+`;
 
 export const AddWaterButton = styled.button`
-    background-color: #407BFF;
-    border: none;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: row;
-    min-width: 31%;
-    
+  background-color: #407bff;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+  align-items: center;
+
+  font-family: Roboto;
+  font-weight: 500;
+  letter-spacing: 0em;
+  text-align: center;
+  color: white;
+  text-transform: capitalize;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+
+  box-shadow: 0px 4px 8px 0px #407bff57;
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    box-shadow: 0px 5px 7px rgba(64, 123, 255, 0.54);
+  }
+  &:active {
+    background-color: #3872f8;
+    box-shadow: 0px 2px 7px rgba(64, 123, 255, 0.54);
+  }
+
+  padding: 8px 30px 8px 30px;
+  min-width: 100%;
+  height: 36px;
+
+  font-size: 16px;
+  line-height: 20px;
+  @media screen and (min-width: 768px) {
     padding: 10px 30px 10px 30px;
-    gap: 10px;
-    align-items: center;
-    justify-content: space-between;
+    min-width: 50%;
+    height: 44px;
 
-    font-family: Roboto;
     font-size: 18px;
-    font-weight: 500;
     line-height: 24px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: white;
-    text-transform: capitalize;
-    transition: all .2s ease-out;
-    cursor: pointer;
+  }
+  @media screen and (min-width: 1280px) {
+    min-width: 31%;
+  }
+`;
+export const BtnIcon = styled(CiCirclePlus)`
+  stroke-width: 1px;
+  width: 26px;
+  height: 26px;
 
-    &:hover, &:focus, &:active {
-        outline: none;
-        background-color: #3872f8;
-        box-shadow: 0px 0px 5px 3px #D7E3FFAA;
-    }
-    &:active {
-        background-color: #306af0;
-        box-shadow: 0px 0px 4px 3px #D7E3FFAA;
-    }
-`
-export const ButtonIcon = styled.span`
-    display: block;
-    padding: 0;
-    margin: 0;
-    width: 20%;
-    font-size: 30px;
-    font-weight: 700;
-`
+  padding: 0;
+  margin: 0;
+`;

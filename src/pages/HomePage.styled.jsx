@@ -23,7 +23,7 @@ export const BackgroundContainer = styled.section`
     padding: 40px 0 50px 0;
   }
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1280px) {
     background-image: url(${desktop});
        padding: 80px 0 0 0;
   }
@@ -36,10 +36,10 @@ export const ContentContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (min-width: 768px) and (max-width: 1439px){
+  @media (min-width: 768px) and (max-width: 1279px){
     align-items: flex-start;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1280px) {
     flex-direction: row;
     gap: 81px;
     align-items: flex-end;
@@ -50,11 +50,11 @@ export const ContentContainer = styled.div`
 export const TrackerBlock = styled.div`
   margin-bottom: 40px;
 
-  @media (min-width: 768px) and (max-width: 1439px){
+  @media (min-width: 768px) and (max-width: 1279px){
     width: 100%;
     margin-bottom: 60px;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1280) {
     margin-bottom: 0;
   }
 `;
@@ -97,7 +97,7 @@ width: 100%;
   gap: 16px;
   margin-bottom: 24px;
 
-  @media (min-width: 768px) and (max-width: 1439px) {
+  @media (min-width: 768px) and (max-width: 1279px) {
     flex-direction: row;
     justify-content: space-between;
   }
@@ -108,7 +108,7 @@ export const BenefitItem = styled.li`
   justify-content: flex-start;
   align-items: center;
   height: 100%;
-  @media (min-width: 768px) and (max-width: 1439px) {
+  @media (min-width: 768px) and (max-width: 1279px) {
     width: calc((100% - 64px) / 3);
   }
 `;
@@ -142,7 +142,7 @@ export const StyledLink = styled(Link)`
   margin: 0
   }
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1280px) {
     width: 384px;
   }
 `;

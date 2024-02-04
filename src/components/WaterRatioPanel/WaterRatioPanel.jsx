@@ -39,7 +39,6 @@ export const WaterRatioPanel = () => {
         return progressValue < 2 ? `0` : `calc(${progressValue}%)`;
       }
       case 'PROGRESS_BAR_THUMB': {
-
         if (progressValue >= 100) return 'calc(100% - 13px)';
         return `calc(${progressValue}% - 7px)`;
         // if (progressValue <= 5) return `calc(${progressValue}% - 7px)`;
@@ -59,32 +58,36 @@ export const WaterRatioPanel = () => {
   const checkOverlap = (rulerVal, currentVal) => {
     switch (rulerVal) {
       case 0:
-        if(currentVal <= 8) return true;
+        if (currentVal <= 8) return true;
         else return false;
       case 50:
-        if(currentVal >= 42 && currentVal <= 62) return true;
+        if (currentVal >= 42 && currentVal <= 62) return true;
         else return false;
       case 100:
-        if(currentVal >= 92) return true;
+        if (currentVal >= 92) return true;
         else return false;
-    
-      default: return false;
+
+      default:
+        return false;
     }
-  }
+  };
 
   return (
     <div>
       <RatioBarH3>Today</RatioBarH3>
 
       <PanelDiv>
-
         <SliderContainerDiv className="slider-container">
           <BarContainerDiv>
             <ProgressBarDiv />
-            <ProgressBarLower val={calcWidth(elTypes.progressBarLower)} />
-            <WaterProgressThumb val={calcWidth(elTypes.progressBarThumb)} />
+            <ProgressBarLower
+              $percentage={calcWidth(elTypes.progressBarLower)}
+            />
+            <WaterProgressThumb
+              $percentage={calcWidth(elTypes.progressBarThumb)}
+            />
 
-            <SliderValueDiv val={calcWidth(elTypes.progressBarValue)}>
+            <SliderValueDiv $percentage={calcWidth(elTypes.progressBarValue)}>
               {progressValue ?? '0'}%
             </SliderValueDiv>
           </BarContainerDiv>
@@ -92,22 +95,21 @@ export const WaterRatioPanel = () => {
           <RulerDiv>
             <RulerElDiv>
               <RulerElStripDiv>|</RulerElStripDiv>
-              { !checkOverlap(0, progressValue) && <div>0%</div>}
+              {!checkOverlap(0, progressValue) && <div>0%</div>}
             </RulerElDiv>
             <RulerElDiv>
               <RulerElStripDiv>|</RulerElStripDiv>
-              { !checkOverlap(50, progressValue) && <div>50%</div>}
+              {!checkOverlap(50, progressValue) && <div>50%</div>}
             </RulerElDiv>
             <RulerElDiv>
               <RulerElStripDiv>|</RulerElStripDiv>
-              { !checkOverlap(100, progressValue) && <div>100%</div>}
+              {!checkOverlap(100, progressValue) && <div>100%</div>}
             </RulerElDiv>
           </RulerDiv>
-
         </SliderContainerDiv>
 
         <AddWaterButton onClick={() => setIsShowAddModal(true)}>
-            <BtnIcon />
+          <BtnIcon />
           Add Water
         </AddWaterButton>
 

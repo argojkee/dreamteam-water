@@ -1,5 +1,4 @@
-import styled from // , { css }
-'styled-components';
+import styled from 'styled-components';
 
 export const MonthStatisticlist = styled.div`
   display: flex;
@@ -8,7 +7,6 @@ export const MonthStatisticlist = styled.div`
   flex-wrap: wrap;
   list-style: none;
  
-
    p {
     color: #9EBBFF;
     font-family: Roboto;
@@ -47,49 +45,40 @@ export const MonthStatisticlist = styled.div`
        cursor: auto;
   }
 }
-  @media screen and (max-width: 319px) {}
-  @media screen and (min-width: 320px) {}
   @media screen and (min-width: 320px) and (max-width: 767px) {
     gap: 25px;
 
     p {
     size: 10px;
     line-height: 1.6;
-  }
-  li {
-    width: 32px;
-  }
+    }
+
+    li {
+      width: 32px;
+    }
   }
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
+
     gap: 34px;
 
     p {
     size: 13px;
     line-height: 1.53;
-  }
-
-   
+  } 
   }
 
   @media screen and (min-width: 768px) {
-    
     li {
     width: 34px;
   }
-
     button {
     width: 34px;
     height: 34px;
     }
-
-
   }
 
   @media screen and (min-width: 1280px) {
     gap: 22px;
-   
   }
-}
- 
-`;
+}`;

@@ -88,11 +88,13 @@ export const SettingModalStyled = styled.div`
   }
 
   .setting-form-gender-label {
-    display: flex;
+    display: inline-flex;
     gap: 8px;
+    align-items: center;
+    user-select: none;
   }
 
-  .setting-form-gender-label::before {
+  .setting-form-gender-button + label::before {
     content: '';
     display: inline-block;
     width: 14px;
@@ -101,26 +103,32 @@ export const SettingModalStyled = styled.div`
     flex-grow: 0;
     border: 1px solid rgb(64, 123, 255);
     border-radius: 50%;
-    margin: 0px 6px 0px 3px;
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 50% 50%;
+    background-size: 7px;
+  }
+
+  .setting-form-gender-button:not(:disabled):not(:checked)
+    + label:hover::before {
+    border-color: #b3d7ff;
+  }
+
+  .setting-form-gender-button:not(:disabled):active + label::before {
+    background-color: #ffffff;
+    border-color: #b3d7ff;
+  }
+
+  .setting-form-gender-button:focus + label::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+  .setting-form-gender-button:focus:not(:checked) + label::before {
     border-color: #80bdff;
   }
 
-  .setting-form-gender-label:hover::before {
-    border-color: #b3d7ff;
-  }
-
-  .setting-form-gender-button:not(:disabled):active + .setting-form-gender-label:hover::before {
-    background-color: #ffffff;
-    border-color: #b3d7ff;
-  }
-
-  .setting-form-gender-button:checked + .setting-form-gender-label::before {
+  .setting-form-gender-button:checked + label::before {
     border-color: #407bff;
     background-color: #ffffff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23407BFF'/%3E%3C/svg%3E");
   }
@@ -183,6 +191,7 @@ export const SettingModalStyled = styled.div`
   .setting-form-input-wrapper {
     position: relative;
     display: inline-block;
+    width: 100%;
   }
 
   .setting-form-password-button {
@@ -209,6 +218,7 @@ export const SettingModalStyled = styled.div`
     text-align: center;
     font-weight: 500;
     line-height: 125%;
+    cursor: pointer;
   }
 
   .setting-form-submit:hover,

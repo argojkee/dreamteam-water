@@ -1,6 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSpring, animated } from '@react-spring/web';
+import { PiSpinnerGap } from 'react-icons/pi';
+import { getIsAuthLoading } from '../../redux/auth/authSelectors';
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -21,6 +23,8 @@ import { useState } from 'react';
 const AuthForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const isLoading = useSelector(getIsAuthLoading);
 
   // get current location
   const location = useLocation();

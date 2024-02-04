@@ -158,6 +158,7 @@ const Button = styled.button`
   margin-bottom: ${props => props.$marginBott || '8px'};
 
   border: none;
+  
   border-radius: ${props => props.$borderRadius || 'none'};
 
   background-color: ${props => props.color || '#407BFF'};
@@ -171,6 +172,7 @@ const Button = styled.button`
   &:active {
     box-shadow: none;
   }
+  cursor: pointer;
 `;
 
 const Link = styled.p`

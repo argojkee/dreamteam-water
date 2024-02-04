@@ -54,6 +54,7 @@ export const WaterScale = styled.div`
 export const WaterProgress = styled.div`
   height: 100%;
   width: ${({ width }) => width};
+  max-width: 100%;
   border-radius: 10px;
   background-color: #407BFF;
 `;
@@ -67,7 +68,7 @@ background: #FFF;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: ${({ percentage }) => percentage === 0 ? `100` : `${100 - percentage}%`};
+  right: ${({ percentage }) => percentage === 0 ? `100` : percentage > 100 ? '0%' : `${100 - percentage}%`};
 `;
 
 // export const StickContainer = styled.div`

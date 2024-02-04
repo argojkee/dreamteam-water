@@ -2,7 +2,7 @@ import React from 'react';
 import { SliderTitle, WaterProgress, WaterScale, Slider, PercentageText, WaterScaleContainer, AddButton, AddButtonIcon,AddButtonText, TrackerWrapper } from './WaterTracker.styled';
 import plusforbutton from '../../homepageimages/plusforbutton.svg'; 
 
-const WaterTracker = ({ percentage = 40}) => {
+const WaterTracker = ({ percentage = 0}) => {
   return (
     <div>
       <SliderTitle>Today</SliderTitle>

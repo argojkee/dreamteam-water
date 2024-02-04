@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AddFormStyles } from './AddForm.styled';
 import { getCurrentDay } from '../../redux/water/waterSelectors';
 import { useSelector } from 'react-redux';
@@ -8,17 +8,21 @@ import {
 } from '../../redux/water/waterFunctions';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
+import { toastError } from 'services/toastNotification';
 
-export const AddForm = ({
-  closeAddForm,
-  previousWaterData,
-  // onSave,
-  drink,
-}) => {
+export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
   const [waterAmount, setWaterAmount] = useState(0);
   const [recordTime, setRecordTime] = useState(getDefaultTime());
+  const [inputValue, setInputValue] = useState('');
   const dispatch = useDispatch();
   const { _id: dayId } = useSelector(getCurrentDay);
+  useEffect(() => {
+    setRecordTime(getDefaultTime());
+  }, []);
+
+  useEffect(() => {
+    setInputValue(waterAmount.toString());
+  }, [waterAmount]);
 
   function getDefaultTime() {
     const now = new Date();
@@ -37,17 +41,32 @@ export const AddForm = ({
   }
 
   const handleSave = async () => {
-    if (drink) {
-      dispatch(
-        editDrinkThunk({ id: drink.id, time: recordTime, ml: waterAmount })
+    if (drink && waterAmount === drink.ml) {
+      toastError(
+        'Invalid water amount. Please enter a different value than the previous one.'
       );
-    } else {
-      await dispatch(
-        addWaterThunk({ dayId, drink: { ml: waterAmount, time: recordTime } })
-      );
-    }
+    } else if (waterAmount > 0) {
+      if (drink) {
+        dispatch(
+          editDrinkThunk({ id: drink.id, time: recordTime, ml: waterAmount })
+        );
+      } else {
+        await dispatch(
+          addWaterThunk({
+            dayId,
+            drink: { ml: waterAmount, time: recordTime },
+          })
+        );
+      }
 
-    closeAddForm();
+      closeAddForm();
+    }
+  };
+
+  const handleInputChange = e => {
+    const newValue = e.target.value;
+    setInputValue(newValue);
+    setWaterAmount(newValue >= 0 ? parseInt(newValue, 10) : 0);
   };
 
   const showContentData = drink ? (
@@ -71,7 +90,11 @@ export const AddForm = ({
       {showContentData}
       <div className="edit-water-form">
         <div className="step-input">
-          <button onClick={() => setWaterAmount(prev => prev - 50)}>-</button>
+          <button
+            onClick={() => setWaterAmount(prev => Math.max(prev - 50, 0))}
+          >
+            -
+          </button>
           <span>{waterAmount} ml</span>
           <button onClick={() => setWaterAmount(prev => prev + 50)}>+</button>
         </div>
@@ -85,9 +108,18 @@ export const AddForm = ({
         <h2>Enter the value of the water used:</h2>
         <input
           type="number"
-          value={waterAmount}
-          onChange={e => setWaterAmount(parseInt(e.target.value, 10) || 0)}
+          value={inputValue}
+          onChange={handleInputChange}
+          onBlur={() => {
+            if (drink && waterAmount === drink.ml) {
+              setWaterAmount(0);
+              toastError(
+                'Invalid water amount. Please enter a different value than the previous one.'
+              );
+            }
+          }}
         />
+
         <p>Entered amount: {waterAmount} ml</p>
       </div>
       <button onClick={handleSave}>Save</button>
@@ -102,30 +134,23 @@ function generateTimeOptions() {
   const currentFormattedHour = now.getHours().toString().padStart(2, '0');
   const currentFormattedMinute = roundedMinutes.toString().padStart(2, '0');
 
-  options.push(
-    <option
-      //!Било ошибки, что у элементов одинаковый ключ. Подключил наноАйи
-      // key={`${currentFormattedHour}:${currentFormattedMinute}`}
-      key={nanoid()}
-      value={`${currentFormattedHour}:${currentFormattedMinute}`}
-    >
-      {`${currentFormattedHour}:${currentFormattedMinute}`}
-    </option>
-  );
-
   for (let hour = 0; hour < 24; hour++) {
     for (let minute = 0; minute < 60; minute += 5) {
       const formattedHour = hour.toString().padStart(2, '0');
       const formattedMinute = minute.toString().padStart(2, '0');
-      options.push(
-        <option
-          // key={`${formattedHour}:${formattedMinute}`}
-          key={nanoid()}
-          value={`${formattedHour}:${formattedMinute}`}
-        >
-          {`${formattedHour}:${formattedMinute}`}
-        </option>
-      );
+      if (
+        (hour < now.getHours() ||
+          (hour === now.getHours() && minute <= now.getMinutes())) &&
+        !options.some(
+          option => option.props.value === `${formattedHour}:${formattedMinute}`
+        )
+      ) {
+        options.push(
+          <option key={nanoid()} value={`${formattedHour}:${formattedMinute}`}>
+            {`${formattedHour}:${formattedMinute}`}
+          </option>
+        );
+      }
     }
   }
 

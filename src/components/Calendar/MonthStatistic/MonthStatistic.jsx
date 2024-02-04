@@ -33,13 +33,14 @@ const MonthStatistic = ({
       if (compare === 0) {
           
          if (!day && i <= today.day) {
-            daysArr.push({ date: i, percent: '0%', norm: 'X', drinks:0 });
+            daysArr.push({ date: i, percent: '0%', norm: '2L', drinks:0 });
           }
         if (!day && i > today.day) {
             daysArr.push({ date: i, percent: '' });
           }
         if (day) {
-            daysArr.push({ date: i, percent: `${day.percent}%`, norm:`${day.norm/1000}L`, drinks:day.drinks });
+          const drinkConnt = Array.isArray(day.drinks) ? day.drinks.length : day.drinks;
+            daysArr.push({ date: i, percent: `${day.percent}%`, norm:`${day.norm/1000}L`, drinks: drinkConnt });
           }
       }
       if (compare === 1) {
@@ -50,7 +51,7 @@ const MonthStatistic = ({
         if (day) {
            daysArr.push({ date: i, percent: `${day.percent}%`, norm: `${day.norm/1000}L`, drinks:day.drinks });
             } else {
-           daysArr.push({ date: i, percent:'0%', norm: 'X', drinks: 0  });
+           daysArr.push({ date: i, percent:'0%', norm: '2L', drinks: 0  });
         }
       }
     }

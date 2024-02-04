@@ -1,13 +1,17 @@
 import { StyledDailyNormaContainer } from './EditNormaModal.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { editDailyNorm } from '../../redux/water/waterFunctions';
+import { getIsEditingNorm } from '../../redux/water/waterSelectors';
+import { PiSpinnerGap } from 'react-icons/pi';
 
 const EditNormaModal = ({ closeModal }) => {
   const dispatch = useDispatch();
-  const onSubmit = e => {
+  const isLoading = useSelector(getIsEditingNorm);
+
+  const onSubmit = async e => {
     e.preventDefault();
     //После валидации и всего прочего, передаёшь норму, которую получишь по формуле или какая там логика...
-    dispatch(editDailyNorm(2000));
+    await dispatch(editDailyNorm(2000));
     closeModal();
   };
   return (
@@ -103,7 +107,7 @@ const EditNormaModal = ({ closeModal }) => {
         />
 
         <button type="submit" className="btn-save">
-          Save
+          {isLoading ? <PiSpinnerGap className="spinner" size={16} /> : 'Save'}
         </button>
       </form>
     </StyledDailyNormaContainer>

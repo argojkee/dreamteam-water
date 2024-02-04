@@ -1,21 +1,12 @@
-import { LogoutDeleteModalCotntentStyles } from './LogoutDeleteModalContentStyles';
-import logOutAPI from 'API/Auth/logOutAPI';
-import { useDispatch } from 'react-redux';
+import { LogoutDeleteModalContentStyles } from './LogoutDeleteModalContentStyles';
+import LogoutBtn from 'components/LogoutBtn/LogoutBtn';
+import DeleteDrinkBtn from 'components/DeleteDrinkBtn/DeleteDrinkBtn';
 
 const LogoutDeleteModalContent = ({ closeModal, id }) => {
   const isDeleteModal = !!id;
-  const dispatch = useDispatch();
-
-  const onAcceptClick = () => {
-    if (isDeleteModal) {
-      //DELETE zapros dispatch(deleteStakan(id)).then(resp => closeModal())
-    } else {
-      dispatch(logOutAPI());
-    }
-  };
 
   return (
-    <LogoutDeleteModalCotntentStyles>
+    <LogoutDeleteModalContentStyles>
       <h2 className="title">{isDeleteModal ? 'Delete entry' : 'Log out'}</h2>
       <p className="message">
         {isDeleteModal
@@ -26,11 +17,9 @@ const LogoutDeleteModalContent = ({ closeModal, id }) => {
         <button className="cancel-btn" type="button" onClick={closeModal}>
           Cancel
         </button>
-        <button className="action-btn" type="button" onClick={onAcceptClick}>
-          {isDeleteModal ? 'Delete' : 'Log out'}
-        </button>
+        {isDeleteModal ? <DeleteDrinkBtn id={id} /> : <LogoutBtn />}
       </div>
-    </LogoutDeleteModalCotntentStyles>
+    </LogoutDeleteModalContentStyles>
   );
 };
 

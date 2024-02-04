@@ -122,7 +122,9 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
 
         <p>Entered amount: {waterAmount} ml</p>
       </div>
-      <button onClick={handleSave}>Save</button>
+      <button onClick={handleSave}>
+        {isLoading ? <PiSpinnerGap className="spinner" size={16} /> : 'Save'}
+      </button>
     </AddFormStyles>
   );
 };

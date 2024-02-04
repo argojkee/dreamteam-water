@@ -10,7 +10,7 @@ const Div = styled.div`
   width: ${props => props.width || '0'};
   height: ${props => props.height || 'fit-content'};
   
-  margin: ${props => props.$marginTop || '0'} ${props => props.$marginRight || '0'} ${props => props.$marginBott || '0'} 0;
+  margin: ${props => props.$marginTop  '0'} ${props => props.$marginRight  '0'} ${props => props.$marginBott || '0'} 0;
 
   padding: ${props => props.$inputPadding ||'0'};
 
@@ -22,7 +22,7 @@ const Div = styled.div`
 
   border-radius: ${props => props.$borderRadius || 'none'};
 
-  border: ${props => props.$border || 'none'} ${props => props.$borderColor || 'white'};
+  border: ${props => props.$border  'none'} ${props => props.$borderColor  'white'};
 
   ${props => props.$pass && css `
 
@@ -201,7 +201,7 @@ const Link = styled.p`
 
 const Main = styled.main`
 
-  width: 100%;
+width: 100 %;
   object-fit: contain;
 
  

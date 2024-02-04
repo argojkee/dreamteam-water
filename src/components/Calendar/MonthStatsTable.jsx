@@ -6,15 +6,19 @@ import { useSelector } from 'react-redux';
 import {
   getCurrentDay,
   getCurrentMonth,
+  getIsMonthDataLoading,
 } from '../../redux/water/waterSelectors';
 import { getMonthInfoAPI } from 'API/Water/getMonthInfoAPI';
-import { updateOrAddCurrentDay } from './helpers/updateOrAddCurrentDay';
+import { updateOrAddCurrentDay } from './helpers/apdateOrAddCurrentDay';
+import { PiSpinnerGap } from 'react-icons/pi';
+import { SpinnerContainer } from './SpinnerContainer.styled';
 
 const MonthStatsTable = () => {
   const [selectedMonth, setSelectedMonth] = useState({ ...today });
   const [monthStatistic, setMonthStatistic] = useState([]);
   const currentMonthStatistic = useSelector(getCurrentMonth);
   const currentDayStatistic = useSelector(getCurrentDay);
+  const isMonthLoading = useSelector(getIsMonthDataLoading);
 
   useEffect(() => {
     const picData = [selectedMonth.month, selectedMonth.year];
@@ -63,11 +67,17 @@ const MonthStatsTable = () => {
         selectedMonth={selectedMonth}
         setSelectedMonth={setSelectedMonth}
       />
-      <MonthStatistic
-        selectedMonth={selectedMonth}
-        monthStatistic={monthStatistic}
-        setSelectedMonth={setSelectedMonth}
-      />
+      {isMonthLoading ? (
+        <SpinnerContainer>
+          <PiSpinnerGap className="spinner" size={40} />
+        </SpinnerContainer>
+      ) : (
+        <MonthStatistic
+          selectedMonth={selectedMonth}
+          monthStatistic={monthStatistic}
+          setSelectedMonth={setSelectedMonth}
+        />
+      )}
     </div>
   );
 };

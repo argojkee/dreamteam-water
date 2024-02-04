@@ -94,7 +94,7 @@ export const StyledDailyNormaContainer = styled.div`
 
   label.form-text {
     display: inline-block;
-
+    margin-top: 16px;
     margin-bottom: 16px;
   }
 
@@ -223,15 +223,26 @@ export const StyledDailyNormaContainer = styled.div`
   /* @media screen and (max-width: 767px) {
     height: 290px;
   } */
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    .container {
-      max-width: 768px;
+  @media screen and (min-width: 767px) and (max-width: 1279px) {
+    width: 768px;
+    padding: 0 12px 0 12px;
+
+    .list {
+      gap: 24px;
+    }
+
+    .custom-radio + label::before {
+      margin: 0px 6px 0px 2px;
+    }
+
+    .invisibleText {
+      width: 642px;
     }
 
     button.btn-save {
       display: block;
-      /* width: 0; */
-      padding: 10px 30px;
+      width: auto;
+      padding: 10px 30px 10px 30px;
       margin-left: auto;
     }
     /* height: 418px; */

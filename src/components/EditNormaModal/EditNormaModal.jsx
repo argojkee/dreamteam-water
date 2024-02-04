@@ -3,15 +3,42 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editDailyNorm } from '../../redux/water/waterFunctions';
 import { getIsEditingNorm } from '../../redux/water/waterSelectors';
 import { PiSpinnerGap } from 'react-icons/pi';
+import { useState } from 'react';
+// import { getUserGender } from '../../redux/auth/authSelectors';
 
 const EditNormaModal = ({ closeModal }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsEditingNorm);
 
+  // const { gender, useGender } = useState(null);
+  const { weight, setWeight } = useState(null);
+  const { time, setTime } = useState(null);
+  // const { amountOfWater, setAmountOfWater } = useState([]);
+
+  // const userGender = useSelector(getUserGender);
+
+  const handleChange = ({ target }) => {
+    if (target.name === 'weight') {
+      setWeight(target.value);
+    } else if (target.name === 'time') {
+      setTime(target.value);
+    }
+  };
+
+  const getCalculateDailyNorma = (weight, time) => {
+    return (weight * 0.03 + time * 0.4).toFixed(1);
+  };
+  console.log(getCalculateDailyNorma());
+
   const onSubmit = async e => {
     e.preventDefault();
+
     //После валидации и всего прочего, передаёшь норму, которую получишь по формуле или какая там логика...
     await dispatch(editDailyNorm(2000));
+    getCalculateDailyNorma();
+    // setWeight(0);
+    // setTime(0);
+    // resetForm();
     closeModal();
   };
   return (
@@ -47,6 +74,7 @@ const EditNormaModal = ({ closeModal }) => {
               name="gender"
               value="woman"
               id="woman"
+              // checked={true}
             />
             <label htmlFor="woman" className="form-radio">
               For woman
@@ -60,6 +88,7 @@ const EditNormaModal = ({ closeModal }) => {
               name="gender"
               value="man"
               id="man"
+              // checked={false}
             />
             <label htmlFor="man" className="form-radio">
               For man
@@ -67,7 +96,6 @@ const EditNormaModal = ({ closeModal }) => {
           </div>
         </div>
 
-        <br />
         <label htmlFor="weight" className="form-text">
           Your weight in kilograms:
           <input
@@ -76,6 +104,7 @@ const EditNormaModal = ({ closeModal }) => {
             name="numberKilo"
             // value="0"
             className="numberKilo"
+            onChange={handleChange}
           />
         </label>
         <p>
@@ -89,6 +118,7 @@ const EditNormaModal = ({ closeModal }) => {
             name="amountOfTime"
             className="numberKilo"
             // value=0
+            onChange={handleChange}
           />
         </label>
         <div className="norma-container">

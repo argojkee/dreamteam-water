@@ -9,6 +9,7 @@ export const DailyNormStyles = styled.div`
   background-repeat: no-repeat;
 
   .dailyNormaSection {
+    width: 165px;
     padding: 8px 20px 8px 20px;
 
     box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
@@ -53,6 +54,7 @@ export const DailyNormStyles = styled.div`
 
     margin-left: 12px;
     text-align: left;
+    cursor: pointer;
 
     color: rgba(139, 174, 255, 1);
   }

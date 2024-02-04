@@ -3,14 +3,13 @@ import styled from 'styled-components';
 
 export const WaterStatsContainer = styled.div`
 position: absolute;
-
-  top: ${props => props.$top}px;
-  left: ${props => props.$left}px;
-  transform: translate(-100%, -100%);
+top: ${props => props.$top}px;
+left: ${props => props.$left}px;
+transform: translate(-100%, -100%);
+padding: 24px 16px;
 display: flex;
 flex-direction: column;
-gap: 16px;
-padding: 24px 16px;
+gap: 20px;
 width: 292px;
 height: 188px;
 background-color: #fff;
@@ -21,6 +20,11 @@ font-weight: 400;
 line-height: 1.25;
 border-radius: 10px;
 box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.30);
+
+  @media screen and (max-width: 767px) {
+width: 280px;
+padding: 24px 13px 24px 13px;
+  }
 
 div{
     display: flex;

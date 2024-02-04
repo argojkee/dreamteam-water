@@ -17,13 +17,26 @@ export function TodayWaterList() {
   const [isShowAddModal, setIsShowAddModal] = useState(false);
   const drinks = useSelector(getDrinks);
 
+  const sortDrinks = (drinks) => {
+    const sortedDrinks = drinks.slice().sort((a, b) => {
+      if (a.time < b.time) {
+        return -1;
+      }
+      if (a.time > b.time) {
+        return 1;
+      }
+      return 0;
+    });
+    return sortedDrinks;
+  }
+  
   return (
     <>
       <H2>Today</H2>
 
       <ListUl>
         {drinks?.length ? (
-          drinks.map(({ _id, ml, time }) => (
+          sortDrinks(drinks).map(({ _id, ml, time }) => (
             <DrinkElement
               key={_id}
               id={_id}
@@ -33,13 +46,13 @@ export function TodayWaterList() {
             />
           ))
         ) : (
-          <EmptyTxt>List is empty.</EmptyTxt>
+          <EmptyTxt>It's time to drink some water!</EmptyTxt>
         )}
       </ListUl>
 
       <AddTodayWaterBtn onClick={() => setIsShowAddModal(true)}>
         <FaPlus />
-        add water
+        Add water
       </AddTodayWaterBtn>
 
       {isShowAddModal && (

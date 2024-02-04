@@ -21,6 +21,7 @@ export const ModalStyles = styled.div`
     transform: translate(-50%, -50%);
     border-radius: 10px;
     padding: 24px 12px;
+    overflow: auto;
   }
 
   .close-btn {

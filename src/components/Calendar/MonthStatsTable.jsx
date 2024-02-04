@@ -9,7 +9,7 @@ import {
   getIsMonthDataLoading,
 } from '../../redux/water/waterSelectors';
 import { getMonthInfoAPI } from 'API/Water/getMonthInfoAPI';
-import { updateOrAddCurrentDay } from './helpers/apdateOrAddCurrentDay';
+import { updateOrAddCurrentDay } from './helpers/updateOrAddCurrentDay';
 import { PiSpinnerGap } from 'react-icons/pi';
 import { SpinnerContainer } from './SpinnerContainer.styled';
 
@@ -48,7 +48,9 @@ const MonthStatsTable = () => {
           });
 
           setMonthStatistic([...newMonthStatistic]);
-        } catch (error) {}
+        } catch (error) {
+          setMonthStatistic([]);
+        }
       };
       fetchData();
     }

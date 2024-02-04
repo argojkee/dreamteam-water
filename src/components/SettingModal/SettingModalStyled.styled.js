@@ -38,6 +38,18 @@ export const SettingModalStyled = styled.div`
     border-radius: 80px;
   }
 
+  .setting-default-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    border: none;
+    background-color: #efecec;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+  }
+
   .upload-photo-label {
     display: flex;
     gap: 8px;
@@ -112,7 +124,7 @@ export const SettingModalStyled = styled.div`
   .setting-form-input-error {
     position: absolute;
     font-size: 14px;
-    color: #EF5050;
+    color: #ef5050;
     font-weight: 400;
     line-height: 128.5%;
   }

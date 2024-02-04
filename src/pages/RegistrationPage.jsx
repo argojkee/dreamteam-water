@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+
 import AuthForm from '../components/AuthForm/AuthForm'
 import Container from 'components/Container/Container';
 
@@ -5,12 +7,13 @@ import Container from 'components/Container/Container';
 import Styles from './pageStyles/RegistrationStyle/Styles';
 /* end */
 
-
 const RegistrationPage = () => {
+
+  const selector = useSelector(state => state.auth);
 
   return (
     
-    <Styles $section $back>
+    <Styles $section $bottleSize={selector.bottleXY}>
       <Container>
         <AuthForm/>
       </Container>

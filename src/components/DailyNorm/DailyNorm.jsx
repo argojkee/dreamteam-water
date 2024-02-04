@@ -2,26 +2,33 @@ import { DailyNormStyles } from './DailyNormStyles.styled';
 import { Modal } from '../Modal/Modal';
 import { useState } from 'react';
 import EditNormaModal from 'components/EditNormaModal/EditNormaModal';
+import { useSelector } from 'react-redux';
+import { getCurrentNorm } from '../../redux/water/waterSelectors';
 
 const DailyNorm = () => {
   const [isShowEditModal, setIsShowEditModal] = useState(false);
+  const norm = useSelector(getCurrentNorm);
 
   return (
     <DailyNormStyles>
       <div className="dailyNormaSection">
         <h2>My daily norma</h2>
-        <div className="button-info-container">
-          <span>1.5 L</span>
-          <button type="button" onClick={() => setIsShowEditModal(true)}>
-            Edit
-          </button>
-        </div>
+        {norm && (
+          <div className="button-info-container">
+            <span>{Math.round((norm / 1000) * 10) / 10} L</span>
+            <button type="button" onClick={() => setIsShowEditModal(true)}>
+              Edit
+            </button>
+          </div>
+        )}
       </div>
 
       {isShowEditModal && (
         <Modal
           closeModal={() => setIsShowEditModal(false)}
-          children={<EditNormaModal />}
+          children={
+            <EditNormaModal closeModal={() => setIsShowEditModal(false)} />
+          }
         />
       )}
     </DailyNormStyles>

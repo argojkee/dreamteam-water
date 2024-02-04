@@ -1,54 +1,93 @@
-import { useState, useEffect } from 'react';
-import { useSpring, animated } from '@react-spring/web';
+import { useState, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { useTransition, animated } from '@react-spring/web';
 
 import { ReactComponent as BottleCircle } from '../../../images/signIn-signUp/bottle/bottleCircle.svg';
 
+import { change } from '../../../redux/auth/authSlice'
+
+/* styles import */
+import { BottleStyles } from './BottleStyles.styled';
+/* end */
+
 const Bottle = () => {
-  const [parameters, setParameters] = useState({});
+
+  const dispatch = useDispatch();
+
+  const [parameters, setParameters] = useState([]);
+  const [bottleStartY, setBottleStartY] = useState(0);
+
+  const bottleRef = useRef();
 
   useEffect(() => {
+
+    // write bottle coordinate and size to 'auth' store
+    // it's need to position splush under bottle
+    dispatch(change({operation: 'changeBottleXY', 
+    data: {x: bottleRef.current.offsetLeft, y: bottleRef.current.offsetTop, width: bottleRef.current.offsetWidth, height: bottleRef.current.offsetHeight,}}));
+
+    // generate random parameter of bubble
     const random = () => {
+
+      let bottleCenterX = 0;
+
+      if (bottleRef.current !== null) {
+
+        // start coordinate of bottle for bubble 
+        bottleCenterX = bottleRef.current.offsetWidth / 2;
+        setBottleStartY(bottleRef.current.offsetHeight);
+      }
+
       return {
-        size: randomGenerator(20, 5, true),
-        x: 400,
-        startY: randomGenerator(window.innerHeight / 2 + 100, true),
-        speed: randomGenerator(10, null, false) * 1000,
+        size: bottleRef.current && bottleRef.current.offsetWidth < 100 
+        ? randomGenerator(7, 3) : randomGenerator(15, 5),
+        x: randomGenerator(bottleCenterX + bottleRef.current.offsetWidth / 4, bottleCenterX - bottleRef.current.offsetWidth / 4),
       };
     };
-    setInterval(() => {
-      setParameters(random());
-    }, randomGenerator(100, null, false) * 1000);
+    
+    // random generation interval
+    const timer = setInterval(() => {
+      parameters.length >= 10 
+        ? setParameters(parameters.filter(element => element.size !== randomGenerator(15, 5)))
+        : setParameters([...parameters, random()]);
+    }, randomGenerator(150, 50) * 10);
 
-    // return clearInterval(timer);
-  }, []);
+    return () => {
+      clearInterval(timer);
+    };
+    
+  }, [dispatch, parameters]);
 
-  const randomGenerator = (max, min, mode) => {
-    if (mode) {
-      return Math.round(Math.random() * (max - min) + min);
-    } else {
-      return Math.round(Math.floor(Math.random() * max));
-    }
+  const randomGenerator = (max, min) => {
+    return Math.round(Math.random() * (max - min) + min);
   };
 
-  const springs = useSpring({
-    loop: true,
-    from: { transform: `translate(0, 50px)`, opacity: '1' },
-    to: { transform: `translate(0, 0)`, opacity: '0' },
-
-    config: { duration: parameters.speed, friction: 50 },
+  const transitions = useTransition(parameters, {
+    from: { transform: `translateY(${bottleStartY - 20}px)`, opacity: '1' },
+    enter: { transform: `translateY(${bottleRef.current ? bottleRef.current.offsetHeight / 5 : 0})`,},
+    config: {
+      duration: randomGenerator(4000, 2000),
+      friction: randomGenerator(300, 5) * 10,
+    },
   });
 
   return (
-    <animated.div style={{ ...springs }}>
-      <BottleCircle
-        style={{
-          position: 'absolute',
-          width: `${parameters.size}`,
-          height: `${parameters.size}`,
-          stroke: 'blue',
-        }}
-      />
-    </animated.div>
+    <BottleStyles>
+      <div className="bottleContainer" ref={bottleRef}>
+        {transitions((style, item) => (
+          <animated.div style={style}>
+            <BottleCircle
+              style={{
+                position: 'absolute',
+                width: `${item.size}px`,
+                height: `${item.size}px`,
+                left: `${item.x}px`,
+              }}
+            />
+          </animated.div>
+        ))}
+      </div>
+    </BottleStyles>
   );
 };
 

@@ -38,7 +38,12 @@ const DaysGeneralStats = ({
   };
 
   return (
-    <WaterStatsContainer data-modal-container $top={top} $left={left} $transformRight={transformRight}>
+    <WaterStatsContainer
+      data-modal-container
+      $top={top}
+      $left={left}
+      $transformRight={transformRight}
+    >
       <div>
         <p>
           {selectedMonth.day},{' '}
@@ -49,8 +54,7 @@ const DaysGeneralStats = ({
         </button>
       </div>
       <p>
-        Daily norma:{' '}
-        <span>{statistic[selectedMonth.day - 1].norm }</span>
+        Daily norma: <span>{statistic[selectedMonth.day - 1].norm}</span>
       </p>
       <p>
         Fulfillment of the daily norm:{' '}
@@ -58,9 +62,7 @@ const DaysGeneralStats = ({
       </p>
       <p>
         How many servings of water:{' '}
-        <span>
-          {statistic[selectedMonth.day - 1].drinks}
-        </span>
+        <span>{statistic[selectedMonth.day - 1].drinks}</span>
       </p>
     </WaterStatsContainer>
   );

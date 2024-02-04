@@ -24,8 +24,8 @@ export default function UserLogoModal() {
   let unpolished_userAvatarUrl = '';
 
   //const get_water_Current_Month = useSelector(getCurrentMonth);
-  unpolished_userEmail = email; //email;
-  unpolished_userName = name;
+  unpolished_userEmail = email.replace(email[0], email[0].toUpperCase()); //email;
+  unpolished_userName = name.replace(name[0], name[0].toUpperCase());
   unpolished_userAvatarUrl = avatarURL;
 
   let userAvatar = polishingAvatar();
@@ -34,9 +34,10 @@ export default function UserLogoModal() {
   //иначе имя[0] или емейл[0])
   function polishingAvatar() {
     if (email) {
-      let avatar = unpolished_userEmail[0];
+      let avatar = unpolished_userEmail[0].toUpperCase();
       if (unpolished_userAvatarUrl === null && unpolished_userName !== null) {
         avatar = unpolished_userName[0].toUpperCase();
+        console.log(avatar);
       } else if (unpolished_userAvatarUrl) {
         avatar = unpolished_userAvatarUrl;
       }

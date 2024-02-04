@@ -109,12 +109,12 @@ export const SettingModal = ({ closeModal }) => {
         <p className="setting-text setting-modal-text">Your photo</p>
         <div className="setting-photo-wrapper">
           {isChangingAvatar && <PiSpinnerGap className="spinner" size={16} />}
-          {!isChangingAvatar && avatar === null && (
+          {!isChangingAvatar && !avatar && (
             <div className="setting-default-avatar">
               <p>{defaultAvatar}</p>
             </div>
           )}
-          {!isChangingAvatar && avatar !== null && (
+          {!isChangingAvatar && avatar && (
             <img
               src={avatar}
               alt="avatar"

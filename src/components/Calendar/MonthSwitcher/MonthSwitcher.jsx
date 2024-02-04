@@ -23,16 +23,8 @@ const MonthSwitcher = ({ selectedMonth, setSelectedMonth }) => {
   };
 
   const isButtonPrevDisabled = () => {
-    return (registrationDate.day <= 2 &&
-      registrationDate.month === 0 &&
-      selectedMonth.month === 11 &&
-      registrationDate.year === selectedMonth.year + 1) ||
-      (registrationDate.day <= 2 &&
-        registrationDate.month - 1 === selectedMonth.month &&
-        registrationDate.year === selectedMonth.year) ||
-      (registrationDate.day > 2 &&
-        registrationDate.month === selectedMonth.month &&
-        registrationDate.year === selectedMonth.year)
+     return registrationDate.month === selectedMonth.month &&
+        registrationDate.year === selectedMonth.year
       ? true
       : false;
   };
@@ -50,9 +42,9 @@ const MonthSwitcher = ({ selectedMonth, setSelectedMonth }) => {
         <button onClick={handlePrevMonth} disabled={isButtonPrevDisabled()}>
         <SlArrowLeft />
       </button>
-      <h3>
+      <p>
         {getMonthsArr(selectedMonth.year)[selectedMonth.month].name}, {selectedMonth.year}
-      </h3>
+      </p>
       <button onClick={handleNextMonth} disabled={isButtonNextDisabled()}>
         <SlArrowRight />
         </button>

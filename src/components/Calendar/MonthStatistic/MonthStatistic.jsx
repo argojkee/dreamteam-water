@@ -34,7 +34,7 @@ const MonthStatistic = ({ selectedMonth, monthStatistic,setSelectedMonth }) => {
     const compare = compareDates(picData, todayData)
 
     for (let i = 1; i <= monthData.numberOfDays; i += 1) {
-      
+      console.log('statistic', statistic)
       const day = statistic.find(statisticOneDay => {
   const date = statisticOneDay.date? new Date(statisticOneDay.date):new Date(statisticOneDay.day);
   return date.getDate() === i;
@@ -43,13 +43,14 @@ const MonthStatistic = ({ selectedMonth, monthStatistic,setSelectedMonth }) => {
       if (compare === 0) {
         // console.log('compare in currentmonth - 0')
          if (!day && i <= today.day) {
-            daysArr.push({ date: i, percent: 0, norm: 2000, drinks:0 });
+            daysArr.push({ date: i, percent: 0, norm: 'X', drinks:0 });
           }
           if (!day && i > today.day) {
             daysArr.push({ date: i, percent: '' });
           }
-          if (day ) {
-            daysArr.push({ date: i, percent: day.percent, norm: day.norm, drinks:day.drinks });
+        if (day) {
+            console.log('day111', day)
+            daysArr.push({ date: i, percent: day.percent?day.percent:0, norm:`${day.norm/1000}L`, drinks:day.drinks });
           }
       }
 
@@ -61,10 +62,10 @@ const MonthStatistic = ({ selectedMonth, monthStatistic,setSelectedMonth }) => {
       if (compare === -1) {
         //  console.log('compare in currentmonth - "-1"')
         if (day) {
-           daysArr.push({ date: i, percent: day.percent, norm: day.norm, drinks:day.drinks });
+           daysArr.push({ date: i, percent: day.percent, norm: `${day.norm/1000}L`, drinks:day.drinks });
               // console.log('if day', day)
             } else {
-           daysArr.push({ date: i, percent: 0, norm: 2000, drinks: 0  });
+           daysArr.push({ date: i, percent: 0, norm: 'X', drinks: 0  });
           //  console.log('else-0', day)
           }
           }   

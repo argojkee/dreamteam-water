@@ -8,7 +8,7 @@ import {
   getCurrentMonth,
 } from '../../redux/water/waterSelectors';
 import { getMonthInfoAPI } from 'API/Water/getMonthInfoAPI';
-import { updateOrAddCurrentDay } from './helpers/apdateOrAddCurrentDay';
+import { updateOrAddCurrentDay } from './helpers/updateOrAddCurrentDay';
 
 const MonthStatsTable = () => {
   const [selectedMonth, setSelectedMonth] = useState({ ...today });

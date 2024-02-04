@@ -44,17 +44,17 @@ const DaysGeneralStats = ({
           {selectedMonth.day},
           {getMonthsArr(selectedMonth.year)[selectedMonth.month].name}
         </p>
-        <button onClick={closeModal}>
+        <button data-modal-button onClick={closeModal}>
           <TfiClose />
         </button>
       </div>
       <p>
         Daily norma:
-        <span>{statistic[selectedMonth.day - 1].norm / 1000}L</span>
+        <span>{' '}{statistic[selectedMonth.day - 1].norm}</span>
       </p>
       <p>
         Fulfillment of the daily norm:
-        <span>{statistic[selectedMonth.day - 1].percent}%</span>
+        <span>{' '}{statistic[selectedMonth.day - 1].percent}%</span>
       </p>
       <p>
         How many servings of water:{' '}

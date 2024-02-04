@@ -4,6 +4,12 @@ import styled from 'styled-components';
 export const WaterStatsContainer = styled.div`
 position: absolute;
 
+  @media screen and (max-width: 319px) {}
+  @media screen and (min-width: 320px) {}
+  @media screen and (min-width: 320px) and (max-width: 767px) {}
+  @media screen and (min-width: 768px) and (max-width: 1279px) {}
+  @media screen and (min-width: 1280px) {}
+
   top: ${props => props.$top}px;
   left: ${props => props.$left}px;
   transform: translate(-100%, -100%);

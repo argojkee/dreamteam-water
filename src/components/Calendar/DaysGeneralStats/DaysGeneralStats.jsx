@@ -7,6 +7,7 @@ const DaysGeneralStats = ({
   setModalVisible,
   top,
   left,
+  transformRight,
   selectedMonth,
   statistic,
 }) => {
@@ -37,10 +38,15 @@ const DaysGeneralStats = ({
   };
 
   return (
-    <WaterStatsContainer data-modal-container $top={top} $left={left}>
+    <WaterStatsContainer
+      data-modal-container
+      $top={top}
+      $left={left}
+      $transformRight={transformRight}
+    >
       <div>
         <p>
-          {selectedMonth.day},
+          {selectedMonth.day},{' '}
           {getMonthsArr(selectedMonth.year)[selectedMonth.month].name}
         </p>
         <button onClick={closeModal}>

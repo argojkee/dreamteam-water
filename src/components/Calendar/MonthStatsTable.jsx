@@ -12,6 +12,7 @@ import { getMonthInfoAPI } from 'API/Water/getMonthInfoAPI';
 import { updateOrAddCurrentDay } from './helpers/updateOrAddCurrentDay';
 import { PiSpinnerGap } from 'react-icons/pi';
 import { SpinnerContainer } from './SpinnerContainer.styled';
+import { RelativDiv } from './MonthStatsTablet.styled';
 
 const MonthStatsTable = () => {
   const [selectedMonth, setSelectedMonth] = useState({ ...today });
@@ -66,7 +67,7 @@ const MonthStatsTable = () => {
       <MonthSwitcher
         selectedMonth={selectedMonth}
         setSelectedMonth={setSelectedMonth}
-      />
+      /> <RelativDiv>
       {isMonthLoading ? (
         <SpinnerContainer>
           <PiSpinnerGap className="spinner" size={40} />
@@ -77,7 +78,7 @@ const MonthStatsTable = () => {
           monthStatistic={monthStatistic}
           setSelectedMonth={setSelectedMonth}
         />
-      )}
+      )} </RelativDiv>
     </div>
   );
 };

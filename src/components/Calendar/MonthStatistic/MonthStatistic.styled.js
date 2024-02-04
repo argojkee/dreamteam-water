@@ -6,6 +6,7 @@ export const MonthStatisticlist = styled.div`
   padding-top: 16px;
   flex-wrap: wrap;
   list-style: none;
+  gap: 25px;
  
    p {
     color: #9EBBFF;
@@ -47,7 +48,6 @@ export const MonthStatisticlist = styled.div`
   }
 }
   @media screen and (min-width: 320px) and (max-width: 767px) {
-    gap: 25px;
 
     p {
     size: 10px;

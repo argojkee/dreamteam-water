@@ -7,6 +7,7 @@ const DaysGeneralStats = ({
   setModalVisible,
   top,
   left,
+  transformRight,
   selectedMonth,
   statistic,
 }) => {
@@ -37,10 +38,10 @@ const DaysGeneralStats = ({
   };
 
   return (
-    <WaterStatsContainer data-modal-container $top={top} $left={left}>
+    <WaterStatsContainer data-modal-container $top={top} $left={left} $transformRight={transformRight}>
       <div>
         <p>
-          {selectedMonth.day},
+          {selectedMonth.day},{' '}
           {getMonthsArr(selectedMonth.year)[selectedMonth.month].name}
         </p>
         <button onClick={closeModal}>
@@ -58,8 +59,7 @@ const DaysGeneralStats = ({
       <p>
         How many servings of water:{' '}
         <span>
-          {statistic[selectedMonth.day - 1].drinks.length ||
-            statistic[selectedMonth.day - 1].drinks}
+          {statistic[selectedMonth.day - 1].drinks}
         </span>
       </p>
     </WaterStatsContainer>

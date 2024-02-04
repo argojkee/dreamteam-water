@@ -14,6 +14,7 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.7",
+    "axois": "^0.0.1-security",
     "formik": "^2.4.5",
     "nanoid": "^5.0.5",
     "react": "^18.1.0",

@@ -60,7 +60,6 @@ export const deleteDrinkThunk = createAsyncThunk(
     try {
       const { data } = await axios.delete(`water/drinks/${drinkId}`);
       toastSuccess('Drink has been deleted successful');
-      console.log(data);
       return data;
     } catch (error) {
       toastError('Sorry, something went wrong. Please, try again');
@@ -81,6 +80,27 @@ export const editDrinkThunk = createAsyncThunk(
     } catch (error) {
       toastError('Sorry, something went wrong. Please, try again');
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+//Смена дневной нормы
+
+export const editDailyNorm = createAsyncThunk(
+  'auth/editDailyNorm',
+  async (norm, { rejectWithValue }) => {
+    try {
+      const date = new Date();
+      const { data } = await axios.patch('/water/norm', {
+        date,
+        norm,
+      });
+
+      toastSuccess('Deleted successful ');
+      return data;
+    } catch (error) {
+      toastError('Something went wrong');
+      return rejectWithValue('Something went wrong');
     }
   }
 );

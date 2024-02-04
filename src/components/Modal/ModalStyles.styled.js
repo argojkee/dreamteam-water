@@ -20,7 +20,7 @@ export const ModalStyles = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
-    padding: 24px 32px;
+    padding: 24px 12px;
   }
 
   .close-btn {

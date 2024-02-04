@@ -17,6 +17,7 @@ export const MonthStatisticlist = styled.div`
 
   li {
     text-align: center;
+    height: 52px;
   }
 
   button {

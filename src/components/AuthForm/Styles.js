@@ -133,6 +133,7 @@ const Input = styled.input`
 const Text = styled.p`
 
   font-family: roboto;
+  line-height: ${props => props.$lineHeight || '24px'};
   font-weight: ${props => props.$fontWeight || '500'};
   font-size: ${props => props.$fontSize || '18px'};
 

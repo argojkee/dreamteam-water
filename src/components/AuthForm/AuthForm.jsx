@@ -165,7 +165,7 @@ const AuthForm = () => {
                 value={formik.values.password }
               />
 
-              {formik.values.password !== '' ? passEyeToggle ? <EyeIconOff onClick={passEyeHandler}/> : <EyeIconOn onClick={passEyeHandler}/> : ''}
+              {formik.values.password !== '' ? passEyeToggle ? <EyeIconOn onClick={passEyeHandler}/> : <EyeIconOff onClick={passEyeHandler}/> : ''}
 
             </Styles>
 
@@ -199,7 +199,7 @@ const AuthForm = () => {
                   onBlur={formik.handleBlur}
                   value={formik.values.repeatPassword}
                 />
-                {formik.values.repeatPassword !== '' ? passRepEyeToggle ? <EyeIconOff onClick={passRepEyeHandler}/> : <EyeIconOn onClick={passRepEyeHandler}/> : ''}
+                {formik.values.repeatPassword !== '' ? passRepEyeToggle ? <EyeIconOn onClick={passRepEyeHandler}/> : <EyeIconOff onClick={passRepEyeHandler}/> : ''}
                 </Styles>
               </>
             )} 
@@ -224,7 +224,7 @@ const AuthForm = () => {
           </Styles>
 
           <Styles $div $justify={'flex-start'} width={'100%'}>
-            <Styles $link onClick={navTo}>To {isRegistrationPage ? 'Sign in' : 'Sign up'}</Styles>
+            <Styles $link $lineHeight={'20px'} onClick={navTo}>To {isRegistrationPage ? 'Sign in' : 'Sign up'}</Styles>
           </Styles>
         </Styles>
 

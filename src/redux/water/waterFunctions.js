@@ -60,7 +60,6 @@ export const deleteDrinkThunk = createAsyncThunk(
     try {
       const { data } = await axios.delete(`water/drinks/${drinkId}`);
       toastSuccess('Drink has been deleted successful');
-      console.log(data);
       return data;
     } catch (error) {
       toastError('Sorry, something went wrong. Please, try again');

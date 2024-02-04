@@ -24,13 +24,13 @@ width: 100vw;
   background: url(${BackMobile1}), url(${Back2Mobile1});
       background-repeat: no-repeat, no-repeat;
       background-size: cover, ${props => props.$bottleSize.width * 2}px;
-      background-position: 0 10px, ${props => props.$bottleSize.x - + props.$bottleSize.width / 2}px ${props => props.$bottleSize.y + props.$bottleSize.height / 3}px;
+      background-position: 0 10px, ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px ${props => props.$bottleSize.y + props.$bottleSize.height / 3}px;
     
       @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
         background: url(${BackMobile2}), url(${Back2Mobile2});
         background-repeat: no-repeat, no-repeat;
         background-size: cover, ${props => props.$bottleSize.width * 2}px;
-        background-position: 0 50px, ${props => props.$bottleSize.x - + props.$bottleSize.width / 2}px ${props => props.$bottleSize.y + props.$bottleSize.height / 3}px;
+        background-position: 0 50px, ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px ${props => props.$bottleSize.y + props.$bottleSize.height / 3}px;
       }
 }
 
@@ -39,13 +39,13 @@ width: 100vw;
   background: url(${BackTablet1}), url(${Back2Tablet1});
   background-repeat: no-repeat, no-repeat;
   background-size: cover, ${props => props.$bottleSize.width * 2}px;
-  background-position: 0 3px, ${props => props.$bottleSize.x - + props.$bottleSize.width / 2}px ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
+  background-position: 0 3px, ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
 
   @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
     background: url(${BackTablet2}), url(${Back2Tablet2});
     background-repeat: no-repeat, no-repeat;
     background-size: cover, ${props => props.$bottleSize.width * 2}px;
-    background-position: 0 3px, ${props => props.$bottleSize.x - + props.$bottleSize.width / 2}px ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
+    background-position: 0 3px, ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
   }
 }
 
@@ -53,14 +53,14 @@ width: 100vw;
   
   background: url(${BackDesktop1}), url(${Back2Desktop1});
   background-repeat: no-repeat, no-repeat;
-  background-size: cover, ${props => props.$bottleSize.width * 2}px;
-  background-position: 0 10px, ${props => props.$bottleSize.x - + props.$bottleSize.width / 2}px ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
+  background-size: contain, ${props => props.$bottleSize.width * 2}px;
+  background-position: 0 10px, ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
  
   @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
     background: url(${BackDesktop2}), url(${Back2Desktop2});
     background-repeat: no-repeat, no-repeat;
-    background-size: cover, ${props => props.$bottleSize.width * 2}px;
-    background-position: 0 10px, ${props => props.$bottleSize.x - + props.$bottleSize.width / 2}px ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
+    background-size: contain, ${props => props.$bottleSize.width * 2}px;
+    background-position: 0 10px, ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
   }
 }
   

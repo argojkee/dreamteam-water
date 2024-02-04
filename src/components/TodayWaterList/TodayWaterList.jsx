@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FaPlus } from 'react-icons/fa6';
-
+import { PiSpinnerGap } from 'react-icons/pi';
+import { SpinnerContainer } from './SpinnerContainer.styled';
 import { DrinkElement } from './DrinkElement';
 import {
   AddTodayWaterBtn,
@@ -11,19 +12,42 @@ import {
 } from './TodayWaterList.styled';
 import { Modal } from 'components/Modal/Modal';
 import { AddForm } from 'components/AddForm/AddForm';
-import { getDrinks } from '../../redux/water/waterSelectors';
+import {
+  getDrinks,
+  getIsDayDataLoading,
+} from '../../redux/water/waterSelectors';
 
 export function TodayWaterList() {
   const [isShowAddModal, setIsShowAddModal] = useState(false);
   const drinks = useSelector(getDrinks);
+  const isLoading = useSelector(getIsDayDataLoading);
+
+  const sortDrinks = drinks => {
+    const sortedDrinks = drinks.slice().sort((a, b) => {
+      if (a.time < b.time) {
+        return -1;
+      }
+      if (a.time > b.time) {
+        return 1;
+      }
+      return 0;
+    });
+    return sortedDrinks;
+  };
 
   return (
     <>
       <H2>Today</H2>
 
+      {isLoading && (
+        <SpinnerContainer>
+          <PiSpinnerGap className="spinner" size={25} />
+        </SpinnerContainer>
+      )}
+
       <ListUl>
         {drinks?.length ? (
-          drinks.map(({ _id, ml, time }) => (
+          sortDrinks(drinks).map(({ _id, ml, time }) => (
             <DrinkElement
               key={_id}
               id={_id}
@@ -33,13 +57,13 @@ export function TodayWaterList() {
             />
           ))
         ) : (
-          <EmptyTxt>List is empty.</EmptyTxt>
+          <EmptyTxt>It's time to drink some water!</EmptyTxt>
         )}
       </ListUl>
 
       <AddTodayWaterBtn onClick={() => setIsShowAddModal(true)}>
         <FaPlus />
-        add water
+        Add water
       </AddTodayWaterBtn>
 
       {isShowAddModal && (

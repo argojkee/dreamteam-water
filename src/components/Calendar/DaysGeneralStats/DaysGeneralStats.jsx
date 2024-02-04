@@ -48,8 +48,7 @@ const DaysGeneralStats = ({
         </button>
       </div>
       <p>
-        Daily norma:{' '}
-        <span>{statistic[selectedMonth.day - 1].norm }</span>
+        Daily norma: <span>{statistic[selectedMonth.day - 1].norm}</span>
       </p>
       <p>
         Fulfillment of the daily norm:{' '}
@@ -57,10 +56,7 @@ const DaysGeneralStats = ({
       </p>
       <p>
         How many servings of water:{' '}
-        <span>
-          {statistic[selectedMonth.day - 1].drinks.length ||
-            statistic[selectedMonth.day - 1].drinks}
-        </span>
+        <span>{statistic[selectedMonth.day - 1].drinks}</span>
       </p>
     </WaterStatsContainer>
   );

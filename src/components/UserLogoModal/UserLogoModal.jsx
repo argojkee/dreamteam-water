@@ -36,7 +36,7 @@ export default function UserLogoModal() {
     if (email) {
       let avatar = unpolished_userEmail[0];
       if (unpolished_userAvatarUrl === null && unpolished_userName !== null) {
-        avatar = unpolished_userName[0];
+        avatar = unpolished_userName[0].toUpperCase();
       } else if (unpolished_userAvatarUrl) {
         avatar = unpolished_userAvatarUrl;
       }

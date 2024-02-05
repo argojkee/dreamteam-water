@@ -12,14 +12,35 @@ export const StyledDailyNormaContainer = styled.div`
   object-fit: contain;
   overflow-y: auto;
   height: 500px;
-  padding-top: 8px;
+
+  .theory {
+    display: flex;
+    flex-direction: column;
+    align-item: center;
+  }
+
+  .modal-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    alight-item: fit-content;
+
+    gap: 24px;
+  }
+
+  .link {
+    margin: 0;
+  }
 
   .list {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    gap: 14px;
 
     padding: 0;
-    margin: 0;
+    margin-bottom: 12px;
 
     list-style: none;
   }
@@ -30,18 +51,30 @@ export const StyledDailyNormaContainer = styled.div`
     margin-bottom: 16px;
   }
 
-  li:last-child {
-    margin-bottom: 12px;
-  }
-
   h1 {
     font-size: 26px;
     font-weight: 500;
     line-height: 1.2;
+  }
+
+  .calculate {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    gap: 16px;
 
     margin-bottom: 24px;
   }
 
+  .activity {
+    margin-bottom: 16px;
+  }
+
+  .calculate div:last-child p{
+    margin-bottom: 0;
+  }
+ 
   .form-text {
     /* display: flex; */
     align-items: baseline;
@@ -49,6 +82,10 @@ export const StyledDailyNormaContainer = styled.div`
     font-size: 16px;
     font-weight: 400;
     line-height: 1.25;
+  }
+
+  .formcalc-text {
+    margin-bottom: 8px;
   }
 
   .form-text.time {
@@ -60,7 +97,19 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 400;
     line-height: 1.33;
 
-    color: var(--primary-color);
+    color: #407bff;
+  }
+
+  .save_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    gap: 24px;
+  }
+
+  .norma{
+    margin-left: 6px; 
   }
 
   .invisibleText {
@@ -69,8 +118,6 @@ export const StyledDailyNormaContainer = styled.div`
     font-size: 12px;
     font-weight: 400;
     line-height: 1.33;
-
-    margin-top: 12px;
 
     padding: 10px;
     border-radius: 10px;
@@ -87,9 +134,6 @@ export const StyledDailyNormaContainer = styled.div`
     font-size: 18px;
     font-weight: 500;
     line-height: 1.33;
-
-    margin-top: 24px;
-    margin-bottom: 16px;
   }
 
   label.form-text {
@@ -105,7 +149,6 @@ export const StyledDailyNormaContainer = styled.div`
     border: 1px solid #d7e3ff;
     border-radius: 6px;
     padding-left: 10px;
-    margin-top: 8px;
 
     font-style: normal;
     font-size: 16px;
@@ -113,11 +156,39 @@ export const StyledDailyNormaContainer = styled.div`
     line-height: 1.25;
     color: #8f8f8f;
   }
+  
+  .weightError {
+    border-color: ${props =>
+      props.errors.weightError ? '#EF5050' : '#D7E3FF'};
+    color: ${props => (props.errors.weightError ? '#EF5050' : '#D7E3FF')}
+  }
 
-  h2 .water {
+  .activityError {
+    border-color: ${props =>
+      props.errors.activityError && !props.errors.weightError
+        ? '#EF5050'
+        : '#D7E3FF'};
+    color: ${props => (props.errors.activityError ? '#EF5050' : '#D7E3FF')}
+  }
+
+  .drinkError {
+    border-color: ${props =>
+      props.errors.drinkError && !props.errors.activityError
+        ? '#EF5050'
+        : '#D7E3FF'};
+    color: ${props => (props.errors.drinkError ? '#EF5050' : '#D7E3FF')}
+  }
+  
+  .numberKilo:focus {
+    outline: none;
+  }
+
+  .water {
     font-size: 18px;
     font-weight: 500;
     line-height: 1.1;
+
+    margin-bottom: 16px;
   }
 
   .norma-container {
@@ -144,9 +215,13 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 500;
     line-height: 20px;
 
-    margin: 24px 0 0 0;
     text-align: center;
     color: rgba(255, 255, 255, 1);
+  }
+
+  .errors {
+    font-size: 16px;
+    color: #EF5050;
   }
 
   /**************INPUT TYPE RADIO********************* */
@@ -188,9 +263,9 @@ export const StyledDailyNormaContainer = styled.div`
   }
 
   /* стилі для радіокнопки, яка знаходиться у фокусі */
-  .custom-radio:focus + label::before {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  }
+  // .custom-radio:focus + label::before {
+  //   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  // }
 
   /* стилі для радіокнопки, яка знаходиться у фокусі та не знаходиться у стані checked */
   .custom-radio:focus:not(:checked) + label::before {
@@ -203,6 +278,14 @@ export const StyledDailyNormaContainer = styled.div`
     background-color: var(--primary-button-text-color);
 
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23407BFF'/%3E%3C/svg%3E");
+    background-size: auto;
+
+  }
+
+  /* стилі для радіокнопки, яка знаходиться у стані disabled */
+  .custom-radio:disabled + label::before {
+    border-color: gray;
+    background-color: #ffffff;
   }
 
   .radio-buttons-container {
@@ -217,27 +300,54 @@ export const StyledDailyNormaContainer = styled.div`
   }
 
   input[type='text'] {
-    color:var(--primary-color) ;
+    color: #407bff;
   }
 
-  /* @media screen and (max-width: 767px) {
-    height: 290px;
-  } */
+  button.btn-save {
+    display: block;
+    width: 100%; 
+    height: 44px; 
+
+    padding: 10px 30px;
+
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0px 5px 14px rgba(64, 123, 255, 0.54);
+    }
+  
+    &:active {
+      box-shadow: none;
+    }
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    .modal-container {
+      width: 100%;
+    }
+
+    .list {
+      flex-direction: column;
+    }
+  } 
+  
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     .container {
       max-width: 768px;
     }
 
     button.btn-save {
-      display: block;
-      /* width: 0; */
-      padding: 10px 30px;
-      margin-left: auto;
+      width: 160px; 
+      margin: 0 8px 8px auto;
     }
-    /* height: 418px; */
+    
   }
 
   @media screen and (min-width: 1440px) {
     /* height: 548px; */
+    button.btn-save {
+      width: 160px; 
+      margin: 0 8px 8px auto;
+    }
   }
 `;

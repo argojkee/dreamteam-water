@@ -19,14 +19,15 @@ export default function UserLogoModal() {
 
   const { email, name, avatarURL } = useSelector(getCurrentUser);
 
-  let unpolished_userEmail = '';
-  let unpolished_userName = '';
-  let unpolished_userAvatarUrl = '';
+  //let newEmail = email[0].toUpperCase() + email.slice(1);
+  // let unpolished_userEmail = '';
+  // let unpolished_userName = '';
+  // let unpolished_userAvatarUrl = '';
 
   //const get_water_Current_Month = useSelector(getCurrentMonth);
-  unpolished_userEmail = email?.replace(email[0], email[0].toUpperCase()); //email;
-  unpolished_userName = name?.replace(name[0], name[0].toUpperCase());
-  unpolished_userAvatarUrl = avatarURL;
+  let unpolished_userEmail = email; //email;
+  let unpolished_userName = name;
+  let unpolished_userAvatarUrl = avatarURL;
 
   let userAvatar = polishingAvatar();
 
@@ -37,7 +38,6 @@ export default function UserLogoModal() {
       let avatar = unpolished_userEmail[0].toUpperCase();
       if (unpolished_userAvatarUrl === null && unpolished_userName !== null) {
         avatar = unpolished_userName[0].toUpperCase();
-        console.log(avatar);
       } else if (unpolished_userAvatarUrl) {
         avatar = unpolished_userAvatarUrl;
       }

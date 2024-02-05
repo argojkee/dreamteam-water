@@ -1,5 +1,178 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { AddFormStyles } from './AddForm.styled';
+import { getCurrentDay } from '../../redux/water/waterSelectors';
+import { useSelector } from 'react-redux';
+import {
+  addWaterThunk,
+  editDrinkThunk,
+} from '../../redux/water/waterFunctions';
+import { useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
+import { toastError } from 'services/toastNotification';
+import { PiSpinnerGap } from 'react-icons/pi';
+import {
+  getIsEditingDrink,
+  getIsAddingDrink,
+} from '../../redux/water/waterSelectors';
 
-export const AddForm = () => {
-  return <div>AddForm</div>;
+export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
+  const [waterAmount, setWaterAmount] = useState(0);
+  const [recordTime, setRecordTime] = useState(getDefaultTime());
+  const [inputValue, setInputValue] = useState('');
+  const dispatch = useDispatch();
+  const { _id: dayId } = useSelector(getCurrentDay);
+  const isAdding = useSelector(getIsAddingDrink);
+  const isEditing = useSelector(getIsEditingDrink);
+  const isLoading = isAdding || isEditing;
+
+  useEffect(() => {
+    setRecordTime(getDefaultTime());
+  }, []);
+
+  useEffect(() => {
+    setInputValue(waterAmount.toString());
+  }, [waterAmount]);
+
+  function getDefaultTime() {
+    const now = new Date();
+    const roundedMinutes = Math.ceil(now.getMinutes() / 5) * 5;
+    const defaultTime = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+      now.getHours(),
+      roundedMinutes
+    );
+    return defaultTime.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: 'numeric',
+    });
+  }
+
+  const handleSave = async () => {
+    if (waterAmount > 0) {
+      if (drink) {
+        if (waterAmount === drink.ml && recordTime === drink.time) {
+          return toastError(
+            'Please enter a different value than the previous one.'
+          );
+        }
+
+        await dispatch(
+          editDrinkThunk({ id: drink.id, time: recordTime, ml: waterAmount })
+        );
+      } else {
+        await dispatch(
+          addWaterThunk({
+            dayId,
+            drink: { ml: waterAmount, time: recordTime },
+          })
+        );
+      }
+
+      closeAddForm();
+    } else {
+      return toastError('Please, enter water amount or delete this drink');
+    }
+  };
+
+  const handleInputChange = e => {
+    const newValue = e.target.value;
+    setInputValue(newValue);
+    setWaterAmount(newValue >= 0 ? parseInt(newValue, 10) : 0);
+  };
+
+  const showContentData = drink ? (
+    <>
+      <h1 className="header">Edit the entered amount of water</h1>
+      <div className="container">🥤</div>
+      <p className="edit-string">{`${drink.ml} ml ${drink.time}`}</p>
+      <h2 className="edit-second-header">Correct entered data:</h2>
+      <p className="string">Amount of water:</p>
+    </>
+  ) : (
+    <>
+      <h1 className="header">Add water</h1>
+      <h2 className="add-second-header">Choose a value:</h2>
+      <p className="string">Amount of water:</p>
+    </>
+  );
+
+  return (
+    <AddFormStyles>
+      {showContentData}
+      <div className="edit-water-form">
+        <div className="step-input">
+          <button
+            onClick={() => setWaterAmount(prev => Math.max(prev - 50, 0))}
+          >
+            -
+          </button>
+          <div className="water-amount">{waterAmount || 0} ml</div>
+          <button onClick={() => setWaterAmount(prev => prev + 50)}>+</button>
+        </div>
+        <div className="select-container">
+          <label className="string">Recording time:</label>
+          <select
+            value={recordTime}
+            onChange={e => setRecordTime(e.target.value)}
+          >
+            {generateTimeOptions()}
+          </select>
+        </div>
+        <div className="input-container">
+          <h2 className="add-second-header">
+            Enter the value of the water used:
+          </h2>
+          <input
+            type="number"
+            value={inputValue}
+            onChange={handleInputChange}
+            onBlur={() => {
+              if (drink && waterAmount === drink.ml) {
+                setWaterAmount(0);
+                toastError(
+                  'Invalid water amount. Please enter a different value than the previous one.'
+                );
+              }
+            }}
+          />
+        </div>
+        <p>Entered amount: {waterAmount} ml</p>
+      </div>
+      <button onClick={handleSave}>
+        {isLoading ? <PiSpinnerGap className="spinner" size={16} /> : 'Save'}
+      </button>
+    </AddFormStyles>
+  );
 };
+
+function generateTimeOptions() {
+  const options = [];
+  const now = new Date();
+  // const roundedMinutes = Math.ceil(now.getMinutes() / 5) * 5;
+  // const currentFormattedHour = now.getHours().toString().padStart(2, '0');
+  // const currentFormattedMinute = roundedMinutes.toString().padStart(2, '0');
+
+  for (let hour = 0; hour < 24; hour++) {
+    for (let minute = 0; minute < 60; minute += 5) {
+      const formattedHour = hour.toString().padStart(2, '0');
+      const formattedMinute = minute.toString().padStart(2, '0');
+      if (
+        (hour < now.getHours() ||
+          (hour === now.getHours() && minute <= now.getMinutes())) &&
+        !options.some(
+          option => option.props.value === `${formattedHour}:${formattedMinute}`
+        )
+      ) {
+        options.push(
+          <option key={nanoid()} value={`${formattedHour}:${formattedMinute}`}>
+            {`${formattedHour}:${formattedMinute}`}
+          </option>
+        );
+      }
+    }
+  }
+
+  return options;
+}

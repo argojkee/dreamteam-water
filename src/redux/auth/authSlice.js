@@ -3,8 +3,8 @@ import logOutAPI from 'API/Auth/logOutAPI';
 import signInAPI from '../../API/Auth/signInAPI';
 import signUpAPI from '../../API/Auth/signUpAPI';
 import fetchCurrentUserAPI from 'API/Auth/fetchCurrentUserAPI';
-import { editDailyNorm } from 'API/Auth/editDailyNorm';
 import { changeUserAvatarAPI } from 'API/Auth/changeUserAvatarAPI';
+import { changeUserData } from 'API/Auth/changeUserDataAPI';
 
 const initialState = {
   user: {
@@ -12,15 +12,31 @@ const initialState = {
     email: null,
     avatarURL: null,
     norm: null,
+    gender: null,
   },
   token: null,
   authIsLoading: false,
   isLoadingChangeAvatar: false,
+  isDataUpdating: false,
+  bottleXY: {},
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+
+  reducers: {
+    change(state, action) {
+      switch (action.payload.operation) {
+        case 'changeBottleXY':
+          state.bottleXY = action.payload.data;
+          break;
+        default:
+          break;
+      }
+    },
+  },
+
   extraReducers: builder => {
     builder
       /*****************signIn********************/
@@ -32,6 +48,9 @@ const authSlice = createSlice({
         state.user = { ...payload.user };
         state.token = payload.token;
       })
+      .addCase(signInAPI.rejected, state => {
+        state.authIsLoading = false;
+      })
       /*****************end********************/
 
       /*****************signUp********************/
@@ -39,6 +58,9 @@ const authSlice = createSlice({
         state.authIsLoading = true;
       })
       .addCase(signUpAPI.fulfilled, state => {
+        state.authIsLoading = false;
+      })
+      .addCase(signUpAPI.rejected, state => {
         state.authIsLoading = false;
       })
       /*****************end********************/
@@ -58,27 +80,18 @@ const authSlice = createSlice({
         state.token = null;
       })
       /******************************fetch current user */
-
-      .addCase(fetchCurrentUserAPI.fulfilled, (state, { payload }) => {
-        state.authIsLoading = false;
-        state.user = { ...payload };
-      })
       .addCase(fetchCurrentUserAPI.pending, state => {
         state.authIsLoading = true;
+      })
+      .addCase(fetchCurrentUserAPI.fulfilled, (state, { payload }) => {
+        state.authIsLoading = false;
+        state.user = { ...payload.user };
       })
       .addCase(fetchCurrentUserAPI.rejected, state => {
         state.authIsLoading = false;
         state.user = { ...initialState.user };
         state.token = null;
       })
-
-      /*******************edit daily norm */
-
-      .addCase(editDailyNorm.fulfilled, (state, { payload }) => {
-        state.user.norm = payload;
-      })
-      // .addCase(editDailyNorm.pending, state => {})
-      // .addCase(editDailyNorm.rejected, state => {});
 
       /*****************************change user avatar */
 
@@ -91,7 +104,20 @@ const authSlice = createSlice({
       })
       .addCase(changeUserAvatarAPI.rejected, state => {
         state.isLoadingChangeAvatar = false;
+      })
+
+      /******************************change user info */
+      .addCase(changeUserData.pending, (state, { payload }) => {
+        state.isDataUpdating = true;
+      })
+      .addCase(changeUserData.fulfilled, (state, { payload }) => {
+        state.user = { ...state.user, ...payload.user };
+        state.isDataUpdating = false;
+      })
+      .addCase(changeUserData.rejected, (state, { payload }) => {
+        state.isDataUpdating = false;
       });
   },
 });
+export const { change } = authSlice.actions;
 export default authSlice.reducer;

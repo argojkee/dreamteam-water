@@ -4,16 +4,13 @@ import { toastError, toastSuccess } from 'services/toastNotification';
 
 axios.defaults.baseURL = 'https://dreamteam-water-server.onrender.com/api/';
 
-export const editDailyNorm = createAsyncThunk(
-  'auth/editDailyNorm',
-  async (data, { rejectWithValue }) => {
+export const changeUserData = createAsyncThunk(
+  'auth/changeUserData',
+  async (user, { rejectWithValue }) => {
     try {
-      const {
-        data: { norm },
-      } = await axios.patch('/water/norm', data);
-
-      toastSuccess('Deleted successful ');
-      return norm;
+      const { data } = await axios.patch('/users/info', user);
+      toastSuccess('User info changed successful ');
+      return data;
     } catch (error) {
       toastError('Something went wrong');
       return rejectWithValue('Something went wrong');

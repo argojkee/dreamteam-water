@@ -14,6 +14,7 @@ import {
   getIsEditingDrink,
   getIsAddingDrink,
 } from '../../redux/water/waterSelectors';
+import drinkIcon from '../../icons/drink.svg';
 
 export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
   const [waterAmount, setWaterAmount] = useState(0);
@@ -85,8 +86,13 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
   const showContentData = drink ? (
     <>
       <h1 className="header">Edit the entered amount of water</h1>
-      <div className="container">🥤</div>
-      <p className="edit-string">{`${drink.ml} ml ${drink.time}`}</p>
+      <div className="container-edit-drink">
+        <img className="drink-icon" src={drinkIcon} alt="drink" />
+        <p className="edit-string">
+          <span className="edit-ml-value">{`${drink.ml} ml`}</span>{' '}
+          <span className="edit-time-value">{drink.time}</span>
+        </p>
+      </div>
       <h2 className="edit-second-header">Correct entered data:</h2>
       <p className="string">Amount of water:</p>
     </>

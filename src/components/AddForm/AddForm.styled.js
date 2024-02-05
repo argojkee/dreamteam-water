@@ -1,29 +1,27 @@
 import styled from 'styled-components';
 
 export const AddFormStyles = styled.div`
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 50px auto;
+  margin: auto;
   text-align: center;
-  padding: 20px;
-  /* width: 300px; */
-
-  @media screen and (max-width: 768px) {
-    max-width: 300px;
-  }
-  h1 {
+  min-width: 300px;
+  .header {
     font-family: 'Roboto';
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 26px;
+    line-height: 32px;
     margin-bottom: 16px;
+    text-align: start;
   }
 
-  h3 {
+  .add-second-header {
     font-family: 'Roboto';
     font-size: 18px;
     font-weight: 500;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
+    text-align: start;
+  }
+  .string {
+    text-align: start;
+    margin-bottom: 12px;
   }
 
   .edit-water-form {
@@ -31,6 +29,7 @@ export const AddFormStyles = styled.div`
   }
 
   .step-input {
+    width: 194px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -40,25 +39,51 @@ export const AddFormStyles = styled.div`
       padding: 8px 16px;
       cursor: pointer;
       font-size: 16px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
+      background-color: #ffffff;
+      color: #407bff;
+      border: 1px solid #9ebbff;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      box-shadow: 0px 2px 4px 0px rgba(64, 123, 255, 0.2);
     }
   }
+  .water-amount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d7e3ff;
+    color: #407bff;
+    border-radius: 40px;
+    width: 92px;
+    height: 36px;
+  }
 
+  .select-container {
+    display: flex;
+    flex-direction: column;
+  }
   input {
+    color: #407bff;
+    border-color: #d7e3ff;
+    width: 120px;
     padding: 12px;
     font-size: 16px;
-    width: 100%;
     margin-bottom: 10px;
   }
 
   select {
+    color: #407bff;
+    border-color: #d7e3ff;
+    width: 120px;
     padding: 12px;
     font-size: 16px;
-    width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 24px;
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
   }
 
   button {
@@ -69,6 +94,5 @@ export const AddFormStyles = styled.div`
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 20px;
   }
 `;

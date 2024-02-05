@@ -11,6 +11,7 @@ export const ModalStyles = styled.div`
   transition: 250ms linear;
 
   .modal {
+    width: 280px;
     position: relative;
     max-width: 90%;
     max-height: 95%;
@@ -27,8 +28,8 @@ export const ModalStyles = styled.div`
   .close-btn {
     cursor: pointer;
     position: absolute;
-    right: 24px;
-    top: 36px;
+    right: 12px;
+    top: 28px;
     background-color: transparent;
     transition: 250ms linear;
     border: none;
@@ -41,7 +42,7 @@ export const ModalStyles = styled.div`
   }
   @media screen and (max-width: 767px) {
     .modal {
-      width: 80%;
+      // width: 80%;
     }
   }
 `;

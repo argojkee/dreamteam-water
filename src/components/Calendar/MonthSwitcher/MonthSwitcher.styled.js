@@ -18,7 +18,7 @@ export const MonthSwitcherContainer = styled.div`
     align-items: center;
   }
   p {
-    color: #407bff;
+    color: var(--primary-color);
     text-align: center;
     font-family: Roboto;
     font-size: 16px;
@@ -44,7 +44,7 @@ export const MonthSwitcherContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #407bff;
+    color: var(--primary-color);
     width: 14px;
     height: 14px;
     padding: 0;

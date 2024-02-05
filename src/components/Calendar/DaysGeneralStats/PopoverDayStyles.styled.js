@@ -7,7 +7,7 @@ export const PopoverDayStyles = styled.div`
   gap: 20px;
   width: 292px;
   height: 188px;
-  background-color: #fff;
+  background-color: var(--primary-button-text-color);
   color: #2f2f2f;
   font-family: Roboto;
   font-size: 16px;
@@ -25,7 +25,7 @@ export const PopoverDayStyles = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #407bff;
+    color: var(--primary-color);
 
     button {
       border: none;
@@ -33,7 +33,7 @@ export const PopoverDayStyles = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #407bff;
+      color: var(--primary-color);
       width: 16px;
       height: 16px;
       padding: 0;
@@ -47,7 +47,7 @@ export const PopoverDayStyles = styled.div`
   }
 
   span {
-    color: #407bff;
+    color: var(--primary-color);
     font-size: 18px;
     font-weight: 500;
     line-height: 1.33;

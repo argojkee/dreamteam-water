@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderStyles = styled.header`
-  .containerHeader {    
-    
+  .containerHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,7 +26,7 @@ export const HeaderStyles = styled.header`
   .textSignIn {
     text-decoration: none;
     list-style: none;
-    color: #407bff;
+    color: var(--primary-color);
   }
 
   .AuthContainer {
@@ -49,7 +48,7 @@ export const HeaderStyles = styled.header`
     height: 28px;
     box-sizing: border-box;
 
-    color: #407bff;
+    color: var(--primary-color);
     text-decoration: none;
     list-style: none;
 

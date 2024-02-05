@@ -11,7 +11,6 @@ export const ModalStyles = styled.div`
   transition: 250ms linear;
 
   .modal {
-    width: 280px;
     position: relative;
     max-width: 90%;
     max-height: 95%;
@@ -38,7 +37,7 @@ export const ModalStyles = styled.div`
   .close-modal {
     width: 24px;
     height: 24px;
-    fill: #407bff;
+    fill: var(--primary-color);
   }
   @media screen and (max-width: 767px) {
     .modal {

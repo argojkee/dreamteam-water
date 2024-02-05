@@ -126,7 +126,7 @@ export const StyledLink = styled(Link)`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background: #407bff;
+  background: var(--primary-color);
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   width: 100%;
   margin: 0 auto;
@@ -145,7 +145,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const LinkText = styled.span`
-  color: #fff;
+  color: var(--primary-button-text-color);
   text-align: center;
   font-size: 16px;
   font-weight: 500;

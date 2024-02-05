@@ -104,7 +104,7 @@ export const UserLogoModalStyles = styled.div`
     background-size: auto;
     background-position: center;
 
-    fill: #407bff;
+    fill: var(--primary-color) ;
   }
 
   .user-items {
@@ -143,7 +143,7 @@ export const UserLogoModalStyles = styled.div`
     width: 118px;
     height: 88px;
     padding: 16px;
-    background-color: #fff;
+    background-color: var(--primary-button-text-color);
     border: 1px solid none;
     border-radius: 10px;
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),

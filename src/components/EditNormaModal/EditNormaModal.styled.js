@@ -158,18 +158,25 @@ export const StyledDailyNormaContainer = styled.div`
   }
   
   .weightError {
-    border-color: ${props => props.errors.weightError ? '#EF5050' : '#D7E3FF'};
-    color: ${props => props.errors.weightError ? '#EF5050' : '#D7E3FF'}
+    border-color: ${props =>
+      props.errors.weightError ? '#EF5050' : '#D7E3FF'};
+    color: ${props => (props.errors.weightError ? '#EF5050' : '#D7E3FF')}
   }
 
   .activityError {
-    border-color: ${props => props.errors.activityError && !props.errors.weightError ? '#EF5050' : '#D7E3FF'};
-    color: ${props => props.errors.activityError ? '#EF5050' : '#D7E3FF'}
+    border-color: ${props =>
+      props.errors.activityError && !props.errors.weightError
+        ? '#EF5050'
+        : '#D7E3FF'};
+    color: ${props => (props.errors.activityError ? '#EF5050' : '#D7E3FF')}
   }
 
   .drinkError {
-    border-color: ${props => props.errors.drinkError && !props.errors.activityError ? '#EF5050' : '#D7E3FF'};
-    color: ${props => props.errors.drinkError ? '#EF5050' : '#D7E3FF'}
+    border-color: ${props =>
+      props.errors.drinkError && !props.errors.activityError
+        ? '#EF5050'
+        : '#D7E3FF'};
+    color: ${props => (props.errors.drinkError ? '#EF5050' : '#D7E3FF')}
   }
   
   .numberKilo:focus {

@@ -330,8 +330,8 @@ export const StyledDailyNormaContainer = styled.div`
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    .container {
-      max-width: 768px;
+    .modal-container {
+      width: 704px;
     }
 
     button.btn-save {

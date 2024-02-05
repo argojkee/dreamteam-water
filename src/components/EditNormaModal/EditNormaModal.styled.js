@@ -223,7 +223,7 @@ export const StyledDailyNormaContainer = styled.div`
   /* @media screen and (max-width: 767px) {
     height: 290px;
   } */
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
     .container {
       max-width: 768px;
     }
@@ -237,7 +237,7 @@ export const StyledDailyNormaContainer = styled.div`
     /* height: 418px; */
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     /* height: 548px; */
   }
 `;

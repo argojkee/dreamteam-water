@@ -7,7 +7,7 @@ export const RatioBarH3 = styled.h3`
   font-weight: 400;
   line-height: 1.33;
   margin-bottom: 8px;
-  @media screen and (max-width: 1279px) {
+  @media screen and (max-width: 1439px) {
     margin-bottom: 0;
   }
 `;
@@ -159,7 +159,7 @@ export const AddWaterButton = styled.button`
     font-size: 18px;
     line-height: 24px;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     min-width: 31%;
   }
 `;

@@ -8,8 +8,9 @@ const Div = styled.div`
 
   width: ${props => props.width || '0'};
   height: ${props => props.height || 'fit-content'};
-  
-  margin: ${props => props.$marginTop || '0'} ${props => props.$marginRight || '0'} ${props => props.$marginBott || '0'} 0;
+
+  margin: ${props => props.$marginTop || '0'}
+    ${props => props.$marginRight || '0'} ${props => props.$marginBott || '0'} 0;
 
   margin: ${props => props.$marginTop || '0'}
     ${props => props.$marginRight || '0'} ${props => props.$marginBott || '0'} 0;
@@ -24,7 +25,8 @@ const Div = styled.div`
 
   border-radius: ${props => props.$borderRadius || 'none'};
 
-  border: ${props => props.$border || 'none'} ${props => props.$borderColor || 'white'};
+  border: ${props => props.$border || 'none'}
+    ${props => props.$borderColor || 'white'};
   border: ${props => props.$border || 'none'}
     ${props => props.$borderColor || 'white'};
 
@@ -33,11 +35,11 @@ const Div = styled.div`
     css`
       width: 280px;
 
-      @media screen and (min-width: 768px) and (max-width: 1279px) {
+      @media screen and (min-width: 768px) and (max-width: 1439px) {
         width: 336px;
       }
 
-      @media screen and (min-width: 1280px) {
+      @media screen and (min-width: 1440px) {
         width: 384px;
       }
     `};
@@ -50,11 +52,11 @@ const Div = styled.div`
         align-items: center;
       }
 
-      @media screen and (min-width: 768px) and (max-width: 1279px) {
+      @media screen and (min-width: 768px) and (max-width: 1439px) {
         justify-content: left;
       }
 
-      @media screen and (min-width: 1280px) {
+      @media screen and (min-width: 1440px) {
         flex-direction: row-reverse;
       }
     `};
@@ -66,11 +68,11 @@ const Div = styled.div`
         margin: 30px 0 10px 0;
       }
 
-      @media screen and (min-width: 768px) and (max-width: 1279px) {
+      @media screen and (min-width: 768px) and (max-width: 1439px) {
         margin: 50px 0 0 0;
       }
 
-      @media screen and (min-width: 1280px) {
+      @media screen and (min-width: 1440px) {
         margin: auto 100px auto 0;
       }
     `};
@@ -111,11 +113,11 @@ const Input = styled.input`
     outline: none;
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1280px) {
+  @media screen and (min-width: 768px) and (max-width: 1440px) {
     width: 336px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     width: 384px;
   }
 
@@ -158,7 +160,7 @@ const Button = styled.button`
   margin-bottom: ${props => props.$marginBott || '8px'};
 
   border: none;
-  
+
   border-radius: ${props => props.$borderRadius || 'none'};
 
   background-color: ${props => props.color || '#407BFF'};

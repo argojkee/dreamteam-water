@@ -7,8 +7,11 @@ export const AddFormStyles = styled.div`
   margin: 50px auto;
   text-align: center;
   padding: 20px;
-  width: 300px;
+  /* width: 300px; */
 
+  @media screen and (max-width: 768px) {
+    max-width: 300px;
+  }
   h1 {
     font-family: 'Roboto';
     font-size: 24px;

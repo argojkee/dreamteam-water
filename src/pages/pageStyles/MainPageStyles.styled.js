@@ -32,7 +32,7 @@ export const MainPageStyles = styled.section`
     }
   }
 
-  @media screen and (max-width: 1279px) {
+  @media screen and (max-width: 1439px) {
     .main-container {
       flex-direction: column;
     }
@@ -53,7 +53,7 @@ export const MainPageStyles = styled.section`
     }
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
     padding-top: 16px;
     .left-side {
       height: 548px;
@@ -88,7 +88,7 @@ export const MainPageStyles = styled.section`
     }
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     padding-top: 22px;
     .left-side {
       height: 680px;

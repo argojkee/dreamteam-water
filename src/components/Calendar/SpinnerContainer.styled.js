@@ -10,11 +10,11 @@ export const SpinnerContainer = styled.div`
     height: 437px;
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
     height: 224px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     height: 200px;
   }
 `;

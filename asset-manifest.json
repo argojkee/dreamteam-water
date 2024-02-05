@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/dreamteam-water/static/css/main.15d393d6.css",
-    "main.js": "/dreamteam-water/static/js/main.94b1709b.js",
-    "static/js/681.1e625032.chunk.js": "/dreamteam-water/static/js/681.1e625032.chunk.js",
+    "main.js": "/dreamteam-water/static/js/main.30a0eb29.js",
+    "static/js/681.01482ee4.chunk.js": "/dreamteam-water/static/js/681.01482ee4.chunk.js",
     "static/js/932.6a9c612a.chunk.js": "/dreamteam-water/static/js/932.6a9c612a.chunk.js",
     "static/js/637.9a8e5102.chunk.js": "/dreamteam-water/static/js/637.9a8e5102.chunk.js",
-    "static/js/569.c997acfd.chunk.js": "/dreamteam-water/static/js/569.c997acfd.chunk.js",
-    "static/js/645.514ac890.chunk.js": "/dreamteam-water/static/js/645.514ac890.chunk.js",
+    "static/js/569.99a8a6f7.chunk.js": "/dreamteam-water/static/js/569.99a8a6f7.chunk.js",
+    "static/js/645.28b58037.chunk.js": "/dreamteam-water/static/js/645.28b58037.chunk.js",
     "static/js/764.784f0ea5.chunk.js": "/dreamteam-water/static/js/764.784f0ea5.chunk.js",
     "static/js/56.2a13b909.chunk.js": "/dreamteam-water/static/js/56.2a13b909.chunk.js",
-    "static/js/785.f8c85b78.chunk.js": "/dreamteam-water/static/js/785.f8c85b78.chunk.js",
+    "static/js/785.63c6622d.chunk.js": "/dreamteam-water/static/js/785.63c6622d.chunk.js",
     "static/media/back2_desktop@2x.png": "/dreamteam-water/static/media/back2_desktop@2x.eab44f0d2ec9118c2754.png",
     "static/media/tablet_onlybottle@2x.png": "/dreamteam-water/static/media/tablet_onlybottle@2x.09074072dcf7995e5207.png",
     "static/media/Desktop.png": "/dreamteam-water/static/media/Desktop.e5c80f11ce4b34af8765.png",
@@ -17,6 +17,7 @@
     "static/media/Tablet.png": "/dreamteam-water/static/media/Tablet.7a479a95d65dec613567.png",
     "static/media/back2_tablet@2x.png": "/dreamteam-water/static/media/back2_tablet@2x.3bd365947c67138b5220.png",
     "static/media/back_desktop@2x.png": "/dreamteam-water/static/media/back_desktop@2x.c7334e62591998721850.png",
+    "static/media/Logo.svg": "/dreamteam-water/static/media/Logo.e0ccbeea85b169e28e226f2e6acd1198.svg",
     "static/media/desktop_onlybottle@1x.png": "/dreamteam-water/static/media/desktop_onlybottle@1x.b4f51b3bf32b00c38332.png",
     "static/media/back2_desktop@1x.png": "/dreamteam-water/static/media/back2_desktop@1x.690aded448a1f73ee925.png",
     "static/media/tablet_onlybottle@1x.png": "/dreamteam-water/static/media/tablet_onlybottle@1x.01b69d7209ba95292b3e.png",
@@ -78,18 +79,18 @@
     "static/media/Statistics.svg": "/dreamteam-water/static/media/Statistics.8cfec11a5c739ea320477bba603d1a57.svg",
     "static/media/point.svg": "/dreamteam-water/static/media/point.fddb539b56ea3011c50a91ee6d888f28.svg",
     "main.15d393d6.css.map": "/dreamteam-water/static/css/main.15d393d6.css.map",
-    "main.94b1709b.js.map": "/dreamteam-water/static/js/main.94b1709b.js.map",
-    "681.1e625032.chunk.js.map": "/dreamteam-water/static/js/681.1e625032.chunk.js.map",
+    "main.30a0eb29.js.map": "/dreamteam-water/static/js/main.30a0eb29.js.map",
+    "681.01482ee4.chunk.js.map": "/dreamteam-water/static/js/681.01482ee4.chunk.js.map",
     "932.6a9c612a.chunk.js.map": "/dreamteam-water/static/js/932.6a9c612a.chunk.js.map",
     "637.9a8e5102.chunk.js.map": "/dreamteam-water/static/js/637.9a8e5102.chunk.js.map",
-    "569.c997acfd.chunk.js.map": "/dreamteam-water/static/js/569.c997acfd.chunk.js.map",
-    "645.514ac890.chunk.js.map": "/dreamteam-water/static/js/645.514ac890.chunk.js.map",
+    "569.99a8a6f7.chunk.js.map": "/dreamteam-water/static/js/569.99a8a6f7.chunk.js.map",
+    "645.28b58037.chunk.js.map": "/dreamteam-water/static/js/645.28b58037.chunk.js.map",
     "764.784f0ea5.chunk.js.map": "/dreamteam-water/static/js/764.784f0ea5.chunk.js.map",
     "56.2a13b909.chunk.js.map": "/dreamteam-water/static/js/56.2a13b909.chunk.js.map",
-    "785.f8c85b78.chunk.js.map": "/dreamteam-water/static/js/785.f8c85b78.chunk.js.map"
+    "785.63c6622d.chunk.js.map": "/dreamteam-water/static/js/785.63c6622d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.15d393d6.css",
-    "static/js/main.94b1709b.js"
+    "static/js/main.30a0eb29.js"
   ]
 }

@@ -16,7 +16,9 @@ export const PanelDiv = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  gap: 23px;
+  @media screen and (max-width: 767px) {
+    gap: 23px;
+  }
 
   flex-direction: column;
   @media screen and (min-width: 768px) {
@@ -24,8 +26,15 @@ export const PanelDiv = styled.div`
   }
 `;
 export const SliderContainerDiv = styled.div`
-  width: 100%;
   position: relative;
+
+  @media screen and (max-width: 1439px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 391px;
+  }
 `;
 export const BarContainerDiv = styled.div`
   position: relative;

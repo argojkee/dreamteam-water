@@ -9,6 +9,10 @@ const DailyNorm = () => {
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const norm = useSelector(getCurrentNorm);
 
+  // const setNorma = (data) => {
+  //   if(data !== '') return data;
+  // };
+
   return (
     <DailyNormStyles>
       <div className="dailyNormaSection">

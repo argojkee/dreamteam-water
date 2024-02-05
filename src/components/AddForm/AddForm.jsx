@@ -84,17 +84,17 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
 
   const showContentData = drink ? (
     <>
-      <h1>Edit the entered amount of water</h1>
-      <div>🥤</div>
-      <p>{`${drink.ml} ml ${drink.time}`}</p>
-      <h2>Correct entered data:</h2>
-      <p>Amount of water:</p>
+      <h1 className="header">Edit the entered amount of water</h1>
+      <div className="container">🥤</div>
+      <p className="edit-string">{`${drink.ml} ml ${drink.time}`}</p>
+      <h2 className="edit-second-header">Correct entered data:</h2>
+      <p className="string">Amount of water:</p>
     </>
   ) : (
     <>
-      <h1>Add water</h1>
-      <h3>Choose a value:</h3>
-      <p>Amount of water:</p>
+      <h1 className="header">Add water</h1>
+      <h2 className="add-second-header">Choose a value:</h2>
+      <p className="string">Amount of water:</p>
     </>
   );
 
@@ -108,31 +108,36 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
           >
             -
           </button>
-          <span>{waterAmount || 0} ml</span>
+          <div className="water-amount">{waterAmount || 0} ml</div>
           <button onClick={() => setWaterAmount(prev => prev + 50)}>+</button>
         </div>
-        <label>Recording time:</label>
-        <select
-          value={recordTime}
-          onChange={e => setRecordTime(e.target.value)}
-        >
-          {generateTimeOptions()}
-        </select>
-        <h2>Enter the value of the water used:</h2>
-        <input
-          type="number"
-          value={inputValue}
-          onChange={handleInputChange}
-          onBlur={() => {
-            if (drink && waterAmount === drink.ml) {
-              setWaterAmount(0);
-              toastError(
-                'Invalid water amount. Please enter a different value than the previous one.'
-              );
-            }
-          }}
-        />
-
+        <div className="select-container">
+          <label className="string">Recording time:</label>
+          <select
+            value={recordTime}
+            onChange={e => setRecordTime(e.target.value)}
+          >
+            {generateTimeOptions()}
+          </select>
+        </div>
+        <div className="input-container">
+          <h2 className="add-second-header">
+            Enter the value of the water used:
+          </h2>
+          <input
+            type="number"
+            value={inputValue}
+            onChange={handleInputChange}
+            onBlur={() => {
+              if (drink && waterAmount === drink.ml) {
+                setWaterAmount(0);
+                toastError(
+                  'Invalid water amount. Please enter a different value than the previous one.'
+                );
+              }
+            }}
+          />
+        </div>
         <p>Entered amount: {waterAmount} ml</p>
       </div>
       <button onClick={handleSave}>

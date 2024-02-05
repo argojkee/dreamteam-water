@@ -12,7 +12,7 @@ export const ModalStyles = styled.div`
 
   .modal {
     position: relative;
-    max-width: 90%;
+
     max-height: 95%;
     position: absolute;
     background-color: white;
@@ -22,6 +22,17 @@ export const ModalStyles = styled.div`
     border-radius: 10px;
     padding: 24px 12px;
     overflow: auto;
+  }
+
+  @media screen and (max-width: 767px) {
+    .modal {
+      width: 95%;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .modal {
+      max-width: 90%;
+    }
   }
 
   .close-btn {

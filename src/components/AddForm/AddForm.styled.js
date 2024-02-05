@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const AddFormStyles = styled.div`
   margin: auto;
   text-align: center;
-
+  min-width: 300px;
   .header {
     font-family: 'Roboto';
     font-size: 26px;

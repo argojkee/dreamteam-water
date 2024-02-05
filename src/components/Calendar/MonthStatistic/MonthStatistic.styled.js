@@ -32,7 +32,7 @@ export const MonthStatisticlist = styled.div`
     }
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
     gap: 34px;
 
     p {
@@ -46,7 +46,7 @@ export const MonthStatisticlist = styled.div`
       width: 34px;
     }
 
-    @media screen and (min-width: 1280px) {
+    @media screen and (min-width: 1440px) {
       gap: 22px;
     }
   }

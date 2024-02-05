@@ -39,8 +39,8 @@ export const AddFormStyles = styled.div`
       padding: 8px 16px;
       cursor: pointer;
       font-size: 16px;
-      background-color: #ffffff;
-      color: #407bff;
+      background-color: var(--primary-button-text-color);
+      color: var(--primary-color);
       border: 1px solid #9ebbff;
       border-radius: 50%;
       width: 44px;
@@ -53,7 +53,7 @@ export const AddFormStyles = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #d7e3ff;
-    color: #407bff;
+    color: var(--primary-color);
     border-radius: 40px;
     width: 92px;
     height: 36px;
@@ -64,7 +64,7 @@ export const AddFormStyles = styled.div`
     flex-direction: column;
   }
   input {
-    color: #407bff;
+    color: var(--primary-color);
     border-color: #d7e3ff;
     width: 120px;
     padding: 12px;
@@ -73,7 +73,7 @@ export const AddFormStyles = styled.div`
   }
 
   select {
-    color: #407bff;
+    color: var(--primary-color);
     border-color: #d7e3ff;
     width: 120px;
     padding: 12px;
@@ -89,7 +89,7 @@ export const AddFormStyles = styled.div`
   button {
     padding: 12px 24px;
     background-color: #007bff;
-    color: #fff;
+    color: var(--primary-button-text-color);
     border: none;
     border-radius: 4px;
     cursor: pointer;

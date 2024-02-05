@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const PopoverButton = styled.button`
   border: none;
-  background-color: #fff;
+  background-color: var(--primary-button-text-color);
   display: flex;
   justify-content: center;
   align-items: center;

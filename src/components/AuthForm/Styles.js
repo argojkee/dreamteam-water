@@ -163,7 +163,7 @@ const Button = styled.button`
 
   border-radius: ${props => props.$borderRadius || 'none'};
 
-  background-color: ${props => props.color || '#407BFF'};
+  background-color: ${props => props.color || 'var(--primary-color) '};
 
   box-shadow: 0px 5px 8px rgba(64, 123, 255, 0.34);
 

@@ -77,7 +77,7 @@ const EditNormaModal = ({ closeModal }) => {
 
   return (
     <StyledDailyNormaContainer
-      errors={{
+      $errors={{
         weightError: formik.errors.weight,
         activityError: formik.errors.activity,
         drinkError: formik.errors.drink,

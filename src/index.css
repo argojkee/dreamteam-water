@@ -3,6 +3,11 @@
 @import '@fontsource/roboto/500.css';
 @import '@fontsource/roboto/700.css';
 
+:root {
+  --primary-color: #407bff;
+  --primary-button-text-color: #fff;
+}
+
 * {
   box-sizing: border-box;
 }

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledDailyNormaContainer = styled.div`
   :root {
     --primary-text-color: #2f2f2f;
-    --secondary-text-color: #407bff;
+    -
   }
 
   color: #2f2f2f;
@@ -126,7 +126,7 @@ export const StyledDailyNormaContainer = styled.div`
     color: rgba(143, 143, 143, 1);
 
     span {
-      color: #407bff;
+      color: var(--primary-color);
     }
   }
 
@@ -194,7 +194,7 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 700;
     line-height: 1.33;
 
-    color: #407bff;
+    color: var(--primary-color);
   }
 
   .btn-save {
@@ -203,7 +203,7 @@ export const StyledDailyNormaContainer = styled.div`
     padding: 8px, 30px, 8px, 30px;
     border-color: transparent;
     border-radius: 10px;
-    background-color: #407bff;
+    background-color: var(--primary-color);
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
@@ -251,7 +251,7 @@ export const StyledDailyNormaContainer = styled.div`
   }
   /* стилі для активної радіокнопки (при натиснені на неї) */
   .custom-radio:not(:disabled):active + label::before {
-    background-color: #ffffff;
+    background-color: var(--primary-button-text-color);
     border-color: #b3d7ff;
   }
 
@@ -267,8 +267,8 @@ export const StyledDailyNormaContainer = styled.div`
 
   /* стилі для радіокнопки, яка знаходиться у стані checked */
   .custom-radio:checked + label::before {
-    border-color: #407bff;
-    background-color: #ffffff;
+    border-color: var(--primary-color);
+    background-color: var(--primary-button-text-color);
 
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23407BFF'/%3E%3C/svg%3E");
     background-size: auto;
@@ -336,7 +336,7 @@ export const StyledDailyNormaContainer = styled.div`
     
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     /* height: 548px; */
     button.btn-save {
       width: 160px; 

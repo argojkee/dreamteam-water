@@ -68,12 +68,12 @@ export const DailyNormStyles = styled.div`
     background-image: url(${background});
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
     height: 418px;
     background-image: url(${background});
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     height: 548px;
     background-image: url(${background});
   }

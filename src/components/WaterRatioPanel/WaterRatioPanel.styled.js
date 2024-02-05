@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { CiCirclePlus } from 'react-icons/ci';
 
 export const RatioBarH3 = styled.h3`
-  color: #407bff;
+  color: var(--primary-color);
   font-size: 18px;
   font-weight: 400;
   line-height: 1.33;
   margin-bottom: 8px;
-  @media screen and (max-width: 1279px) {
+  @media screen and (max-width: 1439px) {
     margin-bottom: 0;
   }
 `;
@@ -66,8 +66,8 @@ export const WaterProgressThumb = styled.div`
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background-color: #fff;
-  border: solid 1px #407bff;
+  background-color: var(--primary-button-text-color);
+  border: solid 1px var(--primary-color);
 `;
 
 export const SliderValueDiv = styled.div`
@@ -82,7 +82,7 @@ export const SliderValueDiv = styled.div`
   line-height: 20px;
   letter-spacing: 0em;
   text-align: center;
-  color: #407bff;
+  color: var(--primary-color);
 
   margin-top: 13px;
   padding: 0 13px;
@@ -99,7 +99,7 @@ export const RulerDiv = styled.div`
   line-height: 16px;
   letter-spacing: 0em;
   text-align: center;
-  color: #407bff;
+  color: var(--primary-color);
 
   margin: 15px 0 0 5px;
 `;
@@ -112,7 +112,7 @@ export const RulerElDiv = styled.div`
 `;
 
 export const AddWaterButton = styled.button`
-  background-color: #407bff;
+  background-color: var(--primary-color);
   border: none;
   border-radius: 10px;
   display: flex;
@@ -159,7 +159,7 @@ export const AddWaterButton = styled.button`
     font-size: 18px;
     line-height: 24px;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     min-width: 31%;
   }
 `;

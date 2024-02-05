@@ -19,7 +19,7 @@ import {
 } from '../../redux/auth/authSelectors';
 import { changeUserData } from 'API/Auth/changeUserDataAPI';
 
-const iconColor = '#407BFF';
+const iconColor = 'var(--primary-color) ';
 
 const schema = yup.object().shape({
   gender: yup.string().required(),
@@ -109,12 +109,12 @@ export const SettingModal = ({ closeModal }) => {
         <p className="setting-text setting-modal-text">Your photo</p>
         <div className="setting-photo-wrapper">
           {isChangingAvatar && <PiSpinnerGap className="spinner" size={16} />}
-          {!isChangingAvatar && !avatar  && (
+          {!isChangingAvatar && !avatar && (
             <div className="setting-default-avatar">
               <p>{defaultAvatar}</p>
             </div>
           )}
-          {!isChangingAvatar && avatar  && (
+          {!isChangingAvatar && avatar && (
             <img
               src={avatar}
               alt="avatar"

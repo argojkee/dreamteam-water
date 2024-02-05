@@ -20,16 +20,15 @@ export const ContainerStyles = styled.div`
     width: 320px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    width: 768px;
     padding-left: 32px;
     padding-right: 32px;
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    width: 768px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    width: 1280px;
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
+    padding-left: 132px;
+    padding-right: 132px;
   }
 `;

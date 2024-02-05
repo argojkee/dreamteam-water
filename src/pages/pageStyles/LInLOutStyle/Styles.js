@@ -39,7 +39,7 @@ const Section = styled.section`
     }
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
     background: url(${BackTablet1}), url(${Back2Tablet1});
     background-repeat: no-repeat, no-repeat;
     background-size: cover, ${props => props.$bottleSize.width * 2}px;
@@ -59,7 +59,7 @@ const Section = styled.section`
     }
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     background: url(${BackDesktop1}), url(${Back2Desktop1});
     background-repeat: no-repeat, no-repeat;
     background-size: contain, ${props => props.$bottleSize.width * 2}px;

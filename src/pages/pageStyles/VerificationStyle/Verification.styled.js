@@ -11,7 +11,7 @@ export const VerificationStyles = styled.div`
     height: 44px;
     padding: 10px 30px 10px 30px;
     border-radius: 10px;
-    background-color: #407bff;
+    background-color: var(--primary-color);
     color: white;
 
     font-style: Roboto;
@@ -24,7 +24,7 @@ export const VerificationStyles = styled.div`
 
   .btn_login:hover,
   .btn_login:focus {
-    background-color: #407bff;
+    background-color: var(--primary-color);
     box-shadow: 0px 5px 8px rgba(64, 123, 255, 0.34);
   }
 

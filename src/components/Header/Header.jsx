@@ -5,7 +5,7 @@ import Container from 'components/Container/Container';
 // import UserOwnPopover from '../UserOwnPopover/UserOwnPopover';
 import UserLogoModal from '../UserLogoModal/UserLogoModal';
 import { HeaderStyles } from './HeaderStyled.styled';
-import iconHome from '../../icons/Logo.png';
+import iconHome from '../../icons/Logo.svg';
 import avatar from '../../icons/outline.png';
 
 const Header = () => {

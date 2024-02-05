@@ -28,7 +28,7 @@ export const ModalStyles = styled.div`
     cursor: pointer;
     position: absolute;
     right: 12px;
-    top: 28px;
+    top: 24px;
     background-color: transparent;
     transition: 250ms linear;
     border: none;

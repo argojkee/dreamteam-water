@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const StyledDailyNormaContainer = styled.div`
   :root {
     --primary-text-color: #2f2f2f;
-    -
   }
 
   color: #2f2f2f;
@@ -11,7 +10,7 @@ export const StyledDailyNormaContainer = styled.div`
 
   object-fit: contain;
   overflow-y: auto;
-  height: 500px;
+  height: 620px;
 
   .theory {
     display: flex;
@@ -71,10 +70,10 @@ export const StyledDailyNormaContainer = styled.div`
     margin-bottom: 16px;
   }
 
-  .calculate div:last-child p{
+  .calculate div:last-child p {
     margin-bottom: 0;
   }
- 
+
   .form-text {
     /* display: flex; */
     align-items: baseline;
@@ -108,8 +107,8 @@ export const StyledDailyNormaContainer = styled.div`
     gap: 24px;
   }
 
-  .norma{
-    margin-left: 6px; 
+  .norma {
+    margin-left: 6px;
   }
 
   .invisibleText {
@@ -156,29 +155,29 @@ export const StyledDailyNormaContainer = styled.div`
     line-height: 1.25;
     color: #8f8f8f;
   }
-  
+
   .weightError {
     border-color: ${props =>
-      props.errors.weightError ? '#EF5050' : '#D7E3FF'};
-    color: ${props => (props.errors.weightError ? '#EF5050' : '#D7E3FF')}
+      props.$errors.weightError ? '#EF5050' : '#D7E3FF'};
+    color: ${props => (props.$errors.weightError ? '#EF5050' : '#D7E3FF')};
   }
 
   .activityError {
     border-color: ${props =>
-      props.errors.activityError && !props.errors.weightError
+      props.$errors.activityError && !props.$errors.weightError
         ? '#EF5050'
         : '#D7E3FF'};
-    color: ${props => (props.errors.activityError ? '#EF5050' : '#D7E3FF')}
+    color: ${props => (props.$errors.activityError ? '#EF5050' : '#D7E3FF')};
   }
 
   .drinkError {
     border-color: ${props =>
-      props.errors.drinkError && !props.errors.activityError
+      props.$errors.drinkError && !props.$errors.activityError
         ? '#EF5050'
         : '#D7E3FF'};
-    color: ${props => (props.errors.drinkError ? '#EF5050' : '#D7E3FF')}
+    color: ${props => (props.$errors.drinkError ? '#EF5050' : '#D7E3FF')};
   }
-  
+
   .numberKilo:focus {
     outline: none;
   }
@@ -221,7 +220,7 @@ export const StyledDailyNormaContainer = styled.div`
 
   .errors {
     font-size: 16px;
-    color: #EF5050;
+    color: #ef5050;
   }
 
   /**************INPUT TYPE RADIO********************* */
@@ -279,7 +278,6 @@ export const StyledDailyNormaContainer = styled.div`
 
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23407BFF'/%3E%3C/svg%3E");
     background-size: auto;
-
   }
 
   /* стилі для радіокнопки, яка знаходиться у стані disabled */
@@ -305,8 +303,8 @@ export const StyledDailyNormaContainer = styled.div`
 
   button.btn-save {
     display: block;
-    width: 100%; 
-    height: 44px; 
+    width: 100%;
+    height: 44px;
 
     padding: 10px 30px;
 
@@ -315,7 +313,7 @@ export const StyledDailyNormaContainer = styled.div`
     &:hover {
       box-shadow: 0px 5px 14px rgba(64, 123, 255, 0.54);
     }
-  
+
     &:active {
       box-shadow: none;
     }
@@ -329,24 +327,23 @@ export const StyledDailyNormaContainer = styled.div`
     .list {
       flex-direction: column;
     }
-  } 
-  
+  }
+
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     .container {
       max-width: 768px;
     }
 
     button.btn-save {
-      width: 160px; 
+      width: 160px;
       margin: 0 8px 8px auto;
     }
-    
   }
 
   @media screen and (min-width: 1440px) {
     /* height: 548px; */
     button.btn-save {
-      width: 160px; 
+      width: 160px;
       margin: 0 8px 8px auto;
     }
   }

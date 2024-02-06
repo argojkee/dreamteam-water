@@ -124,6 +124,7 @@ export const AddFormStyles = styled.div`
   }
 
   @media screen and (max-width: 767px) {
+    max-width: 400px;
     input,
     select {
       width: 100%;

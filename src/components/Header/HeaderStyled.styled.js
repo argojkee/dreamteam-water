@@ -72,4 +72,8 @@ export const HeaderStyles = styled.header`
     font-size: 1.8;
     line-height: 14.06px;
   }
+
+  .avatarBox {
+    width: 28px;
+  }
 `;

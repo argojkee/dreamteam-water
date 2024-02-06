@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 
 export const HeaderStyles = styled.header`
+  position: fixed;
+  zindex: 100;
+  width: 100%;
+
   .containerHeader {
+    margin-top: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,6 +32,7 @@ export const HeaderStyles = styled.header`
     text-decoration: none;
     list-style: none;
     color: var(--primary-color);
+    text-shadow: 0px 0px #fff;
   }
 
   .AuthContainer {

@@ -19,9 +19,9 @@ import drinkIcon from '../../icons/drink.svg';
 export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
   const [waterAmount, setWaterAmount] = useState(0);
   const [recordTime, setRecordTime] = useState(getDefaultTime());
-  const [inputValue, setInputValue] = useState('');
+
   const dispatch = useDispatch();
-  const { _id: dayId } = useSelector(getCurrentDay);
+  const { _id: dayId, drinks } = useSelector(getCurrentDay);
   const isAdding = useSelector(getIsAddingDrink);
   const isEditing = useSelector(getIsEditingDrink);
   const isLoading = isAdding || isEditing;
@@ -29,10 +29,6 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
   useEffect(() => {
     setRecordTime(getDefaultTime());
   }, []);
-
-  useEffect(() => {
-    setInputValue(waterAmount.toString());
-  }, [waterAmount]);
 
   function getDefaultTime() {
     const now = new Date();
@@ -44,14 +40,27 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
       now.getHours(),
       roundedMinutes
     );
+
     return defaultTime.toLocaleTimeString('en-US', {
       hour: 'numeric',
       minute: 'numeric',
     });
   }
 
-  const handleSave = async () => {
+  const handleSave = async e => {
+    e.preventDefault();
+
+    if (!waterAmount) return toastError('Water amount must be more than 0');
+
     if (waterAmount > 0) {
+      if (
+        drinks.some(
+          drink => drink.time === recordTime && drink.ml === waterAmount
+        )
+      ) {
+        return toastError('You already have this drink');
+      }
+
       if (drink) {
         if (waterAmount === drink.ml && recordTime === drink.time) {
           return toastError(
@@ -79,7 +88,8 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
 
   const handleInputChange = e => {
     const newValue = e.target.value;
-    setInputValue(newValue);
+
+    if (newValue === '') return setWaterAmount('');
     setWaterAmount(newValue >= 0 ? parseInt(newValue, 10) : 0);
   };
 
@@ -107,21 +117,30 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
   return (
     <AddFormStyles>
       {showContentData}
-      <div className="edit-water-form">
+      <form onSubmit={handleSave} className="edit-water-form">
         <div className="step-input">
           <button
+            type="button"
             onClick={() => setWaterAmount(prev => Math.max(prev - 50, 0))}
           >
             -
           </button>
           <div className="water-amount">{waterAmount || 0} ml</div>
-          <button onClick={() => setWaterAmount(prev => prev + 50)}>+</button>
+          <button
+            type="button"
+            onClick={() => setWaterAmount(prev => prev + 50)}
+          >
+            +
+          </button>
         </div>
         <div className="select-container">
           <label className="string">Recording time:</label>
           <select
             value={recordTime}
-            onChange={e => setRecordTime(e.target.value)}
+            onChange={e => {
+              console.log(e.target.value);
+              setRecordTime(e.target.value);
+            }}
           >
             {generateTimeOptions()}
           </select>
@@ -132,23 +151,16 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
           </h2>
           <input
             type="number"
-            value={inputValue}
+            value={waterAmount}
             onChange={handleInputChange}
-            onBlur={() => {
-              if (drink && waterAmount === drink.ml) {
-                setWaterAmount(0);
-                toastError(
-                  'Invalid water amount. Please enter a different value than the previous one.'
-                );
-              }
-            }}
           />
         </div>
-        <p>Entered amount: {waterAmount} ml</p>
-      </div>
-      <button onClick={handleSave}>
-        {isLoading ? <PiSpinnerGap className="spinner" size={16} /> : 'Save'}
-      </button>
+        <p>Entered amount: {waterAmount || 0} ml</p>
+
+        <button type="submit">
+          {isLoading ? <PiSpinnerGap className="spinner" size={16} /> : 'Save'}
+        </button>
+      </form>
     </AddFormStyles>
   );
 };
@@ -168,14 +180,17 @@ function generateTimeOptions() {
           option => option.props.value === `${formattedHour}:${formattedMinute}`
         )
       ) {
+        const newTime =
+          Number(formattedHour) >= 12 && Number(formattedMinute) > 0
+            ? `${formattedHour - 12}:${formattedMinute} PM`
+            : `${formattedHour}:${formattedMinute} AM`;
         options.push(
-          <option key={nanoid()} value={`${formattedHour}:${formattedMinute}`}>
+          <option key={nanoid()} value={newTime}>
             {`${formattedHour}:${formattedMinute}`}
           </option>
         );
       }
     }
   }
-
   return options;
 }

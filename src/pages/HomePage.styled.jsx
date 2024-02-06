@@ -11,7 +11,7 @@ export const BackgroundContainer = styled.section`
   background-repeat: no-repeat;
   background-position: center bottom;
   margin: 0 auto;
-  padding: 24px 0 40px 0;
+  padding: 88px 0 40px 0;
 
   @media (max-width: 767px) {
     background-image: url(${mobile});
@@ -19,12 +19,12 @@ export const BackgroundContainer = styled.section`
 
   @media (min-width: 768px) {
     background-image: url(${tablet});
-    padding: 40px 0 50px 0;
+    padding: 84px 0 50px 0;
   }
 
   @media (min-width: 1440px) {
     background-image: url(${desktop});
-    padding: 80px 0 0 0;
+    padding: 144px 0 0 0;
   }
 `;
 
@@ -132,7 +132,6 @@ export const StyledLink = styled(Link)`
   margin: 0 auto;
   height: 36px;
   text-decoration: none;
-  
 
   &:hover {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
@@ -140,7 +139,7 @@ export const StyledLink = styled(Link)`
   }
 
   &:active {
-    background: #407BFF;
+    background: #407bff;
   }
 
   @media (min-width: 768px) {

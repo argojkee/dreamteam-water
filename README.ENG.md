@@ -1,53 +1,44 @@
+WaterTracker Project by CODECRAFTERS Team The CODECRAFTERS team has developed
+the WaterTracker project - a tool designed to track daily water consumption.
+This project aims to help individuals maintain proper hydration levels by
+monitoring their water intake throughout the day.
+<img src="./assets/banner-readme.png" alt="banner project" /> Team Members and
+Responsibilities<br/> Maksym Haidabura - Team Lead<br/> Oleksandr Kalinovskyi -
+Scrum Master, HomePage<br/> Maksym Osovik - Back End Development<br/> Dmytro
+Shevchenko - Sign in, Sign up<br/> Yurii Yakovchuk - Swagger Documentation<br/>
+Yurii Vovk - DailyNorma<br/> Ruslana Matviienko - Header<br/> Igor Lunyakin -
+Setting<br/> Anna Grigoreva - Today and WaterRatioPanel<br/> Svitlana Liulka -
+Calendar<br/> Sergii Stratovych - Add water<br/> Technologies Used<br/> The
+WaterTracker project utilizes the following technologies:<br/>
 
-WaterTracker Project by CODECRAFTERS Team
-The CODECRAFTERS team has developed the WaterTracker project - a tool designed to track daily water consumption. This project aims to help individuals maintain proper hydration levels by monitoring their water intake throughout the day.
+Front End: React, Redux<br/> Back End: MongoDB, Express, Mongoose<br/>
+Additional Tools: Nodemailer, emotion, mui/material, axios, formik,
+react-toastify, styled-components, redux-persist
 
-Team Members and Responsibilities
-Maksym Haidabura - Team Lead
-Oleksandr Kalinovskyi - Scrum Master, HomePage
-Maksym Osovik - Back End Development
-Dmytro Shevchenko - Sign in, Sign up
-Yurii Yakovchuk - Swagger Documentation
-Yurii Vovk - DailyNorma
-Ruslana Matviienko - Header
-Igor Lunyakin - Setting
-Anna Grigoreva - Today and WaterRatioPanel
-Svitlana Liulka - Calendar
-Sergii Stratovych - Add water
-Technologies Used
-The WaterTracker project utilizes the following technologies:
+Live page - https://argojkee.github.io/dreamteam-water/login<br/>
+Back-repository - https://github.com/OsMax/dreamteam-water-server<br/> Swagger -
+https://dreamteam-water-server.onrender.com/api-docs/<br/> Render -
+https://dreamteam-water-server.onrender.com<br/>
 
-Front End: React, Redux
-Back End: MongoDB, Express, Mongoose
-Additional Tools: Nodemailer, emotion, mui/material, axios, formik, react-toastify, styled-components, redux-persist
+Usage<br/> Installation<br/> Clone the repository from the following link:<br/>
+WaterTracker Repository<br/>
 
-Live page - https://argojkee.github.io/dreamteam-water/login
-Back-repository - https://github.com/OsMax/dreamteam-water-server
-Swagger - https://dreamteam-water-server.onrender.com/api-docs/
-Render - https://dreamteam-water-server.onrender.com
+Navigate to the project directory<br/>
 
-Usage
-Installation
-Clone the repository from the following link:
-WaterTracker Repository
+Install dependencies<br/>
 
-Navigate to the project directory
+npm install<br/>
 
-Install dependencies
+Running the project<br/>
 
-npm install
+Start the server:<br/> npm start<br/>
 
-Running the project
+Open your browser and navigate to the provided link.<br/>
 
-Start the server:
-npm start
+Contribution<br/> The CODECRAFTERS team welcomes contributions from other
+developers. If you'd like to contribute, please create a pull request or submit
+an issue explaining your suggestions or changes.
 
-Open your browser and navigate to the provided link.
-
-Contribution
-The CODECRAFTERS team welcomes contributions from other developers. If you'd like to contribute, please create a pull request or submit an issue explaining your suggestions or changes.
-
-License
-This project is licensed under the GoIT Licence
+License<br/> This project is licensed under the GoIT Licence
 
 Contacts: aik5787@gmail.com

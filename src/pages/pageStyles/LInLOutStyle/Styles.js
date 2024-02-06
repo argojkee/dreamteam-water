@@ -18,6 +18,7 @@ import Back2Desktop2 from '../../../images/signIn-signUp/back/desktop/back2_desk
 // 'FormContainer' get props  automatic from 'ContainerFormStyle' if you send them.
 const Section = styled.section`
   width: 100vw;
+  padding-top: 64px;
 
   @media screen and (min-width: 320px) and (max-width: 767px) {
     background: url(${BackMobile1}), url(${Back2Mobile1});

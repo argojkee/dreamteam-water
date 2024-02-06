@@ -13,7 +13,7 @@ export const MainPageStyles = styled.section`
   }
 
   @media screen and (max-width: 767px) {
-    padding-top: 24px;
+    padding-top: 88px;
     padding-bottom: 40px;
     .left-side {
       height: 504px;
@@ -54,7 +54,7 @@ export const MainPageStyles = styled.section`
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    padding-top: 16px;
+    padding-top: 80px;
     .left-side {
       height: 548px;
       width: 100%;
@@ -89,7 +89,7 @@ export const MainPageStyles = styled.section`
   }
 
   @media screen and (min-width: 1440px) {
-    padding-top: 22px;
+    padding-top: 86px;
     .left-side {
       height: 680px;
       width: 624px;

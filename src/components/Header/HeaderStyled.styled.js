@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const HeaderStyles = styled.header`
   position: fixed;
   zindex: 100;
+  width: 100%;
 
   .containerHeader {
     margin-top: 12px;

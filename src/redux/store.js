@@ -12,13 +12,23 @@ import {
 import storage from 'redux-persist/lib/storage';
 import authSliceReducer from './auth/authSlice';
 import waterSliceReducer from './water/waterSlice';
-
+import themeSliceReducer from './theme/themeSlice';
 const authPersistConfig = {
   // 'key' is identification of one or more storage
   key: 'auth',
   storage,
   whitelist: ['token'],
 };
+
+const themePersistConfig = {
+  key: 'theme',
+  storage,
+};
+
+const persistedThemeReducer = persistReducer(
+  themePersistConfig,
+  themeSliceReducer
+);
 
 // basic reducer
 const persistedReducer = persistReducer(authPersistConfig, authSliceReducer);
@@ -27,6 +37,7 @@ const persistedReducer = persistReducer(authPersistConfig, authSliceReducer);
 const rootReducer = combineReducers({
   auth: persistedReducer,
   water: waterSliceReducer,
+  theme: persistedThemeReducer,
 });
 
 const middleware = getDefaultMiddleware =>

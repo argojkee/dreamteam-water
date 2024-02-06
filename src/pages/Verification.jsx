@@ -14,7 +14,7 @@ const HomePage = () => {
   useEffect(() => {
     axios
       .get(
-        `http://dreamteam-water-server.onrender.com/api/users/verify/${verToken}`
+        `https://dreamteam-water-server.onrender.com/api/users/verify/${verToken}`
       )
       .then(() => {
         setStatus(true);

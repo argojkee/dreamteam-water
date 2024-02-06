@@ -45,11 +45,6 @@ const AuthForm = () => {
   const [passEyeToggle, setPassEyeToggle] = useState(false);
   const [passRepEyeToggle, setPassRepEyeToggle] = useState(false);
 
-  // The 'formik' check all validation expression.
-  // But we have two variants form (logIn and register).
-  // We must create own validate rules function, because
-  // validation expression must be different for each situation.
-
   const validationLoginForm = {
     email: Yup.string()
       .matches(

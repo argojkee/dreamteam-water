@@ -10,19 +10,12 @@ import { useSelector } from 'react-redux';
 import { getCurrentUser } from '../../redux/auth/authSelectors';
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
-//const BASE_URL = 'https://dreamteam-water-server.onrender.com/';
-
 export default function UserLogoModal() {
   const [isOpen, setOpen] = useState(false);
   const [isShowLogoutModal, setIsShowLogoutModal] = useState(false);
   const [isShowSettingsModal, setIsShowSettingsModal] = useState(false);
 
   const { email, name, avatarURL } = useSelector(getCurrentUser);
-
-  //let newEmail = email[0].toUpperCase() + email.slice(1);
-  // let unpolished_userEmail = '';
-  // let unpolished_userName = '';
-  // let unpolished_userAvatarUrl = '';
 
   //const get_water_Current_Month = useSelector(getCurrentMonth);
   let unpolished_userName =

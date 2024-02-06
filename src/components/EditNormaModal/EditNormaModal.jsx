@@ -72,9 +72,9 @@ const EditNormaModal = ({ closeModal }) => {
        
         if(drink !== '')
         {
-          dispatch(editDailyNorm(drink * 1000));
+          await dispatch(editDailyNorm(drink * 1000));
         } else{
-          toastError('There are no filled fields');
+          return toastError('There are no filled fields');
         };
 
       };

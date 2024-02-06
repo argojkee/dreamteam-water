@@ -20,6 +20,7 @@ const MonthStatsTable = () => {
   const currentMonthStatistic = useSelector(getCurrentMonth);
   const currentDayStatistic = useSelector(getCurrentDay);
   const isMonthLoading = useSelector(getIsMonthDataLoading);
+  const [isOtherMonthLoading, setIsOtherMonthLoading] = useState(false);
 
   useEffect(() => {
     const picData = [selectedMonth.month, selectedMonth.year];
@@ -43,6 +44,7 @@ const MonthStatsTable = () => {
     if (compare === -1) {
       const fetchData = async () => {
         try {
+          setIsOtherMonthLoading(true);
           const newMonthStatistic = await getMonthInfoAPI({
             month: selectedMonth.month + 1,
             year: selectedMonth.year,
@@ -51,6 +53,8 @@ const MonthStatsTable = () => {
           setMonthStatistic([...newMonthStatistic]);
         } catch (error) {
           setMonthStatistic([]);
+        } finally {
+          setIsOtherMonthLoading(false);
         }
       };
       fetchData();
@@ -60,6 +64,7 @@ const MonthStatsTable = () => {
     currentMonthStatistic,
     currentDayStatistic,
     setMonthStatistic,
+    setIsOtherMonthLoading,
   ]);
 
   return (
@@ -67,18 +72,20 @@ const MonthStatsTable = () => {
       <MonthSwitcher
         selectedMonth={selectedMonth}
         setSelectedMonth={setSelectedMonth}
-      /> <RelativDiv>
-      {isMonthLoading ? (
-        <SpinnerContainer>
-          <PiSpinnerGap className="spinner" size={40} />
-        </SpinnerContainer>
-      ) : (
-        <MonthStatistic
-          selectedMonth={selectedMonth}
-          monthStatistic={monthStatistic}
-          setSelectedMonth={setSelectedMonth}
-        />
-      )} </RelativDiv>
+      />{' '}
+      <RelativDiv>
+        {isMonthLoading || isOtherMonthLoading ? (
+          <SpinnerContainer>
+            <PiSpinnerGap className="spinner" size={40} />
+          </SpinnerContainer>
+        ) : (
+          <MonthStatistic
+            selectedMonth={selectedMonth}
+            monthStatistic={monthStatistic}
+            setSelectedMonth={setSelectedMonth}
+          />
+        )}{' '}
+      </RelativDiv>
     </div>
   );
 };

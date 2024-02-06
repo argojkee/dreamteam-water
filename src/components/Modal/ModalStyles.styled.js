@@ -31,7 +31,7 @@ export const ModalStyles = styled.div`
   }
   @media screen and (min-width: 768px) {
     .modal {
-      max-width: 90%;
+      max-width: 100%;
     }
   }
 

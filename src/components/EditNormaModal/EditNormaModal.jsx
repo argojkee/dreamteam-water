@@ -69,12 +69,15 @@ const EditNormaModal = ({ closeModal }) => {
           );
         }
       } else {
-        if (drink !== '') {
+       
+        if(drink !== '')
+        {
           await dispatch(editDailyNorm(drink * 1000));
-        } else {
-          return toastError('All fieldі must be filled');
-        }
-      }
+        } else{
+          return toastError('There are no filled fields');
+        };
+
+      };
 
       if (getIsEditingNorm) closeModal();
     },
@@ -164,6 +167,7 @@ const EditNormaModal = ({ closeModal }) => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.weight}
+                placeholder="0"
                 className="numberKilo weightError"
               />
             </label>
@@ -181,6 +185,7 @@ const EditNormaModal = ({ closeModal }) => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.activity}
+                placeholder="0"
                 className="numberKilo activityError"
               />
             </label>
@@ -206,6 +211,7 @@ const EditNormaModal = ({ closeModal }) => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.drink}
+                placeholder="0"
                 className="numberKilo drinkError"
               />
             </label>

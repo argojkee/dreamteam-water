@@ -21,7 +21,7 @@ Front End: React, Redux
 Back End: MongoDB, Express, Mongoose 
 Додаткові інструменти: Nodemailer, emotion, mui/material, axios, formik, react-toastify, styled-components, redux-persist
 
-Live page - https://argojkee.github.io/dreamteam-water/login 
+Live page - https://argojkee.github.io/dreamteam-water/login</br>
 Back-repository - https://github.com/OsMax/dreamteam-water-server 
 Swagger - https://dreamteam-water-server.onrender.com/api-docs/ 
 Render - https://dreamteam-water-server.onrender.com

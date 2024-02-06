@@ -14,7 +14,9 @@ const signUpAPI = createAsyncThunk(
       // write token to axios parameter
       axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
 
-      toastSuccess('Registration successful. Welcome');
+      toastSuccess(
+        'We have sent email verification on your email. Please, check it'
+      );
       return data;
     } catch (error) {
       toastError('Something went wrong. Please try again or log in');

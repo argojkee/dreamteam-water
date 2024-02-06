@@ -9,22 +9,18 @@ const DailyNorm = () => {
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const norm = useSelector(getCurrentNorm);
 
-  // const setNorma = (data) => {
-  //   if(data !== '') return data;
-  // };
-
   return (
     <DailyNormStyles>
       <div className="dailyNormaSection">
         <h2>My daily norma</h2>
-        {norm && (
+        {norm !== undefined ? (
           <div className="button-info-container">
             <span>{Math.round((norm / 1000) * 10) / 10} L</span>
             <button type="button" onClick={() => setIsShowEditModal(true)}>
               Edit
             </button>
           </div>
-        )}
+        ) : null}
       </div>
 
       {isShowEditModal && (

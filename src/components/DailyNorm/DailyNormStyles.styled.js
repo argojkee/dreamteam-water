@@ -3,10 +3,12 @@ import styled from 'styled-components';
 import background from '../../images/main-bg/Bottle-Main-lg.png';
 
 export const DailyNormStyles = styled.div`
+
   background-image: url(${background});
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  margin-bottom: 18px;
 
   .dailyNormaSection {
 
@@ -66,6 +68,7 @@ export const DailyNormStyles = styled.div`
   @media screen and (max-width: 767px) {
     height: 290px;
     background-image: url(${background});
+    background-position: bottom;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {

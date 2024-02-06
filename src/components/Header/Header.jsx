@@ -6,7 +6,8 @@ import Container from 'components/Container/Container';
 import UserLogoModal from '../UserLogoModal/UserLogoModal';
 import { HeaderStyles } from './HeaderStyled.styled';
 import iconHome from '../../icons/Logo.svg';
-import avatar from '../../icons/outline.png';
+//import avatar from '../../icons/outline.png';
+import avatarsvg from '../../icons/user_outline.svg';
 
 const Header = () => {
   const token = useSelector(getToken);
@@ -28,7 +29,7 @@ const Header = () => {
                 Sign in
               </NavLink>
               <div>
-                <img src={avatar} alt="iconHome" />
+                <img src={avatarsvg} alt="iconHome" />
               </div>
             </div>
           )}

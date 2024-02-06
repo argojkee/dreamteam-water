@@ -49,7 +49,7 @@ const MonthStatistic = ({ selectedMonth, monthStatistic }) => {
         if (day) {
           daysArr.push({
             date: i,
-            percent: `${day.percent}%`,
+            percent:`${day.percent}%`,
             norm: `${day.norm / 1000}L`,
             drinks: day.drinks,
           });
@@ -78,10 +78,7 @@ const MonthStatistic = ({ selectedMonth, monthStatistic }) => {
               drinks={drinks}
               norm={norm}
               percent={percent}
-              dataFulfilled={percent > 100 ? 'true' : 'false'}
-              disabled={percent === '' ? true : false}
               selectedMonth={selectedMonth}
-              statistic={statistic}
             />
             <p>{percent}</p>
           </li>

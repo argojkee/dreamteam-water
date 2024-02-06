@@ -15,6 +15,7 @@ export const PopoverDayStyles = styled.div`
   line-height: 1.25;
   border-radius: 10px;
   box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.3);
+  cursor: pointer;
 
   @media screen and (max-width: 767px) {
     width: 280px;

@@ -1,5 +1,5 @@
 import { Popover } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getMonthsArr } from '../helpers/getMonthsArr';
 import { TfiClose } from 'react-icons/tfi';
 import { PopoverDayStyles } from './PopoverDayStyles.styled';
@@ -10,15 +10,32 @@ const PopoverDay = ({
   percent,
   drinks,
   norm,
-  disabled,
-  statistic,
   selectedMonth,
-  dataFulfilled,
 }) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [coordsButton, setCoordsButton] = useState({ left: 0, top: 0 });
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const handleResize = (event) => {
+      setIsMobile(event.matches);
+    };
+
+    handleResize(mediaQuery);
+    mediaQuery.addEventListener('change', handleResize);
+    return () => {
+      mediaQuery.removeEventListener('change', handleResize);
+    };
+  }, []);
+
 
   const handleClick = event => {
+    const button = event.currentTarget
     setAnchorEl(event.currentTarget);
+    const anchorTop = button.getBoundingClientRect().top;
+    setCoordsButton(prev => ({ ...prev, top: anchorTop }));
   };
 
   const handleClose = () => {
@@ -28,15 +45,30 @@ const PopoverDay = ({
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
+  const anchor = isMobile ? 'anchorPosition' : 'anchorEl'
+  const halfWidthPopover = 280/2;
+  const screenWidth = window.innerWidth/2;
+  const leftCoordinate = screenWidth + halfWidthPopover
+
+  const returnNumber = (string) => {
+    const processedString = string.slice(0, -1);
+    if (processedString === '0') {
+      return 1
+    }
+    const number = Number(processedString);
+    return number;
+  }
+
   return (
     <>
       <>
         <PopoverButton
-          data-fulfilled={dataFulfilled}
-          disabled={disabled}
+          data-fulfilled={returnNumber(percent) >= 100 ? 'true' : 'false'}
+          disabled={!returnNumber(percent) ? true : false}
           aria-describedby={id}
           $variant="contained"
           onClick={handleClick}
+          onMouseEnter={handleClick}
         >
           {date}
         </PopoverButton>
@@ -47,9 +79,11 @@ const PopoverDay = ({
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
+        anchorReference= {anchor}
+        anchorPosition={{ top: coordsButton.top, left: leftCoordinate }}
         anchorOrigin={{
           vertical: 'top',
-          horizontal: 'left',
+          horizontal: 'center',
         }}
         transformOrigin={{
           vertical: 'bottom',

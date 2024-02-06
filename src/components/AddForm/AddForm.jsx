@@ -156,9 +156,6 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
 function generateTimeOptions() {
   const options = [];
   const now = new Date();
-  // const roundedMinutes = Math.ceil(now.getMinutes() / 5) * 5;
-  // const currentFormattedHour = now.getHours().toString().padStart(2, '0');
-  // const currentFormattedMinute = roundedMinutes.toString().padStart(2, '0');
 
   for (let hour = 0; hour < 24; hour++) {
     for (let minute = 0; minute < 60; minute += 5) {

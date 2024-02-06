@@ -131,6 +131,7 @@ export const SettingModalStyled = styled.div`
     background-color: var(--primary-button-text-color);
 
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23407BFF'/%3E%3C/svg%3E");
+    background-size: auto;
   }
 
   .setting-form-gender-button {

@@ -41,14 +41,11 @@ export const WaterRatioPanel = () => {
       case 'PROGRESS_BAR_THUMB': {
         if (progressValue >= 100) return 'calc(100% - 13px)';
         return `calc(${progressValue}% - 7px)`;
-        // if (progressValue <= 5) return `calc(${progressValue}% - 7px)`;
-        // return progressValue < 2 ? `0` : `calc(${progressValue}% - 13px)`;
       }
       case 'PROGRESS_BAR_VALUE': {
         if (progressValue >= 100) return `calc(100% - 50px)`;
 
         return `calc(${progressValue}% - 30px)`;
-        // return progressValue < 2 ? `0` : `calc(${progressValue}% - 3%)`;
       }
       default:
         return `${progressValue}%`;

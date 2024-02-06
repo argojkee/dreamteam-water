@@ -5,7 +5,8 @@
 людям зберігати належний рівень гідратації, відстежуючи споживання води протягом
 дня.<br/>
 
-(./assets/banner-readme.png)
+<img src="./assets/banner-readme.png" alt="banner project" />
+
 
 Учасники команди та їх обов'язки:</br> Maksym Haidabura - Team Lead </br>
 Oleksandr Kalinovskyi - Scrum Master, HomePage </br> Maksym Osovik - Back End

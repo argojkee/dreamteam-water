@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
 import logOutAPI from 'API/Auth/logOutAPI';
 import { PiSpinnerGap } from 'react-icons/pi';
-import { getIsDeleting } from '../../redux/water/waterSelectors';
+import { getIsAuthLoading } from '../../redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
 
 const LogoutBtn = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsDeleting);
+  const isLoading = useSelector(getIsAuthLoading);
 
   const onLogoutPress = () => {
     dispatch(logOutAPI());

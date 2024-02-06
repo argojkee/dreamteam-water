@@ -2,10 +2,12 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getToken } from '../../redux/auth/authSelectors';
 import Container from 'components/Container/Container';
+// import UserOwnPopover from '../UserOwnPopover/UserOwnPopover';
 import UserLogoModal from '../UserLogoModal/UserLogoModal';
 import { HeaderStyles } from './HeaderStyled.styled';
 import iconHome from '../../icons/Logo.svg';
-import avatar from '../../icons/outline.png';
+//import avatar from '../../icons/outline.png';
+import avatarsvg from '../../icons/user_outline.svg';
 
 const Header = () => {
   const token = useSelector(getToken);
@@ -27,7 +29,7 @@ const Header = () => {
                 Sign in
               </NavLink>
               <div>
-                <img src={avatar} alt="iconHome" />
+                <img src={avatarsvg} alt="iconHome" />
               </div>
             </div>
           )}

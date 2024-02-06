@@ -137,10 +137,7 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
           <label className="string">Recording time:</label>
           <select
             value={recordTime}
-            onChange={e => {
-              console.log(e.target.value);
-              setRecordTime(e.target.value);
-            }}
+            onChange={e => setRecordTime(e.target.value)}
           >
             {generateTimeOptions()}
           </select>

@@ -28,7 +28,7 @@ const Header = () => {
                 Sign in
               </NavLink>
               <div>
-                <img src={avatar} alt="iconHome" />
+                <img className="avatarBox" src={avatar} alt="iconHome" />
               </div>
             </div>
           )}

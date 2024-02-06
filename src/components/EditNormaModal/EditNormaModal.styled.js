@@ -57,6 +57,7 @@ export const StyledDailyNormaContainer = styled.div`
   }
 
   .calculate {
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -158,6 +159,11 @@ export const StyledDailyNormaContainer = styled.div`
     font-size: 16px;
     font-weight: 400;
     line-height: 1.25;
+    color: #8f8f8f;
+  }
+
+  .input::placeholder {
+    font-size: 16px;
     color: #8f8f8f;
   }
 
@@ -292,7 +298,7 @@ export const StyledDailyNormaContainer = styled.div`
   /* стилі для радіокнопки, яка знаходиться у стані disabled */
   .custom-radio:disabled + label::before {
     border-color: gray;
-    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
   }
 
   .radio-buttons-container {

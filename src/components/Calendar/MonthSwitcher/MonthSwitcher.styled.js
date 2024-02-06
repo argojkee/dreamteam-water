@@ -27,10 +27,7 @@ export const MonthSwitcherContainer = styled.div`
     display: block;
   }
 
-  // @media screen and (max-width: 319px) {}
-  // @media screen and (min-width: 320px) {}
-  // @media screen and (min-width: 320px) and (max-width: 767px) {}
-  // @media screen and (min-width: 768px) and (max-width: 1439px) {}
+
 
   @media screen and (min-width: 1440px) {
     h2 {

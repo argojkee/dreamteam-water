@@ -17,11 +17,12 @@ export const UserLogoModalStyles = styled.div`
     border: none;
     background-color: #EFECEC;
     display: inline-block;
-      overflow:hidden;
+    overflow:hidden;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     box-sizing: border-box;
+    color: #2f2f2f;
   }
 
   .avatar {

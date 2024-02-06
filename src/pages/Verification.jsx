@@ -45,7 +45,8 @@ const HomePage = () => {
                 {!verStatus && (
                   <div className="box_textMessage">
                     <p className="text_message">
-                      Wrong link or user was already verify!
+                      You have not verified your email. To confirm, go to your
+                      email and follow the verification link!
                     </p>
                   </div>
                 )}

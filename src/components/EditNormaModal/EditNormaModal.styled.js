@@ -9,7 +9,7 @@ export const StyledDailyNormaContainer = styled.div`
   text-align: left;
 
   object-fit: contain;
-  overflow-y: auto;
+  // overflow-y: auto;
   height: 620px;
 
   .theory {
@@ -67,11 +67,15 @@ export const StyledDailyNormaContainer = styled.div`
   }
 
   .activity {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
 
   .calculate div:last-child p {
     margin-bottom: 0;
+  }
+
+  .norma-text {
+    height: fit-content;
   }
 
   .form-text {
@@ -108,6 +112,7 @@ export const StyledDailyNormaContainer = styled.div`
   }
 
   .norma {
+    height: fit-content;
     margin-left: 6px;
   }
 
@@ -192,6 +197,7 @@ export const StyledDailyNormaContainer = styled.div`
 
   .norma-container {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
   }
 
@@ -219,8 +225,11 @@ export const StyledDailyNormaContainer = styled.div`
   }
 
   .errors {
+    height: 16px;
     font-size: 16px;
     color: #ef5050;
+
+    margin-bottom: 8px;
   }
 
   /**************INPUT TYPE RADIO********************* */
@@ -324,8 +333,16 @@ export const StyledDailyNormaContainer = styled.div`
       width: 100%;
     }
 
+    .norma-text {
+      width: 70%;
+    }
+
     .list {
       flex-direction: column;
+    }
+
+    button.btn-save {
+      margin: 0 8px 8px auto;
     }
   }
 

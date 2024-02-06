@@ -7,6 +7,8 @@ import { getIsEditingNorm } from '../../redux/water/waterSelectors';
 import { PiSpinnerGap } from 'react-icons/pi';
 import { getUserGender } from '../../redux/auth/authSelectors';
 
+import { toastError } from 'services/toastNotification';
+
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -36,8 +38,8 @@ const EditNormaModal = ({ closeModal }) => {
 
     //yup stored own validate functions (for weight, activity...etc)
     validationSchema: Yup.object({
-      weight: Yup.number().notRequired()
-        .positive()
+      weight: Yup.number()
+        .positive().notRequired()
         .max(400, 'Max value 400kg')
         .min(40, 'Min value 40kg'),
       activity: Yup.number().notRequired()
@@ -54,7 +56,7 @@ const EditNormaModal = ({ closeModal }) => {
     //! They will can get: 'values.<field name>' or change values on {email, password}
     onSubmit: ({ weight, activity, drink }) => {
       
-      if(drink === '') {
+      if(drink === '' &&  weight !== '' &&  activity !== '') {
 
         if (gender === 'woman') {
           dispatch(editDailyNorm((weight * 0.03 + activity * 0.4) * 1000));
@@ -63,8 +65,13 @@ const EditNormaModal = ({ closeModal }) => {
         }
 
       } else {
-        
-        dispatch(editDailyNorm(drink * 1000));
+       
+        if(drink !== '')
+        {
+          dispatch(editDailyNorm(drink * 1000));
+        } else{
+          toastError('All fieldі must be filled');
+        };
 
       };
 
@@ -178,8 +185,8 @@ const EditNormaModal = ({ closeModal }) => {
             </label>
 
             <div className="norma-container">
-              <p className="formcalc-text">
-                The required amount of water in liters per day:{' '}
+              <p className="norma-text">
+                The required amount of water in liters per day:
               </p>
               <span className="norma">1.8 L</span>
             </div>

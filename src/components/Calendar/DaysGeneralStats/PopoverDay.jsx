@@ -10,10 +10,7 @@ const PopoverDay = ({
   percent,
   drinks,
   norm,
-  disabled,
-  statistic,
   selectedMonth,
-  dataFulfilled,
 }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -28,12 +25,18 @@ const PopoverDay = ({
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  const anchor = isMobile ? 'anchorPosition' : 'anchorEl'
+  const halfWidthPopover = 280/2;
+  const screenWidth = window.innerWidth/2;
+  const leftCoordinate = screenWidth + halfWidthPopover
+
   return (
     <>
       <>
         <PopoverButton
-          data-fulfilled={dataFulfilled}
-          disabled={disabled}
+          data-fulfilled={percent > 100 ? 'true' : 'false'}
+          disabled={percent === '' ? true : false}
           aria-describedby={id}
           $variant="contained"
           onClick={handleClick}
@@ -47,9 +50,11 @@ const PopoverDay = ({
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
+        anchorReference= {anchor}
+        anchorPosition={{ top: 0, left: leftCoordinate }}
         anchorOrigin={{
           vertical: 'top',
-          horizontal: 'left',
+          horizontal: 'center',
         }}
         transformOrigin={{
           vertical: 'bottom',
@@ -70,7 +75,7 @@ const PopoverDay = ({
             Daily norma: <span>{norm}</span>
           </p>
           <p>
-            Fulfillment of the daily norm: <span>{percent}</span>
+            Fulfillment of the daily norm: <span>{percent}%</span>
           </p>
           <p>
             How many servings of water: <span>{drinks}</span>

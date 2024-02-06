@@ -24,7 +24,7 @@ const MonthStatistic = ({ selectedMonth, monthStatistic }) => {
 
       if (compare === 0) {
         if (!day && i <= today.day) {
-          daysArr.push({ date: i, percent: 0, norm: '2L', drinks: 0 });
+          daysArr.push({ date: i, percent: '0%', norm: '2L', drinks: 0 });
         }
         if (!day && i > today.day) {
           daysArr.push({ date: i, percent: '' });
@@ -35,7 +35,7 @@ const MonthStatistic = ({ selectedMonth, monthStatistic }) => {
             : day.drinks;
           daysArr.push({
             date: i,
-            percent: day.percent,
+            percent: `${day.percent}%`,
             norm: `${day.norm / 1000}L`,
             drinks: drinkCount,
           });
@@ -49,12 +49,12 @@ const MonthStatistic = ({ selectedMonth, monthStatistic }) => {
         if (day) {
           daysArr.push({
             date: i,
-            percent:day.percent,
+            percent:`${day.percent}%`,
             norm: `${day.norm / 1000}L`,
             drinks: day.drinks,
           });
         } else {
-          daysArr.push({ date: i, percent: 0, norm: '2L', drinks: 0 });
+          daysArr.push({ date: i, percent: '0%', norm: '2L', drinks: 0 });
         }
       }
     }
@@ -80,7 +80,7 @@ const MonthStatistic = ({ selectedMonth, monthStatistic }) => {
               percent={percent}
               selectedMonth={selectedMonth}
             />
-            <p>{percent}%</p>
+            <p>{percent}</p>
           </li>
         ))}
       </MonthStatisticlist>

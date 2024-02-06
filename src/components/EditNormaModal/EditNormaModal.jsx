@@ -7,6 +7,8 @@ import { getIsEditingNorm } from '../../redux/water/waterSelectors';
 import { PiSpinnerGap } from 'react-icons/pi';
 import { getUserGender } from '../../redux/auth/authSelectors';
 
+import { toastError } from 'services/toastNotification';
+
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -29,42 +31,52 @@ const EditNormaModal = ({ closeModal }) => {
   // create 'formik' hook and configurate him
   const formik = useFormik({
     initialValues: {
-      weight: '0',
-      activity: '0',
-      drink: '0',
+      weight: '',
+      activity: '',
+      drink: '',
     },
 
     //yup stored own validate functions (for weight, activity...etc)
     validationSchema: Yup.object({
       weight: Yup.number()
-        .positive()
+        .positive().notRequired()
         .max(400, 'Max value 400kg')
-        .min(40, 'Min value 40kg')
-        .required('Password field is required'),
-      activity: Yup.number()
+        .min(40, 'Min value 40kg'),
+      activity: Yup.number().notRequired()
         .positive()
         .max(24, 'Max value 24h')
-        .min(0.1, 'Min value 0.1h')
-        .required('Password field is required'),
-      drink: Yup.number()
+        .min(0.1, 'Min value 0.1h'),
+      drink: Yup.number().notRequired()
         .positive()
         .max(7, 'Max value 7L')
-        .min(0.1, 'Min value 0.1h')
-        .required('Password field is required'),
+        .min(0.1, 'Min value 0.1h'),
     }),
 
     //! 'values' contains ended values all Form inputs.
     //! They will can get: 'values.<field name>' or change values on {email, password}
-    onSubmit: ({ weight, activity }) => {
-      //После валидации и всего прочего, передаёшь норму, которую получишь по формуле или какая там логика...
+    onSubmit: ({ weight, activity, drink }) => {
+      
+      if(drink === '' &&  weight !== '' &&  activity !== '') {
 
-      if (gender === 'woman') {
-        dispatch(editDailyNorm((weight * 0.03 + activity * 0.4) * 1000));
+        if (gender === 'woman') {
+          dispatch(editDailyNorm((weight * 0.03 + activity * 0.4) * 1000));
+        } else {
+          dispatch(editDailyNorm((weight * 0.04 + activity * 0.6) * 1000));
+        }
+
       } else {
-        dispatch(editDailyNorm((weight * 0.04 + activity * 0.6) * 1000));
-      }
+       
+        if(drink !== '')
+        {
+          dispatch(editDailyNorm(drink * 1000));
+        } else{
+          toastError('All fieldі must be filled');
+        };
+
+      };
 
       if (getIsEditingNorm) closeModal();
+      
     },
   });
 
@@ -174,8 +186,8 @@ const EditNormaModal = ({ closeModal }) => {
             </label>
 
             <div className="norma-container">
-              <p className="formcalc-text">
-                The required amount of water in liters per day:{' '}
+              <p className="norma-text">
+                The required amount of water in liters per day:
               </p>
               <span className="norma">1.8 L</span>
             </div>

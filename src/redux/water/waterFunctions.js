@@ -96,7 +96,7 @@ export const editDailyNorm = createAsyncThunk(
         norm,
       });
 
-      toastSuccess('Deleted successful ');
+      toastSuccess('Edit successful');
       return data;
     } catch (error) {
       toastError('Something went wrong');

@@ -1,52 +1,44 @@
-Проект WaterTracker від команди CODECRAFTERS
+WaterTracker Project by CODECRAFTERS Team The CODECRAFTERS team has developed
+the WaterTracker project - a tool designed to track daily water consumption.
+This project aims to help individuals maintain proper hydration levels by
+monitoring their water intake throughout the day.
+<img src="./assets/banner-readme.png" alt="banner project" /> Team Members and
+Responsibilities<br/> Maksym Haidabura - Team Lead<br/> Oleksandr Kalinovskyi -
+Scrum Master, HomePage<br/> Maksym Osovik - Back End Development<br/> Dmytro
+Shevchenko - Sign in, Sign up<br/> Yurii Yakovchuk - Swagger Documentation<br/>
+Yurii Vovk - DailyNorma<br/> Ruslana Matviienko - Header<br/> Igor Lunyakin -
+Setting<br/> Anna Grigoreva - Today and WaterRatioPanel<br/> Svitlana Liulka -
+Calendar<br/> Sergii Stratovych - Add water<br/> Technologies Used<br/> The
+WaterTracker project utilizes the following technologies:<br/>
 
-Команда CODECRAFTERS розробила проект WaterTracker - інструмент, призначений для
-відстеження кількості спожитої води щодня. Цей проект призначений допомогти
-людям зберігати належний рівень гідратації, відстежуючи споживання води протягом
-дня.<br/>
+Front End: React, Redux<br/> Back End: MongoDB, Express, Mongoose<br/>
+Additional Tools: Nodemailer, emotion, mui/material, axios, formik,
+react-toastify, styled-components, redux-persist
 
-<img src="./assets/banner-readme.png" alt="banner project" />
+Live page - https://argojkee.github.io/dreamteam-water/login<br/>
+Back-repository - https://github.com/OsMax/dreamteam-water-server<br/> Swagger -
+https://dreamteam-water-server.onrender.com/api-docs/<br/> Render -
+https://dreamteam-water-server.onrender.com<br/>
 
+Usage<br/> Installation<br/> Clone the repository from the following link:<br/>
+WaterTracker Repository<br/>
 
-Учасники команди та їх обов'язки:</br> Maksym Haidabura - Team Lead </br>
-Oleksandr Kalinovskyi - Scrum Master, HomePage </br> Maksym Osovik - Back End
-Development </br> Dmytro Shevchenko - Sign in, Sign up </br> Yurii Yakovchuk -
-Swagger Documentation </br> Yurii Vovk - DailyNorma </br> Ruslana Matviienko -
-Header </br> Igor Lunyakin - Settings </br> Anna Grigoreva - Today and
-WaterRatioPanel </br> Svitlana Liulka - Calendar </br> Sergii Stratovych - Add
-water</br>
+Navigate to the project directory<br/>
 
-Використані технології Проект WaterTracker використовує наступні
-технології:</br>
+Install dependencies<br/>
 
-Front End: React, Redux </br> Back End: MongoDB, Express, Mongoose </br>
-Додаткові інструменти: Nodemailer, emotion, mui/material, axios, formik,
-react-toastify, styled-components, redux-persist</br>
+npm install<br/>
 
-Live page - https://argojkee.github.io/dreamteam-water/login</br>
-Back-repository - https://github.com/OsMax/dreamteam-water-server </br>
-Swagger - https://dreamteam-water-server.onrender.com/api-docs/ </br> Render -
-https://dreamteam-water-server.onrender.com</br>
+Running the project<br/>
 
-Використання
+Start the server:<br/> npm start<br/>
 
-Інсталяція Склонуйте репозиторій за посиланням:
-https://github.com/argojkee/dreamteam-water
+Open your browser and navigate to the provided link.<br/>
 
-Перейдіть до каталогу проекту
+Contribution<br/> The CODECRAFTERS team welcomes contributions from other
+developers. If you'd like to contribute, please create a pull request or submit
+an issue explaining your suggestions or changes.
 
-Встановіть залежності
+License<br/> This project is licensed under the GoIT Licence
 
-npm install
-
-Запуск проекту Запустіть сервер: npm start Відкрийте браузер і перейдіть за
-наданим посиланням.
-
-Внесення вкладу Команда CODECRAFTERS вітає внесення внесків від інших
-розробників. Якщо ви бажаєте внести свій внесок, будь ласка, створіть запит на
-включення змін або надішліть запитання, де розкажіть про ваші пропозиції чи
-зміни.
-
-Ліцензія Цей проект ліцензований відповідно до ліцензії GoIT.
-
-Контакти: aik5787@gmail.com
+Contacts: aik5787@gmail.com

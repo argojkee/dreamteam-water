@@ -76,6 +76,7 @@ const EditNormaModal = ({ closeModal }) => {
       };
 
       if (getIsEditingNorm) closeModal();
+      
     },
   });
 

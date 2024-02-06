@@ -50,9 +50,4 @@ export const ModalStyles = styled.div`
     height: 24px;
     fill: var(--primary-color);
   }
-  @media screen and (max-width: 767px) {
-    .modal {
-      // width: 80%;
-    }
-  }
 `;

@@ -9,7 +9,7 @@ export const StyledDailyNormaContainer = styled.div`
   text-align: left;
 
   object-fit: contain;
-  // overflow-y: auto;
+
   height: 620px;
 
   .theory {

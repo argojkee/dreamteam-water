@@ -39,14 +39,17 @@ const EditNormaModal = ({ closeModal }) => {
     //yup stored own validate functions (for weight, activity...etc)
     validationSchema: Yup.object({
       weight: Yup.number()
-        .positive().notRequired()
+        .positive()
+        .notRequired()
         .max(400, 'Max value 400kg')
         .min(40, 'Min value 40kg'),
-      activity: Yup.number().notRequired()
+      activity: Yup.number()
+        .notRequired()
         .positive()
         .max(24, 'Max value 24h')
         .min(0.1, 'Min value 0.1h'),
-      drink: Yup.number().notRequired()
+      drink: Yup.number()
+        .notRequired()
         .positive()
         .max(7, 'Max value 7L')
         .min(0.1, 'Min value 0.1h'),
@@ -54,16 +57,17 @@ const EditNormaModal = ({ closeModal }) => {
 
     //! 'values' contains ended values all Form inputs.
     //! They will can get: 'values.<field name>' or change values on {email, password}
-    onSubmit: ({ weight, activity, drink }) => {
-      
-      if(drink === '' &&  weight !== '' &&  activity !== '') {
-
+    onSubmit: async ({ weight, activity, drink }) => {
+      if (drink === '' && weight !== '' && activity !== '') {
         if (gender === 'woman') {
-          dispatch(editDailyNorm((weight * 0.03 + activity * 0.4) * 1000));
+          await dispatch(
+            editDailyNorm((weight * 0.03 + activity * 0.4) * 1000)
+          );
         } else {
-          dispatch(editDailyNorm((weight * 0.04 + activity * 0.6) * 1000));
+          await dispatch(
+            editDailyNorm((weight * 0.04 + activity * 0.6) * 1000)
+          );
         }
-
       } else {
        
         if(drink !== '')
@@ -76,7 +80,6 @@ const EditNormaModal = ({ closeModal }) => {
       };
 
       if (getIsEditingNorm) closeModal();
-      
     },
   });
 

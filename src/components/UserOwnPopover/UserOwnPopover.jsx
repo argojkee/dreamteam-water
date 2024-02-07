@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Popover from '@mui/material/Popover';
 import { UserOwnPopoverStyles } from './UserOwnPopoverStyles.styled';
 import vector from '../../icons/solid.png';
@@ -9,12 +9,14 @@ import { Modal } from 'components/Modal/Modal';
 import LogoutDeleteModalContent from 'components/LogoutDeleteModal/LogoutDeleteModalContent';
 import { SettingModal } from 'components/SettingModal/SettingModal';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { getIsDarkTheme } from 'redux/theme/themeSelectors';
 
 export default function UserOwnPopover() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [isShowLogoutModal, setIsShowLogoutModal] = useState(false);
   const [isShowSettingsModal, setIsShowSettingsModal] = useState(false);
+  const isDark = useSelector(getIsDarkTheme);
 
   let userName = 'Ruslana';
   let userAvatar = null;
@@ -63,7 +65,7 @@ export default function UserOwnPopover() {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <UserOwnPopoverStyles>
+    <UserOwnPopoverStyles $isDark={isDark}>
       <Button
         className="buttonPopover"
         variant="contained"

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const MainPageStyles = styled.section`
+  background-color: ${props =>
+    props.$isDark ? 'var(--dark-bg-color)' : 'var(--white-color)'};
   .main-container {
     width: 100%;
     display: flex;
@@ -8,8 +10,15 @@ export const MainPageStyles = styled.section`
 
   .right-side {
     border-radius: 10px;
-    background: var(--Secondary-color-2, #ecf2ff);
+    background: ${props =>
+      props.$isDark
+        ? 'rgba(85, 85, 85, 0.7)'
+        : 'var(--second-background-color)'};
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+  }
+
+  .status-bar {
+    background-color: var(--second-background-color);
   }
 
   @media screen and (max-width: 767px) {
@@ -48,7 +57,6 @@ export const MainPageStyles = styled.section`
     .status-bar {
       width: 100%;
       height: 134px;
-      background-color: gray;
       padding-top: 16px;
     }
   }
@@ -63,7 +71,6 @@ export const MainPageStyles = styled.section`
     .today {
       width: 100%;
       height: 260px;
-      background-color: gray;
     }
   }
   @media screen and (min-width: 768px) {
@@ -77,7 +84,6 @@ export const MainPageStyles = styled.section`
     .status-bar {
       width: 100%;
       height: 90px;
-      background-color: gray;
       padding-top: 24px;
     }
 
@@ -103,7 +109,6 @@ export const MainPageStyles = styled.section`
     .today {
       width: 544px;
       height: 260px;
-      background-color: gray;
     }
   }
 `;

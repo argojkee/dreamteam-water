@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import background from '../../images/main-bg/Bottle-Main-lg.png';
 
 export const DailyNormStyles = styled.div`
-
   background-image: url(${background});
   background-size: contain;
   background-position: center;
@@ -11,7 +10,6 @@ export const DailyNormStyles = styled.div`
   margin-bottom: 18px;
 
   .dailyNormaSection {
-
     width: fit-content;
     padding: 8px 20px 8px 20px;
 
@@ -26,8 +24,8 @@ export const DailyNormStyles = styled.div`
     font-size: 18px;
     font-weight: 500;
     line-height: 1.33;
-
     text-align: left;
+    color: ${props => (props.$isDark ? 'var(--dark-text-color)' : 'black')};
   }
 
   .button-info-container {
@@ -43,7 +41,7 @@ export const DailyNormStyles = styled.div`
 
     text-align: left;
 
-    color: rgba(64, 123, 255, 1);
+    color: ${props => (props.$isDark ? 'orange' : 'rgba(64, 123, 255, 1)')};
   }
 
   button {
@@ -58,7 +56,8 @@ export const DailyNormStyles = styled.div`
     margin-left: 12px;
     text-align: left;
 
-    color: rgba(139, 174, 255, 1);
+    color: ${props =>
+      props.$isDark ? 'rgba(255, 165, 0, 0.5)' : 'rgba(139, 174, 255, 1)'};
 
     cursor: pointer;
   }

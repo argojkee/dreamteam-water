@@ -6,6 +6,10 @@ export const MonthSwitcherContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  .title {
+    color: ${props => (props.$isDark ? 'white' : 'var(--primary-txt-color)')};
+  }
+
   h2 {
     color: #2f2f2f;
     font-family: Roboto;
@@ -18,7 +22,7 @@ export const MonthSwitcherContainer = styled.div`
     align-items: center;
   }
   p {
-    color: var(--primary-color);
+    color: ${props => (props.$isDark ? 'orange' : 'var(--primary-color)')};
     text-align: center;
     font-family: Roboto;
     font-size: 16px;
@@ -26,8 +30,6 @@ export const MonthSwitcherContainer = styled.div`
     min-width: 120px;
     display: block;
   }
-
-
 
   @media screen and (min-width: 1440px) {
     h2 {

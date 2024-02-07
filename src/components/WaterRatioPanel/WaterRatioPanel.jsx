@@ -19,6 +19,7 @@ import {
 import { Modal } from 'components/Modal/Modal';
 import { getCurrentPercentage } from '../../redux/water/waterSelectors';
 import { AddForm } from 'components/AddForm/AddForm';
+import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
 const elTypes = {
   progressBar: 'PROGRESS_BAR',
@@ -29,7 +30,7 @@ const elTypes = {
 
 export const WaterRatioPanel = () => {
   const [isShowAddModal, setIsShowAddModal] = useState(false);
-
+  const isDark = useSelector(getIsDarkTheme);
   const progressValue = useSelector(getCurrentPercentage);
 
   const calcWidth = elType => {
@@ -71,20 +72,24 @@ export const WaterRatioPanel = () => {
 
   return (
     <div>
-      <RatioBarH3>Today</RatioBarH3>
+      <RatioBarH3 $isDark={isDark}>Today</RatioBarH3>
 
       <PanelDiv>
         <SliderContainerDiv className="slider-container">
           <BarContainerDiv>
             <ProgressBarDiv />
             <ProgressBarLower
+              $isDark={isDark}
               $percentage={calcWidth(elTypes.progressBarLower)}
             />
             <WaterProgressThumb
               $percentage={calcWidth(elTypes.progressBarThumb)}
             />
 
-            <SliderValueDiv $percentage={calcWidth(elTypes.progressBarValue)}>
+            <SliderValueDiv
+              $isDark={isDark}
+              $percentage={calcWidth(elTypes.progressBarValue)}
+            >
               {progressValue ?? '0'}%
             </SliderValueDiv>
           </BarContainerDiv>

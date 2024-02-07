@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { CiCirclePlus } from 'react-icons/ci';
 
 export const RatioBarH3 = styled.h3`
-  color: var(--blue-color);
+  color: ${props => (props.$isDark ? 'white' : 'var(--blue-color)')};
   font-size: 18px;
   font-weight: 400;
   line-height: 1.33;
@@ -63,8 +63,8 @@ export const ProgressBarLower = styled.div`
   height: 8px;
   width: ${({ $percentage }) => $percentage};
   border-radius: 10px;
-  background-color: #9ebbff;
-  
+  background-color: ${props => (props.$isDark ? 'orange' : '#9ebbff')};
+
   transition: all 1000ms var(--cubic);
 `;
 
@@ -79,7 +79,7 @@ export const WaterProgressThumb = styled.div`
   border-radius: 50%;
   background-color: var(--white-color);
   border: solid 1px var(--blue-color);
-  
+
   transition: all 1000ms var(--cubic);
 `;
 
@@ -95,11 +95,11 @@ export const SliderValueDiv = styled.div`
   line-height: 20px;
   letter-spacing: 0em;
   text-align: center;
-  color: var(--blue-color);
+  color: ${props => (props.$isDark ? 'orange' : 'var(--blue-color)')};
 
   margin-top: 13px;
   padding: 0 13px;
-  
+
   transition: all 700ms var(--cubic);
 `;
 
@@ -150,7 +150,7 @@ export const AddWaterButton = styled.button`
   box-shadow: var(--btn-box-shadow);
 
   &:hover,
-  &:focus{
+  &:focus {
     outline: none;
     box-shadow: var(--btn-hover-box-shadow);
   }

@@ -16,11 +16,13 @@ import {
   getDrinks,
   getIsDayDataLoading,
 } from '../../redux/water/waterSelectors';
+import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
 export function TodayWaterList() {
   const [isShowAddModal, setIsShowAddModal] = useState(false);
   const drinks = useSelector(getDrinks);
   const isLoading = useSelector(getIsDayDataLoading);
+  const isDark = useSelector(getIsDarkTheme);
 
   const sortDrinks = drinks => {
     const sortedDrinks = drinks.slice().sort((a, b) => {
@@ -37,11 +39,15 @@ export function TodayWaterList() {
 
   return (
     <>
-      <H2>Today</H2>
+      <H2 $isDark={isDark}>Today</H2>
 
       {isLoading && (
         <SpinnerContainer>
-          <PiSpinnerGap className="spinner" size={25} />
+          <PiSpinnerGap
+            className="spinner"
+            fill={isDark ? 'orange' : 'black'}
+            size={25}
+          />
         </SpinnerContainer>
       )}
 
@@ -61,8 +67,11 @@ export function TodayWaterList() {
         )}
       </ListUl>
 
-      <AddTodayWaterBtn onClick={() => setIsShowAddModal(true)}>
-        <FaPlus />
+      <AddTodayWaterBtn
+        $isDark={isDark}
+        onClick={() => setIsShowAddModal(true)}
+      >
+        <FaPlus fill={isDark ? 'orange' : '#407bff'} />
         Add water
       </AddTodayWaterBtn>
 

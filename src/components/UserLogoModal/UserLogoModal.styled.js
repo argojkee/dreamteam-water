@@ -14,7 +14,8 @@ export const UserLogoModalStyles = styled.div`
     width: 28px;
     height: 28px;
     border-radius: 100%;
-    border: none;
+    border: ${props =>
+      props.$isDark ? '1px solid var(--white-color)' : '1px solid black'};
     background-color: #EFECEC;
     display: inline-block;
       overflow:hidden;
@@ -82,7 +83,7 @@ export const UserLogoModalStyles = styled.div`
     padding: 0;
     list-style-type: none;
 
-    font-style: Roboto;
+    font-family: Roboto;
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
@@ -128,11 +129,11 @@ export const UserLogoModalStyles = styled.div`
     display: flex;
   }
   .textName {
-    color: #2f2f2f;
-
-    font-style: Roboto;
+    color: ${props =>
+      props.$isDark ? 'var(--white-color)' : 'var(--primary-txt-color)'};
+    font-family: Roboto;
     font-weight: 400;
-    font-size: 18;
+    font-size: 18px;
     line-height: 24px;
   }
 
@@ -143,7 +144,10 @@ export const UserLogoModalStyles = styled.div`
     width: 118px;
     height: 88px;
     padding: 16px;
-    background-color: var(--primary-button-text-color);
+     background-color: ${props =>
+       props.$isDark
+         ? 'rgba(85,85,85,0.5)'
+         : 'var(--primary-button-text-color)'};
     border: 1px solid none;
     border-radius: 10px;
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
@@ -160,9 +164,9 @@ export const UserLogoModalStyles = styled.div`
     height: 100%;
   }
   .menu.active {
-    top: calc(100% - 48);
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
+
   }
 `;

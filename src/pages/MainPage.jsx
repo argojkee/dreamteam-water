@@ -8,11 +8,13 @@ import {
   getCurrentMonthInfoThunk,
   getCurrentDayInfoThunk,
 } from '../redux/water/waterFunctions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { getIsDarkTheme } from '../redux/theme/themeSelectors';
 
 const MainPage = () => {
   const dispatch = useDispatch();
+  const isDark = useSelector(getIsDarkTheme);
 
   useEffect(() => {
     dispatch(getCurrentMonthInfoThunk());
@@ -21,7 +23,7 @@ const MainPage = () => {
 
   return (
     <main>
-      <MainPageStyles>
+      <MainPageStyles $isDark={isDark}>
         <Container>
           <div className="main-container">
             <div className="left-side">

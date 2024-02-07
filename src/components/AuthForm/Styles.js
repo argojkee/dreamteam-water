@@ -19,7 +19,7 @@ const Div = styled.div`
 
   gap: ${props => props.$gap || '0'};
 
-  color: ${props => props.color || '2F2F2F'};
+  color: ${props => props.color || '#2F2F2F'};
 
   background-color: ${props => props.$backColor || 'transparent'};
 
@@ -85,10 +85,12 @@ const Form = styled.form`
 
   font-family: roboto;
 
+  color: ${props => props.color || '#2F2F2F'};
+
   width: ${props => props.width || '100%'};
 
   margin-bottom: ${props => props.$marginBott || '8px'};
-  background-color: ${props => props.Backcolor || 'transparent'};
+  background-color: ${props => props.backcolor || 'transparent'};
 `;
 
 const Input = styled.input`
@@ -183,6 +185,8 @@ const Link = styled.p`
   font-weight: ${props => props.$fontWeight || '500'};
 
   margin-bottom: ${props => props.$marginBott || '0'};
+
+  color: ${props => props.color || '#2F2F2F'};
 
   cursor: pointer;
 

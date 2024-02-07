@@ -21,11 +21,17 @@ import pointIcon from '../homepageimages/point.svg';
 import StatisticsIcon from '../homepageimages/Statistics.svg'; 
 import CalendarIcon from '../homepageimages/Calendar.svg';
 import Container from 'components/Container/Container';
+import { useSelector } from 'react-redux'; 
+
+import { getIsDarkTheme } from '../redux/theme/themeSelectors';
 
 const HomePage = () => {
+
+  const isDark = useSelector(getIsDarkTheme);
+
   return (
     <>
-      <BackgroundContainer>
+      <BackgroundContainer $isDark={isDark}>
 <Container>
       <ContentContainer>
 

@@ -26,7 +26,10 @@ const Section = styled.section`
     background-size: cover, ${props => props.$bottleSize.width * 2}px;
     background-position: 0 10px,
       ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px
-        ${props => props.$bottleSize.y + props.$bottleSize.height / 3}px;
+        ${props => props.$bottleSize.y + props.$bottleSize.height / 1.7}px;
+    background-color: ${props => props.$isDark
+      ? 'black'
+      : `url(${BackMobile1})`};
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -36,7 +39,11 @@ const Section = styled.section`
       background-size: cover, ${props => props.$bottleSize.width * 2}px;
       background-position: 0 50px,
         ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px
-          ${props => props.$bottleSize.y + props.$bottleSize.height / 3}px;
+          ${props => props.$bottleSize.y + props.$bottleSize.height / 1.7}px;
+
+      background-color: ${props => props.$isDark
+        ? 'black'
+        : `url(${BackMobile1})`};
     }
   }
 
@@ -46,7 +53,10 @@ const Section = styled.section`
     background-size: cover, ${props => props.$bottleSize.width * 2}px;
     background-position: 0 3px,
       ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px
-        ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
+        ${props => props.$bottleSize.y + props.$bottleSize.height / 1.7}px;
+    background-color: ${props => props.$isDark
+      ? 'black'
+      : `url(${BackMobile1})`};
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -56,7 +66,10 @@ const Section = styled.section`
       background-size: cover, ${props => props.$bottleSize.width * 2}px;
       background-position: 0 3px,
         ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px
-          ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
+          ${props => props.$bottleSize.y + props.$bottleSize.height / 1.7}px;
+      background-color: ${props => props.$isDark
+      ? 'black'
+      : `url(${BackMobile1})`};
     }
   }
 
@@ -66,7 +79,10 @@ const Section = styled.section`
     background-size: contain, ${props => props.$bottleSize.width * 2}px;
     background-position: 0 10px,
       ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px
-        ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
+        ${props => props.$bottleSize.y + props.$bottleSize.height / 1.7}px;
+    background-color: ${props => props.$isDark
+      ? 'black'
+      : `url(${BackMobile1})`};
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -76,7 +92,10 @@ const Section = styled.section`
       background-size: contain, ${props => props.$bottleSize.width * 2}px;
       background-position: 0 10px,
         ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px
-          ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
+          ${props => props.$bottleSize.y + props.$bottleSize.height / 1.7}px;
+      background-color: ${props => props.$isDark
+        ? 'black'
+        : `url(${BackMobile1})`};
     }
   }
 `;

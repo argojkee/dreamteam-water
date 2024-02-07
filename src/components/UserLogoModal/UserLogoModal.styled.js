@@ -6,7 +6,7 @@ export const UserLogoModalStyles = styled.div`
   button {
     background-color: transparent;
     box-shadow: none;
-  } 
+  }
 
   .avatarBox {
     width: 28px;
@@ -14,9 +14,9 @@ export const UserLogoModalStyles = styled.div`
     border-radius: 100%;
     border: ${props =>
       props.$isDark ? '1px solid var(--white-color)' : '1px solid black'};
-    background-color: #EFECEC;
+    background-color: #efecec;
     display: inline-block;
-      overflow:hidden;
+    overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -30,8 +30,7 @@ export const UserLogoModalStyles = styled.div`
     vertical-align: middle;
     justify-content: space-evenly;
     align-items: center;
-}
-  
+  }
 
   .menu-user-button {
     border: none;
@@ -58,13 +57,11 @@ export const UserLogoModalStyles = styled.div`
     color: blue;
   }
 
-  .iconAvatarText{
+  .iconAvatarText {
     height: 100%;
     align-items: center;
     font-size: x-large;
   }
-
- 
 
   .icon {
     margin-right: 8px;
@@ -103,7 +100,7 @@ export const UserLogoModalStyles = styled.div`
     background-size: auto;
     background-position: center;
 
-    fill: var(--primary-color) ;
+    fill: var(--primary-color);
   }
 
   .user-items {
@@ -128,11 +125,19 @@ export const UserLogoModalStyles = styled.div`
   }
 
   .textName {
-    color: ${props => (props.$isDark ? 'var(--white-color)' : 'var(--primary-txt-color)')};
+    color: ${props =>
+      props.$isDark ? 'var(--white-color)' : 'var(--primary-txt-color)'};
     font-family: Roboto;
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
+  }
+
+  @media screen and (max-width: 319px) {
+    .textName {
+      font-size: 16px;
+      line-height: 20px;
+    }
   }
 
   .menu {
@@ -142,10 +147,10 @@ export const UserLogoModalStyles = styled.div`
     width: 118px;
     height: 88px;
     padding: 16px;
-     background-color: ${props =>
-       props.$isDark
-         ? 'rgba(85,85,85,0.5)'
-         : 'var(--primary-button-text-color)'};
+    background-color: ${props =>
+      props.$isDark
+        ? 'rgba(85,85,85,0.5)'
+        : 'var(--primary-button-text-color)'};
     border: 1px solid none;
     border-radius: 10px;
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
@@ -165,6 +170,5 @@ export const UserLogoModalStyles = styled.div`
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
-
   }
 `;

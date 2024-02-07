@@ -2,13 +2,10 @@ import { getMonthsArr } from '../helpers/getMonthsArr';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { MonthSwitcherContainer } from './MonthSwitcher.styled';
 import { useSelector } from 'react-redux';
-import { getStartDay } from '../../../redux/auth/authSelectors';
-import { funcGetDate, today } from '../helpers/getDate';
+import {  today } from '../helpers/getDate';
 import { getIsDarkTheme } from '../../../redux/theme/themeSelectors';
 
-const MonthSwitcher = ({ selectedMonth, setSelectedMonth }) => {
-  const startDay = useSelector(getStartDay);
-  const registrationDate = funcGetDate(startDay);
+const MonthSwitcher = ({ selectedMonth, setSelectedMonth, registrationDate}) => {
   const isDark = useSelector(getIsDarkTheme);
 
   const handlePrevMonth = () => {

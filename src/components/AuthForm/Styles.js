@@ -8,6 +8,8 @@ const Div = styled.div`
 
   width: ${props => props.width || '0'};
   height: ${props => props.height || 'fit-content'};
+  
+  margin: ${props => props.$marginTop || '0'} ${props => props.$marginRight || '0'} ${props => props.$marginBott || '0'} 0;
 
   margin: ${props => props.$marginTop || '0'}
     ${props => props.$marginRight || '0'} ${props => props.$marginBott || '0'} 0;
@@ -22,6 +24,7 @@ const Div = styled.div`
 
   border-radius: ${props => props.$borderRadius || 'none'};
 
+  border: ${props => props.$border || 'none'} ${props => props.$borderColor || 'white'};
   border: ${props => props.$border || 'none'}
     ${props => props.$borderColor || 'white'};
 
@@ -30,11 +33,11 @@ const Div = styled.div`
     css`
       width: 280px;
 
-      @media screen and (min-width: 768px) and (max-width: 1439px) {
+      @media screen and (min-width: 768px) and (max-width: 1279px) {
         width: 336px;
       }
 
-      @media screen and (min-width: 1440px) {
+      @media screen and (min-width: 1280px) {
         width: 384px;
       }
     `};
@@ -47,11 +50,11 @@ const Div = styled.div`
         align-items: center;
       }
 
-      @media screen and (min-width: 768px) and (max-width: 1439px) {
+      @media screen and (min-width: 768px) and (max-width: 1279px) {
         justify-content: left;
       }
 
-      @media screen and (min-width: 1440px) {
+      @media screen and (min-width: 1280px) {
         flex-direction: row-reverse;
       }
     `};
@@ -63,11 +66,11 @@ const Div = styled.div`
         margin: 30px 0 10px 0;
       }
 
-      @media screen and (min-width: 768px) and (max-width: 1439px) {
+      @media screen and (min-width: 768px) and (max-width: 1279px) {
         margin: 50px 0 0 0;
       }
 
-      @media screen and (min-width: 1440px) {
+      @media screen and (min-width: 1280px) {
         margin: auto 100px auto 0;
       }
     `};
@@ -108,11 +111,11 @@ const Input = styled.input`
     outline: none;
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1440px) {
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
     width: 336px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     width: 384px;
   }
 
@@ -123,6 +126,7 @@ const Input = styled.input`
 
 const Text = styled.p`
   font-family: roboto;
+  line-height: ${props => props.$lineHeight || '24px'};
   font-weight: ${props => props.$fontWeight || '500'};
   font-size: ${props => props.$fontSize || '18px'};
 
@@ -154,6 +158,7 @@ const Button = styled.button`
   margin-bottom: ${props => props.$marginBott || '8px'};
 
   border: none;
+  
   border-radius: ${props => props.$borderRadius || 'none'};
 
   background-color: ${props => props.color || '#407BFF'};
@@ -167,6 +172,7 @@ const Button = styled.button`
   &:active {
     box-shadow: none;
   }
+  cursor: pointer;
 `;
 
 const Link = styled.p`

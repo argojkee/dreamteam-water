@@ -6,10 +6,6 @@ export const MainPageStyles = styled.section`
     display: flex;
   }
 
-  .left-side {
-    border: 1px solid green;
-  }
-
   .right-side {
     border-radius: 10px;
     background: var(--Secondary-color-2, #ecf2ff);

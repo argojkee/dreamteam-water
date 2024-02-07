@@ -46,7 +46,7 @@ export const BottleStyles = styled.div`
       }
     }
 
-    @media screen and (min-width: 768px) and (max-width: 1439px) { 
+    @media screen and (min-width: 768px) and (max-width: 1279px) { 
 
       width: 213px;
       height: 474px;
@@ -70,7 +70,7 @@ export const BottleStyles = styled.div`
       }
     }
 
-    @media screen and (min-width: 1440px) { 
+    @media screen and (min-width: 1280px) { 
 
       
       width: 265px;

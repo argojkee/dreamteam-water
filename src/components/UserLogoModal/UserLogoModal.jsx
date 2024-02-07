@@ -19,7 +19,6 @@ export default function UserLogoModal() {
 
   const { email, name, avatarURL } = useSelector(getCurrentUser);
 
-  //const get_water_Current_Month = useSelector(getCurrentMonth);
   let unpolished_userName =
     name !== null && name !== '' ? name[0].toUpperCase() + name.slice(1) : name;
   let unpolished_userEmail =

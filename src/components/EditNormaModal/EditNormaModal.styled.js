@@ -25,7 +25,7 @@ export const StyledDailyNormaContainer = styled.div`
     alight-item: fit-content;
 
     background-color: ${props => (props.$isDark ? '2f2f2f' : 'white')};
-    color: ${props => props.$isDark ?  'white' : 'rgba(143, 143, 143, 1)'};
+    color: ${props => (props.$isDark ? 'white' : 'rgba(143, 143, 143, 1)')};
     gap: 24px;
   }
 
@@ -59,7 +59,6 @@ export const StyledDailyNormaContainer = styled.div`
   }
 
   .calculate {
-    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -130,9 +129,10 @@ export const StyledDailyNormaContainer = styled.div`
     border-radius: 10px;
     border: 1px solid rgba(215, 227, 255, 1);
 
-    color: ${props => props.$isDark ?  'white' : 'rgba(143, 143, 143, 1)'};
+    color: ${props => (props.$isDark ? 'white' : 'rgba(143, 143, 143, 1)')};
 
-    background-color: ${props => props.$isDark ? 'rgba(143, 143, 143, 1)' : 'white'};
+    background-color: ${props =>
+      props.$isDark ? 'rgba(143, 143, 143, 1)' : 'white'};
 
     span {
       color: var(--primary-color);
@@ -164,11 +164,10 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 400;
     line-height: 1.25;
     color: #8f8f8f;
-
   }
 
   input {
-    background-color: ${props => props.$isDark ? 'gray' : 'white'};
+    background-color: ${props => (props.$isDark ? 'gray' : 'white')};
   }
 
   .input::placeholder {
@@ -201,7 +200,6 @@ export const StyledDailyNormaContainer = styled.div`
 
   .numberKilo:focus {
     outline: none;
-   
   }
 
   .water {
@@ -233,6 +231,8 @@ export const StyledDailyNormaContainer = styled.div`
     border-color: transparent;
     border-radius: 10px;
     background-color: var(--primary-color);
+    background-color: ${props => (props.$isDark ? 'orange' : 'blue')};
+
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
@@ -255,12 +255,14 @@ export const StyledDailyNormaContainer = styled.div`
     position: absolute;
     z-index: -1;
     opacity: 0;
+    
   }
   /* для элемента label зв'язанного з .custom-radio */
   .custom-radio + label {
     display: inline-flex;
     align-items: center;
     user-select: none;
+    
   }
   /* створення в label псевдоелемента before з наступними стилями */
   .custom-radio + label::before {
@@ -299,7 +301,8 @@ export const StyledDailyNormaContainer = styled.div`
 
   /* стилі для радіокнопки, яка знаходиться у стані checked */
   .custom-radio:checked + label::before {
-    border-color: ${props => props.$isDark ? 'orange' : 'var(--primary-color)'};
+    border-color: ${props =>
+      props.$isDark ? 'orange' : 'var(--primary-color)'};
     background-color: var(--primary-button-text-color);
 
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23407BFF'/%3E%3C/svg%3E");
@@ -308,8 +311,8 @@ export const StyledDailyNormaContainer = styled.div`
 
   /* стилі для радіокнопки, яка знаходиться у стані disabled */
   .custom-radio:disabled + label::before {
-    border-color: ${props => props.$isDark ? 'orange' : 'gray'};
-    background-image: ${props => props.$isDark ? 'orange' : 'white'};
+    border-color: ${props => (props.$isDark ? 'orange' : 'gray')};
+    background-image: ${props => (props.$isDark ? 'orange' : 'white')};
   }
 
   .radio-buttons-container {
@@ -333,11 +336,14 @@ export const StyledDailyNormaContainer = styled.div`
     height: 44px;
 
     padding: 10px 30px;
-
     cursor: pointer;
+    background-color: ${props => (props.$isDark ? '#ff9d43' : 'blue')};
 
     &:hover {
-      box-shadow: 0px 5px 14px rgba(64, 123, 255, 0.54);
+      background-color: ${props => (props.$isDark ? '#F99034' : 'blue')};
+      box-shadow: 9px 7px 34px -17px rgba(221, 181, 91, 0.75);
+      -webkit-box-shadow: 9px 7px 34px -17px rgba(221, 181, 91, 0.75);
+      -moz-box-shadow: 9px 7px 34px -17px rgba(221, 181, 91, 0.75);
     }
 
     &:active {

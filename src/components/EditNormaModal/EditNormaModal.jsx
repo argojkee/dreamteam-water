@@ -39,17 +39,17 @@ const EditNormaModal = ({ closeModal }) => {
 
     //yup stored own validate functions (for weight, activity...etc)
     validationSchema: Yup.object({
-      weight: Yup.number()
+      weight: Yup.number().typeError("Must be a 'number'")
         .positive()
         .notRequired()
         .max(400, 'Max value 400kg')
         .min(40, 'Min value 40kg'),
-      activity: Yup.number()
+      activity: Yup.number().typeError("Must be a 'number'")
         .notRequired()
         .positive()
         .max(24, 'Max value 24h')
         .min(0.1, 'Min value 0.1h'),
-      drink: Yup.number()
+      drink: Yup.number().typeError("Must be a 'number'")
         .notRequired()
         .positive()
         .max(7, 'Max value 7L')

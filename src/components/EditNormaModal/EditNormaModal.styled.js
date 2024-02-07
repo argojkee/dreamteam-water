@@ -1,25 +1,31 @@
 import styled from 'styled-components';
 
 export const StyledDailyNormaContainer = styled.div`
+  :root {
+    --primary-text-color: #2f2f2f;
+  }
+
   color: #2f2f2f;
   text-align: left;
 
   object-fit: contain;
-
+  // overflow-y: auto;
   height: 620px;
-
-  background-color: ${props => (props.$isDark ? 'gray' : 'white')};
 
   .theory {
     display: flex;
     flex-direction: column;
+    align-item: center;
   }
 
   .modal-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    alight-item: fit-content;
 
+    background-color: ${props => (props.$isDark ? '2f2f2f' : 'white')};
+    color: ${props => props.$isDark ?  'white' : 'rgba(143, 143, 143, 1)'};
     gap: 24px;
   }
 
@@ -50,16 +56,16 @@ export const StyledDailyNormaContainer = styled.div`
     font-size: 26px;
     font-weight: 500;
     line-height: 1.2;
-    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   .calculate {
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     gap: 16px;
-    color: ${props => (props.$isDark ? 'white' : 'black')};
+
     margin-bottom: 24px;
   }
 
@@ -78,16 +84,14 @@ export const StyledDailyNormaContainer = styled.div`
   .form-text {
     /* display: flex; */
     align-items: baseline;
+
     font-size: 16px;
     font-weight: 400;
     line-height: 1.25;
-
-    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   .formcalc-text {
     margin-bottom: 8px;
-    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   .form-text.time {
@@ -99,7 +103,7 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 400;
     line-height: 1.33;
 
-    color: ${props => (props.$isDark ? 'orange' : '#407bff')};
+    color: #407bff;
   }
 
   .save_form {
@@ -126,17 +130,19 @@ export const StyledDailyNormaContainer = styled.div`
     border-radius: 10px;
     border: 1px solid rgba(215, 227, 255, 1);
 
-    color: ${props => (props.$isDark ? 'white' : 'rgba(143, 143, 143, 1)')};
-    /*  span {
-      color: ${props => (props.$isDark ? 'white' : 'var(--primary-color)')};
-    }*/
+    color: ${props => props.$isDark ?  'white' : 'rgba(143, 143, 143, 1)'};
+
+    background-color: ${props => props.$isDark ? 'rgba(143, 143, 143, 1)' : 'white'};
+
+    span {
+      color: var(--primary-color);
+    }
   }
 
   h2 {
     font-size: 18px;
     font-weight: 500;
     line-height: 1.33;
-    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   label.form-text {
@@ -158,17 +164,23 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 400;
     line-height: 1.25;
     color: #8f8f8f;
+
+  }
+
+  input {
+    background-color: ${props => props.$isDark ? 'gray' : 'white'};
   }
 
   .input::placeholder {
-    font-size: 18px;
-    /* color: ${props => (props.$isDark ? '#407bff' : '#8f8f8f')}; */
+    font-size: 16px;
+    color: #8f8f8f;
   }
 
   .weightError {
     border-color: ${props =>
       props.$errors.weightError ? '#EF5050' : '#D7E3FF'};
     color: ${props => (props.$errors.weightError ? '#EF5050' : '#D7E3FF')};
+    background-color: ${props => (props.$isDark ? '2f2f2f' : 'white')};
   }
 
   .activityError {
@@ -189,6 +201,7 @@ export const StyledDailyNormaContainer = styled.div`
 
   .numberKilo:focus {
     outline: none;
+   
   }
 
   .water {
@@ -210,7 +223,7 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 700;
     line-height: 1.33;
 
-    color: ${props => (props.$isDark ? 'orange' : '#407bff')};
+    color: var(--primary-color);
   }
 
   .btn-save {
@@ -286,8 +299,7 @@ export const StyledDailyNormaContainer = styled.div`
 
   /* стилі для радіокнопки, яка знаходиться у стані checked */
   .custom-radio:checked + label::before {
-    border-color: ${props =>
-      props.$isDark ? 'orange' : 'var(--primary-color'};
+    border-color: ${props => props.$isDark ? 'orange' : 'var(--primary-color)'};
     background-color: var(--primary-button-text-color);
 
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23407BFF'/%3E%3C/svg%3E");
@@ -296,8 +308,8 @@ export const StyledDailyNormaContainer = styled.div`
 
   /* стилі для радіокнопки, яка знаходиться у стані disabled */
   .custom-radio:disabled + label::before {
-    border-color: ${props => (props.$isDark ? 'black' : 'gray')};
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    border-color: ${props => props.$isDark ? 'orange' : 'gray'};
+    background-image: ${props => props.$isDark ? 'orange' : 'white'};
   }
 
   .radio-buttons-container {
@@ -309,12 +321,10 @@ export const StyledDailyNormaContainer = styled.div`
     font-size: 16px;
     font-weight: 400;
     line-height: 1.25;
-    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   input[type='text'] {
-    background-color: ${props => (props.$isDark ? 'gray' : 'white')};
-    color: ${props => (props.$isDark ? 'white' : '#8f8f8f')};
+    color: #407bff;
   }
 
   button.btn-save {
@@ -328,7 +338,6 @@ export const StyledDailyNormaContainer = styled.div`
 
     &:hover {
       box-shadow: 0px 5px 14px rgba(64, 123, 255, 0.54);
-      background-color: #3473fb;
     }
 
     &:active {
@@ -366,6 +375,7 @@ export const StyledDailyNormaContainer = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    /* height: 548px; */
     button.btn-save {
       width: 160px;
       margin: 0 8px 8px auto;

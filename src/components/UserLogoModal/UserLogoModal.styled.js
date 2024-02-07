@@ -66,7 +66,7 @@ export const UserLogoModalStyles = styled.div`
   .icon {
     margin-right: 8px;
     font-size: 16px;
-    color: blue;
+    color: var(--blue-color);
   }
 
   .menu-list {
@@ -88,7 +88,7 @@ export const UserLogoModalStyles = styled.div`
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
-    color: blue;
+    color: var(--blue-color);
     cursor: pointer;
   }
 

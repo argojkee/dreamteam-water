@@ -133,10 +133,10 @@ export const UserLogoModalStyles = styled.div`
     line-height: 24px;
   }
 
-  @media screen and (max-width: 319px) {
+  @media screen and (max-width: 767px) {
     .textName {
-      font-size: 16px;
-      line-height: 20px;
+      font-size: 0px;
+      line-height: 0px;
     }
   }
 

@@ -10,15 +10,18 @@ import LogoutDeleteModalContent from 'components/LogoutDeleteModal/LogoutDeleteM
 import { SettingModal } from 'components/SettingModal/SettingModal';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { getCurrentUser } from 'redux/auth/authSelectors';
 
 export default function UserOwnPopover() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [isShowLogoutModal, setIsShowLogoutModal] = useState(false);
   const [isShowSettingsModal, setIsShowSettingsModal] = useState(false);
 
-  let userName = 'Ruslana';
-  let userAvatar = null;
-  let userEmail = 'Ruslana@gmail.com';
+  const userData = useSelector(getCurrentUser);
+  let userName = useSelector(userData.getUserName);
+  let userAvatar = useSelector(userData.getUserAvatar);
+  let userEmail = useSelector(userData.getUserEmail);
 
   useEffect(() => {
     if (userName && userAvatar) {

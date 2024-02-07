@@ -8,9 +8,11 @@ import iconHome from '../../icons/Logo.svg';
 import avatarsvg from '../../icons/user_outline.svg';
 import ToggleThemeBtn from 'components/ToggleThemeBtn/ToggleThemeBtn';
 import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
+
 const Header = () => {
   const token = useSelector(getToken);
   const isDark = useSelector(getIsDarkTheme);
+  
   return (
     <HeaderStyles $isDark={isDark}>
       <Container>

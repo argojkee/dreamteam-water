@@ -8,7 +8,7 @@ export const StyledDailyNormaContainer = styled.div`
 
   height: 620px;
 
-  /* background-color: ${props => (props.$isDark ? 'gray' : 'white')}; */
+  background-color: ${props => (props.$isDark ? 'gray' : 'white')};
 
   .theory {
     display: flex;
@@ -50,7 +50,7 @@ export const StyledDailyNormaContainer = styled.div`
     font-size: 26px;
     font-weight: 500;
     line-height: 1.2;
-    /* color: ${props => (props.$isDark ? 'white' : 'black')}; */
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   .calculate {
@@ -59,7 +59,7 @@ export const StyledDailyNormaContainer = styled.div`
     justify-content: space-between;
 
     gap: 16px;
-    /* color: ${props => (props.$isDark ? 'white' : 'black')}; */
+    color: ${props => (props.$isDark ? 'white' : 'black')};
     margin-bottom: 24px;
   }
 
@@ -82,12 +82,12 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 400;
     line-height: 1.25;
 
-    /* color: ${props => (props.$isDark ? 'white' : 'black')}; */
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   .formcalc-text {
     margin-bottom: 8px;
-    /* color: ${props => (props.$isDark ? 'white' : 'black')}; */
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   .form-text.time {
@@ -99,7 +99,7 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 400;
     line-height: 1.33;
 
-    /* color: ${props => (props.$isDark ? 'orange' : '#407bff')}; */
+    color: ${props => (props.$isDark ? 'orange' : '#407bff')};
   }
 
   .save_form {
@@ -210,7 +210,7 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 700;
     line-height: 1.33;
 
-    /* color: ${props => (props.$isDark ? 'orange' : '#407bff')}; */
+    color: ${props => (props.$isDark ? 'orange' : '#407bff')};
   }
 
   .btn-save {
@@ -309,12 +309,12 @@ export const StyledDailyNormaContainer = styled.div`
     font-size: 16px;
     font-weight: 400;
     line-height: 1.25;
-    /* color: ${props => (props.$isDark ? 'white' : 'black')}; */
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   input[type='text'] {
-    /* background-color: ${props => (props.$isDark ? 'gray' : 'white')}; */
-    /* color: ${props => (props.$isDark ? 'white' : '#8f8f8f')}; */
+    background-color: ${props => (props.$isDark ? 'gray' : 'white')};
+    color: ${props => (props.$isDark ? 'white' : '#8f8f8f')};
   }
 
   button.btn-save {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import MonthSwitcher from './MonthSwitcher/MonthSwitcher';
 import MonthStatistic from './MonthStatistic/MonthStatistic';
-import { compareDates, funcGetDate, today } from './helpers/getDate';
+import { compareDates, today } from './helpers/getDate';
 import { useSelector } from 'react-redux';
 import {
   getCurrentDay,
@@ -13,7 +13,6 @@ import { updateOrAddCurrentDay } from './helpers/updateOrAddCurrentDay';
 import { PiSpinnerGap } from 'react-icons/pi';
 import { SpinnerContainer } from './SpinnerContainer.styled';
 import { RelativDiv } from './MonthStatsTablet.styled';
-import { getStartDay } from '../../redux/auth/authSelectors';
 
 const MonthStatsTable = () => {
   const [selectedMonth, setSelectedMonth] = useState({ ...today });
@@ -22,8 +21,6 @@ const MonthStatsTable = () => {
   const currentDayStatistic = useSelector(getCurrentDay);
   const isMonthLoading = useSelector(getIsMonthDataLoading);
   const [isOtherMonthLoading, setIsOtherMonthLoading] = useState(false);
-  const startDay = useSelector(getStartDay);
-  const registrationDate = funcGetDate(startDay);
 
   useEffect(() => {
     const picData = [selectedMonth.month, selectedMonth.year];
@@ -75,7 +72,6 @@ const MonthStatsTable = () => {
       <MonthSwitcher
         selectedMonth={selectedMonth}
         setSelectedMonth={setSelectedMonth}
-        registrationDate={registrationDate}
       />{' '}
       <RelativDiv>
         {isMonthLoading || isOtherMonthLoading ? (
@@ -86,8 +82,7 @@ const MonthStatsTable = () => {
           <MonthStatistic
             selectedMonth={selectedMonth}
             monthStatistic={monthStatistic}
-              setSelectedMonth={setSelectedMonth}
-              registrationDate={registrationDate}
+            setSelectedMonth={setSelectedMonth}
           />
         )}{' '}
       </RelativDiv>

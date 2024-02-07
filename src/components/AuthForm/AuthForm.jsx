@@ -28,7 +28,6 @@ const AuthForm = () => {
 
   const isDark = useSelector(getIsDarkTheme);
   const isLoading = useSelector(getIsAuthLoading);
-
   // get current location
   const location = useLocation();
 

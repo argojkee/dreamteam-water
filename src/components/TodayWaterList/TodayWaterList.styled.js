@@ -1,3 +1,4 @@
+import { FaPlus } from 'react-icons/fa6';
 import { GoTrash } from 'react-icons/go';
 import { HiOutlinePencilSquare } from 'react-icons/hi2';
 import styled from 'styled-components';
@@ -161,8 +162,7 @@ export const AddTodayWaterBtn = styled.button`
     line-height: 24px;
   }
 `;
-export const PlusSpan = styled.span`
-  font-size: 25px;
-  margin-right: 12px;
-  font-weight: 100;
+export const PlusIcon = styled(FaPlus)`
+  width: 17px;
+  height: 17px;
 `;

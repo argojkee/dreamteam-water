@@ -9,6 +9,7 @@ import {
   EmptyTxt,
   H2,
   ListUl,
+  PlusIcon,
 } from './TodayWaterList.styled';
 import { Modal } from 'components/Modal/Modal';
 import { AddForm } from 'components/AddForm/AddForm';
@@ -61,8 +62,11 @@ export function TodayWaterList() {
         )}
       </ListUl>
 
-      <AddTodayWaterBtn onClick={() => setIsShowAddModal(true)}>
-        <FaPlus />
+      <AddTodayWaterBtn
+        $isDark={isDark}
+        onClick={() => setIsShowAddModal(true)}
+      >
+        <PlusIcon />
         Add water
       </AddTodayWaterBtn>
 

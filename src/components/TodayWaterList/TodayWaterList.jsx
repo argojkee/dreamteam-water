@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { FaPlus } from 'react-icons/fa6';
 import { PiSpinnerGap } from 'react-icons/pi';
 import { SpinnerContainer } from './SpinnerContainer.styled';
 import { DrinkElement } from './DrinkElement';

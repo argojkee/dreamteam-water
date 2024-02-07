@@ -167,7 +167,6 @@ export const StyledDailyNormaContainer = styled.div`
 
   }
 
-  
   input {
     background-color: ${props => props.$isDark ? 'gray' : 'white'};
   }

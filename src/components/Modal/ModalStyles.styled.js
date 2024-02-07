@@ -15,7 +15,8 @@ export const ModalStyles = styled.div`
 
     max-height: 95%;
     position: absolute;
-    background-color: white;
+    background-color: ${props =>
+      props.$isDark ? 'gray' : 'var(--white-color)'};
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -48,6 +49,6 @@ export const ModalStyles = styled.div`
   .close-modal {
     width: 24px;
     height: 24px;
-    fill: var(--primary-color);
+    fill: ${props => (props.$isDark ? 'orange' : 'var(--primary-color)')};
   }
 `;

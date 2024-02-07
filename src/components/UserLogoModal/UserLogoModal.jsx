@@ -9,11 +9,13 @@ import { SettingModal } from 'components/SettingModal/SettingModal';
 import { useSelector } from 'react-redux';
 import { getCurrentUser } from '../../redux/auth/authSelectors';
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
+import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
 export default function UserLogoModal() {
   const [isOpen, setOpen] = useState(false);
   const [isShowLogoutModal, setIsShowLogoutModal] = useState(false);
   const [isShowSettingsModal, setIsShowSettingsModal] = useState(false);
+  const isDark = useSelector(getIsDarkTheme);
 
   const { email, name, avatarURL } = useSelector(getCurrentUser);
 
@@ -26,6 +28,7 @@ export default function UserLogoModal() {
 
   let userAvatar = polishingAvatar();
 
+  
   //ф-ция возвращает то, что будет выведено на аватарку (аватарка есть, то аватарка,
   //иначе имя[0] или емейл[0])
   function polishingAvatar() {
@@ -54,7 +57,7 @@ export default function UserLogoModal() {
   return (
     <>
       {email && (
-        <UserLogoModalStyles className="test">
+        <UserLogoModalStyles $isDark={isDark}  className="test">
           <div className="main-user-container">
             <div className="user-box">
               <div className="textName">

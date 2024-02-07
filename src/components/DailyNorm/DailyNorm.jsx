@@ -4,13 +4,15 @@ import { useState } from 'react';
 import EditNormaModal from 'components/EditNormaModal/EditNormaModal';
 import { useSelector } from 'react-redux';
 import { getCurrentNorm } from '../../redux/water/waterSelectors';
+import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
 const DailyNorm = () => {
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const norm = useSelector(getCurrentNorm);
+  const isDark = useSelector(getIsDarkTheme);
 
   return (
-    <DailyNormStyles>
+    <DailyNormStyles $isDark={isDark}>
       <div className="dailyNormaSection">
         <h2>My daily norma</h2>
         {norm !== undefined ? (

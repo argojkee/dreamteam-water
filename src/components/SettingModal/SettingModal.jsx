@@ -18,6 +18,7 @@ import {
   getIsDataUpdating,
 } from '../../redux/auth/authSelectors';
 import { changeUserData } from 'API/Auth/changeUserDataAPI';
+import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
 const iconColor = 'var(--primary-color) ';
 
@@ -63,7 +64,7 @@ export const SettingModal = ({ closeModal }) => {
   const isUserDataUpdating = useSelector(getIsDataUpdating);
 
   const dispatch = useDispatch();
-
+  const isDark = useSelector(getIsDarkTheme);
   const handleSubmit = async (
     { name, email, gender, password, newPassword },
     { resetForm }
@@ -105,7 +106,7 @@ export const SettingModal = ({ closeModal }) => {
   };
 
   return (
-    <SettingModalStyled>
+    <SettingModalStyled $isDark={isDark}>
       <h2 className="setting-title">Setting</h2>
       <div>
         <p className="setting-text setting-modal-text">Your photo</p>
@@ -127,7 +128,7 @@ export const SettingModal = ({ closeModal }) => {
           )}
           {!isChangingAvatar && (
             <label className="upload-photo-label">
-              <BsUpload color={iconColor} />
+              <BsUpload color={isDark ? 'orange' : `${iconColor}`} />
               <p className="upload-photo-text">Upload a photo</p>
               <input
                 type="file"

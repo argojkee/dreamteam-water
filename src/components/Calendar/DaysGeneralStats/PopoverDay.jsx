@@ -4,22 +4,18 @@ import { getMonthsArr } from '../helpers/getMonthsArr';
 import { TfiClose } from 'react-icons/tfi';
 import { PopoverDayStyles } from './PopoverDayStyles.styled';
 import { PopoverButton } from './PopoverButton.styled';
+import { useSelector } from 'react-redux';
+import { getIsDarkTheme } from '../../../redux/theme/themeSelectors';
 
-const PopoverDay = ({
-  date,
-  percent,
-  drinks,
-  norm,
-  selectedMonth,
-}) => {
+const PopoverDay = ({ date, percent, drinks, norm, selectedMonth }) => {
+  const isDark = useSelector(getIsDarkTheme);
   const [anchorEl, setAnchorEl] = useState(null);
   const [coordsButton, setCoordsButton] = useState({ left: 0, top: 0 });
-
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 767px)');
-    const handleResize = (event) => {
+    const handleResize = event => {
       setIsMobile(event.matches);
     };
 
@@ -30,9 +26,8 @@ const PopoverDay = ({
     };
   }, []);
 
-
   const handleClick = event => {
-    const button = event.currentTarget
+    const button = event.currentTarget;
     setAnchorEl(event.currentTarget);
     const anchorTop = button.getBoundingClientRect().top;
     setCoordsButton(prev => ({ ...prev, top: anchorTop }));
@@ -45,19 +40,19 @@ const PopoverDay = ({
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
-  const anchor = isMobile ? 'anchorPosition' : 'anchorEl'
-  const halfWidthPopover = 280/2;
-  const screenWidth = window.innerWidth/2;
-  const leftCoordinate = screenWidth + halfWidthPopover
+  const anchor = isMobile ? 'anchorPosition' : 'anchorEl';
+  const halfWidthPopover = 280 / 2;
+  const screenWidth = window.innerWidth / 2;
+  const leftCoordinate = screenWidth + halfWidthPopover;
 
-  const returnNumber = (string) => {
+  const returnNumber = string => {
     const processedString = string.slice(0, -1);
     if (processedString === '0') {
-      return 1
+      return 1;
     }
     const number = Number(processedString);
     return number;
-  }
+  };
 
   return (
     <>
@@ -79,7 +74,7 @@ const PopoverDay = ({
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
-        anchorReference= {anchor}
+        anchorReference={anchor}
         anchorPosition={{ top: coordsButton.top, left: leftCoordinate }}
         anchorOrigin={{
           vertical: 'top',
@@ -90,7 +85,7 @@ const PopoverDay = ({
           horizontal: 'right',
         }}
       >
-        <PopoverDayStyles>
+        <PopoverDayStyles $isDark={isDark}>
           <div>
             <p>
               {date},{' '}

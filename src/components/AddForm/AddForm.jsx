@@ -15,6 +15,7 @@ import {
   getIsAddingDrink,
 } from '../../redux/water/waterSelectors';
 import drinkIcon from '../../icons/drink.svg';
+import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
 export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
   const [waterAmount, setWaterAmount] = useState(0);
@@ -24,6 +25,7 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
   const { _id: dayId, drinks } = useSelector(getCurrentDay);
   const isAdding = useSelector(getIsAddingDrink);
   const isEditing = useSelector(getIsEditingDrink);
+  const isDark = useSelector(getIsDarkTheme);
   const isLoading = isAdding || isEditing;
 
   useEffect(() => {
@@ -115,7 +117,7 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
   );
 
   return (
-    <AddFormStyles>
+    <AddFormStyles $isDark={isDark}>
       {showContentData}
       <form onSubmit={handleSave} className="edit-water-form">
         <div className="step-input">
@@ -137,10 +139,7 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
           <label className="string">Recording time:</label>
           <select
             value={recordTime}
-            onChange={e => {
-              console.log(e.target.value);
-              setRecordTime(e.target.value);
-            }}
+            onChange={e => setRecordTime(e.target.value)}
           >
             {generateTimeOptions()}
           </select>
@@ -155,7 +154,7 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
             onChange={handleInputChange}
           />
         </div>
-        <p>Entered amount: {waterAmount || 0} ml</p>
+        <p className="result">Entered amount: {waterAmount || 0} ml</p>
 
         <button type="submit">
           {isLoading ? <PiSpinnerGap className="spinner" size={16} /> : 'Save'}

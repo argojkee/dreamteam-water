@@ -126,11 +126,10 @@ export const StyledDailyNormaContainer = styled.div`
     border-radius: 10px;
     border: 1px solid rgba(215, 227, 255, 1);
 
-    /* color: ${props =>
-      props.$isDark ? 'white' : 'rgba(143, 143, 143, 1)'}; */
-    span {
+    color: ${props => (props.$isDark ? 'white' : 'rgba(143, 143, 143, 1)')};
+    /*  span {
       color: ${props => (props.$isDark ? 'white' : 'var(--primary-color)')};
-    }
+    }*/
   }
 
   h2 {
@@ -329,6 +328,7 @@ export const StyledDailyNormaContainer = styled.div`
 
     &:hover {
       box-shadow: 0px 5px 14px rgba(64, 123, 255, 0.54);
+      background-color: #3473fb;
     }
 
     &:active {

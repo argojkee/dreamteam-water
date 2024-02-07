@@ -28,6 +28,7 @@ export default function UserLogoModal() {
 
   let userAvatar = polishingAvatar();
 
+  
   //ф-ция возвращает то, что будет выведено на аватарку (аватарка есть, то аватарка,
   //иначе имя[0] или емейл[0])
   function polishingAvatar() {
@@ -56,7 +57,7 @@ export default function UserLogoModal() {
   return (
     <>
       {email && (
-        <UserLogoModalStyles $isDark={isDark} className="test">
+        <UserLogoModalStyles $isDark={isDark}  className="test">
           <div className="main-user-container">
             <div className="user-box">
               <div className="textName">

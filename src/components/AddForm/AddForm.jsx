@@ -90,7 +90,6 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
 
   const handleInputChange = e => {
     const newValue = e.target.value;
-
     if (newValue === '') return setWaterAmount('');
     setWaterAmount(newValue >= 0 ? parseInt(newValue, 10) : 0);
   };
@@ -181,7 +180,7 @@ function generateTimeOptions() {
       ) {
         const newTime =
           Number(formattedHour) >= 12 && Number(formattedMinute) > 0
-            ? `${formattedHour - 12}:${formattedMinute} PM`
+            ? `0${formattedHour - 12}:${formattedMinute} PM`
             : `${formattedHour}:${formattedMinute} AM`;
         options.push(
           <option key={nanoid()} value={newTime}>

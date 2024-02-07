@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { FaPlus } from 'react-icons/fa6';
 import { PiSpinnerGap } from 'react-icons/pi';
 import { SpinnerContainer } from './SpinnerContainer.styled';
 import { DrinkElement } from './DrinkElement';
@@ -9,6 +8,7 @@ import {
   EmptyTxt,
   H2,
   ListUl,
+  PlusIcon,
 } from './TodayWaterList.styled';
 import { Modal } from 'components/Modal/Modal';
 import { AddForm } from 'components/AddForm/AddForm';
@@ -71,7 +71,7 @@ export function TodayWaterList() {
         $isDark={isDark}
         onClick={() => setIsShowAddModal(true)}
       >
-        <FaPlus fill={isDark ? 'orange' : '#407bff'} />
+        <PlusIcon />
         Add water
       </AddTodayWaterBtn>
 

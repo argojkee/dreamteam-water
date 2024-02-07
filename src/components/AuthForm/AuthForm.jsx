@@ -10,6 +10,8 @@ import * as Yup from 'yup';
 import signInAPI from '../../API/Auth/signInAPI';
 import signUpAPI from '../../API/Auth/signUpAPI';
 
+import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
+
 /* styles import */
 import Styles from './Styles';
 /* end */
@@ -24,8 +26,8 @@ const AuthForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const isDark = useSelector(getIsDarkTheme);
   const isLoading = useSelector(getIsAuthLoading);
-
   // get current location
   const location = useLocation();
 
@@ -116,7 +118,7 @@ const AuthForm = () => {
         $justify={'space-between'}
         width={'100%'}
       >
-        <Styles $div $divDiraction={'column'} $pass $marginRight={'100px'}>
+        <Styles $div $divDiraction={'column'} $pass $marginRight={'100px'} color={isDark ? 'white' : 'black'}>
           <Styles $p $fontSize={'26px'} $marginBott={'16px'}>
             {isRegistrationPage ? 'Sign up' : 'Sign in'}
           </Styles>
@@ -124,6 +126,7 @@ const AuthForm = () => {
           <Styles
             onSubmit={formik.handleSubmit}
             $form
+            color={isDark ? 'white' : 'black'}
             $formDiraction={'column'}
           >
             <Styles $label htmlFor="email">
@@ -306,7 +309,7 @@ const AuthForm = () => {
           </Styles>
 
           <Styles $div $justify={'flex-start'} width={'100%'}>
-            <Styles $link onClick={navTo}>
+            <Styles $link color={isDark ? 'white' : 'black'} onClick={navTo}>
               To {isRegistrationPage ? 'Sign in' : 'Sign up'}
             </Styles>
           </Styles>

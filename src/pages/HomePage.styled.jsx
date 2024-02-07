@@ -10,20 +10,31 @@ export const BackgroundContainer = styled.section`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center bottom;
+
+  background-color: ${props => props.$isDark
+    ? 'black'
+    : 'white'};
+
+  color: ${props => props.$isDark
+      ? 'white'
+      : 'black'};
+
+  padding: 84px 0 50px 0;
+
   margin: 0 auto;
   padding: 88px 0 40px 0;
 
   @media (max-width: 767px) {
-    background-image: url(${mobile});
+    background-image: url(${props => props.$isDark ? 'black' : mobile});
   }
 
   @media (min-width: 768px) {
-    background-image: url(${tablet});
-    padding: 84px 0 50px 0;
+    background-image: url(${props => props.$isDark ? 'black' :tablet});
+    
   }
 
   @media (min-width: 1440px) {
-    background-image: url(${desktop});
+    background-image: url(${props => props.$isDark ? 'black' : desktop});
     padding: 144px 0 0 0;
   }
 `;
@@ -171,6 +182,10 @@ export const WhyDrinkWaterContainer = styled.div`
   border-radius: 10px;
   background: #ecf2ff;
   box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+
+  color: ${props => props.$isDark
+    ? 'black'
+    : 'black'};
 
   @media (min-width: 768px) {
     padding: 32px 24px;

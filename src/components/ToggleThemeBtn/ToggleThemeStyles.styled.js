@@ -16,6 +16,19 @@ export const ToggleThemeStyles = styled.div`
     height: 34px;
   }
 
+  @media screen and (max-width: 319px) {
+    .switch {
+      width: 30px;
+      height: 20px;
+      margin-right: 20px;
+    }
+
+    .slider.round: before {
+      width: 20px;
+      height: 20px;
+      left: -5px;
+    }
+  }
   .switch input {
     opacity: 0;
     width: 0;

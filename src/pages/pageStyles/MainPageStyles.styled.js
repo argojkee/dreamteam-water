@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const MainPageStyles = styled.section`
+  min-height: 100vh;
   background-color: ${props =>
     props.$isDark ? 'var(--dark-bg-color)' : 'var(--white-color)'};
   .main-container {

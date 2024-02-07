@@ -31,6 +31,10 @@
   --dark-text-color: #fff;
 }
 
+#root {
+  height: 100%;
+}
+
 * {
   box-sizing: border-box;
 }

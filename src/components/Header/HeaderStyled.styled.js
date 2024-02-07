@@ -6,7 +6,7 @@ export const HeaderStyles = styled.header`
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-
+  height: 60px;
   .containerHeader {
     margin-top: 12px;
     display: flex;

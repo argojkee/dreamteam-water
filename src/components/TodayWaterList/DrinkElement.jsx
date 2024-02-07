@@ -13,25 +13,29 @@ import { Modal } from 'components/Modal/Modal';
 import { AddForm } from 'components/AddForm/AddForm';
 import { useState } from 'react';
 import LogoutDeleteModalContent from 'components/LogoutDeleteModal/LogoutDeleteModalContent';
+import { useSelector } from 'react-redux';
+import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
 export const DrinkElement = ({ id, ml, time }) => {
   const [isShowEditForm, setIsShowEditForm] = useState(false);
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
-
+  const isDark = useSelector(getIsDarkTheme);
   return (
     <DrinkLi id={id}>
-        
-      <DrinkInfoDiv>
+      <DrinkInfoDiv $isDark={isDark}>
         <DrinkIconImg src={DrinkIcon} alt="Glass of water" />
-        <VolumeDiv>{ml} ml</VolumeDiv>
-        <div>{time}</div>
+        <VolumeDiv $isDark={isDark}>{ml} ml</VolumeDiv>
+        <div className="time-text">{time}</div>
       </DrinkInfoDiv>
 
       <BtnWrapDiv>
         <SmallRoundBtn title="Edit" onClick={() => setIsShowEditForm(true)}>
           <EditBtnIcon />
         </SmallRoundBtn>
-        <SmallRoundBtn title="Delete" onClick={() => setIsShowDeleteModal(true)}>
+        <SmallRoundBtn
+          title="Delete"
+          onClick={() => setIsShowDeleteModal(true)}
+        >
           <DelBtnIcon />
         </SmallRoundBtn>
       </BtnWrapDiv>

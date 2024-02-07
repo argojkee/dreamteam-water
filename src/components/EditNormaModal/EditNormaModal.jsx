@@ -6,7 +6,7 @@ import { editDailyNorm } from '../../redux/water/waterFunctions';
 import { getIsEditingNorm } from '../../redux/water/waterSelectors';
 import { PiSpinnerGap } from 'react-icons/pi';
 import { getUserGender } from '../../redux/auth/authSelectors';
-
+import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 import { toastError } from 'services/toastNotification';
 
 import { useFormik } from 'formik';
@@ -16,6 +16,7 @@ const EditNormaModal = ({ closeModal }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsEditingNorm);
   const gender = useSelector(getUserGender);
+  const isDark = useSelector(getIsDarkTheme);
 
   const animaDynamic = [
     { paddingLeft: '20px' },
@@ -69,15 +70,12 @@ const EditNormaModal = ({ closeModal }) => {
           );
         }
       } else {
-       
-        if(drink !== '')
-        {
+        if (drink !== '') {
           await dispatch(editDailyNorm(drink * 1000));
-        } else{
+        } else {
           return toastError('There are no filled fields');
-        };
-
-      };
+        }
+      }
 
       if (getIsEditingNorm) closeModal();
     },
@@ -92,6 +90,7 @@ const EditNormaModal = ({ closeModal }) => {
 
   return (
     <StyledDailyNormaContainer
+      $isDark={isDark}
       $errors={{
         weightError: formik.errors.weight,
         activityError: formik.errors.activity,

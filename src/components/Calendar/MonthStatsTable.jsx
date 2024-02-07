@@ -13,6 +13,7 @@ import { updateOrAddCurrentDay } from './helpers/updateOrAddCurrentDay';
 import { PiSpinnerGap } from 'react-icons/pi';
 import { SpinnerContainer } from './SpinnerContainer.styled';
 import { RelativDiv } from './MonthStatsTablet.styled';
+import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
 const MonthStatsTable = () => {
   const [selectedMonth, setSelectedMonth] = useState({ ...today });
@@ -21,6 +22,7 @@ const MonthStatsTable = () => {
   const currentDayStatistic = useSelector(getCurrentDay);
   const isMonthLoading = useSelector(getIsMonthDataLoading);
   const [isOtherMonthLoading, setIsOtherMonthLoading] = useState(false);
+  const isDark = useSelector(getIsDarkTheme);
 
   useEffect(() => {
     const picData = [selectedMonth.month, selectedMonth.year];
@@ -76,7 +78,11 @@ const MonthStatsTable = () => {
       <RelativDiv>
         {isMonthLoading || isOtherMonthLoading ? (
           <SpinnerContainer>
-            <PiSpinnerGap className="spinner" size={40} />
+            <PiSpinnerGap
+              className="spinner"
+              fill={isDark ? 'orange' : 'black'}
+              size={40}
+            />
           </SpinnerContainer>
         ) : (
           <MonthStatistic

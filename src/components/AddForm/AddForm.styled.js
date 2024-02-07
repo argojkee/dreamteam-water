@@ -10,6 +10,7 @@ export const AddFormStyles = styled.div`
     line-height: 32px;
     margin-bottom: 16px;
     text-align: start;
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   .container-edit-drink {
@@ -17,9 +18,14 @@ export const AddFormStyles = styled.div`
     padding: 14px 24px;
     justify-content: center;
     align-items: center;
-    background-color: #ecf2ff;
+    background-color: ${props =>
+      props.$isDark ? 'rgba(0,0,0,0.5)' : '#ecf2ff'};
     column-gap: 12px;
     border-radius: 10px;
+  }
+
+  .result {
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   .edit-ml-value {
@@ -28,11 +34,12 @@ export const AddFormStyles = styled.div`
   }
 
   .edit-time-value {
-    color: #2f2f2f;
+    color: ${props => (props.$isDark ? 'white' : ' #2f2f2f')};
   }
   .edit-second-header {
     margin-bottom: 16px;
     text-align: start;
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
   .drink-icon {
     width: 36px;
@@ -45,10 +52,12 @@ export const AddFormStyles = styled.div`
     font-weight: 500;
     margin-bottom: 16px;
     text-align: start;
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
   .string {
     text-align: start;
     margin-bottom: 12px;
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   .edit-water-form {
@@ -66,9 +75,10 @@ export const AddFormStyles = styled.div`
       padding: 8px 16px;
       cursor: pointer;
       font-size: 16px;
-      background-color: var(--primary-button-text-color);
+      background-color: ${props =>
+        props.$isDark ? 'orange' : 'var(--primary-button-text-color)'};
       color: var(--primary-color);
-      border: 1px solid #9ebbff;
+      border: ${props => (props.$isDark ? 'none' : '1px solid #9ebbff')};
       border-radius: 50%;
       width: 44px;
       height: 44px;
@@ -97,6 +107,7 @@ export const AddFormStyles = styled.div`
     font-size: 16px;
     margin-bottom: 10px;
     border-radius: 10px;
+    background-color: ${props => (props.$isDark ? 'gray' : 'white')};
   }
 
   select {
@@ -106,6 +117,7 @@ export const AddFormStyles = styled.div`
     font-size: 16px;
     margin-bottom: 24px;
     border-radius: 10px;
+    background-color: ${props => (props.$isDark ? 'gray' : 'white')};
   }
 
   .input-container {

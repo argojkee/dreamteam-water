@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledDailyNormaContainer = styled.div`
-  :root {
-    --primary-text-color: #2f2f2f;
-  }
-
   color: #2f2f2f;
   text-align: left;
 
@@ -12,17 +8,17 @@ export const StyledDailyNormaContainer = styled.div`
 
   height: 620px;
 
+  /* background-color: ${props => (props.$isDark ? 'gray' : 'white')}; */
+
   .theory {
     display: flex;
     flex-direction: column;
-    align-item: center;
   }
 
   .modal-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    alight-item: fit-content;
 
     gap: 24px;
   }
@@ -54,16 +50,16 @@ export const StyledDailyNormaContainer = styled.div`
     font-size: 26px;
     font-weight: 500;
     line-height: 1.2;
+    /* color: ${props => (props.$isDark ? 'white' : 'black')}; */
   }
 
   .calculate {
-    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     gap: 16px;
-
+    /* color: ${props => (props.$isDark ? 'white' : 'black')}; */
     margin-bottom: 24px;
   }
 
@@ -82,14 +78,16 @@ export const StyledDailyNormaContainer = styled.div`
   .form-text {
     /* display: flex; */
     align-items: baseline;
-
     font-size: 16px;
     font-weight: 400;
     line-height: 1.25;
+
+    /* color: ${props => (props.$isDark ? 'white' : 'black')}; */
   }
 
   .formcalc-text {
     margin-bottom: 8px;
+    /* color: ${props => (props.$isDark ? 'white' : 'black')}; */
   }
 
   .form-text.time {
@@ -101,7 +99,7 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 400;
     line-height: 1.33;
 
-    color: #407bff;
+    /* color: ${props => (props.$isDark ? 'orange' : '#407bff')}; */
   }
 
   .save_form {
@@ -128,10 +126,10 @@ export const StyledDailyNormaContainer = styled.div`
     border-radius: 10px;
     border: 1px solid rgba(215, 227, 255, 1);
 
-    color: rgba(143, 143, 143, 1);
-
+    /* color: ${props =>
+      props.$isDark ? 'white' : 'rgba(143, 143, 143, 1)'}; */
     span {
-      color: var(--primary-color);
+      color: ${props => (props.$isDark ? 'white' : 'var(--primary-color)')};
     }
   }
 
@@ -139,6 +137,7 @@ export const StyledDailyNormaContainer = styled.div`
     font-size: 18px;
     font-weight: 500;
     line-height: 1.33;
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   label.form-text {
@@ -163,8 +162,8 @@ export const StyledDailyNormaContainer = styled.div`
   }
 
   .input::placeholder {
-    font-size: 16px;
-    color: #8f8f8f;
+    font-size: 18px;
+    /* color: ${props => (props.$isDark ? '#407bff' : '#8f8f8f')}; */
   }
 
   .weightError {
@@ -212,7 +211,7 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 700;
     line-height: 1.33;
 
-    color: var(--primary-color);
+    /* color: ${props => (props.$isDark ? 'orange' : '#407bff')}; */
   }
 
   .btn-save {
@@ -288,7 +287,8 @@ export const StyledDailyNormaContainer = styled.div`
 
   /* стилі для радіокнопки, яка знаходиться у стані checked */
   .custom-radio:checked + label::before {
-    border-color: var(--primary-color);
+    border-color: ${props =>
+      props.$isDark ? 'orange' : 'var(--primary-color'};
     background-color: var(--primary-button-text-color);
 
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23407BFF'/%3E%3C/svg%3E");
@@ -297,7 +297,7 @@ export const StyledDailyNormaContainer = styled.div`
 
   /* стилі для радіокнопки, яка знаходиться у стані disabled */
   .custom-radio:disabled + label::before {
-    border-color: gray;
+    border-color: ${props => (props.$isDark ? 'black' : 'gray')};
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
   }
 
@@ -310,10 +310,12 @@ export const StyledDailyNormaContainer = styled.div`
     font-size: 16px;
     font-weight: 400;
     line-height: 1.25;
+    /* color: ${props => (props.$isDark ? 'white' : 'black')}; */
   }
 
   input[type='text'] {
-    color: #407bff;
+    /* background-color: ${props => (props.$isDark ? 'gray' : 'white')}; */
+    /* color: ${props => (props.$isDark ? 'white' : '#8f8f8f')}; */
   }
 
   button.btn-save {

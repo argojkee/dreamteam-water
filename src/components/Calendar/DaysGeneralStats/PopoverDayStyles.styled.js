@@ -7,13 +7,13 @@ export const PopoverDayStyles = styled.div`
   gap: 20px;
   width: 292px;
   height: 188px;
-  background-color: var(--primary-button-text-color);
+  background-color: ${props => (props.$isDark ? 'gray' : 'white')};
   color: #2f2f2f;
   font-family: Roboto;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
-  border-radius: 10px;
+  border-radius: ${props => (props.$isDark ? '0' : '10px')};
   box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.3);
   cursor: pointer;
 
@@ -26,7 +26,7 @@ export const PopoverDayStyles = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--primary-color);
+    color: ${props => (props.$isDark ? 'orange' : 'var(--primary-color)')};
 
     button {
       border: none;
@@ -48,7 +48,7 @@ export const PopoverDayStyles = styled.div`
   }
 
   span {
-    color: var(--primary-color);
+    color: ${props => (props.$isDark ? 'orange' : 'var(--primary-color)')};
     font-size: 18px;
     font-weight: 500;
     line-height: 1.33;

@@ -2,10 +2,12 @@ import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 import { ModalStyles } from './ModalStyles.styled';
 import { IoClose } from 'react-icons/io5';
-
+import { useSelector } from 'react-redux';
+import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 const modalRoot = document.getElementById('modal-backdrop');
 
 export const Modal = ({ children, closeModal }) => {
+  const isDark = useSelector(getIsDarkTheme);
   useEffect(() => {
     function onEsc({ code }) {
       if (code !== 'Escape') {
@@ -35,10 +37,10 @@ export const Modal = ({ children, closeModal }) => {
   };
 
   return createPortal(
-    <ModalStyles onClick={onBackdrop}>
+    <ModalStyles $isDark={isDark} onClick={onBackdrop}>
       <div className="modal">
         <button type="button" className="close-btn" onClick={closeModal}>
-          <IoClose className="close-modal" color="red" size={24} />
+          <IoClose className="close-modal" size={24} />
         </button>
         {children}
       </div>

@@ -12,8 +12,7 @@ export const UserOwnPopoverStyles = styled.div`
     width: 28px;
     height: 28px;
     border-radius: 100%;
-    border: ${props =>
-      props.$isdark ? '1px solid var(--white-color)' : '1px solid #2f2f2f'};
+    border: 1px solid #2f2f2f;
     display: inline-block;
   }
 
@@ -61,12 +60,10 @@ export const UserOwnPopoverStyles = styled.div`
   .textName {
     color: #2f2f2f;
 
-    font-family: Roboto;
+    font-style: Roboto;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 18;
     line-height: 24px;
-    color: ${props =>
-      props.$isDark ? 'var(--white-color)' : 'var(--primary-txt-color)'};
   }
 
   .iconAvatar {

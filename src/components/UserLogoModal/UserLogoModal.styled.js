@@ -6,9 +6,7 @@ export const UserLogoModalStyles = styled.div`
   button {
     background-color: transparent;
     box-shadow: none;
-  }
-
- 
+  } 
 
   .avatarBox {
     width: 28px;
@@ -33,7 +31,7 @@ export const UserLogoModalStyles = styled.div`
     justify-content: space-evenly;
     align-items: center;
 }
-  }
+  
 
   .menu-user-button {
     border: none;
@@ -128,9 +126,9 @@ export const UserLogoModalStyles = styled.div`
   .box-menu-item {
     display: flex;
   }
+
   .textName {
-    color: ${props =>
-      props.$isDark ? 'var(--white-color)' : 'var(--primary-txt-color)'};
+    color: ${props => (props.$isDark ? 'var(--white-color)' : 'var(--primary-txt-color)')};
     font-family: Roboto;
     font-weight: 400;
     font-size: 18px;

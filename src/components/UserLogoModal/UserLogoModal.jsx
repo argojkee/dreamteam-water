@@ -72,7 +72,7 @@ export default function UserLogoModal() {
                   onClick={() => setOpen(!isOpen)}
                 >
                   <div className="user-items">
-                    <div className="avatarBox">
+                    <div>
                       {!unpolished_userAvatarUrl && (
                         <div className="iconAvatarText">{userAvatar}</div>
                       )}

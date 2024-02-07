@@ -149,6 +149,7 @@ const EditNormaModal = ({ closeModal }) => {
                   defaultChecked={gender === 'man' ? true : false}
                   disabled={gender === 'man' ? false : true}
                   id="man"
+                  checked
                 />
                 <label htmlFor="man" className="form-radio">
                   For man

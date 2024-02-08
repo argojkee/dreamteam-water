@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/dreamteam-water/static/css/main.154859e7.css",
-    "main.js": "/dreamteam-water/static/js/main.150c116a.js",
+    "main.css": "/dreamteam-water/static/css/main.1b27c5b2.css",
+    "main.js": "/dreamteam-water/static/js/main.350bfdd4.js",
     "static/js/681.0f8cb210.chunk.js": "/dreamteam-water/static/js/681.0f8cb210.chunk.js",
     "static/js/932.e2dc0e80.chunk.js": "/dreamteam-water/static/js/932.e2dc0e80.chunk.js",
     "static/js/637.b14ece57.chunk.js": "/dreamteam-water/static/js/637.b14ece57.chunk.js",
-    "static/js/63.6ae994fd.chunk.js": "/dreamteam-water/static/js/63.6ae994fd.chunk.js",
+    "static/js/63.252d5a8d.chunk.js": "/dreamteam-water/static/js/63.252d5a8d.chunk.js",
     "static/js/645.4781e9e4.chunk.js": "/dreamteam-water/static/js/645.4781e9e4.chunk.js",
     "static/js/764.784f0ea5.chunk.js": "/dreamteam-water/static/js/764.784f0ea5.chunk.js",
     "static/js/56.2a13b909.chunk.js": "/dreamteam-water/static/js/56.2a13b909.chunk.js",
@@ -58,6 +58,7 @@
     "static/media/roboto-greek-400-normal.woff": "/dreamteam-water/static/media/roboto-greek-400-normal.dfdff8fa12eac629d29f.woff",
     "static/media/roboto-greek-500-normal.woff": "/dreamteam-water/static/media/roboto-greek-500-normal.1a05a4887ccb810cb4dd.woff",
     "static/media/roboto-greek-700-normal.woff": "/dreamteam-water/static/media/roboto-greek-700-normal.a84892c56152037b3552.woff",
+    "static/media/toggle1.svg": "/dreamteam-water/static/media/toggle1.a9e3c9ba32f7b6075959a191b6a40672.svg",
     "static/media/roboto-vietnamese-500-normal.woff2": "/dreamteam-water/static/media/roboto-vietnamese-500-normal.d8642a3d1d4ef6179644.woff2",
     "static/media/roboto-vietnamese-400-normal.woff2": "/dreamteam-water/static/media/roboto-vietnamese-400-normal.3230f9b040f3c630e0c3.woff2",
     "static/media/roboto-vietnamese-700-normal.woff2": "/dreamteam-water/static/media/roboto-vietnamese-700-normal.3425a701027d0699e369.woff2",
@@ -81,19 +82,19 @@
     "static/media/Statistics.svg": "/dreamteam-water/static/media/Statistics.8cfec11a5c739ea320477bba603d1a57.svg",
     "static/media/outlineDark.svg": "/dreamteam-water/static/media/outlineDark.f3494292b3856ab28b915c0403853d01.svg",
     "static/media/point.svg": "/dreamteam-water/static/media/point.fddb539b56ea3011c50a91ee6d888f28.svg",
-    "main.154859e7.css.map": "/dreamteam-water/static/css/main.154859e7.css.map",
-    "main.150c116a.js.map": "/dreamteam-water/static/js/main.150c116a.js.map",
+    "main.1b27c5b2.css.map": "/dreamteam-water/static/css/main.1b27c5b2.css.map",
+    "main.350bfdd4.js.map": "/dreamteam-water/static/js/main.350bfdd4.js.map",
     "681.0f8cb210.chunk.js.map": "/dreamteam-water/static/js/681.0f8cb210.chunk.js.map",
     "932.e2dc0e80.chunk.js.map": "/dreamteam-water/static/js/932.e2dc0e80.chunk.js.map",
     "637.b14ece57.chunk.js.map": "/dreamteam-water/static/js/637.b14ece57.chunk.js.map",
-    "63.6ae994fd.chunk.js.map": "/dreamteam-water/static/js/63.6ae994fd.chunk.js.map",
+    "63.252d5a8d.chunk.js.map": "/dreamteam-water/static/js/63.252d5a8d.chunk.js.map",
     "645.4781e9e4.chunk.js.map": "/dreamteam-water/static/js/645.4781e9e4.chunk.js.map",
     "764.784f0ea5.chunk.js.map": "/dreamteam-water/static/js/764.784f0ea5.chunk.js.map",
     "56.2a13b909.chunk.js.map": "/dreamteam-water/static/js/56.2a13b909.chunk.js.map",
     "785.ffcc67ea.chunk.js.map": "/dreamteam-water/static/js/785.ffcc67ea.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.154859e7.css",
-    "static/js/main.150c116a.js"
+    "static/css/main.1b27c5b2.css",
+    "static/js/main.350bfdd4.js"
   ]
 }

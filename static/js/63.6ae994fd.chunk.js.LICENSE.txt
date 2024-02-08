@@ -1,5 +1,0 @@
-//! 'values' contains ended values all Form inputs.
-
-//! They will can get: 'values.<field name>' or change values on {email, password}
-
-//! const roundedMinutes = Math.ceil(now.getMinutes() / 5) * 5;

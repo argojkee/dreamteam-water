@@ -30,22 +30,22 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
   const isLoading = isAdding || isEditing;
 
   // add water with new 'recordTime', when user open add water window and go away
-  function getDefaultTime() {
-    const now = new Date();
-    //! const roundedMinutes = Math.ceil(now.getMinutes() / 5) * 5;
-    const defaultTime = new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate(),
-      now.getHours(),
-      now.getMinutes()
-    );
+  // function getDefaultTime() {
+  //   const now = new Date();
+  //   //! const roundedMinutes = Math.ceil(now.getMinutes() / 5) * 5;
+  //   const defaultTime = new Date(
+  //     now.getFullYear(),
+  //     now.getMonth(),
+  //     now.getDate(),
+  //     now.getHours(),
+  //     now.getMinutes()
+  //   );
 
-    return defaultTime.toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: 'numeric',
-    });
-  }
+  //   return defaultTime.toLocaleTimeString('en-US', {
+  //     hour: 'numeric',
+  //     minute: 'numeric',
+  //   });
+  // }
 
   const handleSave = async e => {
     e.preventDefault();

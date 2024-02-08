@@ -8,7 +8,6 @@ const ToggleThemeBtn = () => {
   const isDarkTheme = useSelector(getIsDarkTheme);
 
   const onToggleThemeBtnClick = () => {
-    console.log(isDarkTheme);
     dispatch(toggleTheme());
   };
 

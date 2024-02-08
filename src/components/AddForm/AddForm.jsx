@@ -18,6 +18,7 @@ import drinkIcon from '../../icons/drink.svg';
 import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
 export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
+  
   const [waterAmount, setWaterAmount] = useState(0);
   const [recordTime, setRecordTime] = useState(getDefaultTime());
 
@@ -28,19 +29,16 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
   const isDark = useSelector(getIsDarkTheme);
   const isLoading = isAdding || isEditing;
 
-  useEffect(() => {
-    setRecordTime(getDefaultTime());
-  }, []);
-
+  // add water with new 'recordTime', when user open add water window and go away
   function getDefaultTime() {
     const now = new Date();
-    const roundedMinutes = Math.ceil(now.getMinutes() / 5) * 5;
+    //! const roundedMinutes = Math.ceil(now.getMinutes() / 5) * 5;
     const defaultTime = new Date(
       now.getFullYear(),
       now.getMonth(),
       now.getDate(),
       now.getHours(),
-      roundedMinutes
+      now.getMinutes(),
     );
 
     return defaultTime.toLocaleTimeString('en-US', {
@@ -51,7 +49,7 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
 
   const handleSave = async e => {
     e.preventDefault();
-
+ 
     if (!waterAmount) return toastError('Water amount must be more than 0');
 
     if (waterAmount > 0) {
@@ -153,11 +151,15 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
             onChange={handleInputChange}
           />
         </div>
-        <p className="result">Entered amount: {waterAmount || 0} ml</p>
+        <div className="resultInfo">
+            
+          <p className="result">{waterAmount || 0} ml</p>
 
-        <button type="submit">
-          {isLoading ? <PiSpinnerGap className="spinner" size={16} /> : 'Save'}
-        </button>
+          <button type="submit">
+            {isLoading ? <PiSpinnerGap className="spinner" size={16} /> : 'Save'}
+          </button>
+
+        </div>
       </form>
     </AddFormStyles>
   );
@@ -180,7 +182,7 @@ function generateTimeOptions() {
       ) {
         const newTime =
           Number(formattedHour) >= 12 && Number(formattedMinute) > 0
-            ? `0${formattedHour - 12}:${formattedMinute} PM`
+            ? `${formattedHour - 12}:${formattedMinute} PM`
             : `${formattedHour}:${formattedMinute} AM`;
         options.push(
           <option key={nanoid()} value={newTime}>

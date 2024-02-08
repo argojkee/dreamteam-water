@@ -61,6 +61,8 @@ export const UserLogoModalStyles = styled.div`
     height: 100%;
     align-items: center;
     font-size: x-large;
+    color: ${props =>
+      props.$isDark ? 'var(--white-color)' : 'black'};;
   }
 
   .icon {

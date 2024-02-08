@@ -93,7 +93,7 @@ export const editDailyNorm = createAsyncThunk(
       const date = new Date();
       const { data } = await axios.patch('/water/norm', {
         date,
-        norm,
+        norm: Math.ceil(norm / 100) * 100,
       });
 
       toastSuccess('Edit successful');

@@ -3,6 +3,8 @@ import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 import { toggleTheme } from '../../redux/theme/themeSlice';
 import { ToggleThemeStyles } from './ToggleThemeStyles.styled';
 
+import { ReactComponent as ToggleIcon } from '../../icons/toggleDark/toggle1.svg';
+
 const ToggleThemeBtn = () => {
   const dispatch = useDispatch();
   const isDarkTheme = useSelector(getIsDarkTheme);
@@ -13,14 +15,15 @@ const ToggleThemeBtn = () => {
 
   return (
     <ToggleThemeStyles>
-      <label id="switch" className="switch">
+      <label htmlFor="toggle">
         <input
           type="checkbox"
+          id="toggle"
+          name="toggle"
           onChange={onToggleThemeBtnClick}
-          id="slider"
           checked={isDarkTheme}
         />
-        <span className="slider round"></span>
+        <ToggleIcon className="hello" />
       </label>
     </ToggleThemeStyles>
   );

@@ -105,7 +105,7 @@ export const AddFormStyles = styled.div`
     flex-direction: column;
   }
   input {
-    color: var(--primary-color);
+    color: ${props => (props.$isDark ? 'orange' : 'var(--primary-color)')};
     border: 1px solid #d7e3ff;
     padding: 12px;
     font-size: 16px;
@@ -115,7 +115,7 @@ export const AddFormStyles = styled.div`
   }
 
   select {
-    color: var(--primary-color);
+    color: ${props => (props.$isDark ? 'orange' : 'var(--primary-color)')};
     border-color: #d7e3ff;
     appearance: none;
     padding: 12px;
@@ -128,14 +128,13 @@ export const AddFormStyles = styled.div`
     background-color: ${props => (props.$isDark ? 'gray' : 'white')};
   }
 
-  .resultInfo{
+  .resultInfo {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
 
     gap: 16px;
-
   }
 
   select:focus {
@@ -179,9 +178,9 @@ export const AddFormStyles = styled.div`
       width: 100%;
     }
 
-    .resultInfo{
+    .resultInfo {
       display: flex;
-      
+
       flex-direction: row;
 
       gap: 24px;
@@ -204,7 +203,7 @@ export const AddFormStyles = styled.div`
     //   width: 544px;
     // }
 
-    .resultInfo{
+    .resultInfo {
       display: flex;
       flex-direction: row;
     }
@@ -215,10 +214,9 @@ export const AddFormStyles = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-
-    .resultInfo{
+    .resultInfo {
       display: flex;
-      
+
       flex-direction: row;
 
       gap: 24px;

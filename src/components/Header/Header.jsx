@@ -6,6 +6,8 @@ import UserLogoModal from '../UserLogoModal/UserLogoModal';
 import { HeaderStyles } from './HeaderStyled.styled';
 import iconHome from '../../icons/Logo.svg';
 import avatarsvg from '../../icons/user_outline.svg';
+import avatarDarksvg from '../../icons/outlineDark.svg';
+
 import ToggleThemeBtn from 'components/ToggleThemeBtn/ToggleThemeBtn';
 import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
@@ -30,12 +32,12 @@ const Header = () => {
                 Sign in
               </NavLink>
               <div>
-                <img src={avatarsvg} alt="iconHome" />
+                <img src={isDark ? avatarDarksvg : avatarsvg} alt="iconHome" />
               </div>
             </div>
           )}
 
-          {token && <UserLogoModal />}
+          {token && <UserLogoModal/>}
         </div>
       </Container>
     </HeaderStyles>

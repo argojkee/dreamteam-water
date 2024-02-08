@@ -13,8 +13,7 @@ export const UserLogoModalStyles = styled.div`
     height: 28px;
     border-radius: 100%;
     border: ${props =>
-      props.$isDark ? '1px solid var(--white-color)' : '1px solid black'};
-    background-color: #efecec;
+      props.$isDark ? '2px solid var(--white-color)' : '2px solid black'};
     display: inline-block;
     overflow: hidden;
     background-repeat: no-repeat;
@@ -57,12 +56,17 @@ export const UserLogoModalStyles = styled.div`
     color: blue;
   }
 
+  .iconAvatar{
+    background-color: ${props =>
+      props.$isDark ? 'var(--white-color)' : 'black'};
+  }
+
   .iconAvatarText {
     height: 100%;
     align-items: center;
     font-size: x-large;
     color: ${props =>
-      props.$isDark ? 'var(--white-color)' : 'black'};;
+      props.$isDark ? 'var(--white-color)' : 'black'};
   }
 
   .icon {

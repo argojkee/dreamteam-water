@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { useTransition, animated } from '@react-spring/web';
 
 import { ReactComponent as BottleCircle } from '../../../images/signIn-signUp/bottle/bottleCircle.svg';
@@ -19,7 +20,14 @@ const Bottle = () => {
 
   const bottleRef = useRef();
 
+  // delete old bubble, when page is chenge
   useEffect(() => {
+
+    function handleWindowResize() {
+      setParameters([]);
+    }
+
+    window.addEventListener('resize', handleWindowResize);
 
     // write bottle coordinate and size to 'auth' store
     // it's need to position splush under bottle
@@ -54,6 +62,7 @@ const Bottle = () => {
 
     return () => {
       clearInterval(timer);
+      window.removeEventListener('resize', handleWindowResize);
     };
     
   }, [dispatch, parameters]);

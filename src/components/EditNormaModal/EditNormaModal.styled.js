@@ -338,12 +338,10 @@ export const StyledDailyNormaContainer = styled.div`
     padding: 10px 30px;
     cursor: pointer;
     background-color: ${props => (props.$isDark ? '#ff9d43' : 'blue')};
-
+    box-shadow: 0px 5px 8px rgba(64, 123, 255, 0.34);
     &:hover {
       background-color: ${props => (props.$isDark ? '#F99034' : 'blue')};
-      box-shadow: 9px 7px 34px -17px rgba(221, 181, 91, 0.75);
-      -webkit-box-shadow: 9px 7px 34px -17px rgba(221, 181, 91, 0.75);
-      -moz-box-shadow: 9px 7px 34px -17px rgba(221, 181, 91, 0.75);
+      box-shadow: 0px 5px 14px rgba(64, 123, 255, 0.54);
     }
 
     &:active {

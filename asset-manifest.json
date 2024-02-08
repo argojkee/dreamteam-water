@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/dreamteam-water/static/css/main.154859e7.css",
-    "main.js": "/dreamteam-water/static/js/main.967b2747.js",
+    "main.js": "/dreamteam-water/static/js/main.150c116a.js",
     "static/js/681.0f8cb210.chunk.js": "/dreamteam-water/static/js/681.0f8cb210.chunk.js",
     "static/js/932.e2dc0e80.chunk.js": "/dreamteam-water/static/js/932.e2dc0e80.chunk.js",
     "static/js/637.b14ece57.chunk.js": "/dreamteam-water/static/js/637.b14ece57.chunk.js",
-    "static/js/569.dabe09a1.chunk.js": "/dreamteam-water/static/js/569.dabe09a1.chunk.js",
+    "static/js/63.6ae994fd.chunk.js": "/dreamteam-water/static/js/63.6ae994fd.chunk.js",
     "static/js/645.4781e9e4.chunk.js": "/dreamteam-water/static/js/645.4781e9e4.chunk.js",
     "static/js/764.784f0ea5.chunk.js": "/dreamteam-water/static/js/764.784f0ea5.chunk.js",
     "static/js/56.2a13b909.chunk.js": "/dreamteam-water/static/js/56.2a13b909.chunk.js",
-    "static/js/785.79de6e48.chunk.js": "/dreamteam-water/static/js/785.79de6e48.chunk.js",
+    "static/js/785.ffcc67ea.chunk.js": "/dreamteam-water/static/js/785.ffcc67ea.chunk.js",
     "static/media/Desktop.png": "/dreamteam-water/static/media/Desktop.b0ffdb433b07b2857e54.png",
     "static/media/Tablet.png": "/dreamteam-water/static/media/Tablet.8151503881f99e29064c.png",
     "static/media/back2_desktop@2x.png": "/dreamteam-water/static/media/back2_desktop@2x.eab44f0d2ec9118c2754.png",
@@ -69,6 +69,7 @@
     "static/media/roboto-greek-ext-400-normal.woff2": "/dreamteam-water/static/media/roboto-greek-ext-400-normal.169619821ea93019d1bb.woff2",
     "static/media/roboto-greek-ext-700-normal.woff2": "/dreamteam-water/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "static/media/user_outline.svg": "/dreamteam-water/static/media/user_outline.a78fadedc3890357e77d7f64fcbb1c81.svg",
+    "static/media/arrow-down-338-svgrepo-com.svg": "/dreamteam-water/static/media/arrow-down-338-svgrepo-com.a18bc676a4fe6c36e68a4ab6ec134c66.svg",
     "static/media/bottleCircle.svg": "/dreamteam-water/static/media/bottleCircle.a656298ac3c4cf9f6d80e491e8fa9a69.svg",
     "static/media/roboto-greek-ext-500-normal.woff": "/dreamteam-water/static/media/roboto-greek-ext-500-normal.eaa367bbd0b333a7f80b.woff",
     "static/media/roboto-greek-ext-400-normal.woff": "/dreamteam-water/static/media/roboto-greek-ext-400-normal.f708607d2a7290fb8bfa.woff",
@@ -78,20 +79,21 @@
     "static/media/outlineOn.svg": "/dreamteam-water/static/media/outlineOn.7628099e68a52b07916442503fdeab59.svg",
     "index.html": "/dreamteam-water/index.html",
     "static/media/Statistics.svg": "/dreamteam-water/static/media/Statistics.8cfec11a5c739ea320477bba603d1a57.svg",
+    "static/media/outlineDark.svg": "/dreamteam-water/static/media/outlineDark.f3494292b3856ab28b915c0403853d01.svg",
     "static/media/point.svg": "/dreamteam-water/static/media/point.fddb539b56ea3011c50a91ee6d888f28.svg",
     "main.154859e7.css.map": "/dreamteam-water/static/css/main.154859e7.css.map",
-    "main.967b2747.js.map": "/dreamteam-water/static/js/main.967b2747.js.map",
+    "main.150c116a.js.map": "/dreamteam-water/static/js/main.150c116a.js.map",
     "681.0f8cb210.chunk.js.map": "/dreamteam-water/static/js/681.0f8cb210.chunk.js.map",
     "932.e2dc0e80.chunk.js.map": "/dreamteam-water/static/js/932.e2dc0e80.chunk.js.map",
     "637.b14ece57.chunk.js.map": "/dreamteam-water/static/js/637.b14ece57.chunk.js.map",
-    "569.dabe09a1.chunk.js.map": "/dreamteam-water/static/js/569.dabe09a1.chunk.js.map",
+    "63.6ae994fd.chunk.js.map": "/dreamteam-water/static/js/63.6ae994fd.chunk.js.map",
     "645.4781e9e4.chunk.js.map": "/dreamteam-water/static/js/645.4781e9e4.chunk.js.map",
     "764.784f0ea5.chunk.js.map": "/dreamteam-water/static/js/764.784f0ea5.chunk.js.map",
     "56.2a13b909.chunk.js.map": "/dreamteam-water/static/js/56.2a13b909.chunk.js.map",
-    "785.79de6e48.chunk.js.map": "/dreamteam-water/static/js/785.79de6e48.chunk.js.map"
+    "785.ffcc67ea.chunk.js.map": "/dreamteam-water/static/js/785.ffcc67ea.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.154859e7.css",
-    "static/js/main.967b2747.js"
+    "static/js/main.150c116a.js"
   ]
 }

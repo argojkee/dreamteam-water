@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { AddFormStyles } from './AddForm.styled';
 import { getCurrentDay } from '../../redux/water/waterSelectors';
 import { useSelector } from 'react-redux';
@@ -18,7 +18,7 @@ import drinkIcon from '../../icons/drink.svg';
 import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
 export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
-  
+
   const [waterAmount, setWaterAmount] = useState(0);
   const [recordTime, setRecordTime] = useState(getDefaultTime());
 

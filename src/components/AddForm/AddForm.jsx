@@ -18,6 +18,7 @@ import drinkIcon from '../../icons/drink.svg';
 import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
 export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
+  
   const [waterAmount, setWaterAmount] = useState(0);
   const [recordTime, setRecordTime] = useState(getDefaultTime());
 

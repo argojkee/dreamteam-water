@@ -17,11 +17,9 @@ export const changeUserAvatarAPI = createAsyncThunk(
       });
 
       toastSuccess('Avatar changed successful ');
-      console.log(avatarURL);
       return avatarURL;
     } catch (error) {
       toastError('Something went wrong');
-      console.log(error.message);
       return rejectWithValue('Something went wrong');
     }
   }

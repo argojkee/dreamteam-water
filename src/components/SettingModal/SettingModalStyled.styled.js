@@ -12,20 +12,24 @@ export const SettingModalStyled = styled.div`
     font-size: 26px;
     font-weight: 500;
     line-height: 123%;
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   .setting-text {
     font-size: 18px;
     font-weight: 500;
     line-height: 111%;
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   .setting-modal-text {
     margin-bottom: 8px;
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   .setting-form-text {
     margin-bottom: 12px;
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   .setting-photo-wrapper {
@@ -62,7 +66,7 @@ export const SettingModalStyled = styled.div`
     font-size: 14px;
     font-weight: 500;
     line-height: 128.5%;
-    color: #407bff;
+    color: ${props => (props.$isDark ? 'orange' : 'var(--primary-color)')};
   }
 
   .setting-form {
@@ -101,7 +105,8 @@ export const SettingModalStyled = styled.div`
     height: 14px;
     flex-shrink: 0;
     flex-grow: 0;
-    border: 1px solid rgb(64, 123, 255);
+    border: ${props =>
+      props.$isDark ? '1px solid orange' : '1px solid rgb(64, 123, 255)'};
     border-radius: 50%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -114,7 +119,7 @@ export const SettingModalStyled = styled.div`
   }
 
   .setting-form-gender-button:not(:disabled):active + label::before {
-    background-color: #ffffff;
+    background-color: var(--primary-button-text-color);
     border-color: #b3d7ff;
   }
 
@@ -127,10 +132,12 @@ export const SettingModalStyled = styled.div`
   }
 
   .setting-form-gender-button:checked + label::before {
-    border-color: #407bff;
-    background-color: #ffffff;
+    border-color: ${props =>
+      props.$isDark ? 'orange' : 'var(--primary-color)'};
+    background-color: var(--primary-button-text-color);
 
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='3' fill='%23407BFF'/%3E%3C/svg%3E");
+    background-size: auto;
   }
 
   .setting-form-gender-button {
@@ -142,6 +149,7 @@ export const SettingModalStyled = styled.div`
   .setting-form-gender-text {
     font-size: 16px;
     line-height: 125%;
+    color: ${props => (props.$isDark ? 'white' : 'black')};
   }
 
   .setting-form-input {
@@ -152,7 +160,8 @@ export const SettingModalStyled = styled.div`
     border-radius: 6px;
     border: 1px solid #d7e3ff;
     line-height: 125%;
-    color: #407bff;
+    color: ${props => (props.$isDark ? 'blue' : 'var(--primary-color)')};
+    background-color: ${props => (props.$isDark ? 'gray' : 'white')};
   }
 
   .setting-form-input:focus {
@@ -211,10 +220,10 @@ export const SettingModalStyled = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    background-color: #407bff;
+    background-color: var(--primary-color);
     box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
     border: transparent;
-    color: #fff;
+    color: var(--primary-button-text-color);
     text-align: center;
     font-weight: 500;
     line-height: 125%;

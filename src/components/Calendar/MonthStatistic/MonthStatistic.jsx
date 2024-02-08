@@ -3,7 +3,7 @@ import { compareDates, today } from '../helpers/getDate';
 import { getMonthsArr } from '../helpers/getMonthsArr';
 import PopoverDay from '../DaysGeneralStats/PopoverDay';
 
-const MonthStatistic = ({ selectedMonth, monthStatistic }) => {
+const MonthStatistic = ({ selectedMonth, monthStatistic, registrationDate }) => {
   const currentMonth = (year, month, statistic) => {
     const daysArr = [];
     const monthData = getMonthsArr(year)[month];
@@ -49,11 +49,15 @@ const MonthStatistic = ({ selectedMonth, monthStatistic }) => {
         if (day) {
           daysArr.push({
             date: i,
-            percent: `${day.percent}%`,
+            percent:`${day.percent}%`,
             norm: `${day.norm / 1000}L`,
             drinks: day.drinks,
           });
-        } else {
+        } else if (selectedMonth.year === registrationDate.year && selectedMonth.month === registrationDate.month && i < registrationDate.day) { 
+          daysArr.push({ date: i, percent: '', norm: '2L', drinks: 0 });
+
+        }
+        else {
           daysArr.push({ date: i, percent: '0%', norm: '2L', drinks: 0 });
         }
       }
@@ -78,10 +82,7 @@ const MonthStatistic = ({ selectedMonth, monthStatistic }) => {
               drinks={drinks}
               norm={norm}
               percent={percent}
-              dataFulfilled={percent > 100 ? 'true' : 'false'}
-              disabled={percent === '' ? true : false}
               selectedMonth={selectedMonth}
-              statistic={statistic}
             />
             <p>{percent}</p>
           </li>

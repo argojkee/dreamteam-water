@@ -7,6 +7,7 @@ export const MonthStatisticlist = styled.div`
   flex-wrap: wrap;
   list-style: none;
   gap: 25px;
+  
 
   p {
     color: #9ebbff;
@@ -19,6 +20,8 @@ export const MonthStatisticlist = styled.div`
   li {
     text-align: center;
     height: 52px;
+    width: 34px;
+    
   }
 
   @media screen and (min-width: 320px) and (max-width: 767px) {
@@ -32,7 +35,7 @@ export const MonthStatisticlist = styled.div`
     }
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
     gap: 34px;
 
     p {
@@ -46,8 +49,8 @@ export const MonthStatisticlist = styled.div`
       width: 34px;
     }
 
-    @media screen and (min-width: 1280px) {
-      gap: 22px;
+    @media screen and (min-width: 1440px) {
+      gap: 20px;
     }
   }
 `;

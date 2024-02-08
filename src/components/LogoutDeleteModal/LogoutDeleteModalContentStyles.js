@@ -35,12 +35,12 @@ export const LogoutDeleteModalContentStyles = styled.div`
   .action-btn {
     background-color: #ef5050;
     box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-    color: #fff;
+    color: var(--primary-button-text-color);
   }
 
   .cancel-btn {
     background-color: #d7e3ff;
-    color: #407bff;
+    color: var(--primary-color);
   }
 
   @media screen and (max-width: 767px) {
@@ -72,6 +72,6 @@ export const LogoutDeleteModalContentStyles = styled.div`
     }
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
   }
 `;

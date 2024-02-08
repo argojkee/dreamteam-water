@@ -9,35 +9,32 @@ import { SettingModal } from 'components/SettingModal/SettingModal';
 import { useSelector } from 'react-redux';
 import { getCurrentUser } from '../../redux/auth/authSelectors';
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
-
-//const BASE_URL = 'https://dreamteam-water-server.onrender.com/';
+import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
 export default function UserLogoModal() {
   const [isOpen, setOpen] = useState(false);
   const [isShowLogoutModal, setIsShowLogoutModal] = useState(false);
   const [isShowSettingsModal, setIsShowSettingsModal] = useState(false);
+  const isDark = useSelector(getIsDarkTheme);
 
   const { email, name, avatarURL } = useSelector(getCurrentUser);
 
-  let unpolished_userEmail = '';
-  let unpolished_userName = '';
-  let unpolished_userAvatarUrl = '';
-
-  //const get_water_Current_Month = useSelector(getCurrentMonth);
-  unpolished_userEmail = email?.replace(email[0], email[0].toUpperCase()); //email;
-  unpolished_userName = name?.replace(name[0], name[0].toUpperCase());
-  unpolished_userAvatarUrl = avatarURL;
+  let unpolished_userName =
+    name !== null && name !== '' ? name[0].toUpperCase() + name.slice(1) : name;
+  let unpolished_userEmail =
+    email !== null ? email[0].toUpperCase() + email.slice(1) : email; //email;
+  let unpolished_userAvatarUrl = avatarURL;
 
   let userAvatar = polishingAvatar();
 
+  
   //ф-ция возвращает то, что будет выведено на аватарку (аватарка есть, то аватарка,
   //иначе имя[0] или емейл[0])
   function polishingAvatar() {
     if (email) {
       let avatar = unpolished_userEmail[0].toUpperCase();
       if (unpolished_userAvatarUrl === null && unpolished_userName !== null) {
-        avatar = unpolished_userName[0].toUpperCase();
-        console.log(avatar);
+        avatar = unpolished_userName[0];
       } else if (unpolished_userAvatarUrl) {
         avatar = unpolished_userAvatarUrl;
       }
@@ -59,7 +56,7 @@ export default function UserLogoModal() {
   return (
     <>
       {email && (
-        <UserLogoModalStyles className="test">
+        <UserLogoModalStyles $isDark={isDark}  className="test">
           <div className="main-user-container">
             <div className="user-box">
               <div className="textName">
@@ -74,7 +71,7 @@ export default function UserLogoModal() {
                   onClick={() => setOpen(!isOpen)}
                 >
                   <div className="user-items">
-                    <div className="avatarBox">
+                    <div>
                       {!unpolished_userAvatarUrl && (
                         <div className="iconAvatarText">{userAvatar}</div>
                       )}

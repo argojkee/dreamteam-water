@@ -8,16 +8,14 @@ export const UserLogoModalStyles = styled.div`
     box-shadow: none;
   }
 
- 
-
   .avatarBox {
     width: 28px;
     height: 28px;
     border-radius: 100%;
-    border: none;
-    background-color: #EFECEC;
+    border: ${props =>
+      props.$isDark ? '2px solid var(--white-color)' : '2px solid black'};
     display: inline-block;
-      overflow:hidden;
+    overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -31,7 +29,6 @@ export const UserLogoModalStyles = styled.div`
     vertical-align: middle;
     justify-content: space-evenly;
     align-items: center;
-}
   }
 
   .menu-user-button {
@@ -59,18 +56,23 @@ export const UserLogoModalStyles = styled.div`
     color: blue;
   }
 
-  .iconAvatarText{
+  .iconAvatar{
+    background-color: ${props =>
+      props.$isDark ? 'var(--white-color)' : 'black'};
+  }
+
+  .iconAvatarText {
     height: 100%;
     align-items: center;
     font-size: x-large;
+    color: ${props =>
+      props.$isDark ? 'var(--white-color)' : 'black'};
   }
-
- 
 
   .icon {
     margin-right: 8px;
     font-size: 16px;
-    color: blue;
+    color: var(--blue-color);
   }
 
   .menu-list {
@@ -82,7 +84,7 @@ export const UserLogoModalStyles = styled.div`
     padding: 0;
     list-style-type: none;
 
-    font-style: Roboto;
+    font-family: Roboto;
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
@@ -92,7 +94,7 @@ export const UserLogoModalStyles = styled.div`
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
-    color: blue;
+    color: var(--blue-color);
     cursor: pointer;
   }
 
@@ -104,7 +106,7 @@ export const UserLogoModalStyles = styled.div`
     background-size: auto;
     background-position: center;
 
-    fill: #407bff;
+    fill: var(--primary-color);
   }
 
   .user-items {
@@ -127,13 +129,21 @@ export const UserLogoModalStyles = styled.div`
   .box-menu-item {
     display: flex;
   }
-  .textName {
-    color: #2f2f2f;
 
-    font-style: Roboto;
+  .textName {
+    color: ${props =>
+      props.$isDark ? 'var(--white-color)' : 'var(--primary-txt-color)'};
+    font-family: Roboto;
     font-weight: 400;
-    font-size: 18;
+    font-size: 18px;
     line-height: 24px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .textName {
+      font-size: 0px;
+      line-height: 0px;
+    }
   }
 
   .menu {
@@ -143,11 +153,13 @@ export const UserLogoModalStyles = styled.div`
     width: 118px;
     height: 88px;
     padding: 16px;
-    background-color: #fff;
+    background-color: ${props =>
+      props.$isDark
+        ? 'rgba(85,85,85,0.5)'
+        : 'var(--primary-button-text-color)'};
     border: 1px solid none;
     border-radius: 10px;
-    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
-      0px 2px 2px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--btn-box-shadow);
 
     opacity: 0;
     transform: translateY(10px);
@@ -160,7 +172,6 @@ export const UserLogoModalStyles = styled.div`
     height: 100%;
   }
   .menu.active {
-    top: calc(100% - 48);
     transform: translateY(0);
     opacity: 1;
     visibility: visible;

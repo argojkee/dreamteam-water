@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import MonthSwitcher from './MonthSwitcher/MonthSwitcher';
 import MonthStatistic from './MonthStatistic/MonthStatistic';
-import { compareDates, today } from './helpers/getDate';
+import { compareDates, funcGetDate, today } from './helpers/getDate';
 import { useSelector } from 'react-redux';
 import {
   getCurrentDay,
@@ -13,6 +13,8 @@ import { updateOrAddCurrentDay } from './helpers/updateOrAddCurrentDay';
 import { PiSpinnerGap } from 'react-icons/pi';
 import { SpinnerContainer } from './SpinnerContainer.styled';
 import { RelativDiv } from './MonthStatsTablet.styled';
+import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
+import { getStartDay } from '../../redux/auth/authSelectors';
 
 const MonthStatsTable = () => {
   const [selectedMonth, setSelectedMonth] = useState({ ...today });
@@ -20,6 +22,10 @@ const MonthStatsTable = () => {
   const currentMonthStatistic = useSelector(getCurrentMonth);
   const currentDayStatistic = useSelector(getCurrentDay);
   const isMonthLoading = useSelector(getIsMonthDataLoading);
+  const [isOtherMonthLoading, setIsOtherMonthLoading] = useState(false);
+  const isDark = useSelector(getIsDarkTheme);
+  const startDay =useSelector(getStartDay);
+  const registrationDate = funcGetDate(startDay);
 
   useEffect(() => {
     const picData = [selectedMonth.month, selectedMonth.year];
@@ -43,6 +49,7 @@ const MonthStatsTable = () => {
     if (compare === -1) {
       const fetchData = async () => {
         try {
+          setIsOtherMonthLoading(true);
           const newMonthStatistic = await getMonthInfoAPI({
             month: selectedMonth.month + 1,
             year: selectedMonth.year,
@@ -51,6 +58,8 @@ const MonthStatsTable = () => {
           setMonthStatistic([...newMonthStatistic]);
         } catch (error) {
           setMonthStatistic([]);
+        } finally {
+          setIsOtherMonthLoading(false);
         }
       };
       fetchData();
@@ -60,6 +69,7 @@ const MonthStatsTable = () => {
     currentMonthStatistic,
     currentDayStatistic,
     setMonthStatistic,
+    setIsOtherMonthLoading,
   ]);
 
   return (
@@ -67,18 +77,26 @@ const MonthStatsTable = () => {
       <MonthSwitcher
         selectedMonth={selectedMonth}
         setSelectedMonth={setSelectedMonth}
-      /> <RelativDiv>
-      {isMonthLoading ? (
-        <SpinnerContainer>
-          <PiSpinnerGap className="spinner" size={40} />
-        </SpinnerContainer>
-      ) : (
-        <MonthStatistic
-          selectedMonth={selectedMonth}
-          monthStatistic={monthStatistic}
-          setSelectedMonth={setSelectedMonth}
-        />
-      )} </RelativDiv>
+        registrationDate={registrationDate}
+      />{' '}
+      <RelativDiv>
+        {isMonthLoading || isOtherMonthLoading ? (
+          <SpinnerContainer>
+            <PiSpinnerGap
+              className="spinner"
+              fill={isDark ? 'orange' : 'black'}
+              size={40}
+            />
+          </SpinnerContainer>
+        ) : (
+          <MonthStatistic
+            selectedMonth={selectedMonth}
+            monthStatistic={monthStatistic}
+              setSelectedMonth={setSelectedMonth}
+              registrationDate={registrationDate}
+          />
+        )}{' '}
+      </RelativDiv>
     </div>
   );
 };

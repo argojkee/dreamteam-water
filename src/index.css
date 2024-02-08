@@ -3,6 +3,38 @@
 @import '@fontsource/roboto/500.css';
 @import '@fontsource/roboto/700.css';
 
+:root {
+  --primary-color: #407bff;
+  --primary-button-text-color: #fff;
+
+  --btn-box-shadow: 0px 4px 8px 0px #407bff57;
+  --btn-hover-box-shadow: 0px 4px 14px 0px #407bff8a;
+  --btn-active-box-shadow: none;
+
+  --light-box-shadow: 0px 4px 4px 0px #407bff4d;
+
+  --white-color: #ffffff;
+  --primary-txt-color: #2f2f2f;
+  --blue-color: #407bff;
+  --orange-color: #ff9d43;
+  --red-color: #ef5050;
+  --light-blue-color: #9ebbff;
+  --light-grey-color: #d7e3ff;
+  --second-background-color: #ecf2ff;
+
+  --main-font: Roboto;
+
+  --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-all-250ms: all 250ms var(--cubic);
+
+  --dark-bg-color: #212121;
+  --dark-text-color: #fff;
+}
+
+#root {
+  height: 100%;
+}
+
 * {
   box-sizing: border-box;
 }

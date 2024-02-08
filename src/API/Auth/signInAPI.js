@@ -15,9 +15,7 @@ const signInAPI = createAsyncThunk(
       toastSuccess('Log in successful. Welcome back ');
       return data;
     } catch (error) {
-      toastError(
-        'Not valid email or password. Please, try again or register new account'
-      );
+      toastError(error.response.data.message);
       return rejectWithValue('Not valid email or password. Please, try again');
     }
   }

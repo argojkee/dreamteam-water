@@ -98,7 +98,7 @@ export const UserOwnPopoverStyles = styled.div`
   .css-sghohy-MuiButtonBase-root-MuiButton-root:hover {
     -webkit-text-decoration: none;
     text-decoration: none;
-    background-color: #fff;
+    background-color: var(--primary-button-text-color);
     box-shadow: none;
   }
 

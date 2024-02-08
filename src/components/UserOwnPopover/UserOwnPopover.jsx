@@ -5,30 +5,23 @@ import vector from '../../icons/solid.png';
 import iconSettings from '../../icons/settings.png';
 import iconExit from '../../icons/exit.png';
 import { Button } from '@mui/material';
-// import { useSelector } from 'react-redux';
 import { Modal } from 'components/Modal/Modal';
 import LogoutDeleteModalContent from 'components/LogoutDeleteModal/LogoutDeleteModalContent';
 import { SettingModal } from 'components/SettingModal/SettingModal';
-// import { getdataUser } from '../../redux/auth/authSelectors';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-
-
+import { useSelector } from 'react-redux';
+import { getCurrentUser } from 'redux/auth/authSelectors';
 
 export default function UserOwnPopover() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [isShowLogoutModal, setIsShowLogoutModal] = useState(false);
   const [isShowSettingsModal, setIsShowSettingsModal] = useState(false);
 
-
-  // const userData = useSelector(getdataUser);
-  // let userName = useSelector(dataUser.getUserName);
-  // let userAvatar = useSelector(dataUser.getUserAvatar);
-  // let userEmail = useSelector(dataUser.getUserEmail);
-
-  let userName = "Ruslana";
-  let userAvatar = null;
-  let userEmail = "Ruslana@gmail.com";
+  const userData = useSelector(getCurrentUser);
+  let userName = useSelector(userData.getUserName);
+  let userAvatar = useSelector(userData.getUserAvatar);
+  let userEmail = useSelector(userData.getUserEmail);
 
   useEffect(() => {
     if (userName && userAvatar) {
@@ -42,17 +35,14 @@ export default function UserOwnPopover() {
       userName = userEmail[0];
       userAvatar = userEmail[0];
     }
-    if (userName && !userAvatar) { 
-       userName = userEmail[0];
+    if (userName && !userAvatar) {
+      userName = userEmail[0];
       userAvatar = userName[0];
     }
     if (!userName && userAvatar) {
       userName = userEmail[0];
     }
   }
-
-  // console.log('проверка');
-  // console.log(userAvatar);
 
   const onLogoutPress = () => {
     setIsShowLogoutModal(true);
@@ -83,16 +73,14 @@ export default function UserOwnPopover() {
         onClick={handleClick}
       >
         <div className="avatarContainer">
-          <div >
+          <div>
             <span className="textName">{userName}</span>
           </div>
           <div>
             {userAvatar && (
               <img className="iconAvatar" src={userAvatar} alt="iconAvatar" />
             )}
-            {!userAvatar &&
-              (<div className="avatarBox">{userAvatar}</div>
-            )}
+            {!userAvatar && <div className="avatarBox">{userAvatar}</div>}
           </div>
           <div>
             <img src={vector} alt="iconVector" className="iconSolid" />
@@ -113,15 +101,6 @@ export default function UserOwnPopover() {
           vertical: 'top',
           horizontal: 'right',
         }}
-        // style={{
-        //   display: 'flex',
-        //   flexDirection: 'column',
-        //   padding: '16px',
-        //   position: 'absolute',
-        //   maxHeight: '118px',
-        //   maxWidth: '88px',
-        //   backgroundColor: 'red',
-        // }}
       >
         <div className="containerPopover">
           <div className="buttonBox">
@@ -154,7 +133,9 @@ export default function UserOwnPopover() {
       {isShowSettingsModal && (
         <Modal
           closeModal={() => setIsShowSettingsModal(false)}
-          children={<SettingModal closeModal={() => setIsShowSettingsModal(false)} />}
+          children={
+            <SettingModal closeModal={() => setIsShowSettingsModal(false)} />
+          }
         />
       )}
     </UserOwnPopoverStyles>

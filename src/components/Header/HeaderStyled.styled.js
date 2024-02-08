@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 
 export const HeaderStyles = styled.header`
-  .containerHeader {    
-    
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 60px;
+  .containerHeader {
+    margin-top: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,7 +33,8 @@ export const HeaderStyles = styled.header`
   .textSignIn {
     text-decoration: none;
     list-style: none;
-    color: #407bff;
+    color: var(--primary-color);
+    text-shadow: 0px 0px #fff;
   }
 
   .AuthContainer {
@@ -49,11 +56,11 @@ export const HeaderStyles = styled.header`
     height: 28px;
     box-sizing: border-box;
 
-    color: #407bff;
+    color: ${props => (props.$isDark ? 'orange' : 'var(--primary-color)')};
     text-decoration: none;
     list-style: none;
 
-    font-style: Roboto;
+    font-family: Roboto;
     font-weight: 700;
     font-size: 12px;
     line-height: 14.06px;
@@ -63,7 +70,7 @@ export const HeaderStyles = styled.header`
     color: blue;
     text-decoration: none;
 
-    font-style: Roboto;
+    font-family: Roboto;
     font-weight: 400;
     font-size: 1.8;
     line-height: 14.06px;

@@ -18,8 +18,9 @@ import {
   getIsDataUpdating,
 } from '../../redux/auth/authSelectors';
 import { changeUserData } from 'API/Auth/changeUserDataAPI';
+import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
-const iconColor = '#407BFF';
+const iconColor = 'var(--primary-color) ';
 
 const schema = yup.object().shape({
   gender: yup.string().required(),
@@ -37,7 +38,9 @@ const schema = yup.object().shape({
   password: yup
     .string()
     .min(8, 'Password must be at least 8 characters.')
-    .required(),
+    .when('newPassword', ([newPassword], schema) => {
+      return newPassword ? schema.required() : schema.notRequired();
+    }),
   newPassword: yup
     .string()
     .min(8, 'Password must be at least 8 characters.')
@@ -61,13 +64,13 @@ export const SettingModal = ({ closeModal }) => {
   const isUserDataUpdating = useSelector(getIsDataUpdating);
 
   const dispatch = useDispatch();
-
+  const isDark = useSelector(getIsDarkTheme);
   const handleSubmit = async (
     { name, email, gender, password, newPassword },
     { resetForm }
   ) => {
     if (newPassword === '') {
-      await dispatch(changeUserData({ name, email, gender, password }));
+      await dispatch(changeUserData({ name, email, gender }));
     } else {
       await dispatch(
         changeUserData({ name, email, gender, password, newPassword })
@@ -103,18 +106,18 @@ export const SettingModal = ({ closeModal }) => {
   };
 
   return (
-    <SettingModalStyled>
+    <SettingModalStyled $isDark={isDark}>
       <h2 className="setting-title">Setting</h2>
       <div>
         <p className="setting-text setting-modal-text">Your photo</p>
         <div className="setting-photo-wrapper">
           {isChangingAvatar && <PiSpinnerGap className="spinner" size={16} />}
-          {!isChangingAvatar && !avatar  && (
+          {!isChangingAvatar && !avatar && (
             <div className="setting-default-avatar">
               <p>{defaultAvatar}</p>
             </div>
           )}
-          {!isChangingAvatar && avatar  && (
+          {!isChangingAvatar && avatar && (
             <img
               src={avatar}
               alt="avatar"
@@ -125,7 +128,7 @@ export const SettingModal = ({ closeModal }) => {
           )}
           {!isChangingAvatar && (
             <label className="upload-photo-label">
-              <BsUpload color={iconColor} />
+              <BsUpload color={isDark ? 'orange' : `${iconColor}`} />
               <p className="upload-photo-text">Upload a photo</p>
               <input
                 type="file"

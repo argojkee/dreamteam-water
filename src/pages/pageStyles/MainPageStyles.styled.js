@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const MainPageStyles = styled.section`
+  min-height: 100vh;
+  background-color: ${props =>
+    props.$isDark ? 'var(--dark-bg-color)' : 'var(--white-color)'};
   .main-container {
     width: 100%;
     display: flex;
@@ -8,12 +11,19 @@ export const MainPageStyles = styled.section`
 
   .right-side {
     border-radius: 10px;
-    background: var(--Secondary-color-2, #ecf2ff);
+    background: ${props =>
+      props.$isDark
+        ? 'rgba(85, 85, 85, 0.7)'
+        : 'var(--second-background-color)'};
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
   }
 
+  .status-bar {
+    background-color: var(--second-background-color);
+  }
+
   @media screen and (max-width: 767px) {
-    padding-top: 24px;
+    padding-top: 88px;
     padding-bottom: 40px;
     .left-side {
       height: 504px;
@@ -32,7 +42,7 @@ export const MainPageStyles = styled.section`
     }
   }
 
-  @media screen and (max-width: 1279px) {
+  @media screen and (max-width: 1439px) {
     .main-container {
       flex-direction: column;
     }
@@ -48,13 +58,12 @@ export const MainPageStyles = styled.section`
     .status-bar {
       width: 100%;
       height: 134px;
-      background-color: gray;
       padding-top: 16px;
     }
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    padding-top: 16px;
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    padding-top: 80px;
     .left-side {
       height: 548px;
       width: 100%;
@@ -63,7 +72,6 @@ export const MainPageStyles = styled.section`
     .today {
       width: 100%;
       height: 260px;
-      background-color: gray;
     }
   }
   @media screen and (min-width: 768px) {
@@ -77,7 +85,6 @@ export const MainPageStyles = styled.section`
     .status-bar {
       width: 100%;
       height: 90px;
-      background-color: gray;
       padding-top: 24px;
     }
 
@@ -88,8 +95,8 @@ export const MainPageStyles = styled.section`
     }
   }
 
-  @media screen and (min-width: 1280px) {
-    padding-top: 22px;
+  @media screen and (min-width: 1440px) {
+    padding-top: 86px;
     .left-side {
       height: 680px;
       width: 624px;
@@ -103,7 +110,6 @@ export const MainPageStyles = styled.section`
     .today {
       width: 544px;
       height: 260px;
-      background-color: gray;
     }
   }
 `;

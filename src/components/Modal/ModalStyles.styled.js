@@ -12,10 +12,11 @@ export const ModalStyles = styled.div`
 
   .modal {
     position: relative;
-    max-width: 90%;
+
     max-height: 95%;
     position: absolute;
-    background-color: white;
+    background-color: ${props =>
+      props.$isDark ? 'gray' : 'var(--white-color)'};
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -24,11 +25,22 @@ export const ModalStyles = styled.div`
     overflow: auto;
   }
 
+  @media screen and (max-width: 767px) {
+    .modal {
+      width: 95%;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .modal {
+      max-width: 100%;
+    }
+  }
+
   .close-btn {
     cursor: pointer;
     position: absolute;
-    right: 24px;
-    top: 36px;
+    right: 12px;
+    top: 24px;
     background-color: transparent;
     transition: 250ms linear;
     border: none;
@@ -37,11 +49,6 @@ export const ModalStyles = styled.div`
   .close-modal {
     width: 24px;
     height: 24px;
-    fill: #407bff;
-  }
-  @media screen and (max-width: 767px) {
-    .modal {
-      width: 80%;
-    }
+    fill: ${props => (props.$isDark ? 'orange' : 'var(--primary-color)')};
   }
 `;

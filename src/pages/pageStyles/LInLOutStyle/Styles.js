@@ -18,6 +18,8 @@ import Back2Desktop2 from '../../../images/signIn-signUp/back/desktop/back2_desk
 // 'FormContainer' get props  automatic from 'ContainerFormStyle' if you send them.
 const Section = styled.section`
   width: 100vw;
+  padding-top: 64px;
+  height: 100%;
 
   @media screen and (min-width: 320px) and (max-width: 767px) {
     background: url(${BackMobile1}), url(${Back2Mobile1});
@@ -25,7 +27,9 @@ const Section = styled.section`
     background-size: cover, ${props => props.$bottleSize.width * 2}px;
     background-position: 0 10px,
       ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px
-        ${props => props.$bottleSize.y + props.$bottleSize.height / 3}px;
+        ${props => props.$bottleSize.y + props.$bottleSize.height / 1.7}px;
+    background-color: ${props =>
+      props.$isDark ? 'black' : `url(${BackMobile1})`};
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -35,17 +39,22 @@ const Section = styled.section`
       background-size: cover, ${props => props.$bottleSize.width * 2}px;
       background-position: 0 50px,
         ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px
-          ${props => props.$bottleSize.y + props.$bottleSize.height / 3}px;
+          ${props => props.$bottleSize.y + props.$bottleSize.height / 1.7}px;
+
+      background-color: ${props =>
+        props.$isDark ? 'black' : `url(${BackMobile1})`};
     }
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
     background: url(${BackTablet1}), url(${Back2Tablet1});
     background-repeat: no-repeat, no-repeat;
     background-size: cover, ${props => props.$bottleSize.width * 2}px;
     background-position: 0 3px,
       ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px
-        ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
+        ${props => props.$bottleSize.y + props.$bottleSize.height / 1.7}px;
+    background-color: ${props =>
+      props.$isDark ? 'black' : `url(${BackMobile1})`};
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -55,17 +64,21 @@ const Section = styled.section`
       background-size: cover, ${props => props.$bottleSize.width * 2}px;
       background-position: 0 3px,
         ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px
-          ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
+          ${props => props.$bottleSize.y + props.$bottleSize.height / 1.7}px;
+      background-color: ${props =>
+        props.$isDark ? 'black' : `url(${BackMobile1})`};
     }
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     background: url(${BackDesktop1}), url(${Back2Desktop1});
     background-repeat: no-repeat, no-repeat;
     background-size: contain, ${props => props.$bottleSize.width * 2}px;
     background-position: 0 10px,
       ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px
-        ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
+        ${props => props.$bottleSize.y + props.$bottleSize.height / 1.7}px;
+    background-color: ${props =>
+      props.$isDark ? 'black' : `url(${BackMobile1})`};
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -75,7 +88,9 @@ const Section = styled.section`
       background-size: contain, ${props => props.$bottleSize.width * 2}px;
       background-position: 0 10px,
         ${props => props.$bottleSize.x - props.$bottleSize.width / 2}px
-          ${props => props.$bottleSize.y + props.$bottleSize.height / 2}px;
+          ${props => props.$bottleSize.y + props.$bottleSize.height / 1.7}px;
+      background-color: ${props =>
+        props.$isDark ? 'black' : `url(${BackMobile1})`};
     }
   }
 `;

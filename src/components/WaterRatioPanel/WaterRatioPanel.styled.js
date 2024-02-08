@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { CiCirclePlus } from 'react-icons/ci';
 
 export const RatioBarH3 = styled.h3`
-  color: #407bff;
+  color: ${props => (props.$isDark ? 'white' : 'var(--blue-color)')};
   font-size: 18px;
   font-weight: 400;
   line-height: 1.33;
   margin-bottom: 8px;
-  @media screen and (max-width: 1279px) {
+  @media screen and (max-width: 1439px) {
     margin-bottom: 0;
   }
 `;
@@ -16,7 +16,9 @@ export const PanelDiv = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  gap: 23px;
+  @media screen and (max-width: 767px) {
+    gap: 23px;
+  }
 
   flex-direction: column;
   @media screen and (min-width: 768px) {
@@ -24,8 +26,15 @@ export const PanelDiv = styled.div`
   }
 `;
 export const SliderContainerDiv = styled.div`
-  width: 100%;
   position: relative;
+
+  @media screen and (max-width: 1439px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 391px;
+  }
 `;
 export const BarContainerDiv = styled.div`
   position: relative;
@@ -54,7 +63,9 @@ export const ProgressBarLower = styled.div`
   height: 8px;
   width: ${({ $percentage }) => $percentage};
   border-radius: 10px;
-  background-color: #9ebbff;
+  background-color: ${props => (props.$isDark ? 'orange' : '#9ebbff')};
+
+  transition: all 1000ms var(--cubic);
 `;
 
 export const WaterProgressThumb = styled.div`
@@ -66,8 +77,10 @@ export const WaterProgressThumb = styled.div`
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background-color: #fff;
-  border: solid 1px #407bff;
+  background-color: var(--white-color);
+  border: solid 1px var(--blue-color);
+
+  transition: all 1000ms var(--cubic);
 `;
 
 export const SliderValueDiv = styled.div`
@@ -76,16 +89,18 @@ export const SliderValueDiv = styled.div`
   left: ${({ $percentage }) => $percentage};
 
   text-align: center;
-  font-family: Roboto;
+  font-family: var(--main-font);
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
   letter-spacing: 0em;
   text-align: center;
-  color: #407bff;
+  color: ${props => (props.$isDark ? 'orange' : 'var(--blue-color)')};
 
   margin-top: 13px;
   padding: 0 13px;
+
+  transition: all 700ms var(--cubic);
 `;
 
 export const RulerDiv = styled.div`
@@ -93,13 +108,13 @@ export const RulerDiv = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  font-family: Roboto;
+  font-family: var(--main-font);
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
   letter-spacing: 0em;
   text-align: center;
-  color: #407bff;
+  color: var(--blue-color);
 
   margin: 15px 0 0 5px;
 `;
@@ -112,7 +127,7 @@ export const RulerElDiv = styled.div`
 `;
 
 export const AddWaterButton = styled.button`
-  background-color: #407bff;
+  background-color: var(--blue-color);
   border: none;
   border-radius: 10px;
   display: flex;
@@ -123,26 +138,26 @@ export const AddWaterButton = styled.button`
   gap: 10px;
   align-items: center;
 
-  font-family: Roboto;
+  font-family: var(--main-font);
   font-weight: 500;
   letter-spacing: 0em;
   text-align: center;
   color: white;
   text-transform: capitalize;
-  transition: all 0.2s ease-out;
+  transition: var(--transition-all-250ms);
   cursor: pointer;
 
-  box-shadow: 0px 4px 8px 0px #407bff57;
+  box-shadow: var(--btn-box-shadow);
 
   &:hover,
-  &:focus,
-  &:active {
+  &:focus {
     outline: none;
-    box-shadow: 0px 5px 7px rgba(64, 123, 255, 0.54);
+    box-shadow: var(--btn-hover-box-shadow);
   }
   &:active {
-    background-color: #3872f8;
-    box-shadow: 0px 2px 7px rgba(64, 123, 255, 0.54);
+    /* background-color: #3872f8; */
+    /* box-shadow: 0px 2px 7px rgba(64, 123, 255, 0.54); */
+    box-shadow: var(--btn-active-box-shadow);
   }
 
   padding: 8px 30px 8px 30px;
@@ -159,7 +174,7 @@ export const AddWaterButton = styled.button`
     font-size: 18px;
     line-height: 24px;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     min-width: 31%;
   }
 `;

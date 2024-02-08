@@ -2,12 +2,11 @@ import { getMonthsArr } from '../helpers/getMonthsArr';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { MonthSwitcherContainer } from './MonthSwitcher.styled';
 import { useSelector } from 'react-redux';
-import { getStartDay } from '../../../redux/auth/authSelectors';
-import { funcGetDate, today } from '../helpers/getDate';
+import {  today } from '../helpers/getDate';
+import { getIsDarkTheme } from '../../../redux/theme/themeSelectors';
 
-const MonthSwitcher = ({ selectedMonth, setSelectedMonth }) => {
-  const startDay = useSelector(getStartDay);
-  const registrationDate = funcGetDate(startDay);
+const MonthSwitcher = ({ selectedMonth, setSelectedMonth, registrationDate}) => {
+  const isDark = useSelector(getIsDarkTheme);
 
   const handlePrevMonth = () => {
     selectedMonth.month === 0
@@ -22,32 +21,34 @@ const MonthSwitcher = ({ selectedMonth, setSelectedMonth }) => {
   };
 
   const isButtonPrevDisabled = () => {
-     return registrationDate.month === selectedMonth.month &&
-        registrationDate.year === selectedMonth.year
+    return registrationDate.month === selectedMonth.month &&
+      registrationDate.year === selectedMonth.year
       ? true
       : false;
   };
 
   const isButtonNextDisabled = () => {
     return (
-      selectedMonth.year >= today.year + 5 && selectedMonth.month === today.month
+      selectedMonth.year >= today.year + 5 &&
+      selectedMonth.month === today.month
     );
   };
 
   return (
-    <MonthSwitcherContainer>
-      <h2>Month</h2>
+    <MonthSwitcherContainer $isDark={isDark}>
+      <h2 className="title">Month</h2>
       <div>
         <button onClick={handlePrevMonth} disabled={isButtonPrevDisabled()}>
-        <SlArrowLeft />
-      </button>
-      <p>
-        {getMonthsArr(selectedMonth.year)[selectedMonth.month].name}, {selectedMonth.year}
-      </p>
-      <button onClick={handleNextMonth} disabled={isButtonNextDisabled()}>
-        <SlArrowRight />
+          <SlArrowLeft fill={isDark ? 'orange' : '#407bff'} />
         </button>
-        </div>
+        <p>
+          {getMonthsArr(selectedMonth.year)[selectedMonth.month].name},{' '}
+          {selectedMonth.year}
+        </p>
+        <button onClick={handleNextMonth} disabled={isButtonNextDisabled()}>
+          <SlArrowRight fill={isDark ? 'orange' : '#407bff'} />
+        </button>
+      </div>
     </MonthSwitcherContainer>
   );
 };

@@ -7,9 +7,11 @@ export const DailyNormStyles = styled.div`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  margin-bottom: 18px;
 
   .dailyNormaSection {
-    width: 165px;
+    width: fit-content;
+
     padding: 8px 20px 8px 20px;
 
     box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
@@ -23,8 +25,8 @@ export const DailyNormStyles = styled.div`
     font-size: 18px;
     font-weight: 500;
     line-height: 1.33;
-
     text-align: left;
+    color: ${props => (props.$isDark ? 'var(--dark-text-color)' : 'black')};
   }
 
   .button-info-container {
@@ -40,7 +42,7 @@ export const DailyNormStyles = styled.div`
 
     text-align: left;
 
-    color: rgba(64, 123, 255, 1);
+    color: ${props => (props.$isDark ? 'orange' : 'rgba(64, 123, 255, 1)')};
   }
 
   button {
@@ -56,7 +58,10 @@ export const DailyNormStyles = styled.div`
     text-align: left;
     cursor: pointer;
 
-    color: rgba(139, 174, 255, 1);
+    color: ${props =>
+      props.$isDark ? 'rgba(255, 165, 0, 0.5)' : 'rgba(139, 174, 255, 1)'};
+
+    cursor: pointer;
   }
 
   /* background-image: url('../../images/main-bg/Bottle-Main-sm.png'); */
@@ -64,14 +69,15 @@ export const DailyNormStyles = styled.div`
   @media screen and (max-width: 767px) {
     height: 290px;
     background-image: url(${background});
+    background-position: bottom;
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
     height: 418px;
     background-image: url(${background});
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     height: 548px;
     background-image: url(${background});
   }

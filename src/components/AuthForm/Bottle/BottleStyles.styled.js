@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 import OnlyBottleMobile1 from '../../../images/signIn-signUp/bottle/onlyBottle/mobile/mobile_onlybottle@1x.png';
 import OnlyBottleMobile2 from '../../../images/signIn-signUp/bottle/onlyBottle/mobile/mobile_onlybottle@2x.png';
@@ -10,90 +10,74 @@ import OnlyBottleDesktop1 from '../../../images/signIn-signUp/bottle/onlyBottle/
 import OnlyBottleDesktop2 from '../../../images/signIn-signUp/bottle/onlyBottle/desktop/desktop_onlybottle@1x.png';
 
 export const BottleStyles = styled.div`
+  width: 50%;
+  height: 300px;
 
-    width: 50%;
-    height: 300px;
+  .bottleContainer {
+    width: 100%;
+    height: 100%;
+
+    background-size: cover;
+
+    background-position: center;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 81px;
+    height: 181px;
+
+    margin: 0 0 30px 0;
 
     .bottleContainer {
-
-      width: 100%;
-      height: 100%;
-  
-      background-size: cover;
-
-      background-position: center;
-  
-      
+      background-image: url(${OnlyBottleMobile1});
     }
 
-    @media screen and (min-width: 320px) and (max-width: 767px) { 
-      width: 81px;
-      height: 181px;
-
-      margin: 0 0 30px 0;
-
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
       .bottleContainer {
-
-        background-image: url(${OnlyBottleMobile1});
-       
-      }
-
-      @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
-        .bottleContainer {
-    
-          background-image: url(${OnlyBottleMobile2});
-        }
+        background-image: url(${OnlyBottleMobile2});
       }
     }
+  }
 
-    @media screen and (min-width: 768px) and (max-width: 1279px) { 
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    width: 213px;
+    height: 474px;
 
-      width: 213px;
-      height: 474px;
+    margin: 160px 0 30px 0;
 
-      margin: 160px 0 30px 0;
+    .bottleContainer {
+      background-image: url(${OnlyBottleTablet1});
+    }
 
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
       .bottleContainer {
-    
-         background-image: url(${OnlyBottleTablet1});
-
-      }
-      
-
-      @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
-
-        .bottleContainer {
-    
-          background-image: url(${OnlyBottleTablet2});
-        
-        }
+        background-image: url(${OnlyBottleTablet2});
       }
     }
+  }
 
-    @media screen and (min-width: 1280px) { 
+  @media screen and (min-width: 1440px) {
+    width: 265px;
+    height: 588px;
 
-      
-      width: 265px;
-      height: 588px;
+    margin: 100px 0 100px 150px;
 
-      margin: 100px 0 100px 150px;
+    background-size: contain;
 
-      background-size: contain;
+    .bottleContainer {
+      background-image: url(${OnlyBottleDesktop1});
+    }
 
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
       .bottleContainer {
-    
-         background-image: url(${OnlyBottleDesktop1});
-
-      }
-      
-
-      @media (min-device-pixel-ratio: 2),(min-resolution: 192dpi),(min-resolution: 2dppx) {
-        .bottleContainer {
-    
-          background-image: url(${OnlyBottleDesktop2});
-        
-        }
+        background-image: url(${OnlyBottleDesktop2});
       }
     }
-  
+  }
 `;

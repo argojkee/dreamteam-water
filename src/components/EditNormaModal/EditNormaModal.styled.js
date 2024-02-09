@@ -15,14 +15,20 @@ export const StyledDailyNormaContainer = styled.div`
   .theory {
     display: flex;
     flex-direction: column;
+
     align-items: center;
+
+
   }
 
   .modal-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     align-items: fit-content;
+
+
 
     background-color: ${props => (props.$isDark ? '2f2f2f' : 'white')};
     color: ${props => (props.$isDark ? 'white' : 'rgba(143, 143, 143, 1)')};
@@ -102,7 +108,7 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 400;
     line-height: 1.33;
 
-    color: #407bff;
+    color: ${props => (props.$isDark ? 'orange' : '#407bff')};
   }
 
   .save_form {
@@ -135,7 +141,7 @@ export const StyledDailyNormaContainer = styled.div`
       props.$isDark ? 'rgba(143, 143, 143, 1)' : 'white'};
 
     span {
-      color: var(--primary-color);
+      color: ${props => (props.$isDark ? 'orange' : 'var(--primary-color)')};
     }
   }
 
@@ -221,7 +227,7 @@ export const StyledDailyNormaContainer = styled.div`
     font-weight: 700;
     line-height: 1.33;
 
-    color: var(--primary-color);
+    color: ${props => (props.$isDark ? 'orange' : 'var(--primary-color)')};
   }
 
   .btn-save {
@@ -255,14 +261,12 @@ export const StyledDailyNormaContainer = styled.div`
     position: absolute;
     z-index: -1;
     opacity: 0;
-    
   }
   /* для элемента label зв'язанного з .custom-radio */
   .custom-radio + label {
     display: inline-flex;
     align-items: center;
     user-select: none;
-    
   }
   /* створення в label псевдоелемента before з наступними стилями */
   .custom-radio + label::before {
@@ -327,7 +331,7 @@ export const StyledDailyNormaContainer = styled.div`
   }
 
   input[type='text'] {
-    color: #407bff;
+    color: ${props => (props.$isDark ? 'orange' : '#407bff;')};
   }
 
 

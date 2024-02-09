@@ -19,9 +19,8 @@ import drinkIcon from '../../icons/drink.svg';
 import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
 export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
-
   const [waterAmount, setWaterAmount] = useState(0);
-  const [recordTime, setRecordTime] = useState(getDefaultTime());
+  const [recordTime, setRecordTime] = useState('00:00 AM');
 
   const dispatch = useDispatch();
   const { _id: dayId, drinks } = useSelector(getCurrentDay);
@@ -31,26 +30,26 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
   const isLoading = isAdding || isEditing;
 
   // add water with new 'recordTime', when user open add water window and go away
-  function getDefaultTime() {
-    const now = new Date();
-    //! const roundedMinutes = Math.ceil(now.getMinutes() / 5) * 5;
-    const defaultTime = new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate(),
-      now.getHours(),
-      now.getMinutes(),
-    );
+  // function getDefaultTime() {
+  //   const now = new Date();
+  //   //! const roundedMinutes = Math.ceil(now.getMinutes() / 5) * 5;
+  //   const defaultTime = new Date(
+  //     now.getFullYear(),
+  //     now.getMonth(),
+  //     now.getDate(),
+  //     now.getHours(),
+  //     now.getMinutes()
+  //   );
 
-    return defaultTime.toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: 'numeric',
-    });
-  }
+  //   return defaultTime.toLocaleTimeString('en-US', {
+  //     hour: 'numeric',
+  //     minute: 'numeric',
+  //   });
+  // }
 
   const handleSave = async e => {
     e.preventDefault();
- 
+
     if (!waterAmount) return toastError('Water amount must be more than 0');
 
     if (waterAmount > 0) {
@@ -153,13 +152,15 @@ export const AddForm = ({ closeAddForm, previousWaterData, drink }) => {
           />
         </div>
         <div className="resultInfo">
-            
           <p className="result">{waterAmount || 0} ml</p>
 
           <button type="submit">
-            {isLoading ? <PiSpinnerGap className="spinner" size={16} /> : 'Save'}
+            {isLoading ? (
+              <PiSpinnerGap className="spinner" size={16} />
+            ) : (
+              'Save'
+            )}
           </button>
-
         </div>
       </form>
     </AddFormStyles>

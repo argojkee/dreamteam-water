@@ -63,7 +63,17 @@ const RestorePage = () => {
       <BackgroundStyles>
         <ContentStyles>
           <div className="box">
-            <form onSubmit={formik.handleSubmit} className='setting-form-form'>
+            {!restoreToken && (
+              <div className="setting-text">
+                Enter your email to change password:
+              </div>
+            )}
+            {restoreToken && (
+              <div className="setting-text">
+                Enter your new password to change it:
+              </div>
+            )}
+            <form onSubmit={formik.handleSubmit} className="setting-form-form">
               {!restoreToken && (
                 <label className="setting-form-name-label">
                   <input

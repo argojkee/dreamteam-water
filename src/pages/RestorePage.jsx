@@ -31,7 +31,7 @@ const RestorePage = () => {
   ) => {
     if (!restoreToken) {
       await axios.post(
-        `http://dreamteam-water-server.onrender.com/api/users/restore`,
+        `https://dreamteam-water-server.onrender.com/api/users/restore`,
         { email }
       );
     } else {

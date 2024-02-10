@@ -66,7 +66,7 @@ export const BackgroundStyles = styled.div`
   background-repeat: no-repeat;
 `;
 
-export const ContentStyles = styled.div`
+export const ContentStyles = styled.div` //стили
   width: 50%;
   margin-left: auto;
   margin-right: auto;

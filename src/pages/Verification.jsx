@@ -1,15 +1,19 @@
 import axios from 'axios';
-
 import { useEffect, useState } from 'react';
-
-import { BackgroundContainer, ContentContainer } from './HomePage.styled';
-import { VerificationStyles } from './pageStyles/VerificationStyle/Verification.styled';
-import Container from 'components/Container/Container';
+import {
+  VerificationStyles,
+  BackgroundStyles,
+  ContentStyles,
+} from './pageStyles/VerificationStyle/Verification.styled';
+//import Container from 'components/Container/Container';
 import { NavLink, useParams } from 'react-router-dom';
+import { getIsDarkTheme } from '../redux/theme/themeSelectors';
+import { useSelector } from 'react-redux';
 
 const HomePage = () => {
   const [verStatus, setStatus] = useState(false);
   const { verToken } = useParams();
+  const isDark = useSelector(getIsDarkTheme);
 
   useEffect(() => {
     axios
@@ -24,33 +28,27 @@ const HomePage = () => {
       });
   }, [verToken]);
   return (
-    <>
-      <BackgroundContainer>
-        <Container>
-          <ContentContainer>
-            <VerificationStyles>
-              <div className="box">
-                {verStatus && (
-                  <div className="box_textMessage">
-                    <p className="text_message">Verification successful!</p>
-                  </div>
-                )}
-                {!verStatus && (
-                  <div className="box_textMessage">
-                    <p className="text_message">
-                      Wrong link or user was already verify!
-                    </p>
-                  </div>
-                )}
-                <NavLink className="link" to="/login">
-                  <div className="btn_login">Login</div>
-                </NavLink>
-              </div>
-            </VerificationStyles>
-          </ContentContainer>
-        </Container>
-      </BackgroundContainer>
-    </>
+    <VerificationStyles $isDark={isDark}>
+      <BackgroundStyles>
+        <ContentStyles>
+          {verStatus && (
+            <div className="box_textMessage">
+              <p className="text_message">Verification successful!</p>
+            </div>
+          )}
+          {!verStatus && (
+            <div className="box_textMessage">
+              <p className="text_message">
+                Wrong link or user was already verify!
+              </p>
+            </div>
+          )}
+          <NavLink className="link" to="/login">
+            <div className="btn_login">Login</div>
+          </NavLink>
+        </ContentStyles>
+      </BackgroundStyles>
+    </VerificationStyles>
   );
 };
 

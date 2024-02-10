@@ -15,6 +15,7 @@ import { getIsDarkTheme } from '../redux/theme/themeSelectors';
 const MainPage = () => {
   const dispatch = useDispatch();
   const isDark = useSelector(getIsDarkTheme);
+  const selector = useSelector(state => state.auth);
 
   useEffect(() => {
     dispatch(getCurrentMonthInfoThunk());
@@ -23,7 +24,7 @@ const MainPage = () => {
 
   return (
     <main>
-      <MainPageStyles $isDark={isDark}>
+      <MainPageStyles $isDark={isDark} $bottleSize={selector.bottleXY}>
         <Container>
           <div className="main-container">
             <div className="left-side">

@@ -3,14 +3,21 @@ import styled from 'styled-components';
 import background from '../../images/main-bg/Bottle-Main-lg.png';
 
 export const DailyNormStyles = styled.div`
-  background-image: url(${background});
-  background-size: contain;
-  background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  // background-image: url(${background});
+  // background-size: contain;
+  // background-position: center;
   background-repeat: no-repeat;
   margin-bottom: 18px;
 
   .dailyNormaSection {
+
     width: fit-content;
+    height: fit-content;
     padding: 8px 20px 8px 20px;
 
     box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
@@ -64,19 +71,26 @@ export const DailyNormStyles = styled.div`
 
   /* background-image: url('../../images/main-bg/Bottle-Main-sm.png'); */
 
+
   @media screen and (max-width: 767px) {
     height: 290px;
-    background-image: url(${background});
+    // background-image: url(${background});
     background-position: bottom;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
+    flex-direction: row;
+    gap: 0;
     height: 418px;
-    background-image: url(${background});
+    
   }
 
   @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    gap: 0;
     height: 548px;
-    background-image: url(${background});
+    // background-image: url(${background});
+
+    
   }
 `;

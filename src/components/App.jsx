@@ -12,6 +12,7 @@ const RegistrationPage = lazy(() => import('../pages/RegistrationPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const MainPage = lazy(() => import('../pages/MainPage'));
 const VerificationPage = lazy(() => import('../pages/Verification'));
+const RestorePage = lazy(() => import('../pages/RestorePage'));
 
 // for verification
 
@@ -39,6 +40,14 @@ export const App = () => {
         <Route
           path="verification/:verToken"
           element={<PublicRoute component={VerificationPage} />}
+        />
+        <Route
+          path="restore/"
+          element={<PublicRoute component={RestorePage} />}
+        />
+        <Route
+          path="restore/:restoreToken"
+          element={<PublicRoute component={RestorePage} />}
         />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />

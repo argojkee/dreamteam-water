@@ -53,6 +53,8 @@ export default function UserLogoModal() {
   const handleClickAway = () => {
     setOpen(false);
   };
+
+  
   return (
     <>
       {email && (

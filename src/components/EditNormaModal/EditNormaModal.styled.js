@@ -15,12 +15,20 @@ export const StyledDailyNormaContainer = styled.div`
   .theory {
     display: flex;
     flex-direction: column;
+
+    align-items: center;
+
+
   }
 
   .modal-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    align-items: fit-content;
+
+
 
     background-color: ${props => (props.$isDark ? '2f2f2f' : 'white')};
     color: ${props => (props.$isDark ? 'white' : 'rgba(143, 143, 143, 1)')};
@@ -145,7 +153,7 @@ export const StyledDailyNormaContainer = styled.div`
 
   label.form-text {
     display: inline-block;
-
+    margin-top: 16px;
     margin-bottom: 16px;
   }
 
@@ -326,9 +334,30 @@ export const StyledDailyNormaContainer = styled.div`
     color: ${props => (props.$isDark ? 'orange' : '#407bff;')};
   }
 
-  button.btn-save {
-    display: block;
-    width: 100%;
+
+  
+  @media screen and (min-width: 767px) and (max-width: 1279px) {
+    width: 768px;
+    padding: 0 12px 0 12px;
+
+    .list {
+      gap: 24px;
+    }
+
+    .custom-radio + label::before {
+      margin: 0px 6px 0px 2px;
+    }
+
+    .invisibleText {
+      width: 642px;
+    }
+
+    button.btn-save {
+      display: block;
+      width: auto;
+      
+      margin-left: auto;
+  
     height: 44px;
 
     padding: 10px 30px;
@@ -360,6 +389,7 @@ export const StyledDailyNormaContainer = styled.div`
 
     button.btn-save {
       margin: 0 8px 8px auto;
+
     }
   }
 
@@ -375,7 +405,7 @@ export const StyledDailyNormaContainer = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    /* height: 548px; */
+   
     button.btn-save {
       width: 160px;
       margin: 0 8px 8px auto;

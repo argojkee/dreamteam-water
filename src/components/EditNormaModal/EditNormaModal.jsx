@@ -5,6 +5,9 @@ import { useSpring, animated } from '@react-spring/web';
 import { editDailyNorm } from '../../redux/water/waterFunctions';
 import { getIsEditingNorm } from '../../redux/water/waterSelectors';
 import { PiSpinnerGap } from 'react-icons/pi';
+
+import { useState } from 'react';
+
 import { getUserGender } from '../../redux/auth/authSelectors';
 import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 import { toastError } from 'services/toastNotification';
@@ -39,17 +42,20 @@ const EditNormaModal = ({ closeModal }) => {
 
     //yup stored own validate functions (for weight, activity...etc)
     validationSchema: Yup.object({
-      weight: Yup.number().typeError("Must be a 'number'")
+      weight: Yup.number()
+        .typeError("Must be a 'number'")
         .positive()
         .notRequired()
         .max(400, 'Max value 400kg')
         .min(40, 'Min value 40kg'),
-      activity: Yup.number().typeError("Must be a 'number'")
+      activity: Yup.number()
+        .typeError("Must be a 'number'")
         .notRequired()
         .positive()
         .max(24, 'Max value 24h')
         .min(0.1, 'Min value 0.1h'),
-      drink: Yup.number().typeError("Must be a 'number'")
+      drink: Yup.number()
+        .typeError("Must be a 'number'")
         .notRequired()
         .positive()
         .max(7, 'Max value 7L')

@@ -10,11 +10,36 @@ export const RestoreStyled = styled.div`
   .box {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    gap: 20px;
     width: 100%;
+    text-align: center;
+  }
+
+  .setting-text {
+    display: block;
+
+    overflow: hidden;
+    font-style: Roboto;
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    line-height: 1.23;
+    text-align: center;
+    color: ${props => (props.$isDark ? 'orange' : 'var(--primary-color)')};
   }
 
   .setting-form-form {
+    display: block;
     width: 384px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media screen and (max-width: 390px) {
+    .setting-form-form {
+      width: 100%;
+    }
   }
 
   .setting-form-input {
@@ -64,7 +89,7 @@ export const RestoreStyled = styled.div`
     }
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 390px) {
     .setting-form-submit {
       width: 100%;
     }

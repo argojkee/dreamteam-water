@@ -37,6 +37,12 @@ export const HeaderStyles = styled.header`
     text-shadow: 0px 0px #fff;
   }
 
+  @media screen and (max-width: 300px) {
+    .textSignIn {
+      font-size: 0px;
+    }
+  }
+
   .AuthContainer {
     display: flex;
     gap: 8px;

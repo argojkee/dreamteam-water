@@ -5,7 +5,7 @@ export const VerificationStyles = styled.div`
   background-color: ${props =>
     props.$isDark ? 'var(--dark-bg-color)' : 'transparent'};
   height: 100%;
-  height: 100%;
+  width: 100%;
 
   .btn_login {
     display: block;
@@ -66,9 +66,14 @@ export const BackgroundStyles = styled.div`
   background-repeat: no-repeat;
 `;
 
-export const ContentStyles = styled.div` //стили
+export const ContentStyles = styled.div`
+  //стили
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 15%;
+  padding-top: 200px;
+
+  @media screen and (max-width: 767px) {
+    width: 90%;
+  }
 `;

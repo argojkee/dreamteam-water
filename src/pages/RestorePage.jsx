@@ -24,6 +24,23 @@ const schema = yup.object().shape({
     .oneOf([yup.ref('newPassword')], 'Passwords do not match'),
 });
 
+// =================================================================
+function createCircle() {
+  const section = document.querySelector('.bubble-gen');
+  const circleEl = document.createElement('span');
+  let size = Math.random() * 50;
+  circleEl.style.width = 20 + size + 'px';
+  circleEl.style.height = 20 + size + 'px';
+  circleEl.style.left = Math.random() * window.innerWidth + 'px';
+  section.appendChild(circleEl);
+
+  setTimeout(() => {
+    circleEl.remove();
+  }, Math.random() * 5000);
+}
+setInterval(createCircle, 200);
+// =================================================================
+
 const RestorePage = () => {
   const nav = useNavigate();
   const isDark = useSelector(getIsDarkTheme);
@@ -61,8 +78,9 @@ const RestorePage = () => {
   return (
     <RestoreStyled $isDark={isDark}>
       <BackgroundStyles>
-        <ContentStyles>
-          <div className="box">
+        <div className="box">
+          <div></div>
+          <form onSubmit={formik.handleSubmit} className="setting-form-form">
             {!restoreToken && (
               <div className="setting-text">
                 Enter your email to change password:
@@ -73,61 +91,60 @@ const RestorePage = () => {
                 Enter your new password to change it:
               </div>
             )}
-            <form onSubmit={formik.handleSubmit} className="setting-form-form">
-              {!restoreToken && (
+            {!restoreToken && (
+              <label className="setting-form-name-label">
+                <input
+                  className="setting-form-input"
+                  type="email"
+                  name="email"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  placeholder="Email"
+                />
+              </label>
+            )}
+            {restoreToken && (
+              <>
                 <label className="setting-form-name-label">
                   <input
+                    style={
+                      formik.touched.newPassword &&
+                      formik.errors.newPassword && {
+                        borderColor: '#EF5050',
+                      }
+                    }
                     className="setting-form-input"
-                    type="email"
-                    name="email"
+                    type="text"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    placeholder="Email"
+                    name="newPassword"
+                    placeholder="Password"
                   />
                 </label>
-              )}
-              {restoreToken && (
-                <>
-                  <label className="setting-form-name-label">
-                    <input
-                      style={
-                        formik.touched.newPassword &&
-                        formik.errors.newPassword && {
-                          borderColor: '#EF5050',
-                        }
+                <label className="setting-form-name-label">
+                  <input
+                    style={
+                      formik.touched.repeatNewPassword &&
+                      formik.errors.repeatNewPassword && {
+                        borderColor: '#EF5050',
                       }
-                      className="setting-form-input"
-                      type="text"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      name="newPassword"
-                      placeholder="Password"
-                    />
-                  </label>
-                  <label className="setting-form-name-label">
-                    <input
-                      style={
-                        formik.touched.repeatNewPassword &&
-                        formik.errors.repeatNewPassword && {
-                          borderColor: '#EF5050',
-                        }
-                      }
-                      className="setting-form-input"
-                      type="text"
-                      onChange={formik.handleChange}
-                      name="repeatNewPassword"
-                      placeholder="Repeat password"
-                    />
-                  </label>
-                </>
-              )}
-              <button type="submit" className="setting-form-submit">
-                {!restoreToken && 'Send email'}
-                {restoreToken && 'Change password'}
-              </button>
-            </form>
-          </div>
-        </ContentStyles>
+                    }
+                    className="setting-form-input"
+                    type="text"
+                    onChange={formik.handleChange}
+                    name="repeatNewPassword"
+                    placeholder="Repeat password"
+                  />
+                </label>
+              </>
+            )}
+            <button type="submit" className="setting-form-submit">
+              {!restoreToken && 'Send email'}
+              {restoreToken && 'Change password'}
+            </button>
+          </form>{' '}
+          <div className="bubble-gen"></div>
+        </div>
       </BackgroundStyles>
     </RestoreStyled>
   );

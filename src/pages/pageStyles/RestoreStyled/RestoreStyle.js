@@ -8,17 +8,21 @@ export const RestoreStyled = styled.div`
   width: 100%;
 
   .box {
+    overflow: hidden;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     gap: 20px;
     width: 100%;
+    height: calc(100% - 60px);
+    position: relative;
+    top: 60px;
     text-align: center;
   }
 
   .setting-text {
     display: block;
-
+    padding-bottom: 16px;
     overflow: hidden;
     font-style: Roboto;
     font-weight: 400;
@@ -74,6 +78,7 @@ export const RestoreStyled = styled.div`
     width: 100%;
     margin: 0 8px 8px auto;
     color: var(--white-color);
+    font-size: 20px;
 
     background-color: ${props =>
       props.$isDark ? '#ff9d43' : 'var(--primary-color)'};
@@ -93,6 +98,48 @@ export const RestoreStyled = styled.div`
     .setting-form-submit {
       width: 100%;
     }
+  }
+
+  .bubble-gen {
+    width: 100wv;
+    height: 0px;
+    margin: 0;
+    padding: 0;
+    bottom: 1px;
+  }
+
+  span {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: animate 4s linear infinite;
+  }
+  span:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.25) translate(-70%, -70%);
+    background: radial-gradient(#fff, transparent);
+    border-radius: 50%;
+  }
+  @keyframes animate {
+    0% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+    60%,
+    99% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-1200%);
+      opacity: 0;
+    }
+  }
+  h2 {
+    color: #333;
+    font-size: 10em;
   }
 `;
 

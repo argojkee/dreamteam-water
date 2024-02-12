@@ -34,21 +34,21 @@ const RestorePage = () => {
   const isDark = useSelector(getIsDarkTheme);
 
   useEffect(() => {
-    setInterval(createCircle, 200);
+    setInterval(createCircle, (window.innerHeight / window.innerWidth) * 300);
   }, []);
 
   function createCircle() {
     const section = document.querySelector('.bubble-gen');
     const circleEl = document.createElement('span');
-    let size = Math.random() * 50;
-    circleEl.style.width = 20 + size + 'px';
-    circleEl.style.height = 20 + size + 'px';
+    let size = Math.random() * (window.innerWidth / window.innerHeight) * 50;
+    circleEl.style.width = 15 + size + 'px';
+    circleEl.style.height = 15 + size + 'px';
     circleEl.style.left = Math.random() * window.innerWidth + 'px';
     section.appendChild(circleEl);
 
     setTimeout(() => {
       circleEl.remove();
-    }, Math.random() * 5000);
+    }, ((Math.random() * window.innerHeight) / window.innerWidth) * 5000);
   }
 
   const [isLoading, setIsLoading] = useState(false);

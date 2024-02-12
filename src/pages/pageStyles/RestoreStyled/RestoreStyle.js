@@ -48,6 +48,8 @@ export const RestoreStyled = styled.div`
   }
 
   .setting-form-input {
+    position: relative;
+    z-index: 500;
     display: block;
     width: 100%;
     height: 44px;
@@ -113,7 +115,7 @@ export const RestoreStyled = styled.div`
     position: absolute;
     border-radius: 50%;
     box-shadow: inset 0 0 10px rgba(80, 150, 250, 0.5);
-    animation: animate 4s linear infinite;
+    animation: animate 5s linear infinite;
   }
   span:before {
     content: '';
@@ -134,7 +136,7 @@ export const RestoreStyled = styled.div`
       opacity: 1;
     }
     100% {
-      transform: translateY(-1200%);
+      transform: translateY(-2000%);
       opacity: 0;
     }
   }

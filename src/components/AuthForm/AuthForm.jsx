@@ -28,7 +28,7 @@ const AuthForm = () => {
 
   const isDark = useSelector(getIsDarkTheme);
   const isLoading = useSelector(getIsAuthLoading);
-  
+
   // get current location
   const location = useLocation();
 
@@ -102,6 +102,11 @@ const AuthForm = () => {
     isRegistrationPage ? navigate('/login') : navigate('/registration');
   };
 
+  const toRestPass = e => {
+    e.preventDefault();
+    navigate('/restore');
+  };
+
   const passEyeHandler = () => {
     setPassEyeToggle(value => !value);
   };
@@ -119,7 +124,13 @@ const AuthForm = () => {
         $justify={'space-between'}
         width={'100%'}
       >
-        <Styles $div $divDiraction={'column'} $pass $marginRight={'100px'} color={isDark ? 'white' : 'black'}>
+        <Styles
+          $div
+          $divDiraction={'column'}
+          $pass
+          $marginRight={'100px'}
+          color={isDark ? 'white' : 'black'}
+        >
           <Styles $p $fontSize={'26px'} $marginBott={'16px'}>
             {isRegistrationPage ? 'Sign up' : 'Sign in'}
           </Styles>
@@ -309,10 +320,19 @@ const AuthForm = () => {
             </Styles>
           </Styles>
 
-          <Styles $div $justify={'flex-start'} width={'100%'}>
+          <Styles $div $justify={'space-between'} width={'100%'}>
             <Styles $link color={isDark ? 'white' : 'black'} onClick={navTo}>
               To {isRegistrationPage ? 'Sign in' : 'Sign up'}
             </Styles>
+            {!isRegistrationPage && (
+              <Styles
+                $link
+                color={isDark ? 'white' : 'black'}
+                onClick={toRestPass}
+              >
+                Forgot password
+              </Styles>
+            )}
           </Styles>
         </Styles>
 

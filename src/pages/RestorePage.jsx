@@ -107,55 +107,55 @@ const RestorePage = () => {
             </div>
 
             <form onSubmit={formik.handleSubmit} className="setting-form-form">
+              {restoreToken && (
+                <>
+                  <label className="setting-form-name-label">
+                    <input
+                      style={
+                        formik.touched.newPassword &&
+                        formik.errors.newPassword && {
+                          borderColor: '#EF5050',
+                        }
+                      }
+                      className="setting-form-input"
+                      type="text"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      name="newPassword"
+                      placeholder="Password"
+                    />
+                  </label>
+
+                  <label className="setting-form-name-label">
+                    <input
+                      style={
+                        formik.touched.repeatNewPassword &&
+                        formik.errors.repeatNewPassword && {
+                          borderColor: '#EF5050',
+                        }
+                      }
+                      className="setting-form-input"
+                      type="password"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      name="newPassword"
+                      placeholder="Password"
+                    />
+                  </label>
+                </>
+              )}
               {!restoreToken && (
                 <label className="setting-form-name-label">
                   <input
-                    style={
-                      formik.touched.newPassword &&
-                      formik.errors.newPassword && {
-                        borderColor: '#EF5050',
-                      }
-                    }
                     className="setting-form-input"
-                    type="text"
+                    type="email"
+                    name="email"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    name="newPassword"
-                    placeholder="Password"
+                    placeholder="Email"
                   />
                 </label>
               )}
-              <label className="setting-form-name-label">
-                <input
-                  style={
-                    formik.touched.repeatNewPassword &&
-                    formik.errors.repeatNewPassword && {
-                      borderColor: '#EF5050',
-                    }
-                  }
-                  className="setting-form-input"
-                  type="password"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  name="newPassword"
-                  placeholder="Password"
-                />
-              </label>
-              <label className="setting-form-name-label">
-                <input
-                  style={
-                    formik.touched.repeatNewPassword &&
-                    formik.errors.repeatNewPassword && {
-                      borderColor: '#EF5050',
-                    }
-                  }
-                  className="setting-form-input"
-                  type="password"
-                  onChange={formik.handleChange}
-                  name="repeatNewPassword"
-                  placeholder="Repeat password"
-                />
-              </label>
 
               <button type="submit" className="setting-form-submit">
                 {isLoading ? (

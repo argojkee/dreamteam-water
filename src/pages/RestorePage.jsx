@@ -11,7 +11,7 @@ import { getIsDarkTheme } from '../redux/theme/themeSelectors';
 import { useSelector } from 'react-redux';
 import { toastSuccess, toastError } from 'services/toastNotification';
 import { PiSpinnerGap } from 'react-icons/pi';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const schema = yup.object().shape({
   email: yup.string().email('Enter valid email. For example user@gmail.com'),
@@ -26,25 +26,31 @@ const schema = yup.object().shape({
 });
 
 // =================================================================
-function createCircle() {
-  const section = document.querySelector('.bubble-gen');
-  const circleEl = document.createElement('span');
-  let size = Math.random() * 50;
-  circleEl.style.width = 20 + size + 'px';
-  circleEl.style.height = 20 + size + 'px';
-  circleEl.style.left = Math.random() * window.innerWidth + 'px';
-  section.appendChild(circleEl);
 
-  setTimeout(() => {
-    circleEl.remove();
-  }, Math.random() * 5000);
-}
-setInterval(createCircle, 200);
 // =================================================================
 
 const RestorePage = () => {
   const nav = useNavigate();
   const isDark = useSelector(getIsDarkTheme);
+
+  useEffect(() => {
+    setInterval(createCircle, 200);
+  }, []);
+
+  function createCircle() {
+    const section = document.querySelector('.bubble-gen');
+    const circleEl = document.createElement('span');
+    let size = Math.random() * 50;
+    circleEl.style.width = 20 + size + 'px';
+    circleEl.style.height = 20 + size + 'px';
+    circleEl.style.left = Math.random() * window.innerWidth + 'px';
+    section.appendChild(circleEl);
+
+    setTimeout(() => {
+      circleEl.remove();
+    }, Math.random() * 5000);
+  }
+
   const [isLoading, setIsLoading] = useState(false);
 
   const { restoreToken } = useParams();
@@ -65,6 +71,7 @@ const RestorePage = () => {
       }
     } else {
       try {
+        console.log(newPassword);
         setIsLoading(true);
         await axios.patch(
           `https://dreamteam-water-server.onrender.com/api/users/restore/${restoreToken}`,
@@ -116,7 +123,7 @@ const RestorePage = () => {
                       }
                     }
                     className="setting-form-input"
-                    type="text"
+                    type="password"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     name="newPassword"
@@ -136,7 +143,7 @@ const RestorePage = () => {
                     type="password"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    name="newPassword"
+                    name="repeatNewPassword"
                     placeholder="Password"
                   />
                 </label>

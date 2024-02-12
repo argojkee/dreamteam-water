@@ -5,7 +5,6 @@ import * as yup from 'yup';
 import { useParams } from 'react-router-dom';
 import {
   RestoreStyled,
-  ContentStyles,
   BackgroundStyles,
 } from './pageStyles/RestoreStyled/RestoreStyle';
 import { getIsDarkTheme } from '../redux/theme/themeSelectors';

@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { useParams } from 'react-router-dom';
 import {
   RestoreStyled,
+  ContentStyles,
   BackgroundStyles,
 } from './pageStyles/RestoreStyled/RestoreStyle';
 import { getIsDarkTheme } from '../redux/theme/themeSelectors';
@@ -96,76 +97,75 @@ const RestorePage = () => {
   return (
     <RestoreStyled $isDark={isDark}>
       <BackgroundStyles>
-        <ContentStyles>
-          <div className="box">
+        <div className="box">
+          <div></div>
+          <form onSubmit={formik.handleSubmit} className="setting-form-form">
             <div className="setting-text">
               Enter your{' '}
               {restoreToken
                 ? 'new password to change it'
                 : 'email to change password'}
             </div>
-
-            <form onSubmit={formik.handleSubmit} className="setting-form-form">
-              {restoreToken && (
-                <>
-                  <label className="setting-form-name-label">
-                    <input
-                      style={
-                        formik.touched.newPassword &&
-                        formik.errors.newPassword && {
-                          borderColor: '#EF5050',
-                        }
-                      }
-                      className="setting-form-input"
-                      type="text"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      name="newPassword"
-                      placeholder="Password"
-                    />
-                  </label>
-
-                  <label className="setting-form-name-label">
-                    <input
-                      style={
-                        formik.touched.repeatNewPassword &&
-                        formik.errors.repeatNewPassword && {
-                          borderColor: '#EF5050',
-                        }
-                      }
-                      className="setting-form-input"
-                      type="password"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      name="newPassword"
-                      placeholder="Password"
-                    />
-                  </label>
-                </>
-              )}
-              {!restoreToken && (
+            {restoreToken && (
+              <>
                 <label className="setting-form-name-label">
                   <input
+                    style={
+                      formik.touched.newPassword &&
+                      formik.errors.newPassword && {
+                        borderColor: '#EF5050',
+                      }
+                    }
                     className="setting-form-input"
-                    type="email"
-                    name="email"
+                    type="text"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    placeholder="Email"
+                    name="newPassword"
+                    placeholder="Password"
                   />
                 </label>
-              )}
 
-              <button type="submit" className="setting-form-submit">
-                {isLoading ? (
-                  <PiSpinnerGap className="spinner" size={16} />
-                ) : (
-                  buttonTxt
-                )}
-              </button>
-            </form>
-          </div>
-        </ContentStyles>
+                <label className="setting-form-name-label">
+                  <input
+                    style={
+                      formik.touched.repeatNewPassword &&
+                      formik.errors.repeatNewPassword && {
+                        borderColor: '#EF5050',
+                      }
+                    }
+                    className="setting-form-input"
+                    type="password"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    name="newPassword"
+                    placeholder="Password"
+                  />
+                </label>
+              </>
+            )}
+            {!restoreToken && (
+              <label className="setting-form-name-label">
+                <input
+                  className="setting-form-input"
+                  type="email"
+                  name="email"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  placeholder="Email"
+                />
+              </label>
+            )}
+
+            <button type="submit" className="setting-form-submit">
+              {isLoading ? (
+                <PiSpinnerGap className="spinner" size={16} />
+              ) : (
+                buttonTxt
+              )}
+            </button>
+          </form>
+          <div className="bubble-gen"></div>
+        </div>
       </BackgroundStyles>
     </RestoreStyled>
   );

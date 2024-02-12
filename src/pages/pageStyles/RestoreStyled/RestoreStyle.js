@@ -38,6 +38,7 @@ export const RestoreStyled = styled.div`
     width: 384px;
     margin-left: auto;
     margin-right: auto;
+    padding: 8px;
   }
 
   @media screen and (max-width: 390px) {
@@ -111,7 +112,7 @@ export const RestoreStyled = styled.div`
   span {
     position: absolute;
     border-radius: 50%;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 0 10px rgba(80, 150, 250, 0.5);
     animation: animate 4s linear infinite;
   }
   span:before {

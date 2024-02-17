@@ -49,9 +49,9 @@ const RestorePage = () => {
 
   const { restoreToken } = useParams();
   const handleSubmit = async ({ email, newPassword }, { resetForm }) => {
+    setIsLoading(true);
     if (!restoreToken) {
       try {
-        setIsLoading(true);
         await axios.post(
           `https://dreamteam-water-server.onrender.com/api/users/restore`,
           { email }
@@ -65,7 +65,6 @@ const RestorePage = () => {
       }
     } else {
       try {
-        setIsLoading(true);
         await axios.patch(
           `https://dreamteam-water-server.onrender.com/api/users/restore/${restoreToken}`,
           { password: newPassword }

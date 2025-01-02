@@ -60,7 +60,7 @@ export const RestoreStyled = styled.div`
     border-radius: 6px;
     background-color: white;
     border: 1px solid;
-    border-color: #d7e3ff;
+    border-color: blue;
     outline: 'none';
     margin-bottom: 16px;
   }

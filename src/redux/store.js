@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import authSliceReducer from './auth/authSlice';
 import waterSliceReducer from './water/waterSlice';
 import themeSliceReducer from './theme/themeSlice';
+
 const authPersistConfig = {
   // 'key' is identification of one or more storage
   key: 'auth',
@@ -25,10 +26,7 @@ const themePersistConfig = {
   storage,
 };
 
-const persistedThemeReducer = persistReducer(
-  themePersistConfig,
-  themeSliceReducer
-);
+const persistedThemeReducer = persistReducer(themePersistConfig, themeSliceReducer);
 
 // basic reducer
 const persistedReducer = persistReducer(authPersistConfig, authSliceReducer);

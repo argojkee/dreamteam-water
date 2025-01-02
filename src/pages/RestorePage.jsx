@@ -100,6 +100,7 @@ const RestorePage = () => {
   });
 
   const buttonTxt = restoreToken ? 'Change password' : 'Send email';
+
   return (
     <RestoreStyled $isDark={isDark}>
       <BackgroundStyles>
@@ -116,13 +117,13 @@ const RestorePage = () => {
               <>
                 <label className="setting-form-name-label">
                   <input
+                    className="setting-form-input"
                     style={
-                      formik.touched.newPassword &&
-                      formik.errors.newPassword && {
+                      formik.touched.email &&
+                      formik.errors.email && {
                         borderColor: '#EF5050',
                       }
                     }
-                    className="setting-form-input"
                     type="password"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}

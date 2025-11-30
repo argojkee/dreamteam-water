@@ -8,7 +8,8 @@ import LogoutDeleteModalContent from 'components/LogoutDeleteModal/LogoutDeleteM
 import { SettingModal } from 'components/SettingModal/SettingModal';
 import { useSelector } from 'react-redux';
 import { getCurrentUser } from '../../redux/auth/authSelectors';
-import { ClickAwayListener } from '@mui/base/ClickAwayListener';
+// import { ClickAwayListener } from '@mui/base/ClickAwayListener';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 import { getIsDarkTheme } from '../../redux/theme/themeSelectors';
 
 export default function UserLogoModal() {
@@ -27,7 +28,6 @@ export default function UserLogoModal() {
 
   let userAvatar = polishingAvatar();
 
-  
   //ф-ция возвращает то, что будет выведено на аватарку (аватарка есть, то аватарка,
   //иначе имя[0] или емейл[0])
   function polishingAvatar() {
@@ -54,11 +54,10 @@ export default function UserLogoModal() {
     setOpen(false);
   };
 
-  
   return (
     <>
       {email && (
-        <UserLogoModalStyles $isDark={isDark}  className="test">
+        <UserLogoModalStyles $isDark={isDark} className="test">
           <div className="main-user-container">
             <div className="user-box">
               <div className="textName">

@@ -57,8 +57,10 @@ const authSlice = createSlice({
       .addCase(signUpAPI.pending, state => {
         state.authIsLoading = true;
       })
-      .addCase(signUpAPI.fulfilled, state => {
+      .addCase(signUpAPI.fulfilled, (state, { payload }) => {        
         state.authIsLoading = false;
+        state.user = { ...payload.user };
+        state.token = payload.token;
       })
       .addCase(signUpAPI.rejected, state => {
         state.authIsLoading = false;

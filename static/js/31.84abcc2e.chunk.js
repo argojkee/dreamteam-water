@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkdreamteam_water=self.webpackChunkdreamteam_water||[]).push([[31],{7031:(e,t,a)=>{a.r(t),a.d(t,{default:()=>u});var r=a(3003),s=a(2371),c=a(9437),d=a(8062),n=a(372),l=a(579);const u=()=>{const e=(0,r.d4)(e=>e.auth),t=(0,r.d4)(d._);return(0,l.jsx)(n.A,{$isDark:t,$section:!0,$bottleSize:e.bottleXY,children:(0,l.jsx)(c.A,{children:(0,l.jsx)(s.A,{})})})}}}]);
+//# sourceMappingURL=31.84abcc2e.chunk.js.map

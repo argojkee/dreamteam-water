@@ -10,7 +10,7 @@ const signUpAPI = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/register', user);
-
+    
       // write token to axios parameter
       axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
 
@@ -19,6 +19,7 @@ const signUpAPI = createAsyncThunk(
       );
       return data;
     } catch (error) {
+      console.log("помилка");
       toastError('Something went wrong. Please try again or log in');
       return rejectWithValue(error.message);
     }

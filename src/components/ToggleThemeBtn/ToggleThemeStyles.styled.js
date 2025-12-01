@@ -44,4 +44,8 @@ export const ToggleThemeStyles = styled.div`
   label input:checked + svg .background {
     transform: translate(0px) scale(1);
   }
+
+  label input {
+    cursor: pointer;
+  }
 `;
